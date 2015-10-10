@@ -1,10 +1,13 @@
 # CppCoding
-C++ Coding Rules
+*C++ Good Practices*
 
 ## CC0 1.0 Universal - Public Domain Dedication
 
-Creative Commons Zero: *No Rights Reserved* &emsp;
+<sup>
+Creative Commons Zero &emsp;
+*No Rights Reserved*  &emsp;
 ![Logo says "(0)PUBLICDOMAIN"](https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain")
+</sup>
 
 To the extent possible under law, [olibre](mailto:olibre@Lmap.org) 
 has waived all copyright and related or neighboring rights to CppCoding. 
@@ -25,11 +28,11 @@ If not, see <https://creativecommons.org/publicdomain/zero/1.0/legalcode>.
 Work in progress:
 
 * [Rules]
-* [Sanity Checkers]
+* [Metrics]
 * [See also]
 
 [Rules]:           cpp/rules.md
-[Sanity Checkers]: cpp/lint.md
+[Metrics]:         cpp/lint.md
 [See also]:        cpp/links.md
 
 ## Generate HTML/PDF/... from Markdown
@@ -44,15 +47,21 @@ Moreover the [`Makefile`] empowers the Markdown conversion:
 2. Keep links between Markdown pages when converting to HTML/PDF
 3. Convert ASCII diagrams into nice images
 
-This third point use [ditaa-markdown] which depends on `ditaa0_6b.jar`, `DitaaEps.jar`, `epstopdf`, `dot` and `rdfdot`.
+This third feature is [ditaa-markdown] which depends on `ditaa0_6b.jar`, `DitaaEps.jar`, `epstopdf`, `dot` and `rdfdot`.
 
 ### Examples of diagrams
 
-* [ditaa]
-* [dot]
-* [rdfdot]
+Work in progress:
 
-[`Makefile`]:     Makefile
+* [`ditaa`]
+* [`dot`]
+* [`rdfdot`]
+
 [Markdown]:       https://en.wikipedia.org/wiki/Markdown "Simple and popular markup language"
 [`pandoc`]:       https://en.wikipedia.org/wiki/Pandoc   "a universal document converter"
 [ditaa-markdown]: https://github.com/nichtich/ditaa-markdown "Perl script: mddia"
+
+[`Makefile`]:     Makefile
+[`ditaa`]:          dia/ditaa.md
+[`dot`]:            dia/dot.md
+[`rdfdot`]:         dia/rdfdot.md
