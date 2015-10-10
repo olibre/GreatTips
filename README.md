@@ -4,24 +4,19 @@
 ## CC0 1.0 Universal - Public Domain Dedication
 
 <sup>
-Creative Commons Zero &emsp;
-*No Rights Reserved*  &emsp;
-![Logo says "(0)PUBLICDOMAIN"](https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain")
+[Creative Commons Zero] &emsp; *No Rights Reserved*  &emsp; ![Logo says "(0)PUBLICDOMAIN"]
 </sup>
 
 To the extent possible under law, [olibre](mailto:olibre@Lmap.org) 
-has waived all copyright and related or neighboring rights to CppCoding. 
+has waived all copyright and related or neighboring rights to [CppCoding]. 
 This work is published from France since 2015.
-
-This work is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-You should have received a copy of the CC0
-along with CppCoding (maybe in file [`COPYING`]).
-If not, see <https://creativecommons.org/publicdomain/zero/1.0/legalcode>.
+Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
 
 [`COPYING`]: COPYING
+[CppCoding]:                   https://github.com/olibre/CppCoding "CppCoding project hosted on GitHub" 
+[Creative Commons Zero]:       https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers" 
+[CC0 Legal Code]:              https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
+[Logo says "(0)PUBLICDOMAIN"]: https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain"
 
 ## C++ Coding
 
@@ -37,7 +32,7 @@ Work in progress:
 
 ## Generate HTML/PDF/... from Markdown
 
-The text is written using [Markdown]. The CppCoding project provides a [`Makefile`] to convert the content Markdown to HTML and PDF files (using [`pandoc`]). Command `make help` describes the available actions.
+The text is written using [Markdown]. The CppCoding project provides a [`Makefile`] to convert Markdown content to HTML and PDF files (using [`pandoc`]). Command `make help` describes the available actions.
 
 ### Empowering `pandoc`
 
