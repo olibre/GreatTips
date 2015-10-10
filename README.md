@@ -20,3 +20,15 @@ If not, see <https://creativecommons.org/publicdomain/zero/1.0/legalcode>.
 
 [`COPYING`]: COPYING
 
+## C++ Coding
+
+Work in progress:
+
+* [Rules]
+* [Sanity Checkers]
+* [See also]
+
+[Rules]:           cpp/rules.md
+[Sanity Checkers]: cpp/lint.md
+[See also]:        cpp/links.md
+
