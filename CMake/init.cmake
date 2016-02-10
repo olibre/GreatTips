@@ -120,7 +120,7 @@ if( path_ccache )
     message(STATUS "** Command 'ccache' detected => Will use 'ccache' to speed up compilation and link" )
     set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
     set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK    ccache)
-    # TODO(Oliver): Use "CMAKE_{C,CXX}_COMPILER_LAUNCHER=ccmake" with cmake-v3.4
+    # TODO(olibre): Use "CMAKE_{C,CXX}_COMPILER_LAUNCHER=ccmake" with cmake-v3.4
 endif()
 
 # Output directories
