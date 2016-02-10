@@ -143,7 +143,6 @@ endif()
 message(STATUS "** EXECUTABLE_OUTPUT_PATH=${EXECUTABLE_OUTPUT_PATH}")
 message(STATUS "** LIBRARY_OUTPUT_PATH   =${LIBRARY_OUTPUT_PATH}"   )
 message(STATUS "** PLUGIN_OUTPUT_PATH    =${PLUGIN_OUTPUT_PATH}"   )
-set(rdkafka_include_dir ${PROJECT_SOURCE_DIR}/pe/librdkafka-master/src)
 
 
 # For clang-check
