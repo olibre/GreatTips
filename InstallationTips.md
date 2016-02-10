@@ -173,7 +173,7 @@ The trick is to:
 * configure `[rebase] autoStash = true` within the `~/.gitconfig` (see previous chapter)
 * use `git submodule update --init --remote --rebase --depth 1`
 
-ATTENTION: `autoStash=true` is a bit tricky, be sure you understand `git stash` and you know how to resolve conflicts. TODO(olibre)
+ATTENTION: `autoStash=true` is a bit tricky, be sure you understand `git stash` and you know how to resolve conflicts.
 
 ### Get a global picture
 
@@ -189,7 +189,7 @@ ATTENTION: `autoStash=true` is a bit tricky, be sure you understand `git stash` 
       (use "git reset HEAD <file>..." to unstage)
       (use "git add <file>..." to mark resolution)
     
-    	both modified:   3rdparty/libxxxx
+    	both modified:   3rdparty/xxxx
     
     Changes not staged for commit:
       (use "git add <file>..." to update what will be committed)
@@ -332,9 +332,9 @@ Append in you `~/.bashrc`
 ## Shortcuts
 export PrjRoot=~/work/superproject
 # F5 => Status
-bind '"\e[15~":"git status && git submodule status\n"'
+bind '"\e[15~":"bash -xec \"cd ${PrjRoot} && git status && git submodule status\"\n"'
 # F6 => Update
-bind '"\e[17~":"bash -xec \"cd ${PrjRoot} && git pull && git submodule update --init --remote --rebase\"\n"'
+bind '"\e[17~":"bash -xec \"cd ${PrjRoot} && git pull && git submodule update --init --remote --rebase --depth 1\"\n"'
 # F7 => Compile
 bind '"\e[18~":"if [ -e ${PrjRoot}/build/Makefile ]
 then /usr/bin/time make -sj6 -C ${PrjRoot}/build
