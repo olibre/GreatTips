@@ -334,7 +334,7 @@ export PrjRoot=~/work/superproject
 # F5 => Status
 bind '"\e[15~":"bash -xec \"cd ${PrjRoot} && git status && git submodule status\"\n"'
 # F6 => Update
-bind '"\e[17~":"bash -xec \"cd ${PrjRoot} && git pull && git submodule update --init --remote --rebase --depth 1\"\n"'
+bind '"\e[17~":"bash -xec \"cd ${PrjRoot} && git pull && git submodule update --init --remote --rebase --depth 1 && git submodule foreach git stash list\"\n"'
 # F7 => Compile
 bind '"\e[18~":"if [ -e ${PrjRoot}/build/Makefile ]
 then /usr/bin/time make -sj6 -C ${PrjRoot}/build
