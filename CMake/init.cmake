@@ -67,22 +67,22 @@ if( CMAKE_BUILD_TYPE STREQUAL "Coverage" )
     add_compile_options( --coverage )
     link_libraries(      --coverage )
     add_definitions( -DNDEBUG )  # Disable assert to avoid code coverage bias
-else()
-    if( MARCH STREQUAL "native" )
-        if( CMAKE_COMPILER_IS_GNUCXX )
-            EXECUTE_PROCESS( COMMAND ${CMAKE_CXX_COMPILER} -march=native -Q --help=target COMMAND awk "/-march=/{ printf $2}" OUTPUT_VARIABLE march_native )
-            message(STATUS "** MARCH is native and compiler is GNU => Detected processor '${march_native}' => -march=${march_native}")
-            add_compile_options( -march=${march_native} )
-        else()
-            message(STATUS "** MARCH is native and compiler is *not* GNU => -march=native")
-            add_compile_options( -march=native )
-        endif()
-    elseif( MARCH )
-        message(STATUS "** MARCH is not native => -march=${MARCH}")
-        add_compile_options( -march=${MARCH} )
+endif()
+
+if( MARCH STREQUAL "native" )
+    if( CMAKE_COMPILER_IS_GNUCXX )
+        EXECUTE_PROCESS( COMMAND ${CMAKE_CXX_COMPILER} -march=native -Q --help=target COMMAND awk "/-march=/{ printf $2}" OUTPUT_VARIABLE march_native )
+        message(STATUS "** MARCH is native and compiler is GNU => Detected processor '${march_native}' => -march=${march_native}")
+        add_compile_options( -march=${march_native} )
     else()
-        message(STATUS "** MARCH is empty => Disable flag -march")
+        message(STATUS "** MARCH is native and compiler is *not* GNU => -march=native")
+        add_compile_options( -march=native )
     endif()
+elseif( MARCH )
+    message(STATUS "** MARCH is not native => -march=${MARCH}")
+    add_compile_options( -march=${MARCH} )
+else()
+    message(STATUS "** MARCH is empty => Disable flag -march")
 endif()
 
 # Set -O0/-Og/-O1/-O2/-O3/-Ofast and -g2/-g3 depending on CMAKE_BUILD_TYPE
@@ -106,9 +106,8 @@ add_compile_options( -g3 -ggdb3 )    # -g3 -> include also the MACRO definitions
 #add_compile_options( -Wall -Wextra -Wswitch-enum -Wno-ignored-qualifiers) #-pedantic -Weffc++
 add_compile_options( -Wall -Wextra -Wno-ignored-qualifiers) #remove -Wswitch-enum else libPE does not compile
 
-# Temporarily (unitl Tredzone lib binary is ABIC++11 compliant) force old ABI format
+# Temporarily force old ABI format unitl all closed-libraries become ABIC++11 compliant
 add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
-
 
 ## Speed up build using pipes (rather than temporary files) for communication between the various GCC stages
 add_compile_options( -pipe )
@@ -145,5 +144,5 @@ message(STATUS "** LIBRARY_OUTPUT_PATH   =${LIBRARY_OUTPUT_PATH}"   )
 message(STATUS "** PLUGIN_OUTPUT_PATH    =${PLUGIN_OUTPUT_PATH}"   )
 
 
-# For clang-check
+# Use: awk -F: '/"file"/{print $2 }' build/compile_commands.json | xargs clang-check -fixit -p build
 set(CMAKE_EXPORT_COMPILE_COMMANDS "on")
