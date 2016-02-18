@@ -3,7 +3,7 @@
  *Lovely rules for happy developers!*  
  Version: xxxxxxx
  </small>
-%olibre <olibre@Lmap.org>
+%olibre (-at- Lmap.org)
 %date  
 
 # Main goal
@@ -11,11 +11,11 @@
 ## Audience
 
 This document is written by developers for developers.  
-Here *We* means *We delevopers* (*Nous, les développeurs*).
+Here *We* means *We the delevopers*.
 
 ## Rationale
 
-We all hate coding rules, often written by poor programmers with weak experience with C++.
+We all hate coding rules, often written by poor programmers with weak experience with C++.  
 Coding rules become outdated, may not be understood by their users, and do not always provide guidance.
 
 But a minimum of rules are required for source code consistency accross our projects.
@@ -28,17 +28,26 @@ Therefore, this document aims to provide *lovely rules for happy devs*:
 
 ## Exceptions
 
-* Generated code from third party frameworks (e.g. Qt-Creator)
-* Code written in consistency with above generated code
+* This coding rules apply to code intended for production.
+* Unit test source code can follow different rules.
+* Generated source code from third-party frameworks (e.g. Qt-Creator, SBE...)
+* Source code mixed with above generated code (i.e. consistency is more important)
 
 ## Continuous improvement
 
-Please keep uptodate this current document and propose to add/remove/clarify/simplify rules.
+Please keep uptodate this current document: add/remove/clarify/simplify rules.  
 These rules are not static and will evolve thanks to you.
 
-Please contibute to this document. We, developers, prefer an helpful guide rather than a list of restrictions.
-Please edit this MarkDown document on [GitHub project](https://github.com/olibre/CppCoding/edit/master/cpp/rules.md).
+Please contibute to this document.
+We, developers, prefer an helpful guide rather than a list of restrictions.
+Please fork this [project](https://github.com/olibre/CppCoding) and edit this MarkDown document.
 
+## Notation shortcuts
+
+* `lower_case` = minuscule `[a-z]`, digits `[0-9]` and underscore `'_'` to delimite words
+* `UPPER_CASE` = majuscule `[A-Z]`, digits `[0-9]` and underscore `'_'` to delimite words
+* `camelCase` = start with a lowercase word and mix case for next words
+* `CamelCase` = all words are capitalized
 
 
 # Files
@@ -66,11 +75,8 @@ My_New_Class.cpp     // Must be same as the class name
 
 ## `F.RST` &nbsp; Rest in `lower_case`
 
-Directory/File names
-
-* lowercase `[a-z]` and digits `[0-9]`
-* underscore `'_'` to delimite words
-* except for C++, `Makefile`, `CMakeLists.txt` ...
+* Concerns directory and file names
+* Except `Makefile`, `CMakeLists.txt`, C++ files, ...
 
 ```cpp
 // Good
@@ -82,10 +88,10 @@ coreTechnology/Ccg/fooconfiguration.xml
 
 ## `F.GRD` &nbsp; Header-guard `#define FILE_HPP_`
 
-* Every header file has a Header-guard
+* All header files contain its own Header-guard
 * Use `#ifndef`/`#define`/`#endif`
-* No `pragma once` (See [StackOverflow](http://stackoverflow.com/a/26908048/938111))
-* Format is `<ROOTDIR>_<SUBDIR>_<FILE_NAME>_HPP_` to guaranty uniqueness
+* No need `pragma once` (See [StackOverflow](http://stackoverflow.com/a/26908048/938111))
+* Format is `<DIRECTORY>_<FILE_NAME>_HPP_` to guaranty uniqueness
 * Underscores `'_'` can be inserted in `<FILE_NAME>` to separate words
 * Automatic script can be used to append/fix header-guards
 * As reminder the macro name has some constraints. Extract from [cppreference.com/Identifiers](http://en.cppreference.com/w/cpp/language/identifiers):
@@ -99,7 +105,7 @@ coreTechnology/Ccg/fooconfiguration.xml
 #ifndef CT_CCG_ISESSION_V4_HPP_
 #define CT_CCG_ISESSION_V4_HPP_
 ...
-...
+
 #endif  // CT_CCG_ISESSION_V4_HPP_
 ```
 
@@ -110,7 +116,7 @@ coreTechnology/Ccg/fooconfiguration.xml
 
 ```cpp
 /** 
-* \copyright Copyright (c) 2015-2016 XXXXXXXX
+* \copyright Copyright (C) 2015-2016 My-Company
 *            All Rights Reserved
 *            DO NOT ALTER OR REMOVE THIS COPYRIGHT NOTICE
 * 
@@ -128,11 +134,21 @@ coreTechnology/Ccg/fooconfiguration.xml
    (see [doxygen.org](http://www.doxygen.org/))
 3. No need to duplicate Doxygen comments in the `*.cpp` file
 
+```cpp
+/**
+ * Header file for class MyMessage
+ *
+ * \brief The header for the MyMessage class
+ *
+ */
+```
+
 ## `F.TDO` &nbsp; Use `FIXME TODO TOREVIEW`
 
 * Write `FIXME`/`TODO`/`TOREVIEW` in source code when neccessary
 * Format `"TODO (name@example.com): reason"`
 * Follow/Complete them (in an acceptable time)
+* A deadline can be provided `Deadline DATE`
 
 | Comment    | Flagged in Jenkins as             |
 | ---------- | --------------------------------- |
@@ -151,14 +167,14 @@ Rationale:
 
 ```cpp
 // Formatting
-blabla; // TODO (youremail@address): What needs to be done
-blabla; // TODO: Deadline MM/DD/YYYY
+blabla; // TODO (YourName@example.com): What needs to be done
+blabla; // TODO: Deadline DATE
 
 // Good
-blabla; // TODO (johndoe@nyx.com): Update function to provide concatenation operator
+blabla; // TODO (JohnDoe@example.com): Update function to provide concatenation operator
 blabla; // TODO: Deadline November 2012.
 /**
- * TODO (janedoe@nyx.com): Remove 32-bits ID once all clients have migrated to 64-bit ID
+ * TODO (JohnDoe@example.com): Remove 32-bits ID once all clients have migrated to 64-bit ID
  */
 
 // Bad
@@ -166,25 +182,34 @@ blabla; // TODO
 blabla; // todo: refactor blabla
 ```
 
-## `F.IDT` &nbsp; Allman indentation style
+## `F.IDT` &nbsp; Indentation is 4 spaces
 
-* [Allman][] is the formatting style within the source code repositories
-* Indentation is 4 spaces because this is the most adopted convetion (default settings for many IDEs)
-* Allman-formating script can be used while committing code source on repository
-* [Kernighan & Ritchie][K&R]/[1TBS][] styles may be used for short block (a couple of lines)
+* Indentation is 4 spaces because this is the most adopted convention.
+* No tabulation.
+* This is the default settings for many editors/IDE.
+* Most of recent C++ code use 4 spaces identation
+  * `booost::hana`
+  * LLVM STL implementation
+  * [Microsoft GSL][GSL] implementation
+
+
+## `F.ALM` &nbsp; Allman style
+
+* [Allman][] is the formatting style of source code.
+* Styles [Kernighan & Ritchie][K&R] and [1TBS][] are accepted for tiny blocks (a couple of lines).
+* Script to automate Allman-formating can be used (e.g. commit hook).
 
   [Allman]: https://en.wikipedia.org/wiki/Indent_style#Allman_style  "BSD / Eric Allman style"
   [K&R]:    https://en.wikipedia.org/wiki/Indent_style#K.26R_style   "Kernighan & Ritchie"
   [1TBS]:   https://en.wikipedia.org/wiki/Indent_style#Variant:_1TBS "the one true brace style"
 
-**Hybrid Allman/1TBS using 4 spaces identation**
+**Full Allman style using 4 spaces indentation**
 
 ```cpp
 #include <iostream>
 
 int main (int argc, char *argv[])
 {
-    // Good: Allman style
     if (argc > 1)
     {
         std::cout << argv[1] << std::e ndl;
@@ -192,19 +217,57 @@ int main (int argc, char *argv[])
 
     for (int i = 0; i < 9; ++i)
     {
-        if (i == 5)  continue;  // Oneline accepted but not nice to debug
+        if (i == 5)
+            continue;
 
-      // 1TBS accepted for tiny blocks
-      if ((i % 2) != 0) {
-        std::cout << i << std::endl;
-      }
+        if (i % 2)
+        {
+            std::cout << i << std::endl;
+        }
 
-      // 1TBS also accepted here but block should stay tiny
-      if (i > 5) {
-        std::cout << 9 - i << std::endl;
-      } else {
-        std::cout << 2 + i << std::endl;
-      }
+        if (i > 5)
+        {
+            std::cout << 9 - i << std::endl;
+        }
+        else
+        {
+            std::cout << 2 + i << std::endl;
+        }
+    }
+
+    return 0;
+}
+```
+
+**Same code but using style 1TBS for short blocks**
+
+```cpp
+#include <iostream>
+
+int main (int argc, char *argv[])
+{
+    // Good: Allman style at large scope
+    if (argc > 1)
+    {
+        std::cout << argv[1] << std::endl;
+    }
+
+    // Good: Allman style for long block
+    for (int i = 0; i < 9; ++i)
+    {
+        if (i == 5)  continue;  // One line accepted (but not nice to debug)
+
+        // 1TBS accepted for tiny block
+        if (i % 2) {
+            std::cout << i << std::endl;
+        }
+
+        // 1TBS also accepted here but block should stay tiny
+        if (i > 5) {
+            std::cout << 9 - i << std::endl;
+        } else {
+            std::cout << 2 + i << std::endl;
+        }
     }
 
     return 0;
@@ -247,6 +310,7 @@ In order to avoid this noise, we can remove trailing whitespaces before/during c
     - `GREP_COLORS='mt=;41' grep '\s\+$' --color -n9 file.cpp` to hightlight trailing spaces
     - `sed 's/[ \t]*$//' -i file.cpp` to remove trailing whitespaces
 
+
 ## `F.EOL` &nbsp; Line Feed `"\n"` (LF)
 
 When some devs work on MS-Windows and others on Unix platforms,
@@ -265,6 +329,7 @@ Rules for every ASCII file:
     - `dos2unix file.cpp` to convert CR+LF to LF
     - `tr -d '\r' <file.cpp >file.new && mv file.new file.cpp` if `dos2unix` is not available
     - `tr -d '\r' <file.cpp | sponge file.cpp` if you `yum install moreutils`
+
 
 ## `F.EOF` &nbsp; Clean end of file
 
@@ -308,9 +373,6 @@ Main idea:
 
 * Prefer C++ features (i.e. `template` functions)
 * Avoid macros (pre-processor) when possible
-* If macros are used:
-    - Name in UPPERCASE.
-    - Underscore `'_'` to delemit words.
 
 ```cpp
 // Good
@@ -326,12 +388,10 @@ Main idea:
 
 ## `N.CST` &nbsp; Constant/Enum in `UPPER_CASE`
 
-* UPPERCASE letters
-* Underscore `'_'` to delemit words
-* `enum class` values can use `CamelCase` notation (C++11)
+* `enum class` values can use `CamelCase` notation (C++11)  
   (less ambiguity due to `EnumName::` prefix)
 * Avoid `#define` when possible
-* Prefer `const` than `enum`
+* Prefer `const` than anonymous `enum`
 * Prefer `constexpr` than `const` (C++11)
 * Consider using [unnammed-`namespace`](http://stackoverflow.com/a/4422554/938111) instead of `static`
   (see last lines below)
@@ -367,11 +427,13 @@ See also [codeproject.com/The One Definition Rule in C++11 and C++14: Constant E
 
 * User-defined `class`/`struct`/`union`/`enum` names in `CamelCase`
 * Underscore `'_'` should not be required, but can be accepted
-* But notation `lower_case` can still be used for low-level/utility/technical libs  
+* Notation `lower_case` can still be used for low-level/utility/technical libs  
   (as containers or like other components provided by boost/STL)
 * Suffix `*_t` can be used for nested types only   
   (in global scope: reserved for potential future C++ standard types)
-* Use an *ending comment* for long declaration (automatic script may detect/fix this)
+* Add an *ending comment* after the closing brace `}` (for declarations having many lines)
+* Automatic script may detect/fix the closing brace comment
+
 
 ```cpp
 // Good
@@ -392,8 +454,8 @@ class myNewClass;
 
 ## `N.ITF` &nbsp; Interface in `ICamelCase`
 
-* Prefix UPPERCASE `‘I’` the classes specifing an interface (pure abstract class)
-  <small>(See also [corresponding question on StackExchange][])</small>.
+* Prefix `'I'` for class specifing an interface (i.e. pure abstract class)  
+  <small>(See also [corresponding question on StackExchange][])</small>
 
 ```cpp
 // Good
@@ -411,11 +473,11 @@ imsgprocessor;
 
   [corresponding question on StackExchange]: http://programmers.stackexchange.com/questions/117348
 
+
 ## `N.FCN` &nbsp; Function in `camelCase`
 
-* Start with a lowercase word, a verb when possible
-* Mixed case for multi-word names (`camelCase`)
-* Underscore `'_'` is also accepted if consistent (`lower_case`)
+* Start with a verb when possible
+* Underscore `'_'` can be accepted if consistent with the whole (`lower_case`)
 * No redundancy of the class name within the method name
 
 ```cpp
@@ -442,11 +504,60 @@ public:
 
 ## `N.PRM` &nbsp; Function parameter in `camelCase`
 
-* Start with a lowercase word
-* Mixed case for multi-word names (`camelCase`)
 * Underscore `'_'` can be accepted if consistent with the whole (`lower_case`)
-* Unused parameter should be commented
+* Unused parameter should be commented  
   e.g. `int32_t half(int32_t qty, bool /*force*/) { return qty/2; }`
+
+
+## `N.TTP` &nbsp; Type template parameter
+
+### First proposition: Type template parameter in `T_CamelCase`
+
+```cpp
+template<typename T_FirstType, template<typename> typename T_SecondType = MyClassArray>
+class MyClass
+{
+    T_SecondType<T_FirstType> container;
+};
+```
+
+### Second proposition: Type template parameter in `lower_case_t`
+
+```cpp
+template<typename first_type_t, template<typename> typename second_type_t = MyClassArray>
+class MyClass
+{
+    second_type_t<first_type_t> container;
+};
+```
+
+
+## `N.NTP` &nbsp; Non-Type template parameter
+
+### First proposition: Type template parameter in `CamelCase`
+
+* Non-Type template parameters are constants, but are not `UPPER_CASE`
+
+```cpp
+template<size_t Size = 512>
+class MyClass
+{
+    int32_t myArray[Size];
+};
+```
+
+### Second proposition: Type template parameter in `UPPER_CASE`
+
+* Non-Type template parameters are constants, therefore in `UPPER_CASE`
+
+```cpp
+template<size_t SIZE = 512>
+class MyClass
+{
+    int32_t myArray[SIZE];
+};
+```
+
 
 ## `N.LCL` &nbsp; Local variable in `camelCase`
 
@@ -463,7 +574,7 @@ Session Session1; // Name must start with a lowercase letter
 MyClass my_class; // Can be accepted if consistent
 ```
 
-## `N.STR` &nbsp; Struct data member in `camelCase`   <a name="NamingDataStruct"></a>
+## `N.STR` &nbsp; Struct data member in `camelCase`   <a name="StructDataMemeber"></a>
 
 * Same as above [`camelCase/lower_case` rule](#n06---function-parameter-in-camelcase)
 * No redundancy of the `struct` name within the member name
@@ -481,12 +592,14 @@ struct Limit
 ## `N.CLS` &nbsp; Class data member in `_camelCase`
 
 * Same rule as above [`struct` member](#n08---struct-data-member-in-camelcase) but prefixed with an underscore `'_'`
-* This rule may not be applied to `static` members and other special members
+* This rule may not be applied (follow instead [previous rule (Struct data member)](#StructDataMemeber)):
+   * when the class contains few functions and data members
+   * to `static` members and other special members
 
 Rationale:
 
- * By convention `struct` has `public` data and provides no or few functions
- * In constrast, `class` has `private` data and provides many functions
+ * By convention `struct` has `public` data and provides few functions
+ * In constrast, `class` has `private` data and often provides many functions
  * This rule avoids messing the *Auto-Completion* on `class` between data (private) and functions (public)
  * This rule allows *Auto-Completion* to separate data/functions (arranged in alphabetical order)
  * Developer knows if he/she wants to see the list of data memebers or the list of functions
@@ -576,13 +689,12 @@ See also related questions:
 
 ## `N.NSP` &nbsp; Namespace in  `lower_case`
 
-* All in lowercase
 * Abreviations are welcome to minimize discomfort (e.g. `std::`)
 * Avoid multi-words when possible
-* If multi-words required, use underscore `'_'`
 * Do not list nested namespaces on the same line
-* No need for identation
-* Terminate long namespaces with an *ending comment* (automatic script may detect/fix this)
+* No need for indentation
+* Add an *ending comment* after the closing brace `}` (for namespace having many lines)
+* Automatic script may detect/fix the closing brace comment
 
 ```cpp
 // Good
@@ -728,65 +840,80 @@ _OK for safe code, but no performance sacrificed, we are **C++ devs**!_
 * Use `diffptr_t` for pointer difference
 * [Almost Always `auto`](http://herbsutter.com/2013/08/12/gotw-94-solution-aaa-style-almost-always-auto/) (C++11)
 
+
 ## `C.INI` &nbsp; Always initialize variables
 
 * Always initialize variables before use
 
+  ```cpp
+  // Good
+  int32_t quantity = 0;
+  float   price    = 0.0;
+  char*   text     = nullptr;  // C++11
+
+  // Bad
+  int32_t quantity;
+  float   price;
+  char*   text;
+  ```
+
 * Except when we know what we do within a performance-critical section (justification/comment required)
 
-        float x;           // x is uninitialized
-        bool ok = get(x);  // pass x by reference
-        if (ok)            // if x is set, get(x) returns true
-        { /* use x */ }    // use x only inside this scope (outside x may be unitilized)
+    ```cpp
+    float x;           // x is uninitialized
+    bool ok = get(x);  // pass x by reference
+    if (ok)            // if x is set, get(x) returns true
+    { /* use x */ }    // use x only inside this scope (outside x may be unitilized)
+    ``` 
 
 * Local variables are initialized according to their use
 
-        for (int32_t i = 10; i >= -10; --i)
-        {
-        }
+    ```cpp
+    for (int32_t i = 10; i >= -10; --i)
+    {
+    }
+    ```
 
 * Global variables or variables with a large scope, which do not have a meaningful default value, should be initialized
   with values indicating an error (e.g., an invalid value), rather than "low-profile" values that facilitate silent bugs.  
   In enum types, there should be an invalid enum value to be assigned to variables which have no valid default values.
 
-        int8_t* buffer_ptr = 0xDeadBeef; // a famous invalid pointer value (in the memory range)
-        size_t  msg_count  = 0;          // a meaningful default value at start
-        int64_t event_id   = MIN_INT64;  // an invalid event id, variable meaningless unless actively used
+    ```cpp
+    int8_t* buffer_ptr = 0xDeadBeef; // a famous invalid pointer value (in the memory range)
+    size_t  msg_count  = 0;          // a meaningful default value at start
+    int64_t event_id   = MIN_INT64;  // an invalid event id, variable meaningless unless actively used
+    ```
 
 * When initializing values to zero/null
     - Use `0` for integers
     - Use `0.0` for reals
     - Use `nullptr` (C++11) or `0` or `NULL` for pointers
 
-* C++11: Initialize data members on declaration (not neccessary on constructor) => See below example
+* C++11: Initialize data members on declaration (not neccessary on constructor)
 
-* C++11: Use braces initialization (instead of parentheses) => See below example
+    ```cpp
+    class Limit
+    {
+    public:
+        Limit() = default;
 
-* C++17: Use `not_null<T>(ptr)` to convey pointers that should never be null (already available in GSL)
+    private:
+        int32_t quantity = 0;
+        double  price    = 0.0;
+    };
+    ```
 
+* C++11: Use braces initialization (instead of parentheses)
 
-```cpp
-// Good
-int32_t quantity = 0;
-float   price    = 0.0;
-char*   text     = nullptr;  // C++11
+    ```cpp
+    int32_t quantity(0);  // parentheses
+    int32_t quantity{0};  // braces
+    ```
 
-// Bad
-int32_t quantity;
-float   price;
-char*   text;
+* C++17: Use `not_null<T>(ptr)` to convey pointers that should never be null (already available in the [GSL][])
 
-// Initialization at declaration (C++11)
-class Limit
-{
-public:
-  Limit() { std::cout <<"Constructor Limit" "\n"; }
+[GSL]: https://github.com/Microsoft/GSL "Guidelines Support Library"
 
-private:
-  int32_t quantity = 0;
-  double  price    = 0.0;
-};
-```
 
 The following *parenthesis initialization ambiguity* is known as the [*Most vexing parse*](https://en.wikipedia.org/wiki/Most_vexing_parse). Check the compilation on [gcc.godbolt.org](http://goo.gl/CMpxhC).
 
@@ -796,15 +923,15 @@ The following *parenthesis initialization ambiguity* is known as the [*Most vexi
 // Parenthesis can also be Bad
 float foo (float param)
 {                           // Function declarartion
-  float  ret( float(param) ); // float ret( float );
-  return ret;
+    float  ret( float(param) ); // float ret( float );
+    return ret;
 } 
 
 // Use instead braces (C++11)
 float bar (float param)
 {
-  float  ret{ float(param) }; // No ambiguity
-  return ret;
+    float  ret{ float(param) }; // No ambiguity
+    return ret;
 } 
 
 // C++11 uniform initialization syntax (initializers)
@@ -822,37 +949,37 @@ Build/Run below snippet on [Coliru](http://coliru.stacked-crooked.com/a/f6972398
 
 struct A
 {
-  A() {} // ctor does not initialize 'i'
-  int i;
+    A() {} // ctor does not initialize 'i'
+    int i;
 };
-    
+
 struct B // implicit ctor
 {
-  A a;
-  int i;
-  void set() { a.i = i = 42; }
+    A a;
+    int i;
+    void set() { a.i = i = 42; }
 };
-    
+
 std::ostream& operator<< (std::ostream& os, const B& b)
 {
-  os <<'\t'<< b.a.i <<'\t'<< b.i;
-  return os;
+    os <<'\t'<< b.a.i <<'\t'<< b.i;
+    return os;
 }
-    
+
 int main()
 {
-  std::cout <<"----------"<< __cplusplus <<"----------" "\n";
+    std::cout <<"----------"<< __cplusplus <<"----------" "\n";
 
-  B b; // used to reset memory for 'placement new'
+    B b; // used to reset memory for 'placement new'
 
-  b.set(); std::cout <<"new(&b)B   "<< *new(&b)B   <<'\n'; // All uninitialized (in all C++ standards)
+    b.set(); std::cout <<"new(&b)B   "<< *new(&b)B   <<'\n'; // All uninitialized (in all C++ standards)
 
-  std::cout          <<"       B() "<< B()         <<'\n'; // B::A::i uninitialized in C++03, zero-initialized in C++11
-  b.set(); std::cout <<"new(&b)B() "<< *new(&b)B() <<'\n'; // B::i zero-initialized (in all C++ standards)
+    std::cout          <<"       B() "<< B()         <<'\n'; // B::A::i uninitialized in C++03, zero-initialized in C++11
+    b.set(); std::cout <<"new(&b)B() "<< *new(&b)B() <<'\n'; // B::i zero-initialized (in all C++ standards)
 
 #if __cplusplus > 2011*100                                 // B{} is aggregate-initialization (DR1301)
-  std::cout          <<"       B{} "<< B{}         <<'\n'; // => B::A::i value-initialized
-  b.set(); std::cout <<"new(&b)B{} "<< *new(&b)B{} <<'\n'; // => B::i     zero-initialized
+    std::cout          <<"       B{} "<< B{}         <<'\n'; // => B::A::i value-initialized
+    b.set(); std::cout <<"new(&b)B{} "<< *new(&b)B{} <<'\n'; // => B::i     zero-initialized
 #endif
 }
 ```
@@ -896,13 +1023,12 @@ Build output & Possible run output
 
 
 
-
-
 ## `C.INH` &nbsp; No public multi-inheritance
 
 * Unlimited multiple inheritance for Interface (pure abstract class)
 * Private multi-inheritance accepted
 * Avoid multiple inheritance for other cases when possible
+
 
 ## `C.OVL` &nbsp; No operator overloading
 
@@ -916,6 +1042,7 @@ Build output & Possible run output
 
   [significand]: https://en.wikipedia.org/wiki/Significand
   [exponent]:    https://en.wikipedia.org/wiki/Exponentiation
+
 
 ## `C.CST` &nbsp; Use C++ style casts
 
@@ -964,7 +1091,7 @@ int32_t j =  int32_t(x);              // Do not abuse!
 namespace n1 {
 namespace internal
 {
-  int32_t x = 1;
+    int32_t x = 1;
 }
 using namespace internal;
 int32_t y = 1;
@@ -974,7 +1101,7 @@ int f1() { return x + y; }
 namespace n2 {
 namespace internal
 {
-  double d = 2.0;
+    double d = 2.0;
 }
 using namespace internal;
 double y = 2.0;
@@ -987,21 +1114,20 @@ double f4() { return           d + y; }
 
 int main()
 {
-  using namespace n1;
-  using namespace n2;
-  using namespace std;
+    using namespace n1;
+    using namespace n2;
+    using namespace std;
 
-  cout <<"f1()            "<< f1()            << endl;
-  cout <<"f4()            "<< f4()            << endl;
-  cout <<"n1::y           "<< n1::y           << endl;
-  cout <<"n2::y           "<< n2::y           << endl;
-  cout <<"n1::internal::x "<< n1::internal::x << endl;
-  cout <<"n2::internal::d "<< n2::internal::d << endl;
+    cout <<"f1()            "<< f1()            << endl;
+    cout <<"f4()            "<< f4()            << endl;
+    cout <<"n1::y           "<< n1::y           << endl;
+    cout <<"n2::y           "<< n2::y           << endl;
+    cout <<"n1::internal::x "<< n1::internal::x << endl;
+    cout <<"n2::internal::d "<< n2::internal::d << endl;
 
-  /* Errors:
-  cout << internal::x << endl; // the same error as in f2
-  cout << y           << endl; // ambiguous n1 vs n2
-  */
+    // Errors:
+    // cout << internal::x << endl; // the same error as in f2
+    // cout << y           << endl; // ambiguous n1 vs n2
 }
 ```
 
@@ -1018,6 +1144,7 @@ int main()
         - `const std::size_t sz = (sizeof(array) / sizeof(*array));`
         - `const std::size_t sz = std::size(array);` (C++17)
 
+
 ## `C.DTR` &nbsp; No exception in destructor
 
 When an exception is thrown the program unwinds the stack (properly destruct the local variables).
@@ -1031,20 +1158,46 @@ as the language runtime can only propagate one single exception.
      (throws an exception when cannot cast the reference)
 * `try/catch` does not prevent undefined behaviour (crash) when a second exception occurs
 
+
 ## `C.WRN` &nbsp; Activate compilation warnings
 
-    -Wall          // Classic warnings
-    -Wextra        // Extra amount of warnings
-    -Weffc++       // Effective C++ series of books from Scott Meyers
-    -pedantic      // Reject code not following ISO C++ (e.g. GNU extensions)
-    -Winit-self    // Variables initialized with themselves (enabled by -Wall)
-    -Wswitch-enum  // Missing case for values of switch(enum)
+    -Wall            // Classic warnings
+    -Wextra          // Extra amount of warnings
+    -Weffc++         // Effective C++ series of books from Scott Meyers
+    -pedantic        // Reject code not following ISO C++ (e.g. GNU extensions)
+    -pedantic-errors // Pedantic warnings are converted into errors
+    -Winit-self      // Variables initialized with themselves (enabled by -Wall)
+    -Wswitch-enum    // Missing case for values of switch(enum)
+    -Wcast-align     // Warn on incompatible alignment pointers
+    -Wcast-qual
+    -Wconversion
+    -Wformat=2
+    -Winit-self
+    -Wuninitialized
+    -Winvalid-pch
+    -Wmissing-field-initializers
+    -Wmissing-include-dirs
+    -Wpointer-arith
+    -Wredundant-decls
+    -Wswitch
+    -fstack-protector-strong
+    -Wstack-protector
+    -Wunreachable-code
+    -Wunused
+    -Wunused-parameter
+    -Wwrite-strings
+    -Wshadow
+    -Werror
 
-Consider also `-Werror` to fail compilation for any activated warning (and `-Weverything` from Clang).
+Consider also:
+
+* `-Werror` to fail compilation for any activated warning
+* Clang only: `-Weverything` to enable all possible warnings
 
 See more on [GCC warning options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html).
 
-# Read/Learn more
+
+# Extra coding guidelines
 
 * Excellent [*C++ modern guidelines* from Bjarne Stroustrup and Herb Sutter](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md)
 * Popular but criticized [Google C++ Style Guide](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html)
