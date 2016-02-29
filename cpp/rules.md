@@ -39,15 +39,16 @@ Please keep uptodate this current document: add/remove/clarify/simplify rules.
 These rules are not static and will evolve thanks to you.
 
 Please contibute to this document.
-We, developers, prefer an helpful guide rather than a list of restrictions.
+We prefer an helpful guide rather than a list of restrictions.
 Please fork this [project](https://github.com/olibre/CppCoding) and edit this MarkDown document.
+You can also annotate this file. :-)
 
 ## Notation shortcuts
 
-* `lower_case` = minuscule `[a-z]`, digits `[0-9]` and underscore `'_'` to delimite words
-* `UPPER_CASE` = majuscule `[A-Z]`, digits `[0-9]` and underscore `'_'` to delimite words
-* `camelCase` = start with a lowercase word and mix case for next words
-* `CamelCase` = all words are capitalized
+* `lower_case` = minuscule `[a-z]` and digit `[0-9]` (and underscore `'_'` to delimite words)
+* `UPPER_CASE` = majuscule `[A-Z]` and digit `[0-9]` (and underscore `'_'` to delimite words)
+* `camelCase` = start with a lowercase word and capitalize next words
+* `CamelCase` = capitalize and concatenate words
 
 
 # Files
@@ -187,10 +188,10 @@ blabla; // todo: refactor blabla
 * Indentation is 4 spaces because this is the most adopted convention.
 * No tabulation.
 * This is the default settings for many editors/IDE.
-* Most of recent C++ code use 4 spaces identation
-  * `booost::hana`
-  * LLVM STL implementation
-  * [Microsoft GSL][GSL] implementation
+* Recent C++ projects often use 4 spaces identation.
+    * `booost::hana`
+    * LLVM STL implementation
+    * [Microsoft GSL][GSL] implementation
 
 
 ## `F.ALM` &nbsp; Allman style
@@ -359,14 +360,16 @@ See also Clang compiler option `-Wnewline-eof`.
 
 # Naming
 
-Main idea:
+No [Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation#Examples)
+as modern IDEs display underlying types.
 
-* All in `UPPER_CASE` => Macros and Constants
-* `CamelCase` (first letter UPPERCASE) => Types
-* `camelCase` (first letter lowercase) and `lower_case` => Functions and Variables
-* No [Hungarian notation][] as modern IDEs display underlying types
+**Main idea**
 
-  [Hungarian notation]: https://en.wikipedia.org/wiki/Hungarian_notation#Examples
+Notation                          | Meaning
+----------------------------------|--------------------
+`UPPER_CASE`                      | Macros and Constants
+`CamelCase` and `lower_case_type` | Types and nested types
+`camelCase` and `lower_case`      | Functions and Variables
 
 
 ## `N.MCR` &nbsp; Macro in `UPPER_CASE`
@@ -388,7 +391,7 @@ Main idea:
 
 ## `N.CST` &nbsp; Constant/Enum in `UPPER_CASE`
 
-* `enum class` values can use `CamelCase` notation (C++11)  
+* `enum class` values can use `CamelCase` notation (C++11) # TOREVIEW #  
   (less ambiguity due to `EnumName::` prefix)
 * Avoid `#define` when possible
 * Prefer `const` than anonymous `enum`
@@ -427,11 +430,9 @@ See also [codeproject.com/The One Definition Rule in C++11 and C++14: Constant E
 
 * User-defined `class`/`struct`/`union`/`enum` names in `CamelCase`
 * Underscore `'_'` should not be required, but can be accepted
-* Notation `lower_case` can still be used for low-level/utility/technical libs  
-  (as containers or like other components provided by boost/STL)
-* Suffix `*_t` can be used for nested types only   
-  (in global scope: reserved for potential future C++ standard types)
-* Add an *ending comment* after the closing brace `}` (for declarations having many lines)
+* Notation `lower_case_type` (i.e. suffix `_type`) can be used for nested types
+* Suffix `*_t` should not be used because reserved for potential future C++ standard types (see type shadowing)
+* For declarations having many lines => After the closing brace `}` add an *ending comment*
 * Automatic script may detect/fix the closing brace comment
 
 
@@ -509,9 +510,7 @@ public:
   e.g. `int32_t half(int32_t qty, bool /*force*/) { return qty/2; }`
 
 
-## `N.TTP` &nbsp; Type template parameter
-
-### First proposition: Type template parameter in `T_CamelCase`
+## `N.TTP` &nbsp; Type template parameter in `T_CamelCase`
 
 ```cpp
 template<typename T_FirstType, template<typename> typename T_SecondType = MyClassArray>
@@ -521,40 +520,15 @@ class MyClass
 };
 ```
 
-### Second proposition: Type template parameter in `lower_case_t`
+## `N.NTP` &nbsp; Non-Type template parameter in `T_UPPER_CASE`
+
+* Non-Type template parameters are constants, therefore in `T_UPPER_CASE`
 
 ```cpp
-template<typename first_type_t, template<typename> typename second_type_t = MyClassArray>
+template<size_t T_SIZE = 512>
 class MyClass
 {
-    second_type_t<first_type_t> container;
-};
-```
-
-
-## `N.NTP` &nbsp; Non-Type template parameter
-
-### First proposition: Type template parameter in `CamelCase`
-
-* Non-Type template parameters are constants, but are not `UPPER_CASE`
-
-```cpp
-template<size_t Size = 512>
-class MyClass
-{
-    int32_t myArray[Size];
-};
-```
-
-### Second proposition: Type template parameter in `UPPER_CASE`
-
-* Non-Type template parameters are constants, therefore in `UPPER_CASE`
-
-```cpp
-template<size_t SIZE = 512>
-class MyClass
-{
-    int32_t myArray[SIZE];
+    int32_t myArray[T_SIZE];
 };
 ```
 
@@ -885,9 +859,10 @@ _OK for safe code, but no performance sacrificed, we are **C++ devs**!_
     ```
 
 * When initializing values to zero/null
-    - Use `0` for integers
-    - Use `0.0` for reals
-    - Use `nullptr` (C++11) or `0` or `NULL` for pointers
+    - For integers use `0`
+    - For reals use `0.0` 
+    - For pointers use `0` or `NULL` (C++03)
+    - For pointers use `nullptr` (C++11)
 
 * C++11: Initialize data members on declaration (not neccessary on constructor)
 
@@ -902,7 +877,7 @@ _OK for safe code, but no performance sacrificed, we are **C++ devs**!_
         double  price    = 0.0;
     };
     ```
-
+        
 * C++11: Use braces initialization (instead of parentheses)
 
     ```cpp
@@ -1159,35 +1134,44 @@ as the language runtime can only propagate one single exception.
 * `try/catch` does not prevent undefined behaviour (crash) when a second exception occurs
 
 
+## `C.EXC` Exception inherit `std::exception`
+
+User-defined exceptions:
+
+* inherit `std::exception`
+* override virtual method `what()`
+
+This make catching exception easier.
+
+
 ## `C.WRN` &nbsp; Activate compilation warnings
 
-    -Wall            // Classic warnings
-    -Wextra          // Extra amount of warnings
-    -Weffc++         // Effective C++ series of books from Scott Meyers
-    -pedantic        // Reject code not following ISO C++ (e.g. GNU extensions)
-    -pedantic-errors // Pedantic warnings are converted into errors
-    -Winit-self      // Variables initialized with themselves (enabled by -Wall)
-    -Wswitch-enum    // Missing case for values of switch(enum)
-    -Wcast-align     // Warn on incompatible alignment pointers
-    -Wcast-qual
-    -Wconversion
-    -Wformat=2
-    -Winit-self
-    -Wuninitialized
-    -Winvalid-pch
-    -Wmissing-field-initializers
-    -Wmissing-include-dirs
-    -Wpointer-arith
-    -Wredundant-decls
-    -Wswitch
-    -fstack-protector-strong
-    -Wstack-protector
-    -Wunreachable-code
-    -Wunused
-    -Wunused-parameter
-    -Wwrite-strings
-    -Wshadow
-    -Werror
+Compiler flag                  | Comment
+-------------------------------|--------------------------------------------
+`-Wall`                        | Classic warnings
+`-Wextra`                      | Extra amount of warnings
+`-Weffc++`                     | Effective C++ series of books from Scott Meyers
+`-pedantic`                    | Reject code not following ISO C++ (e.g. GNU extensions)
+`-pedantic-errors`             | Pedantic warnings are converted into errors
+`-Winit-self`                  | Variables initialized with themselves (enabled by -Wall)
+`-Wswitch-enum`                | Missing case for values of switch(enum)
+`-Wcast-align`                 | Incompatible alignment pointers
+`-Wcast-qual`                  | Cast between pointers leads to target type qualifier removal
+`-Wconversion`                 | Conversion might lead to value alteration, confusing overload resolution
+`-Wformat=2`                   | Invalid argument types and format strings in formatting functions (printf, scanf...)
+`-Winit-self`                  | Uninitialized variable initialized with themselves
+`-Wuninitialized`              | Variable used without being initialized
+`-Wmissing-field-initializers` | Fields is left uninitialized during (non-designated) structure initialization
+`-Wmissing-include-dirs`       | User-supplied include directory does not exist
+`-Wpointer-arith`              | [`void` and function] Operations addition/subtraction/`sizeof` are GNU extension
+`-Wredundant-decls`            | Multiple declarations of the same entity is encountered in the same scope
+`-Wshadow`                     | Variable/typedef/struct/class/enum shadows another one having same name
+`-Wswitch`                     | Missing enumerated type in 'case' labels
+`-fstack-protector-strong`     | Checks for buffer overflows such as stack smashing attacks (extra code is added)
+`-Wstack-protector`            | Warn if option '-fstack-protector-strong' complained about codes vulnerable to stack smashing
+`-Wunreachable-code`           | Unreachable code
+`-Wunused`                     | Unused entity (functions, labels, variables, typedefs, parameters, ...)
+`-Wwrite-strings`              | Deprecated conversion from string literals to 'char *' (enable by default in C++)
 
 Consider also:
 
