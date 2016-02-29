@@ -401,7 +401,7 @@ Notation                          | Meaning
 
 ```cpp
 // Bad
-#define       max_counter   20     // Name must be UPPER_CASE
+#define       max_counter   20    // Name must be UPPER_CASE
 const int32_t iMaxCounter = 20;
 
 // Correct
@@ -877,7 +877,7 @@ _OK for safe code, but no performance sacrificed, we are **C++ devs**!_
         double  price    = 0.0;
     };
     ```
-        
+
 * C++11: Use braces initialization (instead of parentheses)
 
     ```cpp
