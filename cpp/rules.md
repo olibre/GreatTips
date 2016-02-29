@@ -6,12 +6,13 @@
 %olibre (-at- Lmap.org)
 %date  
 
+
 # Main goal
 
 ## Audience
 
 This document is written by developers for developers.  
-Here *We* means *We the delevopers*.
+Here *"We"* means *"We the delevopers"*.
 
 ## Rationale
 
@@ -22,26 +23,26 @@ But a minimum of rules are required for source code consistency accross our proj
 
 Therefore, this document aims to provide *lovely rules for happy devs*:
 
-* Minimum set of flexible rules for source code consistency
-* Minimum set of useful coding guidelines
-* Links to other C++ rules/guidelines
+* Minimum set of flexible rules for source code consistency ([Files](#files) and [Naming](#naming))
+* Minimum set of useful coding guidelines ([Coding](#coding))
+* Links to other C++ rules/guidelines ([Extra](#extra-coding-guidelines))
 
 ## Exceptions
 
-* This coding rules apply to code intended for production.
-* Unit test source code can follow different rules.
 * Generated source code from third-party frameworks (e.g. Qt-Creator, SBE...)
 * Source code mixed with above generated code (i.e. consistency is more important)
+* This coding rules apply to code intended for production.
+* Source code of tests can follow different rules (e.g. unit-tests).
 
 ## Continuous improvement
 
-Please keep uptodate this current document: add/remove/clarify/simplify rules.  
-These rules are not static and will evolve thanks to you.
+We prefer an helpful guide rather than a list of static outdated restrictions.
+Please help maintening this document: suggest/add/remove/clarify/simplify rules.
 
-Please contibute to this document.
-We prefer an helpful guide rather than a list of restrictions.
-Please fork this [project](https://github.com/olibre/CppCoding) and edit this MarkDown document.
-You can also annotate this file. :-)
+To contibute:
+
+* Fork this [project](https://github.com/olibre/CppCoding) and edit this MarkDown document.
+* You can also directly annotate this file.
 
 ## Notation shortcuts
 
@@ -51,12 +52,15 @@ You can also annotate this file. :-)
 * `CamelCase` = capitalize and concatenate words
 
 
+
 # Files
+
 
 ## `F.SRC` &nbsp; C++ filename is `ClassName.[hc]pp`
 
-* Extensions are `.hpp` and `.cpp` only (No `.h` or `.cc` or `.inl`)
-* Same name as the main class within the file
+* Same name as the main class within the file.
+* Extensions are `.hpp` and `.cpp` only.
+* No `.h` or `.cc` or `.cxx` or `.inl`...
 
 ```cpp
 class MyNewClass -> MyNewClass.hpp // C++ header
@@ -74,6 +78,7 @@ isession.cpp         // Must be same as the class name
 My_New_Class.cpp     // Must be same as the class name
 ```
 
+
 ## `F.RST` &nbsp; Rest in `lower_case`
 
 * Concerns directory and file names
@@ -81,11 +86,12 @@ My_New_Class.cpp     // Must be same as the class name
 
 ```cpp
 // Good
-core_technology/ccg/foo_configuration.xml
+foo/bar_configuration.xml
 
 // Bad
-coreTechnology/Ccg/fooconfiguration.xml
+Foo/barconfiguration.xml
 ```
+
 
 ## `F.GRD` &nbsp; Header-guard `#define FILE_HPP_`
 
@@ -100,15 +106,17 @@ coreTechnology/Ccg/fooconfiguration.xml
     > * the identifiers with a double underscore anywhere are reserved
     > * the identifiers that begin with an underscore followed by an uppercase letter are reserved
 
-**Example for file: `ct/ccg/ISessionV4.hpp`**
+**Example for file: `foo/bar/ISessionV4.hpp`**
 
 ```cpp
-#ifndef CT_CCG_ISESSION_V4_HPP_
-#define CT_CCG_ISESSION_V4_HPP_
-...
-
-#endif  // CT_CCG_ISESSION_V4_HPP_
+#ifndef FOO_BAR_ISESSION_V4_HPP_
+#define FOO_BAR_ISESSION_V4_HPP_
+// ...
+// ...
+// ...
+#endif  // FOO_BAR_ISESSION_V4_HPP_
 ```
+
 
 ## `F.CPR` &nbsp; Copyright every file
 
@@ -127,13 +135,12 @@ coreTechnology/Ccg/fooconfiguration.xml
 */
 ```
 
+
 ## `F.DXG` &nbsp; Doxygen compliance
 
-1. Doxygen comment at the top of every C++ file  
-   (brief description and [copyright](#f04---copyright-every-file))
-2. Doxygen comment for class, method, and function in the header file  
-   (see [doxygen.org](http://www.doxygen.org/))
-3. No need to duplicate Doxygen comments in the `*.cpp` file
+1. Doxygen comment at the top of every C++ file (brief description and [copyright](#fcpr--copyright-every-file)).
+2. Doxygen comment for class and function in the header file (see [doxygen.org](http://www.doxygen.org/)).
+3. No duplication of Doxygen comments in the `*.cpp` file (i.e. the good place is the header file)
 
 ```cpp
 /**
@@ -144,6 +151,7 @@ coreTechnology/Ccg/fooconfiguration.xml
  */
 ```
 
+
 ## `F.TDO` &nbsp; Use `FIXME TODO TOREVIEW`
 
 * Write `FIXME`/`TODO`/`TOREVIEW` in source code when neccessary
@@ -151,14 +159,13 @@ coreTechnology/Ccg/fooconfiguration.xml
 * Follow/Complete them (in an acceptable time)
 * A deadline can be provided `Deadline DATE`
 
-| Comment    | Flagged in Jenkins as             |
-| ---------- | --------------------------------- |
-| `FIXME`    | priority "high"                   |
-| `TODO`     | priority "normal"                 |
-| `TOREVIEW` | priority "low"                    |
+| Label      | Jenkins priority |
+| ---------- | -----------------|
+| `FIXME`    | High             |
+| `TODO`     | Normal           |
+| `TOREVIEW` | Low              |
 
 Note: `TOREVIEW` means *"please review this code with special attention"*, regardless of the usual review process.
-
 
 Rationale:
 
@@ -182,6 +189,7 @@ blabla; // TODO: Deadline November 2012.
 blabla; // TODO
 blabla; // todo: refactor blabla
 ```
+
 
 ## `F.IDT` &nbsp; Indentation is 4 spaces
 
@@ -275,6 +283,7 @@ int main (int argc, char *argv[])
 }
 ```
 
+
 ## `F.80C` &nbsp; Keep line length acceptable
 
 The [80 column rule][] is still common in coding standards today (for example: [Google's Java][] and [Linux kernel][] standards).
@@ -366,7 +375,7 @@ as modern IDEs display underlying types.
 **Main idea**
 
 Notation                          | Meaning
-----------------------------------|--------------------
+----------------------------------|----------------------
 `UPPER_CASE`                      | Macros and Constants
 `CamelCase` and `lower_case_type` | Types and nested types
 `camelCase` and `lower_case`      | Functions and Variables
@@ -389,15 +398,17 @@ Notation                          | Meaning
 #ifdef BigEndian
 ```
 
+
 ## `N.CST` &nbsp; Constant/Enum in `UPPER_CASE`
 
-* `enum class` values can use `CamelCase` notation (C++11) # TOREVIEW #  
-  (less ambiguity due to `EnumName::` prefix)
+* `enum class` (C++11) values can use `CamelCase` notation because the prefix `EnumName::` clarify the meaning
+
+Priority:
+
 * Avoid `#define` when possible
-* Prefer `const` than anonymous `enum`
-* Prefer `constexpr` than `const` (C++11)
-* Consider using [unnammed-`namespace`](http://stackoverflow.com/a/4422554/938111) instead of `static`
-  (see last lines below)
+1. Prefer `enum` when the constants are same type or used in same `switch case` (see `-Wswitch-enum`)
+2. Prefer `constexpr` (C++11) than `const`
+3. Prefer `const` than anonymous `enum`
 
 ```cpp
 // Bad
@@ -435,11 +446,10 @@ See also [codeproject.com/The One Definition Rule in C++11 and C++14: Constant E
 * For declarations having many lines => After the closing brace `}` add an *ending comment*
 * Automatic script may detect/fix the closing brace comment
 
-
 ```cpp
 // Good
 struct Session;
-class  CcgSession;
+class  FooSession;
 
 class MyNewClass
 {
@@ -449,9 +459,10 @@ class MyNewClass
 
 // Bad
 struct session;
-class ccg_session;
+class foo_session;
 class myNewClass;
 ```
+
 
 ## `N.ITF` &nbsp; Interface in `ICamelCase`
 
@@ -462,13 +473,13 @@ class myNewClass;
 // Good
 IReactor;
 ISession;
-ICcgSession;
+IFooSession;
 IMsgProcessor;
 
 // Bad
 Ireactor;
 isession;
-I_Ccg_Session;
+I_Foo_Session;
 imsgprocessor;
 ```
 
@@ -486,28 +497,38 @@ imsgprocessor;
 class Acceptor
 {
 public:
-  int32_t initialize();
-  int32_t getValue();
-  int32_t findValue();
-  int32_t setValue();
+    int32_t initialize();
+    int32_t getValue();
+    int32_t findValue();
+    int32_t setValue();
 };
 
 // Bad
 class Acceptor
 {
 public:
-  int32_t initializeAcceptor();  // Redundancy name of the class
-  int32_t GetValue();            // First word is not full lowercase
-  int32_t find_value();          // Can be accepted if consistent with the whole
-  int32_t setvalue();            // Missing Capital on second word
+    int32_t initializeAcceptor();  // Redundancy name of the class
+    int32_t GetValue();            // First word is not full lowercase
+    int32_t find_value();          // Can be accepted if consistent with the whole
+    int32_t setvalue();            // Missing Capital on second word
 };
 ```
+
 
 ## `N.PRM` &nbsp; Function parameter in `camelCase`
 
 * Underscore `'_'` can be accepted if consistent with the whole (`lower_case`)
-* Unused parameter should be commented  
-  e.g. `int32_t half(int32_t qty, bool /*force*/) { return qty/2; }`
+* Unused parameter should be commented  (see `-Wunused`)
+    ```cpp
+    int32_t divideByTwo (int32_t qty, bool /*force*/) { return qty/2; }
+    
+    int32_t divideByTwo( int32_t qty
+                       , bool  //force
+                       )
+    {
+        return qty/2;
+    }
+    ````
 
 
 ## `N.TTP` &nbsp; Type template parameter in `T_CamelCase`
@@ -519,6 +540,7 @@ class MyClass
     T_SecondType<T_FirstType> container;
 };
 ```
+
 
 ## `N.NTP` &nbsp; Non-Type template parameter in `T_UPPER_CASE`
 
@@ -548,6 +570,7 @@ Session Session1; // Name must start with a lowercase letter
 MyClass my_class; // Can be accepted if consistent
 ```
 
+
 ## `N.STR` &nbsp; Struct data member in `camelCase`   <a name="StructDataMemeber"></a>
 
 * Same as above [`camelCase/lower_case` rule](#n06---function-parameter-in-camelcase)
@@ -556,12 +579,13 @@ MyClass my_class; // Can be accepted if consistent
 ```cpp
 struct Limit
 {
-  int32_t quantity;    // Good
-  double  price;       // Good
-  double  limitPrice;  // Bad - Duplicated word 'limit' with struct name
-  bool    isActive;
+    int32_t quantity;    // Good
+    double  price;       // Good
+    double  limitPrice;  // Bad - Duplicated word 'limit' with struct name
+    bool    isActive;
 };
 ```
+
 
 ## `N.CLS` &nbsp; Class data member in `_camelCase`
 
@@ -583,17 +607,17 @@ Rationale:
 class MyClass
 {
 public:
-  double getTradingVolume() const;
+    double getTradingVolume() const;
 
 private:
-  int32_t _quantity;
-  double  _price;
-  bool    _isActive;
+    int32_t _quantity;
+    double  _price;
+    bool    _isActive;
 };
 
 double MyClass::getTradingVolume() const
 {
-  return _price * _quantity;
+    return _price * _quantity;
 }
 ```
 
@@ -641,10 +665,10 @@ See also related questions:
 > ```cpp
 > class Foo
 > {
->   // ...
->   static int g_xyz// See the Construct Members On First Use Idiom
->   // ...
-> }; // class Foo
+>     // ...
+>     static int g_xyz// See the Construct Members On First Use Idiom
+>     // ...
+> };
 > ```
 >
 > Here is how to use an unnamed `namespace`:
@@ -672,25 +696,25 @@ See also related questions:
 
 ```cpp
 // Good
-namespace ct {
-namespace ccg
+namespace foo {
+namespace bar
 {
 
 class Limit
 {
 public:
-  // functions...
+    // functions...
 
 private:
-  // data...
+    // data...
 
-};// End class Limit
+}; // End class Limit
 
-} // End namespace ccg
-} // End namespace ct
+}  // End namespace foo
+}  // End namespace ct
 
 // Bad
-namespace CT { namespace CCG
+namespace FOO { namespace BAR
   {
     class Limit
     {
@@ -701,26 +725,26 @@ namespace CT { namespace CCG
       // data...
 
     };
-
   }
 }
 
 // Better: C++17 (already available on recent compiler versions)
-namespace ct::ccg
+namespace foo::bar
 {
 
 class Limit
 {
 public:
-  // functions...
+    // functions...
 
 private:
-  // data...
+    // data...
 
-};// End class Limit
+}; // End class Limit
 
-} // End namespace ct::ccg
+}  // End namespace foo::bar
 ```
+
 
 ## `N.BDP` &nbsp; Follow *BaseDerived* pattern
 
@@ -742,6 +766,7 @@ class IProcessorMsg;
 class IManagerMsg;
 class ILogonMsg;
 ```
+
 
 ## `N.ABR` &nbsp; No ambiguous abbreviations
 
@@ -774,6 +799,7 @@ int pc_reader;          // Lots of things can be abbreviated "pc"
 int cstmr_id;           // Deletes internal letters
 ```
 
+
 ## `N.EGL` &nbsp; All code in English
 
 * All code is written in English (names, comments...).
@@ -784,10 +810,6 @@ int precio;  // Bad
 int prix;    // Bad
 int preis;   // Bad
 ```
-
-
-
-
 
 
 
@@ -819,17 +841,17 @@ _OK for safe code, but no performance sacrificed, we are **C++ devs**!_
 
 * Always initialize variables before use
 
-  ```cpp
-  // Good
-  int32_t quantity = 0;
-  float   price    = 0.0;
-  char*   text     = nullptr;  // C++11
+    ```cpp
+    // Good
+    int32_t quantity = 0;
+    float   price    = 0.0;
+    char*   text     = nullptr;  // C++11
 
-  // Bad
-  int32_t quantity;
-  float   price;
-  char*   text;
-  ```
+    // Bad
+    int32_t quantity;
+    float   price;
+    char*   text;
+    ```
 
 * Except when we know what we do within a performance-critical section (justification/comment required)
 
@@ -889,7 +911,6 @@ _OK for safe code, but no performance sacrificed, we are **C++ devs**!_
 
 [GSL]: https://github.com/Microsoft/GSL "Guidelines Support Library"
 
-
 The following *parenthesis initialization ambiguity* is known as the [*Most vexing parse*](https://en.wikipedia.org/wiki/Most_vexing_parse). Check the compilation on [gcc.godbolt.org](http://goo.gl/CMpxhC).
 
 ```cpp
@@ -897,7 +918,7 @@ The following *parenthesis initialization ambiguity* is known as the [*Most vexi
 
 // Parenthesis can also be Bad
 float foo (float param)
-{                           // Function declarartion
+{                               // Function declarartion
     float  ret( float(param) ); // float ret( float );
     return ret;
 } 
@@ -952,7 +973,7 @@ int main()
     std::cout          <<"       B() "<< B()         <<'\n'; // B::A::i uninitialized in C++03, zero-initialized in C++11
     b.set(); std::cout <<"new(&b)B() "<< *new(&b)B() <<'\n'; // B::i zero-initialized (in all C++ standards)
 
-#if __cplusplus > 2011*100                                 // B{} is aggregate-initialization (DR1301)
+#if __cplusplus > 2011*100                                   // B{} is aggregate-initialization (DR1301)
     std::cout          <<"       B{} "<< B{}         <<'\n'; // => B::A::i value-initialized
     b.set(); std::cout <<"new(&b)B{} "<< *new(&b)B{} <<'\n'; // => B::i     zero-initialized
 #endif
@@ -997,7 +1018,6 @@ Build output & Possible run output
     new(&b)B{} 	42	    0
 
 
-
 ## `C.INH` &nbsp; No public multi-inheritance
 
 * Unlimited multiple inheritance for Interface (pure abstract class)
@@ -1039,14 +1059,15 @@ int32_t j = (int32_t)x;               // Bad
 int32_t j =  int32_t(x);              // Do not abuse!
 ```
 
+
 ## `C.CLS` &nbsp; Protect code from collision
 
 * In a project, protect your code with a namespace (e.g. from third parties) 
 * Public headers in a sub-directory having same name as library name  
-  Example:  `main.cpp` includes `src/foobar/include/foobar/Message.hpp`
+  Example: `main.cpp` includes `src/foobar/include/foobar/Message.hpp`
   
-        main.cpp:    #include <foobar/Message.hpp>
-        compile:     gcc main.cpp -I src/foobar/include
+        main.cpp:  #include <foobar/Message.hpp>
+        compile:   gcc main.cpp -I src/foobar/include
         
 * Use namespace (mandatory for shared/static/header library)
 * Keep namespace name short and relevant:
@@ -1066,7 +1087,7 @@ int32_t j =  int32_t(x);              // Do not abuse!
 namespace n1 {
 namespace internal
 {
-    int32_t x = 1;
+int32_t x = 1;
 }
 using namespace internal;
 int32_t y = 1;
@@ -1076,7 +1097,7 @@ int f1() { return x + y; }
 namespace n2 {
 namespace internal
 {
-    double d = 2.0;
+double d = 2.0;
 }
 using namespace internal;
 double y = 2.0;
@@ -1105,6 +1126,7 @@ int main()
     // cout << y           << endl; // ambiguous n1 vs n2
 }
 ```
+
 
 ## `C.HCV` &nbsp; No magic/hardcoded values
 
@@ -1179,6 +1201,7 @@ Consider also:
 * Clang only: `-Weverything` to enable all possible warnings
 
 See more on [GCC warning options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html).
+
 
 
 # Extra coding guidelines
