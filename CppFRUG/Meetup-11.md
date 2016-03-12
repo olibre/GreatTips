@@ -8,8 +8,8 @@ Tags:
 Score:   0
 
 
-La **onzième édition** `std::move(meetup)` déménage à l'école 42
-----------------------------------------------------------------
+La **onzième édition** `std::move(meetup)` s'installe à l'école 42
+------------------------------------------------------------------
 
 * Jeudi 31 mars 2016 de 19h à 22h
 * [96 Boulevard Bessières, Paris](http://www.openstreetmap.org/relation/3957506)
