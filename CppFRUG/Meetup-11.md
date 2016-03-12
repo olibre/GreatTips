@@ -96,3 +96,5 @@ Quentin Hocquet présentera une solution innovante de [système de fichier déce
 
 
 Quentin Hocquet travaille pour la société [Infinit](http://infinit.one/), start-up créée à Paris en 2012 avec déjà des équipes à New-York et Buenos Aires. Les technos utilisées sont le C++, Boost, Objective-C, Qt, Debian/Ubuntu, OS X Cocoa, Windows, Réseau TCP/IP/P2P/..., Tolérance aux pannes Byzantine, Système de fichiers, Fonctions système bas-niveau. Et la bière y coule à flot !
+
+![Fahima Djelil présente PrOgO, une animation 3D pour l’apprentissage de la Programmation Orientée-Objet en C++](https://upload.wikimedia.org/wikipedia/commons/a/af/20160121_CppFRUG_Fahima_Djelil_PrOgO_1.jpeg)
