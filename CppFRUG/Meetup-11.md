@@ -21,10 +21,10 @@ Le programme
 ------------
 
 
-* 19:00 - 19:30 : Accueil
-* 19:30 - 20:15 : **Fonction passée en argument template**, par Martin Morterl (LRI, Université Paris Saclay)
-* 20h15 - 21h00 : **Pause dînatoire**, pizzas et bières gratos
-* 21h00 - 21h45 : **Système de fichiers dans les nuages**, par Quentin Hocquet (Infinit.io)
+* `19:00 19:30` **Accueil**
+* `19:30 20:15` **Fonction passée en argument template**, par Martin Morterl (LRI)
+* `20h15 21h00` **Pause dînatoire**, pizzas et bières gratos
+* `21h00 21h45` **Système de fichiers dans les nuages**, par Quentin Hocquet (Infinit)
 
 ----
 
