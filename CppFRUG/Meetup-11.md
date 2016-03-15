@@ -23,7 +23,7 @@ Le programme
 
 
 * 19:00 19:30 **Accueil**
-* 19:30 20:15 **Fonction passée en argument template**, par Martin Morterl (LRI)
+* 19:30 20:15 **Fonction passée en argument template**, par Martin Morterol (LRI)
 * 20:15 21:00 **Pause dinatoire**, pizzas et bières gratos
 * 21:00 21:45 **Système de fichiers dans les nuages**, par Quentin Hocquet (Infinit)
 
@@ -88,7 +88,7 @@ void stocke( TypeRetour (*ma_fonction)(TypeArg1,TypeArg2) );
 
 template <typename TypeRetour, typename ...TypeArg>
 void stocke (TypeRetour (*ma_fonction)(TypeArg...) )  {
-    auto mon_stockage_local = ma_fonction;
+    auto mon_stockage_local = ma_fonction;                
                 // Et pour stocker en dehors de la fonction? 
 }
 
@@ -107,9 +107,9 @@ Finalement, si l'exemple vous semble obscur, alors vaut mieux un discours !
 
 
 
-Martin du Laboratoire de Recherche en Informatique (LRI, Université Paris Saclay) nous démystifiera cette problématique: Comment une classe template peut stocker une instance de `std::function` sur une fonction passée en paramètre? Cette classe doit connaître le type de retour de la fonction mais également le type des paramètres. Martin présentera une méthode permettant de répondre à cette problématique de façon simple pour l'utilisateur.
-
-
+[Martin Morterol](https://www.lri.fr/membre.php?mb=1806) du Laboratoire de Recherche en Informatique (LRI, Université Paris Saclay) nous démystifiera cette problématique:  
+*Comment une classe template peut stocker une instance de `std::function` sur une fonction passée en paramètre ?*  
+Cette classe doit connaître le type de retour de la fonction mais également le type des paramètres. Martin présentera une méthode permettant de répondre à cette problématique de façon simple pour l'utilisateur.
 
 Voir aussi la [solution proposée par duckie](https://gist.github.com/duckie/24d7ea892299335f1916).
 
