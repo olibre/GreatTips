@@ -1,31 +1,30 @@
-URL:     http://linuxfr.org/redaction/news/onzieme-rencontre-c-francophone-jeudi-31-mars-2016-paris-ecole-42-porte-de-clichy
-Title:   Onzième rencontre C++ Francophone jeudi 31 mars 2016 (Paris, École 42, Porte de Clichy)
+URL:     http://linuxfr.org/news/onzieme-rencontre-c-francophone-jeudi-31-mars-2016-a-paris
+Title:   Onzième rencontre C++ francophone jeudi 31 mars 2016 à Paris
 Authors: Oliver H
-         eggman et Benoît Sibaud
+         Nils Ratusznik, Xavier Teyssier, Benoît Sibaud, eggman et palm123
 Date:    2016-03-12T01:04:50+01:00
 License: CC by-sa
-Tags:    
-Score:   0
+Tags:    c++17, c++ et infos_locales
+Score:   12
 
 
-Cette onzième édition C++ FRUG a pour nom `std::move(meetup)` car se tient à l'école 42
------------------------------------------------------------------------
+Le C++ FRUG vous convie à leur onzième rencontre francophone. Cette édition a pour nom `std::move(meetup)` car elle se tient à l'école 42.
 
-* Jeudi 31 mars 2016 de 19h à 22h
-* [96 Boulevard Bessières, Paris](http://www.openstreetmap.org/relation/3957506)
-* Station [Porte de Clichy](http://www.vianavigo.com/fr/itineraire-plan-de-quartier/#id=14&proximity=Porte+de+Clichy%2C+Paris&proximityType=StopArea&proximityCity=Paris&proximityExternalCode=8711127&proximityCityCode=75000&proximityCoordX=&proximityCoordY=&spcar=%C3%A2&hit=1&hat=1&L=0&submitSearchProximity=&ajid=/stif_web_carto/comp/proximity/search.html_) (métro 13, RER C, bus 54 74 138 173 N15 N51 PC3)
+Informations pratiques :
+------------
 
+* jeudi 31 mars 2016 de 19h à 22h&nbsp;;
+* [96 Boulevard Bessières, Paris](http://www.openstreetmap.org/relation/3957506)&nbsp;;
+* station [Porte de Clichy](http://www.vianavigo.com/fr/itineraire-plan-de-quartier/#id=14&proximity=Porte+de+Clichy%2C+Paris&proximityType=StopArea&proximityCity=Paris&proximityExternalCode=8711127&proximityCityCode=75000&proximityCoordX=&proximityCoordY=&spcar=%C3%A2&hit=1&hat=1&L=0&submitSearchProximity=&ajid=/stif_web_carto/comp/proximity/search.html_) (métro 13, RER C, bus 54 74 138 173 N15 N51 PC3).
 
-
-Le programme
+Le programme :
 ------------
 
 
-
-* 19:00 19:30 **Accueil**
-* 19:30 20:15 **Fonction passée en argument template**, par Martin Morterol (LRI)
-* 20:15 21:00 **Pause dinatoire**, pizzas et bières gratos
-* 21:00 21:45 **Système de fichiers dans les nuages**, par Quentin Hocquet (Infinit)
+* de 19:00 à 19:30 : accueil&nbsp;;
+* de 19:30 à 20:15 : fonction passée en argument template, par Martin Morterol (LRI)&nbsp;;
+* de 20:15 à 21:00 : pause dinatoire, pizzas et bières gratos&nbsp;;
+* de 21:00 à 21:45 : système de fichiers dans les nuages, par Quentin Hocquet (Infinit).
 
 ----
 
@@ -43,10 +42,7 @@ Le renouveau du C++
 -------------------
 
 
-Durant les années 90 et 2000, le standard C++ n'a quasiment pas évolué !
-De très nombreux développeurs pensaient que le C++ s'était stabilisé.
-Et puis, en 2011, la terre a tremblé ! Les nouveautés du C++11 sont tellement nombreuses que les nouvelles façons de coder en C++ n'étaient plus reconnues par ceux qui avaient manqué le coche.
-
+Durant les années 90 et 2000, le standard C++ n'a quasiment pas évolué ! De très nombreux développeurs pensaient que le C++ s'était stabilisé. Et puis, en 2011, la terre a tremblé ! Les nouveautés du C++11 sont tellement nombreuses que les nouvelles façons de coder en C++ n'étaient plus reconnues par ceux qui avaient raté le coche.
 
 Tous les enthousiastes du nouveau C++ avaient envie de se retrouver, de discuter des nouveaux paradigmes de programmation, de mieux comprendre la nouvelle orientation du C++, et comment utiliser un sous-ensemble plus intuitif et moins enclin à l'erreur. Et le prochain C++17 nous promet une révolution similaire à C++11 !
 
@@ -64,17 +60,14 @@ Dans la vie, [Joël](https://fr.linkedin.com/in/jfalcou) est maître de confére
 ![Joël anime Questions pour un Champion++](https://upload.wikimedia.org/wikipedia/commons/0/01/20160121_CppFRUG_Joel_Falcou_CppQuiz_1.jpg)
 
 
-Fonction passée en argument template
+Fonction passée en argument template :
 ------------------------------------
 
+* déduction de son type retour&nbsp;;
+* déduction du type de chacun de ses arguments&nbsp;; 
+* stockage de l'ensemble.
 
-* Déduction de son type retour
-* Déduction du type de chacun de ses arguments 
-* Stockage de l'ensemble
-
-
-Un exemple vaut mieux qu'un obscure discours
-
+Un exemple vaut mieux qu'un obscur discours
 
 
 ```cpp
@@ -103,11 +96,10 @@ void stocke (TypeRetour (*ma_fonction)(TypeArg...) )  {
 ```
 
 
-Finalement, si l'exemple vous semble obscur, alors vaut mieux un discours !
+Finalement, si l'exemple vous semble obscur, alors mieux vaut un discours !
 
 
-
-[Martin Morterol](https://www.lri.fr/membre.php?mb=1806) du Laboratoire de Recherche en Informatique (LRI, Université Paris Saclay) nous démystifiera cette problématique:  
+[Martin Morterol](https://www.lri.fr/membre.php?mb=1806) du Laboratoire de Recherche en Informatique (LRI, Université Paris Saclay) nous démystifiera cette problématique :  
 *Comment une classe template peut stocker une instance de `std::function` sur une fonction passée en paramètre ?*  
 Cette classe doit connaître le type de retour de la fonction mais également le type des paramètres. Martin présentera une méthode permettant de répondre à cette problématique de façon simple pour l'utilisateur.
 
@@ -131,13 +123,11 @@ Quentin Hocquet travaille pour la société [Infinit](http://infinit.one/), star
 Participer à la vie du C++
 --------------------------
 
-Pour aller plus loin, chacun peut participer à l'élaboration de la norme en proposant ses contribution sur [le dépôt Git de la prochaine version du C++](https://github.com/cplusplus/draft).
-
+Pour aller plus loin, chacun peut participer à l'élaboration de la norme en proposant ses contributions sur [le dépôt Git de la prochaine version du C++](https://github.com/cplusplus/draft).
 
 Il est aussi possible de rejoindre le comité de normalisation du C++. L'AFNOR gère la [commission pour la France](http://www2.afnor.org/espace_normalisation/structure.aspx?commid=119670). Nous pouvons vous expliquer les conditions...
 
 
-Une association est en cours de constitution. Nous pouvons imaginer un stand C++ au prochains salon de logiciels libres aux côtés des habituels stands Ada, PHP, Python, Perl...
-
+Une association est en cours de constitution. Nous pouvons imaginer un stand C++ aux prochains salon de logiciels libres aux côtés des habituels stands Ada, PHP, Python, Perl...
 
 ![Stand des mongueurs de Perl au village associatif du Paris Open Summit]( https://upload.wikimedia.org/wikipedia/commons/0/06/ParisOpenSourceSummit_VillageAssociatif_LesMongueursDePerl_2015.jpeg) 
