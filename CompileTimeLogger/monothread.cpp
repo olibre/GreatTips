@@ -31,7 +31,7 @@ struct Logger
   }
 };
 
-#define LOG(fmt,value) { static OneLog log(__LINE__,fmt); logger.print(log.id,value); } 
+#define LOG(fmt,value) { static const OneLog log(__LINE__,fmt); logger.print(log.id,value); } 
 
 int main (int argc, char **argv)
 {
