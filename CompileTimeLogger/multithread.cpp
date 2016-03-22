@@ -65,8 +65,8 @@ void Logger::print(int id, T value)
         {
             T local_value;
             {
-                std::unique_lock<std::mutex> lk(m);
-                cv.wait(lk);
+                std::unique_lock<std::mutex> lock(m);
+                cv.wait(lock);
                 local_value = static_value;
             }
             std::printf("\nLogID=%d at line=%d message=", id, g_logmetadata.logs[id].line);
@@ -74,7 +74,7 @@ void Logger::print(int id, T value)
         }
     });
     {
-        std::unique_lock<std::mutex> lk(m);
+        std::lock_guard<std::mutex> lock(m);
         static_value = value;
     }
     cv.notify_one();
