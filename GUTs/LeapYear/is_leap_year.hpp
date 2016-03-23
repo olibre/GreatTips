@@ -10,7 +10,8 @@
 //     else if (year is not divisible by 400) then (it is a common year)
 //     else (it is a leap year)
 
-bool is_leap_year(int year)
+// First working version
+bool is_leap_year_stupid(int year)
 {
     if (year < 1)
     {
@@ -27,6 +28,20 @@ bool is_leap_year(int year)
     if (common_year) return false;
 
     return true;
+}
+
+// Possible optimization found by Kevlin
+bool is_leap_year_optimized(int year)
+{
+    if (year <= 0)
+        throw std::invalid_argument("year must be positive");
+
+    return !(year % 4) - !(year % 100) + !(year % 400);
+}
+
+bool is_leap_year(int year)
+{
+    return is_leap_year(year);
 }
 
 #endif
