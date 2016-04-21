@@ -1,8 +1,19 @@
-L'association C++FRUG organise la douzième rencontre parisienne *C++ Francophone* avec pour nom de code : `decltype(new event)`.
-=======================
+URL    | http://linuxfr.org/redaction/news/douzieme-rencontre-c-jeudi-27-avril-2016-a-paris-decltype-new-event
+-------|---------------
+Title  | Douzième rencontre C++ jeudi 27 avril 2016 à Paris `decltype(new event)`
+Authors| Oliver H
+Date   | 2016-04-21T22:57:19+02:00
+License| CC by-sa
+Tags   |    
+Score  | 0
+
+
+L'association C++FRUG organise la douzième rencontre parisienne **C++ Francophone** avec pour nom de code : `decltype(new event)`.
+
 
 Informations pratiques :
 ------------------------
+
 
 * Mercredi 27 avril 2016 de 19:00 à 21:30&nbsp;;
 * [43 Rue Beaubourg, Paris](http://www.openstreetmap.org/?mlat=48.86&amp;mlon=2.354#map=19/48.86/2.354), locaux de Mobiskill Partner&nbsp;;
@@ -11,8 +22,10 @@ Informations pratiques :
 * [Vélib station n° 3010](http://www.velib.paris/Plan/Trouver-une-station/%28id%29/3010)
 
 
+
 Le programme :
 --------------
+
 
 
 * 19:00 : Accueil&nbsp;;
@@ -31,8 +44,10 @@ Le programme :
 
 ----
 
+
 Historique des rencontres *C++ Francophone*
 -------------------------------------------
+
 
 * 2013-06-05 Paris [Qt on mobile](http://www.meetup.com/User-Group-Cpp-Francophone/events/120838202/)
 * 2014-03-11 Lyon [C++ et Web: la croisée des chemins](http://humantalks.com/talks/363-c-et-web-la-croisee-des-chemins)
@@ -55,9 +70,14 @@ Historique des rencontres *C++ Francophone*
 * 2016-03-31 Paris [C++ FRUG #11 - `std::move(meetup)`](http://www.meetup.com/User-Group-Cpp-Francophone/events/229508095/)
 * 2016-04-19 Montpellier [Rencontre C++](http://www.meetup.com/fr-FR/Montpellier-CPP/events/230050042/)
 
+
+
 Genèse de l'association C++FRUG
 -------------------------------
 
-En 2011, le développeurs C++ se sont pris une claque, du moins, ceux qui ont découvert le nouveau C++11 qui tranche avec l'ancéphalogramme plat auquel nous étions habitués depuis les années 90 ! C'est ainsi que de partout dans le monde les passionnés du C++ se sont mis à se rencontrer et partager leur enthousiasme et parfois leurs incomprhéensions... C'est aussi le cas de la communauté francophone dont les plus motivés ont [proposé](https://groups.google.com/forum/#!msg/cpp-frug/A61eq1wPsZ8/lNxR4lMIbFEJ) et créé une association.
+
+En 2011, les développeurs C++ se sont pris une claque. Du moins, ceux qui ont découvert le tout nouveau C++11 qui tranche avec l’encéphalogramme plat auquel nous étions habitués depuis les années 90 !
+
+C'est ainsi que de partout dans le monde les passionnés du C++ se sont mis à se rencontrer et partager leur enthousiasme et parfois leurs incompréhensions... C'est aussi le cas de la communauté francophone dont les plus motivés ont [proposé](https://groups.google.com/forum/#!msg/cpp-frug/A61eq1wPsZ8/lNxR4lMIbFEJ) et créé l'association.
 
 Le site web officiel en est encore à sa rédaction et avance selon les disponibilités des plus motivés...  
