@@ -36,12 +36,12 @@ Le programme
 
 ----
 
-[Meetup C++ FRUG #10](http://www.meetup.com/User-Group-Cpp-Francophone/events/227761739/)
-[PrOgO](http://projet.tactileo.net/)
-[Comment évaluer un jeu d’apprentissage [...] par Fahima Djelil](http://projet.tactileo.net/images/publications/Djelil_RJCEIAH2014.pdf)
-[Joël Falcou](https://www.lri.fr/~falcou/)
-[Site officiel du Standard C++](https://isocpp.org/)
-[Dépôts Git du Standard C++](https://github.com/cplusplus)
+* [Meetup C++ FRUG #10](http://www.meetup.com/User-Group-Cpp-Francophone/events/227761739/)
+* [PrOgO](http://projet.tactileo.net/)
+* [Comment évaluer un jeu d’apprentissage [...] par Fahima Djelil](http://projet.tactileo.net/images/publications/Djelil_RJCEIAH2014.pdf)
+* [Joël Falcou](https://www.lri.fr/~falcou/)
+* [Site officiel du Standard C++](https://isocpp.org/)
+* [Dépôts Git du Standard C++](https://github.com/cplusplus)
 
 ----
 
