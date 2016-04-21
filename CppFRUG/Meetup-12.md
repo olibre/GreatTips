@@ -1,15 +1,15 @@
-URL    | http://linuxfr.org/redaction/news/douzieme-rencontre-c-jeudi-27-avril-2016-a-paris-decltype-new-event
--------|---------------
-Title  | Douzième rencontre C++ jeudi 27 avril 2016 à Paris `decltype(new event)`
-Authors| Oliver H
-Date   | 2016-04-21T22:57:19+02:00
-License| CC by-sa
-Tags   |    
-Score  | 0
+URL     | http://linuxfr.org/redaction/news/douzieme-rencontre-parisienne-c-jeudi-27-avril-2016
+--------|---------
+Title   |Douzième rencontre parisienne C++ jeudi 27 avril 2016
+Authors |Oliver H
+Date    |2016-04-21T22:57:19+02:00
+License |CC by-sa
+Tags    |
+Score   |0
 
 
 L'association C++FRUG organise la douzième rencontre parisienne **C++ Francophone** avec pour nom de code : `decltype(new event)`.
-==========================
+===============
 
 
 * Mercredi 27 avril 2016 de 19:00 à 21:30&nbsp;;
@@ -24,7 +24,7 @@ Horaire | Programme
 19:30 | Présentations éclairs *(Lightning talks)*
 20:00 | Pause dinatoire, pizzas et bières offertes par Mobiskill Partner
 20:30 | Révolution des `<algorithme>` en C++17
-21:15 | Informations générales en fin de la rencontre
+21:15 | Informations générales et fin de la rencontre
 
 ----
 
@@ -77,6 +77,16 @@ Historique des rencontres *C++ Francophone*
 -------------------------------------------
 
 
+En 2011, les développeurs C++ se sont pris une claque. Du moins, ceux qui ont découvert le tout nouveau C++11 qui tranche avec l’encéphalogramme plat auquel nous étions habitués depuis les années 90 !
+
+
+C'est ainsi que de partout dans le monde les passionnés du C++ se sont mis à avoir de plus en plus envie de se rencontrer pour partager leur enthousiasme et parfois leurs incompréhensions...
+
+
+La communauté C++ francophone n'a pas échappé à ce phénomène et de nombreuses rencontres C++ se produisent depuis :   
+
+
+
 Date      | Lieu      | Sujet
 ----------|-----------|------
 2013-06-05|Paris      | [Qt on mobile](http://www.meetup.com/User-Group-Cpp-Francophone/events/120838202/)
@@ -101,15 +111,10 @@ Date      | Lieu      | Sujet
 2016-04-19|Montpellier|[Rencontre C++](http://www.meetup.com/fr-FR/Montpellier-CPP/events/230050042/)
 
 
-
 Genèse de l'association C++FRUG
 -------------------------------
 
 
-En 2011, les développeurs C++ se sont pris une claque. Du moins, ceux qui ont découvert le tout nouveau C++11 qui tranche avec l’encéphalogramme plat auquel nous étions habitués depuis les années 90 !
-
-
-C'est ainsi que de partout dans le monde les passionnés du C++ se sont mis à se rencontrer et partager leur enthousiasme et parfois leurs incompréhensions... C'est aussi le cas de la communauté francophone dont les plus motivés ont [proposé](https://groups.google.com/forum/#!msg/cpp-frug/A61eq1wPsZ8/lNxR4lMIbFEJ) et créé l'association.
-
+Ce besoin de partager les nouveautés du C++ a pour conséquence la création d'associations C++ dans plusieurs pays. Et c'est aussi le cas de la communauté francophone dont les plus motivés ont [proposé](https://groups.google.com/forum/#!msg/cpp-frug/A61eq1wPsZ8/lNxR4lMIbFEJ) une association C++FRUG.
 
 Le site web officiel est encore en cours de rédaction et avance selon les disponibilités des plus motivés...
