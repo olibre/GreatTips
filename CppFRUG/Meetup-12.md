@@ -1,4 +1,5 @@
-L'association C++FRUG organise la douzième rencontre parisienne **C++ Francophone** avec pour nom de code : `decltype(new event)`.
+L'association C++FRUG organise la douzième rencontre parisienne *C++ Francophone* avec pour nom de code : `decltype(new event)`.
+=======================
 
 Informations pratiques :
 ------------------------
@@ -29,3 +30,34 @@ Le programme :
 * [Dépôts Git du Standard C++](https://github.com/cplusplus)
 
 ----
+
+Historique des rencontres *C++ Francophone*
+-------------------------------------------
+
+* 2013-06-05 Paris [Qt on mobile](http://www.meetup.com/User-Group-Cpp-Francophone/events/120838202/)
+* 2014-03-11 Lyon [C++ et Web: la croisée des chemins](http://humantalks.com/talks/363-c-et-web-la-croisee-des-chemins)
+* 2014-03-13 Lyon [Le C++ évolue, et vous ?](http://www.meetup.com/fr-FR/LyonCPP/events/168296962/)
+* 2014-04-22 Lyon [Rencontre C++](http://www.meetup.com/fr-FR/LyonCPP/events/175920152/)
+* 2014-05-23 Paris [C++ FRUG #3 - En faire ++ avec C++](http://www.meetup.com/User-Group-Cpp-Francophone/events/177106822/)
+* 2014-10-02 Paris [C++ FRUG #4 - C++ & Python](http://www.meetup.com/User-Group-Cpp-Francophone/events/181945092/)
+* 2014-10-21 Montpellier [Rencontre C++](http://www.meetup.com/fr-FR/Montpellier-CPP/events/207878182/)
+* 2014-11-25 Montpellier [Meetup C++ novembre](http://www.meetup.com/fr-FR/Montpellier-CPP/events/215049692/)
+* 2014-12-16 Montpellier [Rencontre C++ décembre](http://www.meetup.com/fr-FR/Montpellier-CPP/events/219024139/)
+* 2014-12-18 Paris [C++ FRUG #5 - L'asynchronisme en deux talks](http://www.meetup.com/User-Group-Cpp-Francophone/events/218740271/)
+* 2015-03-05 Paris [C++ FRUG #6 - La métaprogrammation, non non ca sert en vrai](http://www.meetup.com/User-Group-Cpp-Francophone/events/220602373/)
+* 2015-03-17 Montpellier [Rencontre C++ mars](http://www.meetup.com/fr-FR/Montpellier-CPP/events/220718755/)
+* 2015-04-28 Paris [C++ FRUG #7 - Nuts & Bolt](http://www.meetup.com/User-Group-Cpp-Francophone/events/221811241/)
+* 2015-06-18 Paris [C++ FRUG #8 - Nuts & Bolts II - Le retour](http://www.meetup.com/User-Group-Cpp-Francophone/events/223101208/)
+* 2015-11-24 Montpellier [Rencontre C++](http://www.meetup.com/fr-FR/Montpellier-CPP/events/226573490/)
+* 2015-12-10 Paris [C++ FRUG #9 - Not Dead Yet !](http://www.meetup.com/User-Group-Cpp-Francophone/events/226963782/)
+* 2016-01-21 Paris [C++ FRUG #10 - `import <new_blood>`](http://www.meetup.com/User-Group-Cpp-Francophone/events/227761739/)
+* 2016-03-18 Marseille [Première rencontre: lancement du groupe](http://www.meetup.com/fr-FR/Marseille-Marseille-C-User-Group/events/229405969/)
+* 2016-03-31 Paris [C++ FRUG #11 - `std::move(meetup)`](http://www.meetup.com/User-Group-Cpp-Francophone/events/229508095/)
+* 2016-04-19 Montpellier [Rencontre C++](http://www.meetup.com/fr-FR/Montpellier-CPP/events/230050042/)
+
+Genèse de l'association C++FRUG
+-------------------------------
+
+En 2011, le développeurs C++ se sont pris une claque, du moins, ceux qui ont découvert le nouveau C++11 qui tranche avec l'ancéphalogramme plat auquel nous étions habitués depuis les années 90 ! C'est ainsi que de partout dans le monde les passionnés du C++ se sont mis à se rencontrer et partager leur enthousiasme et parfois leurs incomprhéensions... C'est aussi le cas de la communauté francophone dont les plus motivés ont [proposé](https://groups.google.com/forum/#!msg/cpp-frug/A61eq1wPsZ8/lNxR4lMIbFEJ) et créé une association.
+
+Le site web officiel en est encore à sa rédaction et avance selon les disponibilités des plus motivés...  
