@@ -1,11 +1,12 @@
-URL:     http://linuxfr.org/news/dixieme-rencontre-c-francophone-jeudi-21-janvier-2016-paris-chatelet-les-halles
-Title:   Dixième rencontre C++ Francophone jeudi 21 janvier 2016 (Paris, Châtelet Les Halles)
-Authors: Oliver H
-         palm123, Xavier Claude, ZeroHeure et Benoît Sibaud
-Date:    2016-01-17T12:24:52+01:00
-License: CC by-sa
-Tags:    c++
-Score:   9
+
+URL    | http://linuxfr.org/news/dixieme-rencontre-c-francophone-jeudi-21-janvier-2016-paris-chatelet-les-halles
+-------|---------------------------------------------------------------------------------------------------------
+Title  | Dixième rencontre C++ Francophone jeudi 21 janvier 2016 (Paris, Châtelet Les Halles)
+Authors| Oliver H, palm123, Xavier Claude, ZeroHeure et Benoît Sibaud
+Date   | 2016-01-17T12:24:52+01:00
+License| CC by-sa
+Tags   | c++
+Score  | 9
 
 
 Joël Falcou organise depuis 2013 les rencontres du *Groupe des Utilisateurs C++ Francophone* (abrégé *C++ FRUG* d'après la traduction en anglais).

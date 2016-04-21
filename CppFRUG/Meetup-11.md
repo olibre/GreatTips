@@ -1,12 +1,11 @@
-URL:     http://linuxfr.org/news/onzieme-rencontre-c-francophone-jeudi-31-mars-2016-a-paris
-Title:   Onzième rencontre C++ francophone jeudi 31 mars 2016 à Paris
-Authors: Oliver H
-         Nils Ratusznik, Xavier Teyssier, Benoît Sibaud, eggman et palm123
-Date:    2016-03-12T01:04:50+01:00
-License: CC by-sa
-Tags:    c++17, c++ et infos_locales
-Score:   12
-
+URL    | http://linuxfr.org/news/onzieme-rencontre-c-francophone-jeudi-31-mars-2016-a-paris
+-------|-----------------------------------------------------------------------------------
+Title  | Onzième rencontre C++ francophone jeudi 31 mars 2016 à Paris  
+Authors| Oliver H, Nils Ratusznik, Xavier Teyssier, eggman, Benoît Sibaud et palm123  
+Date   | 2016-03-12T01:04:50+01:00  
+License| CC by-sa  
+Tags   | c++, infos_locales et c++17  
+Score  | 13
 
 Le C++ FRUG vous convie à leur onzième rencontre francophone. Cette édition a pour nom `std::move(meetup)` car elle se tient à l'école 42.
 
