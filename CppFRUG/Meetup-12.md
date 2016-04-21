@@ -9,14 +9,16 @@ Score  | 0
 
 
 L'association C++FRUG organise la douzième rencontre parisienne **C++ Francophone** avec pour nom de code : `decltype(new event)`.
+==========================
+
 
 * Mercredi 27 avril 2016 de 19:00 à 21:30&nbsp;;
 * [43 Rue Beaubourg, Paris](http://www.openstreetmap.org/?mlat=48.86&amp;mlon=2.354#map=19/48.86/2.354), locaux de Mobiskill Partner&nbsp;;
 * Stations **Rambuteau** (métro 11) et **Châtelet - Les Halles** (RER A, B, D et métro 4)&nbsp;;
 * [Bus 29, 38, 47, 75, N12, N13, N14 et N23](http://www.vianavigo.com/fr/itineraire-plan-de-quartier/#id=&proximity=43+rue+Beaubourg%2C+Paris&proximityType=Address&proximityCity=Paris&proximityExternalCode=ADDRESS32611&proximityCityCode=75000&proximityCoordX=&proximityCoordY=&spcar=%C3%A2&hit=1&hat=1&L=0&submitSearchProximity=&ajid=/stif_web_carto/comp/proximity/search.html_)&nbsp;;
-* [Vélib station n° 3010](http://www.velib.paris/Plan/Trouver-une-station/%28id%29/3010).
+* [Station vélib n°3010](http://www.velib.paris/Plan/Trouver-une-station/%28id%29/3010).
 
-Début | Activité
+Horaire | Programme
 ------|----------
 19:00 | Accueil
 19:30 | Présentations éclairs *(Lightning talks)*
@@ -38,8 +40,8 @@ Présentations éclairs *(Lightning talks)*
 -----------------------------------------
 
 * Loïc Joly présente deux outils autour du C++, 
-    - Les [*Raw string litterals*](http://en.cppreference.com/w/cpp/language/string_literal) et comment les remanier (*refactoring*)  
-    ```cpp
+    - Les [*Raw string litterals*](http://en.cppreference.com/w/cpp/language/string_literal) et comment les remanier (*refactoring*)
+    ```
     const char* ma_chaine_de_caracteres = R"nesaffichepas(
     Salut
     LinuxFr.org
@@ -55,20 +57,25 @@ Présentations éclairs *(Lightning talks)*
 Révolution des `<algorithme>` en C++17
 --------------------------------------
 
+
 Thomas Petit présente les avancées du comité de normalisation C++17 (SG9) a propos des [`<algorithm>`](http://en.cppreference.com/w/cpp/header/algorithm) -- *Ranges TS : `view::transform<algorithm>`*.
+
 
 Les `<algorithm>` de la STL sont mal aimés : Difficilement composables, encombrés d'une syntaxe pénible, ils n'ont jamais réussi à convaincre et vivotent dans l'ombre des conteneurs. Mais récemment le comité de normalisation C++ (SG9) sous l'impulsion d'Eric Niebler a annoncé une série de TS (*Technical Specification*) qui devrait les remettre sur le devant de la scène.
 
-Le premier TS, pas encore publié, mais dont le brouillon (*draft*) est très avancé, va revisiter les algorithmes existant pour en simplifier massivement l'utilisation. En introduisant de nouvelles surcharges acceptant des *ranges*.  
-https://github.com/ericniebler/range-v3/
+
+Le premier TS, pas encore publié, mais dont le brouillon (*draft*) est très avancé, va revisiter les algorithmes existant pour en simplifier massivement l'utilisation. En introduisant de nouvelles surcharges acceptant les *ranges* (https://github.com/ericniebler/range-v3/).
 
 Les infâmes `begin()`/`end()` que vomissent les codes utilisant fortement les `<algorithm>` ne seront bientôt plus qu'un lointain souvenir. L'arrivé des [Concepts](http://en.cppreference.com/w/cpp/language/constraints), ainsi que de nouvelles fonctionnalités comme les [Callables](http://en.cppreference.com/w/cpp/concept/Callable) et les Projections, vont eux aussi participer à la cure de simplification qui attends `<algorithm>`.
+
 
 Le deuxième TS, en préparation, s'annonce encore plus révolutionnaire. En introduisant les *View*, la STL devrait se doter d'une nouvelle classe d'algorithme [paresseux (*lazy*)](https://fr.wikipedia.org/wiki/%C3%89valuation_paresseuse), non-mutable et composable permettant une écriture fonctionnelle merveilleusement concise et malléable.  
 
 
+
 Historique des rencontres *C++ Francophone*
 -------------------------------------------
+
 
 Date      | Lieu      | Sujet
 ----------|-----------|------
@@ -94,11 +101,15 @@ Date      | Lieu      | Sujet
 2016-04-19|Montpellier|[Rencontre C++](http://www.meetup.com/fr-FR/Montpellier-CPP/events/230050042/)
 
 
+
 Genèse de l'association C++FRUG
 -------------------------------
 
+
 En 2011, les développeurs C++ se sont pris une claque. Du moins, ceux qui ont découvert le tout nouveau C++11 qui tranche avec l’encéphalogramme plat auquel nous étions habitués depuis les années 90 !
+
 
 C'est ainsi que de partout dans le monde les passionnés du C++ se sont mis à se rencontrer et partager leur enthousiasme et parfois leurs incompréhensions... C'est aussi le cas de la communauté francophone dont les plus motivés ont [proposé](https://groups.google.com/forum/#!msg/cpp-frug/A61eq1wPsZ8/lNxR4lMIbFEJ) et créé l'association.
 
-Le site web officiel en est encore à sa rédaction et avance selon les disponibilités des plus motivés...  
+
+Le site web officiel est encore en cours de rédaction et avance selon les disponibilités des plus motivés...
