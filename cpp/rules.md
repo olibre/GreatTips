@@ -1,10 +1,10 @@
 %C++ Coding Rules  
  <small>
- *Lovely rules for happy developers!*  
+ *Lovely rules for happy developers*  
  Version: xxxxxxx
- </small>
-%olibre (-at- Lmap.org)
-%date  
+ </small>  
+%olibre@Lmap.org  
+%date
 
 
 # Main goal
@@ -12,7 +12,7 @@
 ## Audience
 
 This document is written by developers for developers.  
-Here *"We"* means *"We the delevopers"*.
+Here *"We"* means *"We the delevopers"* (*Nous, les développeurs*).
 
 ## Rationale
 
@@ -41,8 +41,8 @@ Please help maintening this document: suggest/add/remove/clarify/simplify rules.
 
 To contibute:
 
-* Fork this [project](https://github.com/olibre/CppCoding) and edit this MarkDown document.
-* You can also directly annotate this file.
+* Fork this project and edit the corresponding MarkDown file.
+* You can also directly annotate this file (or open an issue).
 
 ## Notation shortcuts
 
@@ -79,7 +79,8 @@ My_New_Class.cpp     // Must be same as the class name
 ```
 
 
-## `F.RST` &nbsp; Rest in `lower_case`
+`F.RST` &nbsp; Rest in `lower_case`
+-----------------------------------
 
 * Concerns directory and file names
 * Except `Makefile`, `CMakeLists.txt`, C++ files, ...
@@ -93,7 +94,153 @@ Foo/barconfiguration.xml
 ```
 
 
-## `F.GRD` &nbsp; Header-guard `#define FILE_HPP_`
+`F.INC` &nbsp; Include headers
+------------------------------
+
+Most of recent libraries use the following convention:
+
+    projectname
+    ├── include
+    │   └── projectname
+    │       └── PublicHeader.hpp
+    └── src
+        ├── CompilationUnit.cpp
+        └── PrivateHeader.hpp
+
+To include public headers of the library *projectname*:
+
+    #include <projectname/PublicHeader.hpp>
+    
+Compilation flag:
+
+    gcc app.cpp -I projectname/include
+
+Bad source code organization because does permit `#include <projectname/example.hpp>`:
+
+    projectname
+    ├── include
+    │   └── PublicHeader.hpp    ## BAD: sub-directory projectname is missing
+    └── src
+        ├── CompilationUnit.cpp
+        └── PrivateHeader.hpp
+ 
+Accepted source code organization in order to simplify file tree depth:
+
+    projectname
+    ├── projectname             ## GOOD: sub-directory projectname is present
+    │   └── PublicHeader.hpp
+    └── src
+        ├── CompilationUnit.cpp
+        └── PrivateHeader.hpp
+
+    gcc app.cpp -I projectname
+    
+Bad source code organization because headers and source files are separated too much:
+
+    ├── cmake
+    ├── doc
+    ├── include              Public headers
+    │   ├── config
+    │   ├── log
+    │   ├── monitor
+    │   ├── persistence
+    │   └── utilities
+    ├── src                  Private headers and compilation units
+    │   ├── config
+    │   ├── log
+    │   ├── monitor
+    │   ├── persistence
+    │   └── utilities
+    └── test
+        ├── config
+        ├── log
+        ├── monitor
+        ├── persistence
+        └── utilities
+
+Accepted source code organization to keep together corresponing *.hpp and *.cpp:
+
+    ├── cmake
+    ├── doc
+    └── src
+        ├── config           Public headers and compilation units
+        │   ├── private      Private headers
+        │   └── test
+        ├── log
+        │   ├── private
+        │   └── test
+        ├── monitor
+        │   └── test
+        ├── persistence
+        │   └── test
+        └── utilities
+            ├── private
+            └── test
+
+
+`F.ICM` &nbsp; Spread include directories
+-----------------------------------------
+
+CMake can help managing dependencies and public headers location because CMake spreads compilation directives from dependees to dependers.
+
+Therefore teams can decide and change the file tree organisation indivually for their sub-module without impacting the dependent teams.
+
+Following `*.cmake` example defines the include directory (other target properties are also defined)
+
+    file (GLOB hpp_files ${CMAKE_CURRENT_LIST_DIR}/*.hpp)
+    file (GLOB cpp_files ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
+    source_group ("SubProjectName Headers" FILES ${hpp_files})
+    add_library (SubProjectName ${cpp_files} ${hpp_files})
+    target_include_directories (SubProjectName PUBLIC ${CMAKE_CURRENT_LIST_DIR}/..)        # Location of public headers
+    target_link_libraries (SubProjectName PUBLIC config monitor log)
+    include (${CMAKE_CURRENT_LIST_DIR}/test/test.cmake)
+
+Following `*.cmake` example disables dependee header warnings (compiler does not print dependee header warning when compiling depender)
+
+    add_library (gtest ${CMAKE_CURRENT_LIST_DIR}/googletest/src/gtest-all.cc)
+    # keyword SYSTEM disables compilation warning (e.g. keyword SYSTEM replaces -I by -isystem)
+    target_include_directories (gtest SYSTEM PUBLIC  ${CMAKE_CURRENT_LIST_DIR}/googletest/include)
+    target_include_directories (gtest        PRIVATE ${CMAKE_CURRENT_LIST_DIR}/googletest)
+    find_package (Threads)
+    target_link_libraries (gtest Threads::Threads)
+    if (CMAKE_COMPILER_IS_GNUC OR CMAKE_C_COMPILER_ID STREQUAL "Clang")
+        target_compile_options (gtest PRIVATE -w)         # Flag -w disables compilation warning
+    endif()
+
+`F.IQC` &nbsp; Double quotes `""` and angle brackets `<>`
+----------------------------------------
+
+* Double quotes `"xxxx"` for headers of same module
+* Angle brackets `<xxxx>` (chevrons) for external libraries
+* What you want when including header of another sub-module of same project
+
+Examples:
+
+    #include "MySubModule.hpp"               // "" when same directory as the compilation unit
+    #include "private/MyPrivateHeader.hpp"   // "" in a sub-directories of the compilation unit 
+    #include "xxxx/MyPublicHeader.hpp"       // "" public header of same sub-module
+
+    #include "otherproject/OtherProject.hpp"  // "" or 
+    #include <otherproject/OtherProject.hpp>  // <> to include another library of same project
+    
+    #include <3rdparty/xxx/External.hpp>     // <> for third parties
+    #include <iostream>                      // <> for system headers
+
+The order of `#include` is not important as long as the project compiles using any order.
+A simple check is to include first the headers of the current sub-module, then libraries, third-parties and finally the system headers (as in the above example).
+
+Moreover the unit test compilation unit first includes the header to be tested:
+
+    /// File MyClass_spec.cpp in order to test the class MyClass
+    
+    #include "myproject/MyClass.hpp"   // This checks that MyClass.hpp includes all its dependencies
+    #include "MyClass_spec.hpp"
+    #include <gtest/gtest.h>
+    #include <string>
+
+
+`F.GRD` &nbsp; Header-guard `#define FILE_HPP_`
+-----------------------------------------------
 
 * All header files contain its own Header-guard
 * Use `#ifndef`/`#define`/`#endif`
@@ -114,8 +261,9 @@ Foo/barconfiguration.xml
 // ...
 // ...
 // ...
-#endif  // FOO_BAR_ISESSION_V4_HPP_
+#endif  // end of header-guard
 ```
+
 
 
 ## `F.CPR` &nbsp; Copyright every file
@@ -125,7 +273,7 @@ Foo/barconfiguration.xml
 
 ```cpp
 /** 
-* \copyright Copyright (C) 2015-2016 My-Company
+* \copyright Copyright (C) 2015-2016 MyCompany
 *            All Rights Reserved
 *            DO NOT ALTER OR REMOVE THIS COPYRIGHT NOTICE
 * 
@@ -159,13 +307,11 @@ Foo/barconfiguration.xml
 * Follow/Complete them (in an acceptable time)
 * A deadline can be provided `Deadline DATE`
 
-| Label      | Jenkins priority |
-| ---------- | -----------------|
-| `FIXME`    | High             |
-| `TODO`     | Normal           |
-| `TOREVIEW` | Low              |
-
-Note: `TOREVIEW` means *"please review this code with special attention"*, regardless of the usual review process.
+| Label      | Jenkins priority | Meaning
+| ---------- | -----------------|--------------------
+| `FIXME`    | High             | When the hack or hardcoded constant [or ...] is critical and should be removed before the next release. Usually `FIXME` is used to do a fast prototyping.
+| `TODO`     | Normal           | Explain some improvments or when you have to do a (usually complex) change, or you are too lazy to do it in that particular moment. If it is something critical, and the software could not be released without that code or fix, then use a `FIXME`. On the other hand, if the change will not affect the proper behaviour of the program, and you are comfortable in leaving the code as it is, then use `TODO`.
+| `TOREVIEW` | Low              | *"please review this code with special attention"*, regardless of the usual review process.
 
 Rationale:
 
@@ -519,13 +665,26 @@ public:
 
 * Underscore `'_'` can be accepted if consistent with the whole (`lower_case`)
 * Unused parameter should be commented  (see `-Wunused`)
+* If documentation is wished for an unused parameter or the parameter is used
+in debug only, you should use the macros UNUSED_PARAMETER (=never used), or
+UNUSED_PARAMETER_REL(=used in debug only), to let Doxygen know about the parameter
+name and let you document it normally. These macros are defined in optiq-utils,
+macros library, with header name "macros/UnusedParameters.hpp"
     ```cpp
-    int32_t divideByTwo (int32_t qty, bool /*force*/) { return qty/2; }
+    #include "macros/UnusedParamters.hpp"
     
+    int32_t divideByTwo (int32_t qty, bool /*force*/) { return qty/2; }
+
+    /** \param[in] force dummy comment */
+    int32_t divideByTwo (int32_t qty, bool UNUSED_PARAMETER(force)) { return qty/2; }
+
+    /** \param[in] force dummy comment */
     int32_t divideByTwo( int32_t qty
-                       , bool  //force
+                       , bool  UNUSED_PARAMETER_REL(force)
                        )
     {
+        assert(!force);
+        
         return qty/2;
     }
     ````
@@ -1165,6 +1324,16 @@ User-defined exceptions:
 
 This make catching exception easier.
 
+## `C.OVR` &nbsp; Non top-level virtual member functions use `override`
+
+The `override` keyword expresses polymorphism intent and helps catch errors due to refactoring
+and design changes early.
+
+## `C.UNS` Use unnamed namespaces for compilation unit declarations
+
+When you declare a symbol, either a function, a class or an instance, in a compilation
+unit, make sure you have good reason not to publish it in a header, then put it inside
+an unnamed (aka anonymous) namespace to prevent any conflict at link time.
 
 ## `C.WRN` &nbsp; Activate compilation warnings
 
@@ -1181,7 +1350,6 @@ Compiler flag                  | Comment
 `-Wcast-qual`                  | Cast between pointers leads to target type qualifier removal
 `-Wconversion`                 | Conversion might lead to value alteration, confusing overload resolution
 `-Wformat=2`                   | Invalid argument types and format strings in formatting functions (printf, scanf...)
-`-Winit-self`                  | Uninitialized variable initialized with themselves
 `-Wuninitialized`              | Variable used without being initialized
 `-Wmissing-field-initializers` | Fields is left uninitialized during (non-designated) structure initialization
 `-Wmissing-include-dirs`       | User-supplied include directory does not exist
@@ -1194,15 +1362,30 @@ Compiler flag                  | Comment
 `-Wunreachable-code`           | Unreachable code
 `-Wunused`                     | Unused entity (functions, labels, variables, typedefs, parameters, ...)
 `-Wwrite-strings`              | Deprecated conversion from string literals to 'char *' (enable by default in C++)
+`-fmax-errors=50`              | Limit number of errors to 50. Default is 0 => no limit.
 
-Consider also:
 
-* `-Werror` to fail compilation for any activated warning
-* Clang only: `-Weverything` to enable all possible warnings
+Clang has a crazy compilation option `-Weverything` that enables all possible warnings. The idea is to enable all and disable the annoying ones.
+
+Compiler flag                  | Comment
+-------------------------------|--------------------------------------------
+`-Weverything`                 | 
+`-Wno-c++98-compat`            | 
+`-Wno-c++98-compat-pedantic`   |
+`-Wno-unused-macros`           |
+`-Wno-newline-eof`             |
+`-Wno-exit-time-destructors`   |
+`-Wno-global-constructors`     |
+`-Wno-gnu-zero-variadic-macro-arguments` |
+`-Wno-documentation`           |
+`-Wno-shadow`                  |
+`-Wno-missing-prototypes`      | 
+
+Consider also `-Werror` to fail compilation for any activated warning.
+If `-Werror` is mandatory within a build chain, a change on third-party or compiler may faild the build for any minor warning.
+Think also about the users compiling your software.
 
 See more on [GCC warning options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html).
-
-
 
 # Extra coding guidelines
 
@@ -1213,3 +1396,210 @@ See more on [GCC warning options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Opti
 * [Bjarne Stroustrup's C++ Style and Technique FAQ](http://www.stroustrup.com/bs_faq2.html)
 * [GCC Coding Conventions](https://gcc.gnu.org/codingconventions.html)
 * [The JSF air vehicle C++ coding standards](http://www.research.att.com/~bs/JSF-AV-rules.pdf)
+
+Style settings
+==============
+
+Emacs
+-----
+
+Add in each C++ source file:
+
+    /* -*- Mode: C++; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+    
+Vim
+---
+
+Add in each C++ source file:
+
+    /* vim: set ts=8 sts=4 et sw=4 tw=80: */
+
+Clang-format
+------------
+
+For clang-format v3.8, create file `.clang-format` with the following content
+
+    ---
+    Language:        Cpp
+    AccessModifierOffset: -4
+    AlignAfterOpenBracket: Align
+    AlignConsecutiveAssignments: true
+    AlignConsecutiveDeclarations: true
+    AlignEscapedNewlinesLeft: true
+    AlignOperands:   true
+    AlignTrailingComments: true
+    AllowAllParametersOfDeclarationOnNextLine: true
+    AllowShortBlocksOnASingleLine: true
+    AllowShortCaseLabelsOnASingleLine: true
+    AllowShortFunctionsOnASingleLine: Inline
+    AllowShortIfStatementsOnASingleLine: true
+    AllowShortLoopsOnASingleLine: true
+    AlwaysBreakAfterReturnType: None
+    AlwaysBreakBeforeMultilineStrings: true
+    AlwaysBreakTemplateDeclarations: false
+    BinPackArguments: true
+    BinPackParameters: false
+    BreakBeforeBraces: Custom    # Use BraceWrapping settings
+    BraceWrapping:
+      AfterClass:      true
+      AfterControlStatement: false
+      AfterEnum:       true
+      AfterFunction:   true
+      AfterNamespace:  false
+      AfterStruct:     true
+      AfterUnion:      true
+      BeforeCatch:     true
+      BeforeElse:      false
+      IndentBraces:    false
+    BreakBeforeBinaryOperators: false
+    BreakBeforeTernaryOperators: false
+    BreakConstructorInitializersBeforeComma: true     # Does not work :(
+    ColumnLimit: 0
+    CommentPragmas:  '^ IWYU pragma:'
+    ConstructorInitializerAllOnOneLineOrOnePerLine: true
+    ConstructorInitializerIndentWidth: 4
+    ContinuationIndentWidth: 4
+    Cpp11BracedListStyle: true
+    DerivePointerAlignment: true
+    DisableFormat:   false
+    ExperimentalAutoDetectBinPacking: true
+    ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
+    IncludeCategories:
+      - Regex:           '^".*\.hpp"'
+        Priority:        1
+      - Regex:           '^".*\.h"'
+        Priority:        2
+      - Regex:           '^<.*\.hpp>'
+        Priority:        3
+      - Regex:           '^<.*\.h>'
+        Priority:        4
+      - Regex:           '^<.*'
+        Priority:        5
+      - Regex:           '.*'
+        Priority:        6
+    # clang-format-3.8    IncludeIsMainRegex: (_spec)?$
+    IndentCaseLabels: false
+    IndentWidth:     4
+    IndentWrappedFunctionNames: false
+    KeepEmptyLinesAtTheStartOfBlocks: false
+    MacroBlockBegin: ''
+    MacroBlockEnd:   ''
+    MaxEmptyLinesToKeep: 1
+    NamespaceIndentation: None
+    PenaltyBreakBeforeFirstCallParameter: 1
+    PenaltyBreakComment: 300                     # JB put 60
+    PenaltyBreakFirstLessLess: 120
+    PenaltyBreakString: 1000
+    PenaltyExcessCharacter: 1000000
+    PenaltyReturnTypeOnItsOwnLine: 200
+    PointerAlignment: Middle
+    ReflowComments:  true
+    SortIncludes:    true
+    SpaceAfterCStyleCast: false
+    SpaceBeforeAssignmentOperators: true
+    SpaceBeforeParens: ControlStatements
+    SpaceInEmptyParentheses: false
+    SpacesBeforeTrailingComments: 2
+    SpacesInAngles:  false
+    SpacesInContainerLiterals: true
+    SpacesInCStyleCastParentheses: false
+    SpacesInParentheses: false
+    SpacesInSquareBrackets: false
+    Standard:        Auto            # JB put Cpp11
+    TabWidth:        8               # JB put 4
+    UseTab:          Never
+    ...
+
+QtCreator
+---------
+
+In Tools > Options... > Beautifier > Clang Format, add this customized style:
+
+    "Language": "Cpp",
+    "AccessModifierOffset": -4,
+    "AlignAfterOpenBracket": "Align",
+    "AlignConsecutiveAssignments": true,
+    "AlignConsecutiveDeclarations": true,
+    "AlignEscapedNewlinesLeft": true,
+    "AlignOperands": true,
+    "AlignTrailingComments": true,
+    "AllowAllParametersOfDeclarationOnNextLine": true,
+    "AllowShortBlocksOnASingleLine": true,
+    "AllowShortCaseLabelsOnASingleLine": true,
+    "AllowShortFunctionsOnASingleLine": "Inline",
+    "AllowShortIfStatementsOnASingleLine": true,
+    "AllowShortLoopsOnASingleLine": true,
+    "AlwaysBreakAfterDefinitionReturnType": "None",
+    "AlwaysBreakAfterReturnType": "None",
+    "AlwaysBreakBeforeMultilineStrings": true,
+    "AlwaysBreakTemplateDeclarations": false,
+    "BinPackArguments": true,
+    "BinPackParameters": false,
+    "BraceWrapping": {
+      "AfterClass": true,
+      "AfterControlStatement": false,
+      "AfterEnum": true,
+      "AfterFunction": true,
+      "AfterNamespace": false,
+      "AfterStruct": true,
+      "AfterUnion": true,
+      "BeforeCatch": true,
+      "BeforeElse": false,
+      "IndentBraces": false
+    },
+    "BreakBeforeBinaryOperators": false,
+    "BreakBeforeBraces": "Custom",
+    "BreakBeforeTernaryOperators": false,
+    "BreakConstructorInitializersBeforeComma": true,
+    "ColumnLimit": 0,
+    "CommentPragmas": "^ IWYU pragma:",
+    "ConstructorInitializerAllOnOneLineOrOnePerLine": true,
+    "ConstructorInitializerIndentWidth": 4,
+    "ContinuationIndentWidth": 4,
+    "Cpp11BracedListStyle": true,
+    "DerivePointerAlignment": true,
+    "DerivePointerBinding": false,
+    "DisableFormat": false,
+    "ExperimentalAutoDetectBinPacking": true,
+    "ForEachMacros": [ "foreach", "Q_FOREACH", "BOOST_FOREACH" ],
+    "IncludeCategories": [
+      { "Regex": "^\".*\\.hpp\"", "Priority": 1 },
+      { "Regex": "^\".*\\.h\"",   "Priority": 2 },
+      { "Regex": "^<.*\\.hpp>",   "Priority": 3 },
+      { "Regex": "^<.*\\.h>",     "Priority": 4 },
+      { "Regex": "^<.*",          "Priority": 5 },
+      { "Regex": ".*",            "Priority": 6 }
+    ],
+    "IndentCaseLabels": false,
+    "IndentFunctionDeclarationAfterType": false,
+    "IndentWidth": 4,
+    "IndentWrappedFunctionNames": false,
+    "KeepEmptyLinesAtTheStartOfBlocks": false,
+    "MacroBlockBegin": "",
+    "MacroBlockEnd": "",
+    "MaxEmptyLinesToKeep": 1,
+    "NamespaceIndentation": "None",
+    "PenaltyBreakBeforeFirstCallParameter": 1,
+    "PenaltyBreakComment": 300,
+    "PenaltyBreakFirstLessLess": 120,
+    "PenaltyBreakString": 1000,
+    "PenaltyExcessCharacter": 1000000,
+    "PenaltyReturnTypeOnItsOwnLine": 200,
+    "PointerAlignment": "Middle",
+    "PointerBindsToType": true,
+    "ReflowComments": true,
+    "SortIncludes": true,
+    "SpaceAfterCStyleCast": false,
+    "SpaceAfterControlStatementKeyword": true,
+    "SpaceBeforeAssignmentOperators": true,
+    "SpaceBeforeParens": "ControlStatements",
+    "SpaceInEmptyParentheses": false,
+    "SpacesBeforeTrailingComments": 2,
+    "SpacesInAngles": false,
+    "SpacesInContainerLiterals": true,
+    "SpacesInCStyleCastParentheses": false,
+    "SpacesInParentheses": false,
+    "SpacesInSquareBrackets": false,
+    "Standard": "Auto",
+    "TabWidth": 8,
+    "UseTab": "Never"
