@@ -1,6 +1,5 @@
-Developer Environement Installation Guidelines
+eveloper Environment Installation Guidelines
 ==============================================
-
 
 Terminal keys and colors
 ------------------------
@@ -32,34 +31,44 @@ or if you prefer having to enter your password:
 Install packages
 ----------------
 
-    yum install gcc-c++ git cmake boost-devel zlib-devel gtest-devel 
-    yum install lcov                 # Source-code coverage
-    yum install exchange-gcovr       # Generate HTML/XML from coverage data
-    yum install exchange-sbe         # Generate C++ from XML Data Dictionnary
-    yum install clang                # Run static analyzer
-    yum install ccache               # Reduce build time
-    yum install samba                # Access VM files from Windows
-    yum install doxygen graphviz     # Generate source-code doc
-    yum install bash-completion      # Optional
-    yum install man-pages            # man pages for kernel/glibc/...
-    yum install man-pages-fr         # Si pas comprendre Anglais
+    gcc-c++ git cmake boost-devel zlib-devel gtest-devel
+    lcov gcovr           # Source-code coverage
+    openssl-devel        # Often required by app dependencies
+    clang                # Run static analyzer, formatter...
+    ccache               # Reduce build time
+    samba                # Access remote files from Windows
+    doxygen graphviz     # Generate source-code doc
+    bash-completion      # Optional
+    man-pages            # man pages for kernel/glibc/...
+    man-pages-fr         # Si pas comprendre Anglais
 
+Enabling multicast reception
+----------------------------
+
+If your machine uses the `firewalld` (you can verify with `firewall-cmd --state`),
+you need to allow the multicast IPs:
+
+    firewall-cmd --direct --add-rule ipv4 filter IN_public_allow 1 -d <ip> -j ACCEPT
+    
+`<ip>` is something like 227.23.1.31.
 
 Developer Toolset
 -----------------
 
-### Artifact repositories (RPM Satellite)
+This chapter is about Red Hat and RPM satellite.
+
+### Add artifact repositories
 
 Check first
 
     ls -l /etc/yum.repos.d
 
-Add two repo files.
+Example of two new RPM satellites:
 
     cat > /etc/yum.repos.d/devtoolset-3-el7.repo
     [devtoolset-3-el7]
     name=Devtoolset 3 for Enterprise Linux 7 - $basearch
-    baseurl=http://ci-repo.oad.exch.int/devtoolset-3/epel-7/$basearch/
+    baseurl=http://your-company-host/devtoolset-3/epel-7/$basearch/
     failovermethod=priority
     enabled=1
     gpgcheck=0
@@ -67,7 +76,7 @@ Add two repo files.
     cat > /etc/yum.repos.d/rh-java-common-epel-7.repo
     [rh-java-common-epel-7.repo]
     name=Java Common for Enterprise Linux 7 - $basearch
-    baseurl=http://ci-repo.oad.exch.int/rh-java-common/epel-7/$basearch/
+    baseurl=http://your-company-host/rh-java-common/epel-7/$basearch/
     failovermethod=priority
     enabled=1
     gpgcheck=0
@@ -91,16 +100,102 @@ Access VM files from Windows
 ----------------------------
 
 1. Install Samba `yum install samba`
-1. Enable samba in firewall `firewall-cmd --add-service=samba`
-2. Add your user to the samba users database `pdbedit -a -u yourlogin` (and enter password)
-1. Enable shared folder access `chcon -Rt samba_share_t /home/user/public`
-4. Run Samba deamon `service smb start`
-5. Check if your Windows machine can access your VM share using `telnet vmname 139` (if it connects the route is OK)
-6. Ensure Samba deamon is well launched with `service smb status`
-7. Ask Network Operations to open the route
+2. Enable samba in firewall `firewall-cmd --add-service=samba`
+3. Add your user to the samba users database `pdbedit -a -u yourlogin` (and enter password)
+4. Enable shared folder access `chcon -Rt samba_share_t /home/user/public` (Do not share folder where your `.ssh` or other sensitive data is accessible)
+5. Run Samba deamon `service smb start`
+6. Check if your Windows machine can access your VM share using `telnet <your-VM-hostname> 139` (if it connects the route is OK)
+7. Ensure Samba deamon is well launched with `service smb status`
 
 You can access to your remote folder from Windows using `\\<hostname>`  
 (Attention: the hostname printed by the commande `hostname` may be different from the `hostname` used by your Windows machine to access it)
+
+Synchronize Password
+--------------------
+
+Linux-based VMs are not always configured to be automatically synchronised with LDAP server.
+In order to have samba access from Windows to the Linux VM,
+use the command `pdbedit` to enter the same password as the Windows one. 
+
+    $ sudo bash
+    # pdbedit -u <your-LDAP-login>
+    <your-LDAP-login>:178793962:<your-full-name>
+    # pdbedit -u laubert -a
+    new password:
+    retype new password:
+    Unix username:        <your-LDAP-login>
+    NT username:
+    Account Flags:        [U          ]
+    User SID:             S-1-5-21-1074701578-1924528054-4193204041-1000
+    Primary Group SID:    S-1-5-21-1074701578-1924528054-4193204041-513
+    Full Name:            <your-full-name>
+    Home Directory:       \\<your-VM-hostname>\<your-LDAP-login>
+    HomeDir Drive:
+    Logon Script:
+    Profile Path:         \\<your-VM-hostname>\<your-LDAP-login>\profile
+    Domain:               <YOUR-DOMAIN>
+    [...]
+
+Configure Proxy
+---------------
+
+On linux machines, an authentified proxy can be configure to access public ressources on internet.
+
+```bash
+sudo yum install cntlm
+```
+
+Edit `/etc/cntlm.conf` and add:
+
+```
+Username <your-LDAP-login>
+Domain OAD
+Proxy 172.26.96.40:8080
+```
+
+Execute the following command:
+
+```bash
+cntlm -u <your-LDAP-login>@<YOUR-DOMAIN> -c /etc/cntlm.conf -fHv 172.26.96.40:8080
+```
+
+It displays information including lines similar to those shown here (they are false hashes of course):
+
+```
+PassLM          F24088884CAA1525DE181A69088B6BC0
+PassNT          E6C2328DE92875B434CAB1C4154C605A
+PassNTLMv2      1538049C3DC73B6324C38D7B43E3D9BR
+```
+
+Paste those into `/etc/cntlm.conf`. Edit `/etc/sysconfig/cntlmd` and change the last line to:
+
+```
+OPTARGS="-c /etc/cntlm.conf"
+```
+
+Then execute the following commands:
+
+```bash
+sudo mkdir /var/run/cntlm
+sudo chown cntlm: /var/run/cntlm
+sudo systemctl daemon-reload
+sudo systemctl enable cntlm
+sudo systemctl start cntlm
+sudo systemctl status cntlm
+```
+
+Then check if the proxy is correctly launched
+
+```bash
+sudo netstat -tlpn | grep 3128
+```
+
+You can also add in your `~/.bashrc`
+
+```bash
+export https_proxy=127.0.0.1:3128
+export http_proxy=127.0.0.1:3128
+```
 
 
 Remove SSH banner
