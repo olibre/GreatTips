@@ -1,4 +1,4 @@
-eveloper Environment Installation Guidelines
+Developer Environment Installation Guidelines
 ==============================================
 
 Terminal keys and colors
