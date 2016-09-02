@@ -178,3 +178,126 @@ Release manager workflow
 ------------------------
 
     TODO
+
+Git Flow
+========
+
+Vincent Driessen has pretty well defined the *"successful Git branching model"*  
+http://danielkummer.github.io/git-flow-cheatsheet/
+
+Overview:
+
+* Default branch is `develop`.
+* When neccessary developers may work on a branch `feature/xxxx`.
+* Release version to QA by creating branch `release/xxxx`
+* When validated merge branch `release/xxxx` to `master` and tag the version.
+
+![branching overview](http://nvie.com/img/git-model@2x.png)
+
+
+Get command `git flow`
+----------------------
+
+`git-flow` is a shell script to expand `git`.
+
+Install on redhat:
+
+    sudo yum install gitflow
+
+Or visit project source code:  
+https://github.com/nvie/gitflow
+
+You may also be interested by tab-completion for all git-flow subcommands and branch names:  
+https://github.com/bobthecow/git-flow-completion
+
+
+General documentation on `git flow`
+-----------------------------------
+
+`git flow` help managing this branching model:
+
+* Create branch `feature/xxxx` and when code is finished merge back this branch to `develop`
+* Create branch `release/xxxx` and when code is validated merge this branch to `master`
+* And more...
+
+
+### Read more about interest of `git flow`:
+
+* [Using git-flow to automate your git branching workflow](http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/) from Jeff Kreeftmeijer
+* [Project wiki](https://github.com/nvie/gitflow/wiki) (FAQ and more)
+
+### Video (screencast)
+
+* [How to use a scalable Git branching model called git-flow](http://buildamodule.com/video/change-management-and-version-control-deploying-releases-features-and-fixes-with-git-how-to-use-a-scalable-git-branching-model-called-gitflow) from "Build a Module"
+* [A short introduction to git-flow](http://vimeo.com/16018419) from Mark Derricutt
+* [On the path with git-flow](http://codesherpas.com/screencasts/on_the_pa  th_gitflow.mov) from Dave Bock
+
+
+
+Usage of `git flow`
+-------------------
+
+### Excelent documentation ***Git flow cheatsheet***:
+
+* in English: http://danielkummer.github.io/git-flow-cheatsheet/
+* in French:  http://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html
+
+Next sections provide first steps.
+
+### Initialize `git flow`
+
+1. Clean your repo (commit modified files and remove untracked files)
+2. Create branch `develop` (in addition to branch `master`)
+3. Configure branch `develop` as branch by default (when cloning)
+4. `git flow init` and select these settings
+
+        Branch name for production releases:         [master]
+        Branch name for "next release" development:  [develop]
+        Feature branches?                            [feature/]
+        Release branches?                            [release/]
+        Hotfix branches?                             [hotfix/]
+        Support branches?                            [support/]
+        Version tag prefix?                          []
+
+5. Always be sure to be in branch `develop` before modifying files
+
+
+### Create a branch for development
+
+1. Be sure you are at the good SHA1
+
+    ```bash
+    # Example to create the branch from HEAD
+    git checkout develop
+    git pull
+    ```
+
+2. Create the branch `feature/xxxx` in your local repository
+
+    ```bash
+    $ git flow feature start xxxx
+    Switched to a new branch 'feature/xxxx'
+
+    Summary of actions:
+    - A new branch 'feature/xxxx' was created, based on 'develop'
+    - You are now on branch 'feature/xxxx'
+
+    Now, start committing on your feature. When done, use:
+
+         git flow feature finish xxxx
+    ```
+
+3. Push to remote
+
+    ```bash
+    $ git push --all
+    Total 0 (delta 0), reused 0 (delta 0)
+    To git@my-company-hostname:my-repo.git
+     * [new branch]      feature/xxxx -> feature/xxxx
+    ```
+
+TODO
+----
+
+A tradeof of git-flow is the necessity to set git-flow each time a repo is cloned.  
+Please share your ideas on simple way to *"git-flowify"* a repo (a script, a post-clone hook, ...)
