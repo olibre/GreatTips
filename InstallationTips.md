@@ -236,9 +236,21 @@ Please refer to [superuser.com](http://superuser.com/a/1010687/112297) and upvot
 Git configuration
 -----------------
 
+Before clonning a Git repository, first configure your identity.
+
+    git config --global user.name "Joe Jackson"
+    git config --global user.email "jjackson@example.com"
+
+- `user.name` must be populated with your real name in the following format "FirstName LastName"
+- `user.email` must be your official company email
+
+Set your favorite editor as the defualt editor used by Git (helfull while using `git commit myfile`).
+
+    git config --global core.editor vim   # or emacs/nano/gedit/kate/...
+
 Append in your `~/.gitconfig`
 
-```init
+```ini
 [color]
 	ui = auto              # Use terminal color when available
 [push]
