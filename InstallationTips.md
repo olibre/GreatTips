@@ -465,22 +465,24 @@ TODO(olibre): explain conflict resolution (provide an example having a remaining
 Shortcuts
 ---------
 
-Presse a key in your terminal => Execute a command
+Press a key in your terminal => Execute a command
 
 Append in you `~/.bashrc` 
 
 ```bash
 ## Shortcuts
-export PrjRoot=~/work/superproject
-# F5 => Status
-bind '"\e[15~":"bash -xec \"cd ${PrjRoot} && git status && git submodule status\"\n"'
-# F6 => Update
-bind '"\e[17~":"bash -xec \"cd ${PrjRoot} && git pull && git submodule update --init --remote --rebase --depth 1 && git submodule foreach git stash list\"\n"'
-# F7 => Compile
-bind '"\e[18~":"if [ -e ${PrjRoot}/build/Makefile ]
-then /usr/bin/time make -sj6 -C ${PrjRoot}/build
-else mkdir -p ${PrjRoot}/build && (cd ${PrjRoot}/build && cmake .. && /usr/bin/time make -sj6)
-fi\n"'
+PrjRoot=${HOME}/folder/project
+PrjOpts="-G Ninja"  # If ninja installed (else empty)
+
+# F5 => Update
+bind '"\e[15~":" ( cd \"${PrjRoot}\" && git pull && git submodule update --init --remote --rebase && git submodule foreach git stash list )\n"'
+
+# F6 => Status
+bind '"\e[17~":" ( cd \"${PrjRoot}\" && git status && git submodule status )\n"'
+
+# F7 => Build
+bind '"\e[18~":" ( mkdir -p \"${PrjRoot}\"/build && cd $_ && cmake .. $PrjOpts && cmake --build . )\n"'
+
 # F8 => Test
-bind '"\e[19~":"(cd ${PrjRoot}/build && ctest -j6)\n"'
+bind '"\e[19~":" ctest -j6 --build \"${PrjRoot}\"/build \n"'
 ```
