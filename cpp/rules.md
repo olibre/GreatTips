@@ -2,9 +2,9 @@
  <small>
  *Lovely rules for happy developers*  
  Version: xxxxxxx
- </small>  
-%olibre@Lmap.org  
-%date
+ </small>
+%olibre@Lmap.org
+%date  
 
 
 # Main goal
@@ -41,8 +41,8 @@ Please help maintening this document: suggest/add/remove/clarify/simplify rules.
 
 To contibute:
 
-* Fork this project and edit the corresponding MarkDown file.
-* You can also directly annotate this file (or open an issue).
+* Fork [this project](https://github.com/olibre/CppCoding) and edit the corresponding Markdown file.
+* You can also directly annotate this file (or open an [issue](https://github.com/olibre/CppCoding/issues)).
 
 ## Notation shortcuts
 
@@ -664,40 +664,45 @@ public:
 `N.PRM` &nbsp; Function parameter in `camelCase`
 ------------------------------------------------
 
-* Underscore `'_'` can be accepted if current scope is consistent (e.g. other functions use same naming)
-* Fix warning produce by flag `-Wunused`
-    * Comment unused parameters
+* Underscore `'_'` can be accepted if current scope is consistent (i.e. other functions use same naming)
+* Avoid warning due to flag `-Wunused`
+    * comment unused parameter
     * or use a macro `UNUSED(param)` (this macro let Doxygen knowing about the parameter name)
-    *  macro `DEBUG_ONLY(param)` when used only in debug build
+        
+        ```cpp
+        #ifdef DOXYGEN_PARSING
+        #    define UNUSED(x) x
+        #else
+        #    define UNUSED(x)
+        #endif
+        ```
+        
+    * or use macro `DEBUG_ONLY(param)` when used only in debug build
+        
+        ```cpp
+        #if !defined(NDEBUG) || defined(DOXYGEN_PARSING)
+        #    define DEBUG_ONLY(x) x
+        #else
+        #    define DEBUG_ONLY(x)
+        #endif
+        ```
 
-    ```cpp
-    #ifdef DOXYGEN_PARSING
-    #    define UNUSED(x) x
-    #else
-    #    define UNUSED(x)
-    #endif
-    
-    #if !defined(NDEBUG) || defined(DOXYGEN_PARSING)
-    #    define DEBUG_ONLY(x) x
-    #else
-    #    define DEBUG_ONLY(x)
-    #endif
+```cpp
+/// Divides the quantity by two
+int32_t divideByTwo (int32_t qty, bool /*force*/) { return qty/2; }
 
-    /// Divides the quantity by two
-    int32_t divideByTwo (int32_t qty, bool /*force*/) { return qty/2; }
+/// Divides the quantity by two
+/// \param[in] force dummy comment
+int32_t divideByTwo (int32_t qty, bool UNUSED(force)) { return qty/2; }
 
-    /// Divides the quantity by two
-    /// \param[in] force dummy comment
-    int32_t divideByTwo (int32_t qty, bool UNUSED(force)) { return qty/2; }
-
-    /// Divides the quantity by two
-    int32_t divideByTwo (int32_t         qty,    ///<[in] quantity
-                         bool DEBUG_ONLY(force)) ///<[in] dummy comment
-    {
-        assert(force==true || force==false);
-        return qty/2;
-    }
-    ```
+/// Divides the quantity by two
+int32_t divideByTwo (int32_t         qty,    ///<[in] quantity
+                     bool DEBUG_ONLY(force)) ///<[in] dummy comment
+{
+    assert(force==true || force==false);
+    return qty/2;
+}
+```
 
 
 `N.TTP` &nbsp; Type template parameter in `T_CamelCase`
@@ -1430,7 +1435,7 @@ Clang-format
 
 For clang-format v3.8, create file `.clang-format` with the following content
 
-    ---
+```yaml
     Language:        Cpp
     AccessModifierOffset: -4
     AlignAfterOpenBracket: Align
@@ -1519,98 +1524,6 @@ For clang-format v3.8, create file `.clang-format` with the following content
     Standard:        Auto            # JB put Cpp11
     TabWidth:        8               # JB put 4
     UseTab:          Never
-    ...
+```
 
-QtCreator
----------
-
-In Tools > Options... > Beautifier > Clang Format, add this customized style:
-
-    "Language": "Cpp",
-    "AccessModifierOffset": -4,
-    "AlignAfterOpenBracket": "Align",
-    "AlignConsecutiveAssignments": true,
-    "AlignConsecutiveDeclarations": true,
-    "AlignEscapedNewlinesLeft": true,
-    "AlignOperands": true,
-    "AlignTrailingComments": true,
-    "AllowAllParametersOfDeclarationOnNextLine": true,
-    "AllowShortBlocksOnASingleLine": true,
-    "AllowShortCaseLabelsOnASingleLine": true,
-    "AllowShortFunctionsOnASingleLine": "Inline",
-    "AllowShortIfStatementsOnASingleLine": true,
-    "AllowShortLoopsOnASingleLine": true,
-    "AlwaysBreakAfterDefinitionReturnType": "None",
-    "AlwaysBreakAfterReturnType": "None",
-    "AlwaysBreakBeforeMultilineStrings": true,
-    "AlwaysBreakTemplateDeclarations": false,
-    "BinPackArguments": true,
-    "BinPackParameters": false,
-    "BraceWrapping": {
-      "AfterClass": true,
-      "AfterControlStatement": false,
-      "AfterEnum": true,
-      "AfterFunction": true,
-      "AfterNamespace": false,
-      "AfterStruct": true,
-      "AfterUnion": true,
-      "BeforeCatch": true,
-      "BeforeElse": false,
-      "IndentBraces": false
-    },
-    "BreakBeforeBinaryOperators": false,
-    "BreakBeforeBraces": "Custom",
-    "BreakBeforeTernaryOperators": false,
-    "BreakConstructorInitializersBeforeComma": true,
-    "ColumnLimit": 0,
-    "CommentPragmas": "^ IWYU pragma:",
-    "ConstructorInitializerAllOnOneLineOrOnePerLine": true,
-    "ConstructorInitializerIndentWidth": 4,
-    "ContinuationIndentWidth": 4,
-    "Cpp11BracedListStyle": true,
-    "DerivePointerAlignment": true,
-    "DerivePointerBinding": false,
-    "DisableFormat": false,
-    "ExperimentalAutoDetectBinPacking": true,
-    "ForEachMacros": [ "foreach", "Q_FOREACH", "BOOST_FOREACH" ],
-    "IncludeCategories": [
-      { "Regex": "^\".*\\.hpp\"", "Priority": 1 },
-      { "Regex": "^\".*\\.h\"",   "Priority": 2 },
-      { "Regex": "^<.*\\.hpp>",   "Priority": 3 },
-      { "Regex": "^<.*\\.h>",     "Priority": 4 },
-      { "Regex": "^<.*",          "Priority": 5 },
-      { "Regex": ".*",            "Priority": 6 }
-    ],
-    "IndentCaseLabels": false,
-    "IndentFunctionDeclarationAfterType": false,
-    "IndentWidth": 4,
-    "IndentWrappedFunctionNames": false,
-    "KeepEmptyLinesAtTheStartOfBlocks": false,
-    "MacroBlockBegin": "",
-    "MacroBlockEnd": "",
-    "MaxEmptyLinesToKeep": 1,
-    "NamespaceIndentation": "None",
-    "PenaltyBreakBeforeFirstCallParameter": 1,
-    "PenaltyBreakComment": 300,
-    "PenaltyBreakFirstLessLess": 120,
-    "PenaltyBreakString": 1000,
-    "PenaltyExcessCharacter": 1000000,
-    "PenaltyReturnTypeOnItsOwnLine": 200,
-    "PointerAlignment": "Middle",
-    "PointerBindsToType": true,
-    "ReflowComments": true,
-    "SortIncludes": true,
-    "SpaceAfterCStyleCast": false,
-    "SpaceAfterControlStatementKeyword": true,
-    "SpaceBeforeAssignmentOperators": true,
-    "SpaceBeforeParens": "ControlStatements",
-    "SpaceInEmptyParentheses": false,
-    "SpacesBeforeTrailingComments": 2,
-    "SpacesInAngles": false,
-    "SpacesInContainerLiterals": true,
-    "SpacesInCStyleCastParentheses": false,
-    "SpacesInParentheses": false,
-    "SpacesInSquareBrackets": false,
-    "Standard": "Auto",
-    "TabWidth": 8,
-    "UseTab": "Never"
+In QtCreator, go in Tools > Options... > Beautifier > Clang Format, add above YAML as new customized style.
