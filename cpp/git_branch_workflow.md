@@ -301,3 +301,57 @@ TODO
 
 A tradeof of git-flow is the necessity to set git-flow each time a repo is cloned.  
 Please share your ideas on simple way to *"git-flowify"* a repo (a script, a post-clone hook, ...)
+
+Git commit format
+=================
+
+`git commit`
+------------
+
+You can avoid option `-m "My commit message"` in order to open an editor
+
+    git commit MyFile -m "My commit message"  # Bad
+    
+    git commit MyFile                         # Good
+
+Commit message
+--------------
+
+Following example message is self explained. The first line is the title a summarizes the change in around 50 characters or less. The first word is a **C**apitalized verb. Then a blank line. Followed by more details...
+
+    Add a new commit
+    
+    More detailed explanatory text, if necessary. Wrap it to about 72
+    characters or so. In some contexts, the first line is treated as the
+    subject of the commit and the rest of the text as the body. The
+    blank line separating the summary from the body is critical (unless
+    you omit the body entirely); various tools like `log`, `shortlog`
+    and `rebase` can get confused if you run the two together.
+    
+    Explain the problem that this commit is solving. Focus on why you
+    are making this change as opposed to how (the code explains that).
+    Are there side effects or other unintuitive consequenses of this
+    change? Here's the place to explain them.
+    
+    Further paragraphs come after blank lines.
+    
+     - Bullet points are okay, too
+    
+     - Typically a hyphen or asterisk is used for the bullet, preceded
+       by a single space, with blank lines in between, but conventions
+       vary here
+    
+    If you use an issue tracker, put references to them at the bottom,
+    like this:
+    
+    Resolves: #10111
+    See also: #10222, #10333
+
+Example
+-------
+
+    Update of field AAA for message BBB
+    
+    The print of field AAA was incorrect because ntohs() was used instead of nothl().
+    
+    Resolves: #10111
