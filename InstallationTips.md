@@ -238,23 +238,57 @@ Git configuration
 
 Append in your `~/.gitconfig`
 
-    [color]   ui         = auto      # Use terminal color when available
-    [push]    default    = simple    # Make 'git push' without argument push the current branch to the remote branch with the same name.
-    [pull]    rebase     = preserve  # Ensure 'git pull' will use rebase instead of merge, preserving existing local merges
-    [rebase]  autoStash      = true  # 'git pull --rebase' => 'git stash' before and 'git stash pop' after
-    [log]     abbrevCommit   = true  # Make 'git log' show abbreviated SHA1
-    [diff]    mnemonicPrefix = true  # Improve 'git diff' output of source/target
-              renames        = true  # and detect renames
-    [rerere]  enabled        = true  # Make Git automatically record and re-apply conflicts resolution
-              autoupdate     = true  # Automatically add to index auto-resolved conflicts
-    [alias]
-        st = status                      # Shortcut for status command
-        oops = commit --amend --no-edit  # Amend latest commit keeping the same commit message
-        track-all-remote-branches = ! git branch -a | grep \"^\\s*remotes/[^>]*$\"  | xargs --interactive -L1 git checkout --track
-        di = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
-        # Show improved logs (colors, branch graphs...)
-        lo  = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset' --relative-date --ignore-space-change --ignore-blank-lines
-        lof = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset' --relative-date --ignore-space-change --ignore-blank-lines --follow --find-copies-harder
+```init
+[color]
+	ui = auto              # Use terminal color when available
+[push]
+	default = simple       # Make “git push” without argument push the current branch to the remote branch with the same name.
+[pull]
+	rebase = preserve      # Ensure “git pull” will use rebase instead of merge, preserving existing local merges
+[rebase]
+    autoStash = true       # 'git pull --rebase' => 'git stash' before and 'git stash pop' after
+[diff]
+	mnemonicPrefix = true  # Improve “git diff” output of source/target
+	renames = true         # and detect renames
+[log]
+	abbrevCommit = true    # Make “git log” show abbreviated SHA1
+[rerere]
+	enabled = true         # Make Git automatically record and re-apply conflicts resolution
+	autoupdate = true      # Automatically add to index auto-resolved conflicts
+	
+[alias]
+    # Show improved logs (colors, branch graphs…)
+    lo  = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset' --relative-date --ignore-space-change --ignore-blank-lines
+    lof = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset' --relative-date --ignore-space-change --ignore-blank-lines --follow --find-copies-harder
+    # Shortcut for status command
+    st = status
+    # Amend latest commit keeping the same commit message
+    oops = commit --amend --no-edit
+    track-all-remote-branches = ! git branch -a | grep \"^\\s*remotes/[^>]*$\" | xargs --interactive -L1 git checkout --track
+    di = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
+    
+[http]
+    proxy = http://your-login:your-password@your-company-hostname:8080/
+    sslVerify = false
+[https]
+    proxy = http://your-login:your-password@your-company-hostname:8080/
+    sslVerify = false
+
+[merge]
+    conflictstyle = diff3
+    tool = meld
+[mergetool "meld"]
+    # Choose one of these 2 lines (not both)
+#   cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+    cmd = meld "$LOCAL" "$BASE"   "$REMOTE" --output "$MERGED"
+
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+```
         
 Git submodule hell
 ------------------
