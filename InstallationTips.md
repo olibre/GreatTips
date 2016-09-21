@@ -301,7 +301,18 @@ Append in your `~/.gitconfig`
 [difftool "meld"]
     cmd = meld "$LOCAL" "$REMOTE"
 ```
-        
+
+Set Unix line endings in git config like [GitHub recommends](https://help.github.com/articles/dealing-with-line-endings#platform-all):
+    
+* on Linux or OS X
+    
+        git config --global core.autocrlf input
+    
+* on Windows
+    
+        git config --global core.autocrlf true
+
+
 Git submodule hell
 ------------------
 
