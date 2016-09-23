@@ -208,36 +208,55 @@ Following `*.cmake` example disables dependee header warnings (compiler does not
     endif()
 
 `F.IQC` &nbsp; Double quotes `""` and angle brackets `<>`
-----------------------------------------
+---------------------------------------------------------
 
-* Double quotes `"xxxx"` for headers of same module
-* Angle brackets `<xxxx>` (chevrons) for external libraries
-* What you want when including header of another sub-module of same project
+* Double quotes `"xxxx"` for headers of same module (very recommanded when in same directory)
+* Angle brackets `<xxxx>` (chevrons) for external libraries (i.e. from another project)
+* Any symbol you want when including header from another sub-module but within the same project
 
 Examples:
 
-    #include "MySubModule.hpp"               // "" when same directory as the compilation unit
-    #include "private/MyPrivateHeader.hpp"   // "" in a sub-directories of the compilation unit 
-    #include "xxxx/MyPublicHeader.hpp"       // "" public header of same sub-module
+```cpp
+#include "MyHeader.hpp"              // "" when in the same directory as the current C++ file
+#include "private/PrivateHeader.hpp" // "" in a sub-directories of the current C++ file
+#include "xxxx/PublicHeader.hpp"     // "" public header of same module (if in a different directory)
 
-    #include "otherproject/OtherProject.hpp"  // "" or 
-    #include <otherproject/OtherProject.hpp>  // <> to include another library of same project
-    
-    #include <3rdparty/xxx/External.hpp>     // <> for third parties
-    #include <iostream>                      // <> for system headers
+#include "other_module/Header.hpp"   // You can choose "" or <> to include
+#include <other_module/Header.hpp>   // from another module of same project
+
+#include <3rdparty/xxx/External.hpp> // <> for third parties
+#include <iostream>                  // <> for system headers
+```
 
 The order of `#include` is not important as long as the project compiles using any order.
 A simple check is to include first the headers of the current sub-module, then libraries, third-parties and finally the system headers (as in the above example).
 
 Moreover the unit test compilation unit first includes the header to be tested:
 
-    /// File MyClass_spec.cpp in order to test the class MyClass
-    
-    #include "myproject/MyClass.hpp"   // This checks that MyClass.hpp includes all its dependencies
-    #include "MyClass_spec.hpp"
-    #include <gtest/gtest.h>
-    #include <string>
+```cpp
+/// File MyClass_spec.cpp in order to test the class MyClass
 
+#include "myproject/MyClass.hpp"   // This checks that MyClass.hpp includes all its dependencies
+#include "MyClass_spec.hpp"
+#include <gtest/gtest.h>
+#include <string>
+```
+
+The following bash script replaces `#include <dir/header.h>` by `#include "header.h"` when both files (header and includer) are in the same directory:
+
+```bash
+find -name "*.h*" -printf '%f\n' |
+while read h
+do
+    fgrep "/$h" -RI | fgrep -w 'include' | tr -d '\r' |
+    awk -F'[:# ]*include *[<"]' '{print $1 "\t" $2}' |
+    while read f g
+    do
+        [[ -f "${f%/*}/$h" ]] &&
+        sed 's|.'"$g"'|"'"$h"'"|' -i "$f"
+    done
+done
+```
 
 `F.GRD` &nbsp; Header-guard `#define FILE_HPP_`
 -----------------------------------------------
