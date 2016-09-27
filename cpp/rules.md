@@ -258,6 +258,21 @@ do
 done
 ```
 
+The above script may mix header having same filename. Therefore this is another script to control the result of the previous script when there are header files with same filename:
+    
+```bash
+find -type f -printf '%f\n' |
+sort | uniq -d |
+while read f
+do
+    echo ________________________________
+    find -name "$f"
+    git diff | tac | sed -n "/$f/,/^---/p" | tac
+done
+```
+    
+(tiny command line `tac | sed -n "/$f/,/^---/p" | tac` is from [Sundeep](http://stackoverflow.com/users/4082052/sundeep) at question [Print the smallest set of lines between two patterns](http://stackoverflow.com/questions/3970326))
+
 `F.GRD` &nbsp; Header-guard `#define FILE_HPP_`
 -----------------------------------------------
 
