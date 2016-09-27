@@ -270,7 +270,21 @@ do
     git diff | tac | sed -n "/$f/,/^---/p" | tac
 done
 ```
+
+Or this alternative if you like diff-hilighting of your editor:
     
+```bash
+find -type f -printf '%f\n' |
+sort | uniq -d |
+while read f
+do
+    git diff | tac | sed -n "/$f/,/^---/p" | tac | tee out
+    [[ -s out ]] && echo ---------------
+                 && find -name "$f"
+                 && echo _________________________________
+done | vim -
+```
+
 (tiny command line `tac | sed -n "/$f/,/^---/p" | tac` is from [Sundeep](http://stackoverflow.com/users/4082052/sundeep) at question [Print the smallest set of lines between two patterns](http://stackoverflow.com/questions/3970326))
 
 `F.GRD` &nbsp; Header-guard `#define FILE_HPP_`
