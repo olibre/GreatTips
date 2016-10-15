@@ -8,32 +8,22 @@ http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-test
 |--------------------------------------------
 | ![Cover of the book 97 Things Every Programmer Should Know (2010)](http://akamaicovers.oreilly.com/images/9780596809492/cat.gif) ![Cover of the book 97 Things Every Java Programmer Should Know (2017)](http://akamaicovers.oreilly.com/images/0636920048824/cat.gif) ![Kevlin's face](http://programmer.97things.oreilly.com/wiki/images/9/98/Kevlin_251x228.jpg)
 
-Test
-====
 
-The Pragmatic Programmer by Andrew Hunt and David Thomas ![Book cover](https://imagery.pragprog.com/products/59/tpp_xlargecover.jpg)
+Test your code
+==============
 
-Tip 49
-
-> **Test your software,**  
-> **or your users will.**
+| *The Pragmatic Programmer*  <br> by Andrew Hunt <br> and David Thomas <br><br><br><br><br><br> Tip 49 <br> *Test your software <br> or your users will.*           | ![Book cover](https://upload.wikimedia.org/wikipedia/en/8/8f/The_pragmatic_programmer.jpg)
+|--------------------------------------------------|---
 
 
+Technical debt
+==============
 
-Laver ses mains
-===============
-
-Les tests unitaires est comme le lavage des mains avant une intervention chirurgicale.
-Cette simple mesure a une certaine époque a permis de faire un progrès considérable dans les résultats post opératoires.
-
-Écrire les tests unitaires au départ puis écrire le code de façon à faire fonctionner ces tests unitaires revient à écrire son code sous contrat.
-À une certaine époque certains devs écrivaient des tartines de commentaires avant d'écrire le code.
-Les tests unitaires sont une bien meilleure solution car les commentaires restent et le code change.
-Si un dev veut changer du code il va se confronter au contrat défini dans les tests unitaires.
-Il aura un moyen de constater si ses modifications cassent des choses qu'il n'a pas prêté attention ou que l'on ne lui a pas dite.
-
-Donc le test est une documentation interactive avec le code et qui évolue.
-
+Most of old projects have
+    
+* Technology debt (outdated underlying technologies)
+* Documentation debt (too little or too much)
+* **Test debt**
 
 
 Définition du terme "test unitaire"
@@ -49,14 +39,25 @@ Définition du terme "test unitaire"
     * Donc un tests unitaire peut tester plusieurs classes et fonctions
 
 
+Laver ses mains
+===============
+
+Par Philippe Bourgeon (2016)
+
+> Le test unitaire est comme le [lavage des mains](https://fr.wikipedia.org/wiki/Ignace_Philippe_Semmelweis) avant une intervention chirurgicale. Cette simple mesure au XIXe siècle a permis de faire un progrès considérable dans les résultats post opératoires.
+> 
+> Certaines méthodes de programmation des années 90 pronnaient le [raffinnement](https://fr.wikipedia.org/wiki/Raffinement) : le développeur écrivaient des tartines de commentaires avant d'écrire le code. Les tests unitaires sont une bien meilleure solution car les écrits restent (commentaires) et le code s'envole (change). Donc le test est une documentation interactive avec le code : cette documentation est forcée d'évoluer avec le code.
+
+
 Unit Test = Specification
 =========================
 
-Test conveys knowledge.  
-Test tells a story.
+Unit Test conveys knowledge.  
+Unit Test tells a story.
 
 * function names are phrases using underscore
 * Les tests unitaires sont la doc/spécification du code
+
 
 Words *must* and *should*
 =========================
@@ -64,12 +65,15 @@ Words *must* and *should*
 Préférer *must* à *shall* car plus explicite.
 
 Attention *should* dans les spec veut dire *optional*.
-Donc non testé => éviter *should*
+Donc non testé => Éviter *should*
+
 
 Unit Test coding rules
 ======================
 
-Les coding rules sont différentes pour le code à destination de la prod et celui des tests.
+> *function names of the unit test are are phrases*
+
+Les règles de codage sont différentes pour le code à destination de la prod et celui des tests unitaires.
 
 
 The Way of Testivus
@@ -78,8 +82,8 @@ The Way of Testivus
 From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007).
 
 * If you write code, write tests.
-* Don’t get stuck on unit testing dogma.
-* Embrace unit testing karma.
+* **Don’t get stuck on unit testing dogma.**
+* **Embrace unit testing karma.**
 * **Think of code and test as one.**
 * The test is more important than the unit.
 * **The best time to test is when the code is fresh.**
@@ -89,6 +93,7 @@ From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) 
 * **Sometimes, the test justifies the means.**
 * Only fools use no tools.
 * Good tests fail.
+
 
 Do not write unit tests to find bugs
 ====================================
@@ -100,16 +105,6 @@ La finalité est autre : Détecter les changements dans le code qui causent des 
 Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
 
 
-Prevent Test debt
-=================
-
-The Pragmatic Programmer by Andrew Hunt and David Thomas
-
-Tip 62
-
-> * **Test early**
-> * **Test often**
-> * **Test automatically**
 
 
 Couverture de code
@@ -231,6 +226,25 @@ alors le développeur est incité à laisser des lignes de code testées
 mais sans aucune utilité (ou même, à en rajouter).
 
 
+Continous testing
+=================
+
+The Pragmatic Programmer by Andrew Hunt and David Thomas
+
+Tip 62
+
+> * **Test early**
+> * **Test often**
+> * **Test automatically**
+
+
+TDD
+===
+
+Écrire les tests unitaires au départ puis écrire le code de façon à faire fonctionner ces tests unitaires revient à écrire son code sous contrat. : changer le code c'est se confronter au contrat défini dans les tests unitaires. Et c'est plus rassurant que le cassage de code soit détecté au plus tôt car un développeur ne peut pas tout savoir sur le code qu'il modifie.
+
+Il aura un moyen de constater si les modifications cassent des choses qu'il n'a pas prêté attention ou que l'on ne lui a pas dite.
+
 
 
 
@@ -255,6 +269,7 @@ After *Code coverage* comes *Value coverage*.
    et compatibilité STL/CMake/GTest/GMock/BoostTest/…  
    https://github.com/emil-e/rapidcheck
 
+
 Unit-Test Frameworks C++14 features
 ===================================
 
@@ -263,11 +278,14 @@ Unit-Test Frameworks C++14 features
 
 See also https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.2B.2B
 
-Découpler son unité de test
-===========================
 
-1. stub
-2. mock
-3. spy
-4. fake
-5. dummy
+Découpler ses tests unitaires
+=============================
+
+Sometimes environement is simulated and needs modeling.
+
+1. spy (collect behaviour)
+2. mock (contains assert)
+3. stub (do not conatains assert)
+4. fake (a mock or a stub)
+5. dummy (empty shell)
