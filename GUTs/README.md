@@ -157,7 +157,7 @@ The second programmer smiled and left.
 
 A third programmer came and asked the same question. The master replied:
 
-> - Eighty percent and no less!
+> - 80%
 
 The third programmer smiled and left.
 
@@ -170,14 +170,11 @@ After, a young apprentice approached the great master:
 The great master:
 
 > - The first programmer is new and just getting started with testing. Right now he has a lot of code and no tests. He has a long way to go; focusing on code coverage at this time would be depressing and quite useless. He’s better off just getting used to writing and running some tests. He can worry about coverage later.  
-    The second programmer, on the other hand, is quite experience both at programming and testing. When I replied by asking her how many grains of rice I should put in a pot, I helped her realize that the amount of testing necessary depends on a number of factors, and she knows those factors better than I do – it’s her code after all. There is no single, simple, answer, and she’s smart enough to handle the truth and work with that.
+>   The second programmer, on the other hand, is quite experience both at programming and testing. When I replied by asking her how many grains of rice I should put in a pot, I helped her realize that the amount of testing necessary depends on a number of factors, and she knows those factors better than I do – it’s her code after all. There is no single, simple, answer, and she’s smart enough to handle the truth and work with that.
 >
-> - I see, but if there is no single simple answer, then why did you answer the third programmer ‘Eighty percent and no less’?
+> - I see, but if there is no single simple answer, then why did you answer the third programmer ‘80%’?
 >
 > - The third programmer wants only simple answers – even when there are no simple answers … and then does not follow them anyway.
-
-
-
 
 
 
