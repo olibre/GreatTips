@@ -8,6 +8,18 @@ http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-test
 |--------------------------------------------
 | ![Cover of the book 97 Things Every Programmer Should Know (2010)](http://akamaicovers.oreilly.com/images/9780596809492/cat.gif) ![Cover of the book 97 Things Every Java Programmer Should Know (2017)](http://akamaicovers.oreilly.com/images/0636920048824/cat.gif) ![Kevlin's face](http://programmer.97things.oreilly.com/wiki/images/9/98/Kevlin_251x228.jpg)
 
+Test
+====
+
+The Pragmatic Programmer by Andrew Hunt and David Thomas ![Book cover](https://imagery.pragprog.com/products/59/tpp_xlargecover.jpg)
+
+Tip 49
+
+> **Test your software,**  
+> **or your users will.**
+
+
+
 Laver ses mains
 ===============
 
@@ -91,9 +103,13 @@ Et si le code ne change plus => Continuons à lancer les tests unitaires car cel
 Prevent Test debt
 =================
 
-* Test early
-* Test often
-* Test automatically
+The Pragmatic Programmer by Andrew Hunt and David Thomas
+
+Tip 62
+
+> * **Test early**
+> * **Test often**
+> * **Test automatically**
 
 
 Couverture de code
