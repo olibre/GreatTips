@@ -8,6 +8,22 @@ http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-test
 |--------------------------------------------
 | ![Cover of the book 97 Things Every Programmer Should Know (2010)](http://akamaicovers.oreilly.com/images/9780596809492/cat.gif) ![Cover of the book 97 Things Every Java Programmer Should Know (2017)](http://akamaicovers.oreilly.com/images/0636920048824/cat.gif) ![Kevlin's face](http://programmer.97things.oreilly.com/wiki/images/9/98/Kevlin_251x228.jpg)
 
+Laver ses mains
+===============
+
+Les tests unitaires est comme le lavage des mains avant une intervention chirurgicale.
+Cette simple mesure a une certaine époque a permis de faire un progrès considérable dans les résultats post opératoires.
+
+Écrire les tests unitaires au départ puis écrire le code de façon à faire fonctionner ces tests unitaires revient à écrire son code sous contrat.
+À une certaine époque certains devs écrivaient des tartines de commentaires avant d'écrire le code.
+Les tests unitaires sont une bien meilleure solution car les commentaires restent et le code change.
+Si un dev veut changer du code il va se confronter au contrat défini dans les tests unitaires.
+Il aura un moyen de constater si ses modifications cassent des choses qu'il n'a pas prêté attention ou que l'on ne lui a pas dite.
+
+Donc le test est une documentation interactive avec le code et qui évolue.
+
+
+
 Définition du terme "test unitaire"
 ===================================
 
@@ -18,7 +34,30 @@ Définition du terme "test unitaire"
 
 * Ce qui est unitaire, c'est la fonctionnalité testée
     
-    * Donc un tests unitaire (une fonctionnalité unitaire) peut tester plusieurs classes et fonctions
+    * Donc un tests unitaire peut tester plusieurs classes et fonctions
+
+
+Unit Test = Specification
+=========================
+
+Test conveys knowledge.  
+Test tells a story.
+
+* function names are phrases using underscore
+* Les tests unitaires sont la doc/spécification du code
+
+Words *must* and *should*
+=========================
+
+Préférer *must* à *shall* car plus explicite.
+
+Attention *should* dans les spec veut dire *optional*.
+Donc non testé => éviter *should*
+
+Unit Test coding rules
+======================
+
+Les coding rules sont différentes pour le code à destination de la prod et celui des tests.
 
 
 The Way of Testivus
@@ -29,17 +68,15 @@ From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) 
 * If you write code, write tests.
 * Don’t get stuck on unit testing dogma.
 * Embrace unit testing karma.
-* Think of code and test as one.
+* **Think of code and test as one.**
 * The test is more important than the unit.
-* The best time to test is when the code is fresh.
+* **The best time to test is when the code is fresh.**
 * Tests not run waste away.
 * An imperfect test today is better than a perfect test someday.
 * An ugly test is better than no test.
-* Sometimes, the test justifies the means.
+* **Sometimes, the test justifies the means.**
 * Only fools use no tools.
 * Good tests fail.
-
-
 
 Do not write unit tests to find bugs
 ====================================
@@ -51,39 +88,40 @@ La finalité est autre : Détecter les changements dans le code qui causent des 
 Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
 
 
-Unit Test coding rules
-======================
+Prevent Test debt
+=================
 
-Les coding rules sont différentes pour le code à destination de la prod et celui des tests.
-
-
-Unit Test = Specification
-=========================
-
-Test conveys/tells knowledge/story
-
-* function names are phrases using underscore
-* Les tests unitaires sont la doc/spécification du code pour la prod
-
-Words *must* and *should*
-=========================
-
-Préférer *must* à *shall* car plus explicite.
-
-Attention *should* dans les spec veut dire *optional*.
-Donc non testé => éviter *should*
+* Test early
+* Test often
+* Test automatically
 
 
-Découpler son unité de test
-===========================
+Couverture de code
+==================
 
-1. stub
-2. mock
-3. spy
-4. fake
-5. dummy
+Le but du test unitaire n'est pas de faire du coverage.
+Toutefois coder en faisant des tests unitaires revient à couvrir un maximum de code.
+Du coup les indicateurs de coverage permettent de vérifier si on a oublié quelque chose.
 
 
+Test coverage
+=============
+
+Coverage levels
+
+* **File**/**Class**/**Function**
+* **Line**/**Statement**
+* **Branch** (exemple : toutes les combinaisons de `if(a && b && c)`)
+* **Value** (Couverture de données)
+
+Coverage pourcentage
+====================
+
+Do not specify a pourcentage.
+Just request a high coverage and review what is not covered/tested.
+
+* If the untested/uncovered part is not relevant => Unit-Test can be considered as OK.
+* But if something is missing => Add tests to cover this part.
 
 
 Testivus and code coverage
@@ -143,35 +181,6 @@ The great master:
 
 
 
-Prevent Test debt
-=================
-
-* Test early
-* Test often
-* Test automatically
-
-
-
-
-Several coverage levels
-=======================
-
-* File/Function coverage
-* Statement coverage = Couverture de code source (les lignes de code)
-* Branch coverage = Couverture de branches, exemple : toutes les combinaisons de `if(a && b && c)`
-* Value coverage = Couverture de données
-
-
-Coverage pourcentage
-====================
-
-Do not specify a pourcentage.
-Just request a high coverage and review what is not covered/tested.
-
-* If the untested/uncovered part is not relevant => Unit-Test can be considered as OK.
-* But if something is missing => Add tests to cover this part.
-
-
 Is it the RIGHT 20%?
 ====================
 
@@ -209,21 +218,6 @@ alors le développeur est incité à laisser des lignes de code testées
 mais sans aucune utilité (ou même, à en rajouter).
 
 
-Utilité de la couverture de code
-================================
-
-Le but du test unitaire n'est pas de faire du coverage.
-Toutefois coder en faisant des tests unitaires revient à couvrir un maximum de code.
-Du coup les indicateurs de coverage permettent de vérifier si on a oublié quelque chose.
-
-L'idée de faire des tests unitaires a été comparé au lavage des mains avant une intervention chirurgicale. 
-Cette simple mesure a une certaine époque a permis de faire un progrès considérable dans les résultats post opératoires.
-Écrire les tests unitaires au départ puis écrire le code de façon à faire fonctionner ces tests unitaires revient à écrire son code sous contrat.
-À une certaine époque certains devs écrivaient des tartines de commentaires avant d'écrire le code.
-Les tests unitaires sont une bien meilleure solution car les écrits restent et le code change.
-Si un dev veut changer du code il va se confronter au contrat défini dans les tests unitaires.
-Il aura un moyen de constater si ses modifications cassent des choses qu'il n'a pas prêté attention ou que l'on ne lui a pas dite.
-C'est une doc interactive avec le code et qui évolue, s'enrichit avec le code.
 
 
 
@@ -256,3 +250,11 @@ Unit-Test Frameworks C++14 features
 
 See also https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.2B.2B
 
+Découpler son unité de test
+===========================
+
+1. stub
+2. mock
+3. spy
+4. fake
+5. dummy
