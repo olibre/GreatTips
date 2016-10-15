@@ -1,48 +1,95 @@
 Good Unit Tests (GUTs)
 ======================
 
-**Kevlin Henney** provides high-value trainings on Unit Tests.
-This document has been written after learning GUTs from two different Kevlin's trainings.
+Inspiration come from trainings provided by [**Kevlin Henney**](http://www.infoq.com/author/Kevlin-Henney#Presentations) (see this [presentation](
+http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-testing)) and many other Unit-Testing documents. 
 
-Some public Kevlin's presentations:  
-http://www.infoq.com/author/Kevlin-Henney#Presentations
+| Kevlin is a consultant and trainer on languages, design, and development process.
+|--------------------------------------------
+| ![Cover of the book 97 Things Every Programmer Should Know (2010)](http://akamaicovers.oreilly.com/images/9780596809492/cat.gif) ![Cover of the book 97 Things Every Java Programmer Should Know (2017)](http://akamaicovers.oreilly.com/images/0636920048824/cat.gif) ![Kevlin's face](http://programmer.97things.oreilly.com/wiki/images/9/98/Kevlin_251x228.jpg)
 
-This an excelent one:  
-http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-testing
+Définition du terme "test unitaire"
+===================================
 
+* Les tests unitaires ne doivent pas interférer entre eux (même un test avec lui-même).
+    
+    * Donc ils peuvent tous être exécutés en parallèle
+    * Pas d'accé aux ressources file-system, réseau, affinité CPU, base de données
 
-Prevent Test debt
------------------
+* Ce qui est unitaire, c'est la fonctionnalité testée
+    
+    * Donc un tests unitaire (une fonctionnalité unitaire) peut tester plusieurs classes et fonctions
 
-* Test early
-* Test often
-* Test automatically
-
-
-
-
-Several coverage levels
------------------------
-
-* File/Function coverage
-* Statement coverage = Couverture de code source (les lignes de code)
-* Branch coverage = Couverture de branches, exemple : toutes les combinaisons de `if(a && b && c)`
-* Value coverage = Couverture de données
-
-
-Coverage pourcentage
---------------------
-
-Do not specify a pourcentage.
-Just request a high coverage and review what is not covered/tested.
-
-* If the untested/uncovered part is not relevant => Unit-Test can be considered as OK.
-* But if something is missing => Add tests to cover this part.
 
 The Way of Testivus
--------------------
+===================
 
-Story from [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677))
+From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007).
+
+* If you write code, write tests.
+* Don’t get stuck on unit testing dogma.
+* Embrace unit testing karma.
+* Think of code and test as one.
+* The test is more important than the unit.
+* The best time to test is when the code is fresh.
+* Tests not run waste away.
+* An imperfect test today is better than a perfect test someday.
+* An ugly test is better than no test.
+* Sometimes, the test justifies the means.
+* Only fools use no tools.
+* Good tests fail.
+
+
+
+Do not write unit tests to find bugs
+====================================
+
+Si la finalité était de trouver des bugs et que l'on n'en trouve pas,
+alors on peut se dire qu'écrire des tests ne sert à rien.
+
+La finalité est autre : Détecter les changements dans le code qui causent des régressions.
+Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
+
+
+Unit Test coding rules
+======================
+
+Les coding rules sont différentes pour le code à destination de la prod et celui des tests.
+
+
+Unit Test = Specification
+=========================
+
+Test conveys/tells knowledge/story
+
+* function names are phrases using underscore
+* Les tests unitaires sont la doc/spécification du code pour la prod
+
+Words *must* and *should*
+=========================
+
+Préférer *must* à *shall* car plus explicite.
+
+Attention *should* dans les spec veut dire *optional*.
+Donc non testé => éviter *should*
+
+
+Découpler son unité de test
+===========================
+
+1. stub
+2. mock
+3. spy
+4. fake
+5. dummy
+
+
+
+
+Testivus and code coverage
+==========================
+
+Story from [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007).
 
 A programmer asked:
 
@@ -92,8 +139,41 @@ The great master:
 > - The third programmer wants only simple answers – even when there are no simple answers … and then does not follow them anyway.
 
 
+
+
+
+
+Prevent Test debt
+=================
+
+* Test early
+* Test often
+* Test automatically
+
+
+
+
+Several coverage levels
+=======================
+
+* File/Function coverage
+* Statement coverage = Couverture de code source (les lignes de code)
+* Branch coverage = Couverture de branches, exemple : toutes les combinaisons de `if(a && b && c)`
+* Value coverage = Couverture de données
+
+
+Coverage pourcentage
+====================
+
+Do not specify a pourcentage.
+Just request a high coverage and review what is not covered/tested.
+
+* If the untested/uncovered part is not relevant => Unit-Test can be considered as OK.
+* But if something is missing => Add tests to cover this part.
+
+
 Is it the RIGHT 20%?
---------------------
+====================
 
 On question [*"What is a reasonable code coverage % for unit tests?"*](http://stackoverflow.com/a/90089/938111), Jon Limjap shared his anecdote:
 
@@ -105,7 +185,7 @@ Scott Hanselman replied:
 
 
 Goodhart's law
---------------
+==============
 
 https://en.wikipedia.org/wiki/Goodhart's_law
 
@@ -130,7 +210,7 @@ mais sans aucune utilité (ou même, à en rajouter).
 
 
 Utilité de la couverture de code
---------------------------------
+================================
 
 Le but du test unitaire n'est pas de faire du coverage.
 Toutefois coder en faisant des tests unitaires revient à couvrir un maximum de code.
@@ -148,7 +228,7 @@ C'est une doc interactive avec le code et qui évolue, s'enrichit avec le code.
 
 
 Tester les invariants et propriétés
------------------------------------
+===================================
 
 After *Code coverage* comes *Value coverage*.
 
@@ -169,65 +249,10 @@ After *Code coverage* comes *Value coverage*.
    https://github.com/emil-e/rapidcheck
 
 Unit-Test Frameworks C++14 features
------------------------------------
+===================================
 
 * [Catch](https://github.com/philsquared/Catch)
 * [Mettle](https://github.com/jimporter/mettle)
 
 See also https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.2B.2B
 
-
-Do not write unit tests to find bugs
-------------------------------------
-
-Si la finalité était de trouver des bugs et que l'on n'en trouve pas,
-alors on peut se dire qu'écrire des tests ne sert à rien.
-
-La finalité est autre : Détecter les changements dans le code qui causent des régressions.
-Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
-
-
-Unit Test coding rules
-----------------------
-
-Les coding rules sont différentes pour le code à destination de la prod et celui des tests.
-
-
-Unit Test = Specification
--------------------------
-
-Test conveys/tells knowledge/story
-
-* function names are phrases using underscore
-* Les tests unitaires sont la doc/spécification du code pour la prod
-
-Words *must* and *should*
--------------------------
-
-Préférer *must* à *shall* car plus explicite.
-
-Attention *should* dans les spec veut dire *optional*.
-Donc non testé => éviter *should*
-
-
-Cinq façons de découpler son unité de test
-------------------------------------------
-
-* stub
-* spy
-* mock
-* fake
-* dummy
-
-
-Définition du terme "test unitaire"
------------------------------------
-
-* Les tests unitaires ne doivent pas interférer entre eux (même un test avec lui-même).
-    
-    * Donc ils peuvent tous être exécutés en parallèle
-    * Par exemple, aucun test n'accède à des ressources file-system, réseau, affinité CPU
-
-* Ce qui est unitaire, c'est la fonctionnalité testée
-    
-    * Donc un tests unitaire (une fonctionnalité unitaire) peut tester plusieurs classes et fonctions
