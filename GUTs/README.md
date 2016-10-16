@@ -81,18 +81,18 @@ The Way of Testivus
 
 From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007).
 
-* If you write code, write tests.
-* **Don’t get stuck on unit testing dogma.**
-* **Embrace unit testing karma.**
-* **Think of code and test as one.**
-* The test is more important than the unit.
-* **The best time to test is when the code is fresh.**
-* Tests not run waste away.
-* An imperfect test today is better than a perfect test someday.
-* An ugly test is better than no test.
-* **Sometimes, the test justifies the means.**
-* Only fools use no tools.
-* Good tests fail.
+1.  If you write code, write tests.
+2.  **Don’t get stuck on unit testing dogma.**
+3.  **Embrace unit testing karma.**
+4.  **Think of code and test as one.**
+5.  The test is more important than the unit.
+6.  **The best time to test is when the code is fresh.**
+7.  Tests not run waste away.
+8.  An imperfect test today is better than a perfect test someday.
+9.  An ugly test is better than no test.
+10. **Sometimes, the test justifies the means.**
+11. Only fools use no tools.
+12. Good tests fail.
 
 
 Do not write unit tests to find bugs
