@@ -105,8 +105,8 @@ La finalité est autre : Détecter les changements dans le code qui causent des 
 Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
 
 
-Ariane 5
-========
+Ariane 5 en vidéo
+=================
 
 La théorie
 ----------
@@ -116,8 +116,68 @@ https://www.youtube.com/watch?v=_rNmszfIvAw
 Vol d'inauguration
 ------------------
 
-4 juin 1996, Ariane 501, V88, 4 Cluster  
+4 juin 1996, Ariane 501, Vol 88 (4 satellites)  
 https://www.youtube.com/watch?v=fCnO-UYF3co
+
+
+Projet Ariane 5
+===============
+
+* 1981 : Conception Ariane 4
+* 1987 : Conception Ariane 5
+* 1988 à 2003 : Ariane 4, 15 ans de service, 97% de succès (116 lancements)
+* 199x : Décision de réutiliser le *Système de Référence Inertielle* (SRI) d'Ariane 4 (réputé fiable). Pour éviter de refaire des tests (800 kF), la calibration n'est pas désactivée (nécessaire pour Ariane 4).
+* 1996 : Vol inaugural (v80) d'Ariane 5 (501)
+    * Le coût du lancement et des 4 satellites est de 2 milliard de francs
+    * L'accélération d'Ariane 5 est cinq fois plus élevée que Ariane 4
+    * Cette valeur sur 32 bits et copiée dans un registre de 16 bits trop petit ce qui provoque une interruption matérielle
+    * Les deux SRI (même matériel, même logiciel) se désactivent quasi simultannément (à 72 ms près)
+    * 37 secondes après le décollage, le pilote automatique prend les commandes
+    * Le *On Board Computer* (OBC) détecte que le SRI 1 est en panne et bascule sur le SRI 2
+    * Le SRI 2 remonte une erreur, mais l'OBC considère comme valeur de navigation, et braque au maximum la trajectoire de la fusée
+    * Un des deux boosters est arrachée à cause de la pression trop élevée et déclenche le système d'autodestruction de la fusée
+    * Les débris de la fusée tombent dans la mangrove et sont récupérés en partie dont l'EEPROM contenant les informations d'erreur
+
+
+Bug Ariane 5
+============
+
+```ada
+L_M_BV_32 := TBD.T_ENTIER_32S ((1.0/C_M_LSB_BV) * G_M_INFO_DERIVE(T_ALG.E_BV));
+
+if L_M_BV_32 > 32767 then
+	P_M_DERIVE(T_ALG.E_BV) := 16#7FFF#;
+elsif L_M_BV_32 < -32768 then
+	P_M_DERIVE(T_ALG.E_BV) := 16#8000#;
+else
+	P_M_DERIVE(T_ALG.E_BV) := UC_16S_EN_16NS(TDB.T_ENTIER_16S(L_M_BV_32));
+end if;
+
+P_M_DERIVE(T_ALG.E_BH) := UC_16S_EN_16NS
+ (TDB.T_ENTIER_16S ((1.0/C_M_LSB_BH) * G_M_INFO_DERIVE(T_ALG.E_BH)));
+ -- Bornes -32768..32767 non vérifiées pour BH (Accélération Horizontale)
+```
+
+Commission d'enquête Ariane 501 
+===============================
+
+* Rapport rendu un mois après le désastre d'Ariane 501
+* Deux aspects importants du rapport
+    1. La trajectoire spécifique d'Ariane 5 a été volontairement exclue des considérations de conception de l'élément qui calcule la trajectoire
+    2. La commision d'enquête (composée d'ingénieurs logiciel) conclut à un problème logiciel
+* Gérard Le Lann (INRIA) conclut plutôt à un problème d'intégration système
+* Mark Dowson rappelle les réalités des projets
+    * Pressions budgétaire et planning
+    * Arguments *If it's not broke don't fix it*
+    * Politique des managers
+
+Sources
+-------
+* http://deschamp.free.fr/exinria/divers/ariane_501.html
+* http://www.math.umn.edu/~arnold/disasters/ariane5rep.html (semble être la version anglaise du précédent)
+* http://cmpe.emu.edu.tr/chefranov/Cmps201-fall2011/Notes/Ariane5failure.pdf
+* http://moscova.inria.fr/~levy/talks/10enslongo/enslongo.pdf
+* http://www.rvs.uni-bielefeld.de/publications/Reports/ariane.html (non lu mais parrait intéressant)
 
 
 Couverture de code
@@ -137,6 +197,7 @@ Coverage levels
 * **Line**/**Statement**
 * **Branch** (exemple : toutes les combinaisons de `if(a && b && c)`)
 * **Value** (couverture des plages de valeurs)
+
 
 Coverage pourcentage
 ====================
