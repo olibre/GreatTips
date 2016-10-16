@@ -82,15 +82,15 @@ The Way of Testivus
 From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007).
 
 1.  If you write code, write tests.
-2.  **Don’t get stuck on unit testing dogma.**
-3.  **Embrace unit testing karma.**
-4.  **Think of code and test as one.**
+2.  Don’t get stuck on unit testing dogma.
+3.  Embrace unit testing karma.
+4.  Think of code and test as one.
 5.  The test is more important than the unit.
-6.  **The best time to test is when the code is fresh.**
+6.  The best time to test is when the code is fresh.
 7.  Tests not run waste away.
 8.  An imperfect test today is better than a perfect test someday.
 9.  An ugly test is better than no test.
-10. **Sometimes, the test justifies the means.**
+10. Sometimes, the test justifies the means.
 11. Only fools use no tools.
 12. Good tests fail.
 
@@ -128,19 +128,31 @@ Projet Ariane 5
 * 1988 à 2003 : Ariane 4, 15 ans de service, 97% de succès (116 lancements)
 * 199x : Décision de réutiliser le *Système de Référence Inertielle* (SRI) d'Ariane 4 (réputé fiable). Pour éviter de refaire des tests (800 kF), la calibration n'est pas désactivée (nécessaire pour Ariane 4).
 * 1996 : Vol inaugural (v80) d'Ariane 5 (501)
-    * Le coût du lancement et des 4 satellites est de 2 milliard de francs
-    * L'accélération d'Ariane 5 est cinq fois plus élevée que Ariane 4
-    * Cette valeur sur 32 bits et copiée dans un registre de 16 bits trop petit ce qui provoque une interruption matérielle
-    * Les deux SRI (même matériel, même logiciel) se désactivent quasi simultannément (à 72 ms près)
-    * 37 secondes après le décollage, le pilote automatique prend les commandes
-    * Le *On Board Computer* (OBC) détecte que le SRI 1 est en panne et bascule sur le SRI 2
-    * Le SRI 2 remonte une erreur, mais l'OBC considère comme valeur de navigation, et braque au maximum la trajectoire de la fusée
-    * Un des deux boosters est arrachée à cause de la pression trop élevée et déclenche le système d'autodestruction de la fusée
-    * Les débris de la fusée tombent dans la mangrove et sont récupérés en partie dont l'EEPROM contenant les informations d'erreur
 
 
-Bug Ariane 5
-============
+Ariane 501
+==========
+
+*Un petit bogue, un grand boum !*
+
+* Le coût du lancement et des 4 satellites est de 2 milliard de francs
+* L'accélération d'Ariane 5 est cinq fois plus élevée que Ariane 4
+* Cette valeur sur 32 bits et copiée dans un registre de 16 bits trop petit ce qui provoque une interruption matérielle
+* Les deux SRI (même matériel, même logiciel) se désactivent quasi simultannément (à 72 ms près)
+* 37 secondes après le décollage, le pilote automatique prend les commandes
+* Le *On Board Computer* (OBC) détecte que le SRI 1 est en panne et bascule sur le SRI 2
+* Le SRI 2 remonte une erreur, mais l'OBC considère comme valeur de navigation, et braque au maximum la trajectoire de la fusée
+* Un des deux boosters est arrachée à cause de la pression trop élevée et déclenche le système d'autodestruction de la fusée
+* Les débris de la fusée tombent dans la mangrove et sont récupérés en partie dont l'EEPROM contenant les informations d'erreur
+
+
+Code source Ariane 501
+======================
+
+![Scan du code source Ada du SRI](http://olibre.github.io/CppCoding/GUTs/bug-Ariane-501_by-JeanJacquesLevy-INRIA-2010.jpg)
+
+Bug Ariane 501
+==============
 
 ```ada
 L_M_BV_32 := TBD.T_ENTIER_32S ((1.0/C_M_LSB_BV) * G_M_INFO_DERIVE(T_ALG.E_BV));
@@ -153,10 +165,10 @@ else
 	P_M_DERIVE(T_ALG.E_BV) := UC_16S_EN_16NS(TDB.T_ENTIER_16S(L_M_BV_32));
 end if;
 
-P_M_DERIVE(T_ALG.E_BH) := UC_16S_EN_16NS
- (TDB.T_ENTIER_16S ((1.0/C_M_LSB_BH) * G_M_INFO_DERIVE(T_ALG.E_BH)));
- -- Bornes -32768..32767 non vérifiées pour BH (Accélération Horizontale)
+P_M_DERIVE(T_ALG.E_BH) := UC_16S_EN_16NS(TDB.T_ENTIER_16S ((1.0/C_M_LSB_BH) * G_M_INFO_DERIVE(T_ALG.E_BH)));
 ```
+Dans ce code source Ada, les Bornes -32768..32767 sont vérifiées pour BV (**V**érticale), mais pas pour BH (**H**orizontale).
+
 
 Commission d'enquête Ariane 501 
 ===============================
@@ -178,6 +190,13 @@ Sources
 * http://cmpe.emu.edu.tr/chefranov/Cmps201-fall2011/Notes/Ariane5failure.pdf
 * http://moscova.inria.fr/~levy/talks/10enslongo/enslongo.pdf
 * http://www.rvs.uni-bielefeld.de/publications/Reports/ariane.html (non lu mais parrait intéressant)
+
+
+Conclusions Ariane 501 
+======================
+
+* Les tests sont utililes pour vérifier tout changement
+* Attention aux contraintes budget / planning / politique
 
 
 Couverture de code
