@@ -142,50 +142,35 @@ Story from [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=20
 
 A programmer asked:
 
-> - I am ready to write some unit tests. What code coverage should I aim for?
+- I am ready to write some unit tests. What code coverage should I aim for?
 
 The great master replied:
 
-> - Don’t worry about coverage, just write some good tests.
+- Don’t worry about coverage, just write some good tests.
 
 ...
 
-Later, a second programmer asked the same question.
+Later, a second programmer asked the same question. The great master pointed at a pot of boiling water and said:
 
-The great master pointed at a pot of boiling water and said:
-
-> - How many grains of rice should put in that pot?
-
-The programmer, looking puzzled, replied:
-
-> - How can I possibly tell you? It depends on how many people you need to feed, how hungry they are, what other food you are serving, how much rice you have available, and so on.
-> 
-> - Exactly
-
-The second programmer smiled and left.
+- How many grains of rice should put in that pot?
+- How can I possibly tell you? It depends on how many people you need to feed, how hungry they are, what other food you are serving, how much rice you have available, and so on.
+- Exactly
 
 ...
 
 A third programmer came and asked the same question. The master replied:
 
-> - 80%
-
-The third programmer smiled and left.
+- 80%
 
 ...
 
 After, a young apprentice approached the great master:
 
-> - Great master, today I overheard you answer the same question about code coverage with three different answers. Why?
-
-The great master:
-
-> - The first programmer is new and just getting started with testing. Right now he has a lot of code and no tests. He has a long way to go; focusing on code coverage at this time would be depressing and quite useless. He’s better off just getting used to writing and running some tests. He can worry about coverage later.  
->   The second programmer, on the other hand, is quite experience both at programming and testing. When I replied by asking her how many grains of rice I should put in a pot, I helped her realize that the amount of testing necessary depends on a number of factors, and she knows those factors better than I do – it’s her code after all. There is no single, simple, answer, and she’s smart enough to handle the truth and work with that.
->
-> - I see, but if there is no single simple answer, then why did you answer the third programmer ‘80%’?
->
-> - The third programmer wants only simple answers – even when there are no simple answers … and then does not follow them anyway.
+- Great master, today I overheard you answer the same question about code coverage with three different answers. Why?
+- The first programmer is new and just getting started with testing. Right now he has a lot of code and no tests. He has a long way to go; focusing on code coverage at this time would be depressing and quite useless. He can worry about coverage later.  
+  The second programmer, on the other hand, is quite experience both at programming and testing. When I replied by asking how many grains of rice I should put in a pot, I helped to realize that the amount of testing necessary depends on a number of factors, and the programmer knows those factors better than I do – it’s her code after all. There is no single, simple, answer, and she’s smart enough.
+- I see, but if there is no single simple answer, then why did you answer the third programmer ‘80%’?
+- The third programmer wants only simple answers, even when there are no simple answers, and then does not follow them anyway.
 
 
 
