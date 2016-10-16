@@ -52,11 +52,11 @@ Par Philippe Bourgeon (2016)
 Unit Test = Specification
 =========================
 
-Unit Test conveys knowledge.  
-Unit Test tells a story.
+Les tests unitaires sont la doc/spécification du code
 
-* function names are phrases using underscore
-* Les tests unitaires sont la doc/spécification du code
+* Unit Test conveys knowledge.
+* Unit Test tells a story.
+* Function names are phrases (using underscore).
 
 
 Words *must* and *should*
@@ -71,7 +71,7 @@ Donc non testé => Éviter *should*
 Unit Test coding rules
 ======================
 
-> *function names of the unit test are are phrases*
+> *function names are phrases*
 
 Les règles de codage sont différentes pour le code à destination de la prod et celui des tests unitaires.
 
@@ -123,7 +123,7 @@ Coverage levels
 * **File**/**Class**/**Function**
 * **Line**/**Statement**
 * **Branch** (exemple : toutes les combinaisons de `if(a && b && c)`)
-* **Value** (Couverture de données)
+* **Value** (couverture des plages de valeurs)
 
 Coverage pourcentage
 ====================
