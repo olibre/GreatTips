@@ -269,8 +269,11 @@ Découpler ses tests unitaires
 
 Sometimes environement is simulated and needs modeling.
 
-1. spy (collect behaviour)
-2. mock (contains assert)
-3. stub (do not conatains assert)
-4. fake (a mock or a stub)
-5. dummy (empty shell)
+Test doubles
+------------
+
+1. Dummy (empty shell, no implementation)
+2. Stub (minimal implementations, static, provide always the same response, do not conatains assert)
+3. Fake (act like the real object, but in a simpler way)
+4. Mock (contains assert)
+5. Spy (record events)
