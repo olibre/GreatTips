@@ -105,6 +105,19 @@ La finalité est autre : Détecter les changements dans le code qui causent des 
 Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
 
 
+Ariane 5
+========
+
+La théorie
+----------
+
+https://www.youtube.com/watch?v=_rNmszfIvAw
+
+Vol d'inauguration
+------------------
+
+4 juin 1996, Ariane 501, V88, 4 Cluster  
+https://www.youtube.com/watch?v=fCnO-UYF3co
 
 
 Couverture de code
