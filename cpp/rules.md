@@ -318,6 +318,8 @@ done | tr -d '\r' | vim -
 
 * Copyright every ASCII file (not only C++ files)
 * Automatic script can be used to append/fix copyright banners
+* Be inspired by following banner based on Doxygen tags
+* Keep the Doxygen tag `\file` empty to use the name of the current (prevent misspeling if filename is changed)
 
 ```cpp
 /** 
@@ -325,7 +327,7 @@ done | tr -d '\r' | vim -
 *            All Rights Reserved
 *            DO NOT ALTER OR REMOVE THIS COPYRIGHT NOTICE
 * 
-* \file <filename>
+* \file
 * \brief <description of file purpose>
 * ...
 */
