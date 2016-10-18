@@ -25,9 +25,13 @@ Most of old projects have
 * Documentation debt (too little or too much)
 * **Test debt**
 
+Que veut dire "Test Unitaire" ?
+===============================
 
-Définition du terme "test unitaire"
-===================================
+De quoi parle t'on quand on parle de "Test Unitaire" ?
+
+Un bonne définition du "Test Unitaire"
+======================================
 
 * Les tests unitaires ne doivent pas interférer entre eux (même un test avec lui-même).
     
@@ -36,7 +40,57 @@ Définition du terme "test unitaire"
 
 * Ce qui est unitaire, c'est la fonctionnalité testée
     
-    * Donc un tests unitaire peut tester plusieurs classes et fonctions
+    * Donc un test unitaire peut tester plusieurs classes et fonctions
+
+Ce qui n'est pas un "Test Unitaire"
+===================================
+
+By [Michael Feathers](http://www.artima.com/weblogs/viewpost.jsp?thread=126923) (2005)
+
+* It talks to the database ;
+* It communicates across the network ;
+* It touches the file system ;
+* It can't run at the same time as any of your other unit tests ;
+* You have to do special things to your environment (such as editing config files) to run it.
+
+Les tests qui font cela ne sont pas mauvais,
+mais ils sont à séparer des vrais "Tests Unitaires"
+afin que ces derniers puissent être exécutés de façon optimale.
+
+https://books.google.fr/books?id=QJA3dM8Uix0C
+
+
+Test before or after development
+================================
+
+* Plain Old Test Unit (POUT) = Write the test **AFTER** the feature
+* [Test-Driven Development](https://fr.wikipedia.org/wiki/Test_driven_development) (TDD) = Write the test **BEFORE** the feature
+* Defect-Driven Testing (DDT) = Write the test **BEFORE** the fix
+
+
+Out of scope 
+============
+
+* Defect-Driven Development (DDD)
+* Design-Driven Development (D3)
+* [Behavior-Driven Development](https://fr.wikipedia.org/wiki/Behavior_driven_development) (BDD)
+* [Acceptance Test–Driven Development](https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development) (ATDD)
+* Example-Driven Development (EDD)
+* Story test–Driven Development (SDD)
+* [Feature-Driven Development](https://en.wikipedia.org/wiki/Feature-driven_development) (FDD)
+* [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) (DDD)
+* [Model-Driven Engineering](https://en.wikipedia.org/wiki/Model-driven_engineering) (MDE)
+* [Model-driven architecture](https://en.wikipedia.org/wiki/Model-driven_architecture) (MDA)
+* [Model-Driven Software Development](https://en.wikipedia.org/wiki/Model-driven_engineering) (MDSD)
+
+
+Where is Good Unit Tests?
+=========================
+
+* POUT, TDD and DDT can produce GUTs.
+* GUTs are the result
+
+But... What are GUTs?
 
 
 Laver ses mains
@@ -44,15 +98,15 @@ Laver ses mains
 
 Par Philippe Bourgeon (2016)
 
-> Le test unitaire est comme le [lavage des mains](https://fr.wikipedia.org/wiki/Ignace_Philippe_Semmelweis) avant une intervention chirurgicale. Cette simple mesure au XIXe siècle a permis de faire un progrès considérable dans les résultats post opératoires.
-> 
+> Le test unitaire est comme le [lavage des mains](https://fr.wikipedia.org/wiki/Ignace_Philippe_Semmelweis) avant une intervention chirurgicale. Cette simple mesure au XIXe siècle a permis des progrès considérables.
+>
 > Certaines méthodes de programmation des années 90 pronnaient le [raffinnement](https://fr.wikipedia.org/wiki/Raffinement) : le développeur écrivaient des tartines de commentaires avant d'écrire le code. Les tests unitaires sont une bien meilleure solution car les écrits restent (commentaires) et le code s'envole (change). Donc le test est une documentation interactive avec le code : cette documentation est forcée d'évoluer avec le code.
 
 
-Unit Test = Specification
-=========================
+Good Unit Test = Specification
+==============================
 
-Les tests unitaires sont la doc/spécification du code
+Les tests unitaires représentnent la spécification du code.
 
 * Unit Test conveys knowledge.
 * Unit Test tells a story.
@@ -79,7 +133,7 @@ Les règles de codage sont différentes pour le code à destination de la prod e
 The Way of Testivus
 ===================
 
-From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007).
+From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) (2007).
 
 1.  If you write code, write tests.
 2.  Don’t get stuck on unit testing dogma.
@@ -93,6 +147,10 @@ From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) 
 10. Sometimes, the test justifies the means.
 11. Only fools use no tools.
 12. Good tests fail.
+
+What is important for you?
+
+Next section is opposite to last point "Good tests fail".
 
 
 Do not write unit tests to find bugs
@@ -355,6 +413,14 @@ Unit-Test Frameworks C++14 features
 * [Mettle](https://github.com/jimporter/mettle)
 
 See also https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.2B.2B
+
+
+Test-Driven Development
+=======================
+
+Développement piloté par les tests.
+
+
 
 
 Découpler ses tests unitaires
