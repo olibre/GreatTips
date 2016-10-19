@@ -25,10 +25,12 @@ Most of old projects have
 * Documentation debt (too little or too much)
 * **Test debt**
 
+
 Que veut dire "Test Unitaire" ?
 ===============================
 
 De quoi parle t'on quand on parle de "Test Unitaire" ?
+
 
 Un bonne définition du "Test Unitaire"
 ======================================
@@ -114,7 +116,7 @@ Again Roy Osherove (see [How do you solve multiple asserts?](http://www.owenpell
 One unit test = One expectation
 ===============================
 
-By [Kevlin Henney](https://twitter.com/kevlinhenney/status/438707024067825664) (2014)
+[Kevlin Henney](https://twitter.com/kevlinhenney/status/438707024067825664) (2014)
 
 > Using a mock, any test with more one expectation
 > is a test with more than one assertion.
@@ -207,7 +209,7 @@ But... What are really GUTs?
 Laver ses mains
 ===============
 
-Par Philippe Bourgeon (2016)
+Philippe Bourgeon (2016)
 
 > Le test unitaire est comme le [lavage des mains](https://fr.wikipedia.org/wiki/Ignace_Philippe_Semmelweis) avant une intervention chirurgicale. Cette simple mesure au XIXe siècle a permis des progrès considérables.
 >
@@ -217,41 +219,39 @@ Par Philippe Bourgeon (2016)
 Write test for people
 =====================
 
-by [Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) (2009)
+[Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) ([CC-BY-3.0-US](https://creativecommons.org/licenses/by/3.0/us/) 2009), in French:
 
-Pour qui écrire les tests ?  
-La bonne réponse : Pour ceux qui essayeront de comprendre l'implémentation.
-
-Les bons tests documentent l'implémentation : ils décrivent le fonctionnement du code testé.  
-Pour chaque cas de test :
-
-* Décrire le context, le point de départ ou les préconditions
-* Expliquer comment l'exigence est satisfaite
-* Décrire le résultat attendu ou les postconditions 
-
-Differents cas de test auront des variantes sensiblement différentes de chacun de ces points.
+> Pour qui écrire les tests ?  
+> La bonne réponse : Pour ceux qui essayeront de comprendre l'implémentation.
+>
+> Les bons tests documentent l'implémentation : ils décrivent le fonctionnement du code testé.  
+> Pour chaque cas de test :
+> 
+> * Décrire le context, le point de départ ou les préconditions
+> * Expliquer comment l'exigence est satisfaite
+> * Décrire le résultat attendu ou les postconditions 
 
 
 Le Test Unitaire décrit la fonctionnalité testée
 ================================================
 
-De [Nat Pryce and Steve Freeman](https://books.google.fr/books?id=QJA3dM8Uix0C) à la [conférence XP Day 2006 "Are Your Tests Really Driving Your Development?"](http://www.theregister.co.uk/2007/03/09/test_driven_development/)
+[Nat Pryce et Steve Freeman](https://books.google.fr/books?id=QJA3dM8Uix0C) à la [conférence XP Day 2006 "Are Your Tests Really Driving Your Development?"](http://www.theregister.co.uk/2007/03/09/test_driven_development/), in French:
 
-Les tests unitaires doivent aller plus loin
-que la simple vérification des fonctionalités exigées.
-
-Les test doivent aussi clairement exprimer
-au lecteur ces fonctionalités exigées.
-
-=> **Ces tests doivent formaliser la spécification.**
-
-Les tests qui ne sont pas écrits
-dans leur rôle de specifications à l'esprit
-peuvent être très confus à comprendre. 
-
-La difficulté de compréhension de ce qui est testé
-peut donc beaucoup réduire la facilité
-pour faire évoluer une base de code.
+> Les tests unitaires doivent aller plus loin
+> que la simple vérification des fonctionalités exigées.
+>
+> Les test doivent aussi clairement exprimer
+> au lecteur ces fonctionalités exigées.
+>
+> => **Ces tests doivent formaliser la spécification.**
+>
+> Les tests qui ne sont pas écrits
+> dans leur rôle de specifications à l'esprit
+> peuvent être très confus à comprendre. 
+>
+> La difficulté de compréhension de ce qui est testé
+> peut donc beaucoup réduire la facilité
+> pour faire évoluer une base de code.
 
 
 Good Unit Test = Specification
@@ -290,20 +290,20 @@ et celui des tests unitaires.
 The Way of Testivus
 ===================
 
-From [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) (2007).
+[Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) (2007)
 
-1.  If you write code, write tests.
-2.  Don’t get stuck on unit testing dogma.
-3.  Embrace unit testing karma.
-4.  Think of code and test as one.
-5.  The test is more important than the unit.
-6.  The best time to test is when the code is fresh.
-7.  Tests not run waste away.
-8.  An imperfect test today is better than a perfect test someday.
-9.  An ugly test is better than no test.
-10. Sometimes, the test justifies the means.
-11. Only fools use no tools.
-12. Good tests fail.
+> 1.  If you write code, write tests.
+> 2.  Don’t get stuck on unit testing dogma.
+> 3.  Embrace unit testing karma.
+> 4.  Think of code and test as one.
+> 5.  The test is more important than the unit.
+> 6.  The best time to test is when the code is fresh.
+> 7.  Tests not run waste away.
+> 8.  An imperfect test today is better than a perfect test someday.
+> 9.  An ugly test is better than no test.
+> 10. Sometimes, the test justifies the means.
+> 11. Only fools use no tools.
+> 12. Good tests fail.
 
 What is important for you?
 
@@ -456,39 +456,39 @@ Just request a high coverage and review what is not covered/tested.
 Testivus and code coverage
 ==========================
 
-Story from [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007).
+[Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007)
 
-A programmer asked:
-
-- I am ready to write some unit tests. What code coverage should I aim for?
-
-The great master replied:
-
-- Don’t worry about coverage, just write some good tests.
-
-...
-
-Later, a second programmer asked the same question. The great master pointed at a pot of boiling water and said:
-
-- How many grains of rice should put in that pot?
-- How can I possibly tell you? It depends on how many people you need to feed, how hungry they are, what other food you are serving, how much rice you have available, and so on.
-- Exactly
-
-...
-
-A third programmer came and asked the same question. The master replied:
-
-- 80%
-
-...
-
-After, a young apprentice approached the great master:
-
-- Great master, today I overheard you answer the same question about code coverage with three different answers. Why?
-- The first programmer is new and just getting started with testing. Right now he has a lot of code and no tests. He has a long way to go; focusing on code coverage at this time would be depressing and quite useless. He can worry about coverage later.  
-  The second programmer, on the other hand, is quite experience both at programming and testing. When I replied by asking how many grains of rice I should put in a pot, I helped to realize that the amount of testing necessary depends on a number of factors, and the programmer knows those factors better than I do – it’s her code after all. There is no single, simple, answer, and she’s smart enough.
-- I see, but if there is no single simple answer, then why did you answer the third programmer ‘80%’?
-- The third programmer wants only simple answers, even when there are no simple answers, and then does not follow them anyway.
+> A programmer asked:
+> 
+> - I am ready to write some unit tests. What code coverage should I aim for?
+> 
+> The great master replied:
+> 
+> - Don’t worry about coverage, just write some good tests.
+> 
+> ...
+> 
+> Later, a second programmer asked the same question. The great master pointed at a pot of boiling water and said:
+> 
+> - How many grains of rice should put in that pot?
+> - How can I possibly tell you? It depends on how many people you need to feed, how hungry they are, what other food you are serving, how much rice you have available, and so on.
+> - Exactly
+> 
+> ...
+> 
+> A third programmer came and asked the same question. The master replied:
+> 
+> - 80%
+> 
+> ...
+> 
+> After, a young apprentice approached the great master:
+> 
+> - Great master, today I overheard you answer the same question about code coverage with three different answers. Why?
+> - The first programmer is new and just getting started with testing. Right now he has a lot of code and no tests. He has a long way to go; focusing on code coverage at this time would be depressing and quite useless. He can worry about coverage later.  
+>   The second programmer, on the other hand, is quite experience both at programming and testing. When I replied by asking how many grains of rice I should put in a pot, I helped to realize that the amount of testing necessary depends on a number of factors, and the programmer knows those factors better than I do – it’s her code after all. There is no single, simple, answer, and she’s smart enough.
+> - I see, but if there is no single simple answer, then why did you answer the third programmer ‘80%’?
+> - The third programmer wants only simple answers, even when there are no simple answers, and then does not follow them anyway.
 
 
 Goodhart's law
@@ -505,7 +505,7 @@ Simplified:
 
 > When a measure becomes a target, it ceases to be a good measure
 
-Personal French translation:
+In French:
 
 > Dès qu’un métrique devient un objectif, la mesure perd de son utilité.
 
