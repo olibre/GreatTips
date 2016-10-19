@@ -42,6 +42,7 @@ Un bonne définition du "Test Unitaire"
     
     * Donc un test unitaire peut tester plusieurs classes et fonctions
 
+
 Ce qui n'est pas un "Test Unitaire"
 ===================================
 
@@ -57,7 +58,60 @@ Les tests qui font cela ne sont pas mauvais,
 mais ils sont à séparer des vrais "Tests Unitaires"
 afin que ces derniers puissent être exécutés de façon optimale.
 
-https://books.google.fr/books?id=QJA3dM8Uix0C
+
+Granularity
+===========
+
+    TODO
+
+   * test -> function (multiple asserts in unit test)
+   * test1, test2, test3 -> function
+
+
+   * test1 -> function1 ; test2 -> function2 ; test3 -> function3
+   * test1, test2, test3, test4 -> function1, function2, function3
+
+
+   * test1, test2, test3, test4 -> class1, class2
+   * test1, test2, test3, test4 -> class1, class2 -> class3, class4, class5
+
+
+One unit test = One assert
+==========================
+
+By [Roy Osherove](http://programmers.stackexchange.com/questions/7823) (2010)
+
+> **Proper unit tests should fail for exactly one reason**,
+>   that’s why you should be using one assert per unit test.
+
+and
+
+> Test one logical CONCEPT per test.
+> You can have multiple asserts on the same object.
+> They will usually be the same concept being tested.
+
+Read more: [How do you solve multiple asserts?](http://www.owenpellegrin.com/blog/testing/how-do-you-solve-multiple-asserts/)
+
+
+One unit test = One expectation
+===============================
+
+By [Kevlin Henney](https://twitter.com/kevlinhenney/status/438707024067825664) (2014)
+
+> Using a mock, any test with more one expectation
+> is a test with more than one assertion.
+
+
+Découpler les Tests Unitaires
+=============================
+
+[Test double](https://en.wikipedia.org/wiki/Test_double)
+
+1. Dummy (empty shell, no implementation)
+2. Stub (minimal implementations, static, provide always the same response, do not conatains assert)
+3. Fake (act like the real object, but in a simpler way)
+4. Mock (contains assert)
+5. Spy (record events)
 
 
 Test before or after development
@@ -82,13 +136,15 @@ Out of scope
 * [Model-Driven Engineering](https://en.wikipedia.org/wiki/Model-driven_engineering) (MDE)
 * [Model-driven architecture](https://en.wikipedia.org/wiki/Model-driven_architecture) (MDA)
 * [Model-Driven Software Development](https://en.wikipedia.org/wiki/Model-driven_engineering) (MDSD)
-
+* [Test-Driven Decoupling](http://reuzz.net/video/watch/vid01KF44GogeBrs)
 
 Where is Good Unit Tests?
 =========================
 
-* POUT, TDD and DDT can produce GUTs.
-* GUTs are the result
+* TDD produces GUTs.
+* DDT should also produce GUTs.
+* POUT may also produce GUTs.
+* GUTs are the result.
 
 But... What are GUTs?
 
@@ -103,6 +159,46 @@ Par Philippe Bourgeon (2016)
 > Certaines méthodes de programmation des années 90 pronnaient le [raffinnement](https://fr.wikipedia.org/wiki/Raffinement) : le développeur écrivaient des tartines de commentaires avant d'écrire le code. Les tests unitaires sont une bien meilleure solution car les écrits restent (commentaires) et le code s'envole (change). Donc le test est une documentation interactive avec le code : cette documentation est forcée d'évoluer avec le code.
 
 
+Write test for people
+=====================
+
+by [Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) (2009)
+
+Pour qui écrire les tests ?  
+La bonne réponse : Pour ceux qui essayeront de comprendre l'implémentation.
+
+Les bons tests documentent l'implémentation : ils décrivent le fonctionnement du code testé.  
+Pour chaque cas de test :
+
+* Décrire le context, le point de départ ou les préconditions
+* Expliquer comment l'exigence est satisfaite
+* Décrire le résultat attendu ou les postconditions 
+
+Differents cas de test auront des variantes sensiblement différentes de chacun de ces points.
+
+
+Exprimer la fonctionnalité à ceux qui lisent le Test Unitaire
+=============================================================
+
+De [Nat Pryce and Steve Freeman](https://books.google.fr/books?id=QJA3dM8Uix0C) à la [conférence XP Day 2006 "Are Your Tests Really Driving Your Development?"](http://www.theregister.co.uk/2007/03/09/test_driven_development/)
+
+Les tests unitaires doivent aller plus loin
+que la simple vérification des fonctionalités exigées.
+
+Les test doivent aussi clairement exprimer
+au lecteur ces fonctionalités exigées.
+
+=> **Ces tests doivent formaliser la spécification.**
+
+Les tests qui ne sont pas écrits
+dans leur rôle de specifications à l'esprit
+peuvent être très confus à comprendre. 
+
+La difficulté de compréhension de ce qui est testé
+peut donc beaucoup réduire la facilité
+pour faire évoluer une base de code.
+
+
 Good Unit Test = Specification
 ==============================
 
@@ -110,7 +206,8 @@ Les tests unitaires représentnent la spécification du code.
 
 * Unit Test conveys knowledge.
 * Unit Test tells a story.
-* Function names are phrases (using underscore).
+* Function names reflect requirements.
+* Function names are phrases (with underscores).
 
 
 Words *must* and *should*
@@ -121,13 +218,18 @@ Préférer *must* à *shall* car plus explicite.
 Attention *should* dans les spec veut dire *optional*.
 Donc non testé => Éviter *should*
 
+* Reflect outcome not aspiration:  
+  "X should give Y" --> "X gives Y"
+
 
 Unit Test coding rules
 ======================
 
 > *function names are phrases*
 
-Les règles de codage sont différentes pour le code à destination de la prod et celui des tests unitaires.
+Les règles de codage sont différentes
+pour le code à destination de la prod
+et celui des tests unitaires.
 
 
 The Way of Testivus
@@ -184,14 +286,16 @@ Projet Ariane 5
 * 1981 : Conception Ariane 4
 * 1987 : Conception Ariane 5
 * 1988 à 2003 : Ariane 4, 15 ans de service, 97% de succès (116 lancements)
-* 199x : Décision de réutiliser le *Système de Référence Inertielle* (SRI) d'Ariane 4 (réputé fiable). Pour éviter de refaire des tests (800 kF), la calibration n'est pas désactivée (nécessaire pour Ariane 4).
+* 199x : Décision de réutiliser le *Système de Référence Inertielle* (SRI) d'Ariane 4 (réputé fiable).
+   Pour éviter de refaire des tests (800 kF), la calibration n'est pas désactivée (nécessaire pour Ariane 4).
 * 1996 : Vol inaugural (v80) d'Ariane 5 (501)
+* 1997 : Après 16 mois de vérifications, second vol, réussite 
 
 
 Ariane 501
 ==========
 
-*Un petit bogue, un grand boum !*
+*Un petit bug, un grand boum !*
 
 * Le coût du lancement et des 4 satellites est de 2 milliard de francs
 * L'accélération d'Ariane 5 est cinq fois plus élevée que Ariane 4
@@ -209,23 +313,30 @@ Code source Ariane 501
 
 ![Scan du code source Ada du SRI](http://olibre.github.io/CppCoding/GUTs/bug-Ariane-501_by-JeanJacquesLevy-INRIA-2010.jpg)
 
+
 Bug Ariane 501
 ==============
 
 ```ada
-L_M_BV_32 := TBD.T_ENTIER_32S ((1.0/C_M_LSB_BV) * G_M_INFO_DERIVE(T_ALG.E_BV));
+L_M_BV_32 := TBD.T_ENTIER_32S ((1.0/C_M_LSB_BV) * 
+                                   G_M_INFO_DERIVE(T_ALG.E_BV));
 
 if L_M_BV_32 > 32767 then
-	P_M_DERIVE(T_ALG.E_BV) := 16#7FFF#;
+   P_M_DERIVE(T_ALG.E_BV) := 16#7FFF#;
 elsif L_M_BV_32 < -32768 then
-	P_M_DERIVE(T_ALG.E_BV) := 16#8000#;
+   P_M_DERIVE(T_ALG.E_BV) := 16#8000#;
 else
-	P_M_DERIVE(T_ALG.E_BV) := UC_16S_EN_16NS(TDB.T_ENTIER_16S(L_M_BV_32));
+   P_M_DERIVE(T_ALG.E_BV) := UC_16S_EN_16NS(TDB.T_ENTIER_16S(L_M_BV_32));
 end if;
 
-P_M_DERIVE(T_ALG.E_BH) := UC_16S_EN_16NS(TDB.T_ENTIER_16S ((1.0/C_M_LSB_BH) * G_M_INFO_DERIVE(T_ALG.E_BH)));
+P_M_DERIVE(T_ALG.E_BH) := UC_16S_EN_16NS (TDB.T_ENTIER_16S
+                                   ((1.0/C_M_LSB_BH) *
+				   G_M_INFO_DERIVE(T_ALG.E_BH)));
 ```
-Dans ce code source Ada, les Bornes -32768..32767 sont vérifiées pour BV (**V**érticale), mais pas pour BH (**H**orizontale).
+
+Dans ce code source Ada, les bornes -32768..32767 sont vérifiées
+* pour BV (**V**érticale) ;
+* mais pas pour BH (**H**orizontale).
 
 
 Commission d'enquête Ariane 501 
@@ -243,6 +354,7 @@ Commission d'enquête Ariane 501
 
 Sources
 -------
+    
 * http://deschamp.free.fr/exinria/divers/ariane_501.html
 * http://www.math.umn.edu/~arnold/disasters/ariane5rep.html (semble être la version anglaise du précédent)
 * http://cmpe.emu.edu.tr/chefranov/Cmps201-fall2011/Notes/Ariane5failure.pdf
@@ -250,11 +362,14 @@ Sources
 * http://www.rvs.uni-bielefeld.de/publications/Reports/ariane.html (non lu mais parrait intéressant)
 
 
-Conclusions Ariane 501 
-======================
+Apprentissage du cas Ariane 501 
+===============================
 
-* Les tests sont utililes pour vérifier tout changement
-* Attention aux contraintes budget / planning / politique
+La légitimité du test est le changement
+---------------------------------------
+
+Attention aux contraintes budget / planning / conservatisme / politique
+-----------------------------------------------------------------------
 
 
 Couverture de code
@@ -324,19 +439,6 @@ After, a young apprentice approached the great master:
 - The third programmer wants only simple answers, even when there are no simple answers, and then does not follow them anyway.
 
 
-
-Is it the RIGHT 20%?
-====================
-
-On question [*"What is a reasonable code coverage % for unit tests?"*](http://stackoverflow.com/a/90089/938111), Jon Limjap shared his anecdote:
-
-We have a huge project. I noted that, with 700 unit tests, we only have 20% code coverage.
-
-Scott Hanselman replied:
-
-> Is it the RIGHT 20%? Is it the 20% that represents the code your users hit the most? You might add 50 more tests and only add 2%.
-
-
 Goodhart's law
 ==============
 
@@ -362,7 +464,7 @@ alors le développeur est incité à laisser des lignes de code testées
 mais sans aucune utilité (ou même, à en rajouter).
 
 
-Continous testing
+Continous Testing
 =================
 
 The Pragmatic Programmer by Andrew Hunt and David Thomas
@@ -372,16 +474,6 @@ Tip 62
 > * **Test early**
 > * **Test often**
 > * **Test automatically**
-
-
-TDD
-===
-
-Écrire les tests unitaires au départ puis écrire le code de façon à faire fonctionner ces tests unitaires revient à écrire son code sous contrat. : changer le code c'est se confronter au contrat défini dans les tests unitaires. Et c'est plus rassurant que le cassage de code soit détecté au plus tôt car un développeur ne peut pas tout savoir sur le code qu'il modifie.
-
-Il aura un moyen de constater si les modifications cassent des choses qu'il n'a pas prêté attention ou que l'on ne lui a pas dite.
-
-
 
 
 Tester les invariants et propriétés
@@ -418,21 +510,28 @@ See also https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.2B.2B
 Test-Driven Development
 =======================
 
-Développement piloté par les tests.
+Développement **piloté** par les tests.
+
+    TODO
+
+Écrire les tests unitaires au départ puis écrire le code de façon à faire fonctionner ces tests unitaires revient à écrire son code sous contrat. : changer le code c'est se confronter au contrat défini dans les tests unitaires. Et c'est plus rassurant que le cassage de code soit détecté au plus tôt car un développeur ne peut pas tout savoir sur le code qu'il modifie.
 
 
 
 
-Découpler ses tests unitaires
-=============================
 
-Sometimes environement is simulated and needs modeling.
+TODO
+====
 
-Test doubles
-------------
+https://www.reddit.com/r/programming/comments/2vzf3a/kevlin_henney_seven_ineffective_coding_habits_of/
 
-1. Dummy (empty shell, no implementation)
-2. Stub (minimal implementations, static, provide always the same response, do not conatains assert)
-3. Fake (act like the real object, but in a simpler way)
-4. Mock (contains assert)
-5. Spy (record events)
+* integers_to_csv
+* is_leap_year
+* ISBN with more than 13 digits are malformed
+* RecentlyUsedList
+* Anatomy of a test case (Given – When – Then)
+* slide 91
+* slide 101
+
+
+https://www.softwarestrategy.co.uk/training/programming/tddcpp/
