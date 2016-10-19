@@ -105,21 +105,23 @@ By [Kevlin Henney](https://twitter.com/kevlinhenney/status/438707024067825664) (
 Découpler les Tests Unitaires
 =============================
 
-[Test double](https://en.wikipedia.org/wiki/Test_double)
-
-1. Dummy (empty shell, no implementation)
-2. Stub (minimal implementations, static, provide always the same response, do not conatains assert)
-3. Fake (act like the real object, but in a simpler way)
-4. Mock (contains assert)
-5. Spy (record events)
+[Test double](https://en.wikipedia.org/wiki/Test_double)    | Definition
+------------------------------------------------------------|-------------------------------------------
+**Dummy** object                                            | Empty shell, no implementation
+[Test **Stub**](https://en.wikipedia.org/wiki/Test_stubs)   | Minimal implementations, static, provide always the same response, do not conatains assert
+[**Fake** object](https://en.wikipedia.org/wiki/Fake_object)| Act like the real object, but in a simpler way
+[**Mock** object](https://en.wikipedia.org/wiki/Mock_object)| Contain assert
+Test **Spy**                                                | Record events
 
 
 Test before or after development
 ================================
 
-* Plain Old Unit Test (POUT) = Write the test **AFTER** the feature
-* [Test-Driven Development](https://fr.wikipedia.org/wiki/Test_driven_development) (TDD) = Write the test **BEFORE** the feature
-* Defect-Driven Testing (DDT) = Write the test **BEFORE** the fix
+Process                  | Abbr.   | Description
+-------------------------|---------|-----------------------------
+Plain Old Unit Test      | POUT    | Write the test **AFTER** the feature
+[Test-Driven Development](https://fr.wikipedia.org/wiki/Test_driven_development)|TDD| Write the test **BEFORE** the feature
+Defect-Driven Testing    | DDT     | Write the test **BEFORE** the fix
 
 
 Out of scope 
