@@ -49,10 +49,10 @@ Ce qui n'est pas un "Test Unitaire"
 By [Michael Feathers](http://www.artima.com/weblogs/viewpost.jsp?thread=126923) (2005)
 
 * It talks to the database ;
-* It communicates across the network ;
-* It touches the file system ;
-* It can't run at the same time as any of your other unit tests ;
-* You have to do special things to your environment (such as editing config files) to run it.
+* It communicates across the network ;
+* It touches the file system ;
+* It can't run at the same time as any of your other unit tests ;
+* You have to do special things to your environment (such as editing config files) to run it.
 
 Les tests qui font cela ne sont pas mauvais,
 mais ils sont à séparer des vrais "Tests Unitaires"
@@ -64,16 +64,16 @@ Granularity
 
     TODO
 
-   * test -> function (multiple asserts in unit test)
-   * test1, test2, test3 -> function
+* test -> function (multiple asserts in unit test)
+* test1, test2, test3 -> function
 
 
-   * test1 -> function1 ; test2 -> function2 ; test3 -> function3
-   * test1, test2, test3, test4 -> function1, function2, function3
+* test1 -> function1 ; test2 -> function2 ; test3 -> function3
+* test1, test2, test3, test4 -> function1, function2, function3
 
 
-   * test1, test2, test3, test4 -> class1, class2
-   * test1, test2, test3, test4 -> class1, class2 -> class3, class4, class5
+* test1, test2, test3, test4 -> class1, class2
+* test1, test2, test3, test4 -> class1, class2 -> class3, class4, class5
 
 
 One unit test = One assert
