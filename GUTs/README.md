@@ -1,7 +1,7 @@
 Good Unit Tests (GUTs)
 ======================
 
-Inspiration come from trainings provided by [**Kevlin Henney**](http://www.infoq.com/author/Kevlin-Henney#Presentations) (see this [presentation](
+Inspiration come from trainings provided by [**Kevlin Henney**](http://www.infoq.com/author/Kevlin-Henney#Presentations) (see [his presentation](
 http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-testing)) and many other Unit-Testing documents. 
 
 | Kevlin is a consultant and trainer on languages, design, and development process.
