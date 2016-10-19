@@ -365,11 +365,8 @@ Sources
 Apprentissage du cas Ariane 501 
 ===============================
 
-La légitimité du test est le changement
----------------------------------------
-
-Attention aux contraintes budget / planning / conservatisme / politique
------------------------------------------------------------------------
+1. Le **changement** justifie les tests
+2. Conserver la **qualité** face aux contraintes budget, planning, conservatisme, politique...
 
 
 Couverture de code
