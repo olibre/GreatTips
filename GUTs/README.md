@@ -117,7 +117,7 @@ Découpler les Tests Unitaires
 Test before or after development
 ================================
 
-* Plain Old Test Unit (POUT) = Write the test **AFTER** the feature
+* Plain Old Unit Test (POUT) = Write the test **AFTER** the feature
 * [Test-Driven Development](https://fr.wikipedia.org/wiki/Test_driven_development) (TDD) = Write the test **BEFORE** the feature
 * Defect-Driven Testing (DDT) = Write the test **BEFORE** the fix
 
@@ -141,12 +141,11 @@ Out of scope
 Where is Good Unit Tests?
 =========================
 
-* TDD produces GUTs.
-* DDT should also produce GUTs.
-* POUT may also produce GUTs.
-* GUTs are the result.
+* POUT may produce GUTs.
+* TDD must produce GUTs.
+* DDT should produce GUTs.
 
-But... What are GUTs?
+But... What are really GUTs?
 
 
 Laver ses mains
