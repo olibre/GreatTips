@@ -343,7 +343,7 @@ Projet Ariane 5
 * 1988 à 2003 : Ariane 4, 15 ans de service, 97% de succès (116 lancements)
 * 199x : Décision de réutiliser le *Système de Référence Inertielle* (SRI) d'Ariane 4 (réputé fiable).
    Pour éviter de refaire des tests (800 kF), la calibration n'est pas désactivée (nécessaire pour Ariane 4).
-* 1996 : Vol inaugural (v80) d'Ariane 5 (501)
+* 1996 : Vol inaugural (v88) d'Ariane 5 (fusée 501)
 * 1997 : Après 16 mois de vérifications, second vol, réussite 
 
 
