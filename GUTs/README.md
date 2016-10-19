@@ -46,60 +46,17 @@ Un bonne définition du "Test Unitaire"
 Ce qui n'est pas un "Test Unitaire"
 ===================================
 
-By [Michael Feathers](http://www.artima.com/weblogs/viewpost.jsp?thread=126923) (2005)
+[Michael Feathers](http://www.artima.com/weblogs/viewpost.jsp?thread=126923) (2005)
 
-* It talks to the database ;
-* It communicates across the network ;
-* It touches the file system ;
-* It can't run at the same time as any of your other unit tests ;
-* You have to do special things to your environment (such as editing config files) to run it.
-
-Les tests qui font cela ne sont pas mauvais,
-mais ils sont à séparer des vrais "Tests Unitaires"
-afin que ces derniers puissent être exécutés de façon optimale.
-
-
-Granularity
-===========
-
-    TODO
-
-* test -> function (multiple asserts in unit test)
-* test1, test2, test3 -> function
-
-
-* test1 -> function1 ; test2 -> function2 ; test3 -> function3
-* test1, test2, test3, test4 -> function1, function2, function3
-
-
-* test1, test2, test3, test4 -> class1, class2
-* test1, test2, test3, test4 -> class1, class2 -> class3, class4, class5
-
-
-One unit test = One assert
-==========================
-
-By [Roy Osherove](http://programmers.stackexchange.com/questions/7823) (2010)
-
-> **Proper unit tests should fail for exactly one reason**,
->   that’s why you should be using one assert per unit test.
-
-and
-
-> Test one logical CONCEPT per test.
-> You can have multiple asserts on the same object.
-> They will usually be the same concept being tested.
-
-Read more: [How do you solve multiple asserts?](http://www.owenpellegrin.com/blog/testing/how-do-you-solve-multiple-asserts/)
-
-
-One unit test = One expectation
-===============================
-
-By [Kevlin Henney](https://twitter.com/kevlinhenney/status/438707024067825664) (2014)
-
-> Using a mock, any test with more one expectation
-> is a test with more than one assertion.
+> * It talks to the database ;
+> * It communicates across the network ;
+> * It touches the file system ;
+> * It can't run at the same time as any of your other unit tests ;
+> * You have to do special things to your environment (such as editing config files) to run it.
+> 
+> Les tests qui font cela ne sont pas mauvais,
+> mais ils sont à séparer des vrais "Tests Unitaires"
+> afin que ces derniers puissent être exécutés de façon optimale.
 
 
 Découpler les Tests Unitaires
@@ -112,6 +69,102 @@ Découpler les Tests Unitaires
 [**Fake** object](https://en.wikipedia.org/wiki/Fake_object)| Act like the real object, but in a simpler way
 [**Mock** object](https://en.wikipedia.org/wiki/Mock_object)| Contain assert
 Test **Spy**                                                | Record events
+
+
+Granularity
+===========
+
+    TODO
+
+Multiple asserts in one big unit test
+
+test                                   | ->  | function
+---------------------------------------|-----|----------------------------------------
+
+
+One unit test = One assert
+==========================
+
+[Roy Osherove](http://programmers.stackexchange.com/questions/7823) (2010)
+
+> **Proper unit tests should fail for exactly one reason**,  
+>   that’s why you should be using one assert per unit test.
+
+
+Granularity
+===========
+
+    TODO
+
+test1 <br> test2 <br> test3 <br> test4 | ->  | function
+---------------------------------------|-----|----------------------------------------
+
+
+
+Multiple asserts = same concept
+===============================
+
+Again Roy Osherove (see [How do you solve multiple asserts?](http://www.owenpellegrin.com/blog/testing/how-do-you-solve-multiple-asserts/))
+
+> Test one logical CONCEPT per test.  
+> You can have multiple asserts on the same object.  
+> They will usually be the same concept being tested.
+
+
+One unit test = One expectation
+===============================
+
+By [Kevlin Henney](https://twitter.com/kevlinhenney/status/438707024067825664) (2014)
+
+> Using a mock, any test with more one expectation
+> is a test with more than one assertion.
+
+
+Granularity
+===========
+
+    TODO
+
+| test1 | -> | function1
+|-------|----|-----------
+| test2 | -> | function2
+| test3 | -> | function3
+
+
+Granularity
+===========
+
+    TODO
+
+test1 <br> test2 <br> test3 <br> test4 | ->  | function1 <br> function2 <br> function3
+---------------------------------------|-----|----------------------------------------
+
+Granularity
+===========
+
+    TODO
+
+test1 <br> test2 <br> test3 <br> test4 | ->  | class
+---------------------------------------|-----|----------------------------------------
+
+
+Granularity
+===========
+
+    TODO
+
+test1 <br> test2 <br> test3 <br> test4 | ->  | class1 <br> class2
+---------------------------------------|-----|----------------------------------------
+
+
+Granularity
+===========
+
+    TODO
+
+test1 <br> test2 <br> test3 <br> test4 | ->  | class1 <br> class2 | -> |  class3 <br> class4 <br> class5
+---------------------------------------|-----|--------------------|----|----------------
+
 
 
 Test before or after development
@@ -139,6 +192,7 @@ Out of scope
 * [Model-driven architecture](https://en.wikipedia.org/wiki/Model-driven_architecture) (MDA)
 * [Model-Driven Software Development](https://en.wikipedia.org/wiki/Model-driven_engineering) (MDSD)
 * [Test-Driven Decoupling](http://reuzz.net/video/watch/vid01KF44GogeBrs)
+
 
 Where is Good Unit Tests?
 =========================
@@ -178,8 +232,8 @@ Pour chaque cas de test :
 Differents cas de test auront des variantes sensiblement différentes de chacun de ces points.
 
 
-Exprimer la fonctionnalité à ceux qui lisent le Test Unitaire
-=============================================================
+Le Test Unitaire décrit la fonctionnalité testée
+================================================
 
 De [Nat Pryce and Steve Freeman](https://books.google.fr/books?id=QJA3dM8Uix0C) à la [conférence XP Day 2006 "Are Your Tests Really Driving Your Development?"](http://www.theregister.co.uk/2007/03/09/test_driven_development/)
 
