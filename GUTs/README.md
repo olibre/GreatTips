@@ -1,19 +1,31 @@
 Good Unit Tests (GUTs)
 ======================
 
-Inspiration come from trainings provided by [**Kevlin Henney**](http://www.infoq.com/author/Kevlin-Henney#Presentations) (see [his presentation](
-http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-testing)) and many other Unit-Testing documents. 
+Inspiration comes from trainings provided by [**Kevlin**][HKi] [**Henney**][HKs] and many other Unit-Testing documents.
 
-| Kevlin is a consultant and trainer on languages, design, and development process.
+[HKi]: http://www.infoq.com/author/Kevlin-Henney#Presentations "Presentations of Kevlin Henney on infoq.com"
+[HKs]: http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-testing "One good presentation on slideshare.net"
+
+| Kevlin is a trainer on language and development process.
 |--------------------------------------------
-| ![Cover of the book 97 Things Every Programmer Should Know (2010)](http://akamaicovers.oreilly.com/images/9780596809492/cat.gif) ![Cover of the book 97 Things Every Java Programmer Should Know (2017)](http://akamaicovers.oreilly.com/images/0636920048824/cat.gif) ![Kevlin's face](http://programmer.97things.oreilly.com/wiki/images/9/98/Kevlin_251x228.jpg)
+| [![book cover][97p]][97L] ![book cover][97j] [![Kevlin's face][KH]][KHw]
+
+[97p]: http://akamaicovers.oreilly.com/images/9780596809492/cat.gif "97 Things Every Programmer Should Know (2010)"
+[97L]: http://programmer.97things.oreilly.com/wiki/index.php/Contributions_Appearing_in_the_Book
+[97j]: http://akamaicovers.oreilly.com/images/0636920048824/cat.gif "97 Things Every Java Programmer Should Know (2017)"
+[KH]:  http://programmer.97things.oreilly.com/wiki/images/9/98/Kevlin_251x228.jpg
+[KHw]: https://en.wikipedia.org/wiki/Kevlin_Henney
 
 
-Test your code
-==============
+Who test?
+=========
 
-| *The Pragmatic Programmer*  <br> by Andrew Hunt <br> and David Thomas <br><br><br><br><br><br> Tip 49 <br> *Test your software <br> or your users will.*           | ![Book cover](https://upload.wikimedia.org/wikipedia/en/8/8f/The_pragmatic_programmer.jpg)
-|--------------------------------------------------|---
+|    | &nbsp;
+|----|--------
+| Tip 49 <br><br><br> **Test your software <br> or your users will.** | [![Book cover][PImg]][PLink]
+
+[PImg]: http://upload.wikimedia.org/wikipedia/en/8/8f/The_pragmatic_programmer.jpg "The Pragmatic Programmer by Andrew Hunt and David Thomas (1999)"
+[PLink]: https://en.wikipedia.org/wiki/The_Pragmatic_Programmer
 
 
 Technical debt
@@ -64,24 +76,121 @@ Ce qui n'est pas un "Test Unitaire"
 Découpler les Tests Unitaires
 =============================
 
-[Test double](https://en.wikipedia.org/wiki/Test_double)    | Definition
-------------------------------------------------------------|-------------------------------------------
-**Dummy** object                                            | Empty shell, no implementation
-[Test **Stub**](https://en.wikipedia.org/wiki/Test_stubs)   | Minimal implementations, static, provide always the same response, do not conatains assert
-[**Fake** object](https://en.wikipedia.org/wiki/Fake_object)| Act like the real object, but in a simpler way
-[**Mock** object](https://en.wikipedia.org/wiki/Mock_object)| Contain assert
-Test **Spy**                                                | Record events
+[Test double][td]    | Definition
+---------------------|-------------------------------------------
+**Dummy** object     | Empty shell, no implementation
+[Test **Stub**][ts]  | Minimal implementations, provide always the same response, no assert
+[**Fake** object][fo]| Act like the real object, but in a simpler way
+[**Mock** object][mo]| Contain assert
+Test **Spy**         | Record events
+
+[td]: http://en.wikipedia.org/wiki/Test_double
+[ts]: http://en.wikipedia.org/wiki/Test_stubs
+[fo]: http://en.wikipedia.org/wiki/Fake_object
+[mo]: http://en.wikipedia.org/wiki/Mock_object
 
 
-Granularity
-===========
+Put theory into practice
+========================
 
-    TODO
+[**Année bissextile**](https://fr.wikipedia.org/wiki/Ann%C3%A9e_bissextile#R.C3.A8gle_actuelle)
 
-Multiple asserts in one big unit test
+Depuis le calendrier grégorien, l'année est bissextile :
 
-test                                   | ->  | function
----------------------------------------|-----|----------------------------------------
+* si l'année est divisible par 4 et non divisible par 100, ou
+* si l'année est divisible par 400.
+
+
+```cpp
+bool is_leap_year(int year);
+```
+
+Test has its own implementation
+===============================
+
+```cpp
+//if (year is not divisible by 4) then (it is a common year)
+//else if (year is not divisible by 100) then (it is a leap year)
+//else if (year is not divisible by 400) then (it is a common year)
+//else (it is a leap year)
+test()
+{
+  // Test all years until 10'000
+  for (int y=1; y<10*1000; ++y)
+  {
+    bool leap;
+    if (y % 4) leap = false;
+    else leap = y % 100 ? true : y % 400;
+
+    // Check if tested code has same value
+    x = is_leap_year(y);
+    ASSERT_EQUAL(leap, x);
+  }
+}
+```
+
+Feature implemented
+===================
+
+```cpp
+bool is_leap_year (int year)
+{
+  bool leap; // value to return
+
+  if (year % 4) leap = false;
+  else leap = year % 100 ? true : year % 400;
+
+  return leap;
+}
+```
+
+One function -> one test
+========================
+
+```cpp
+test()
+{
+  ASSERT_FALSE( is_leap_year(   7) );
+  ASSERT_FALSE( is_leap_year(  17) );
+  ASSERT_FALSE( is_leap_year(2002) );
+  ASSERT_FALSE( is_leap_year(2003) );
+  ASSERT_FALSE( is_leap_year(1700) );
+  ASSERT_FALSE( is_leap_year(1800) );
+  ASSERT_FALSE( is_leap_year(1900) );
+  ASSERT_FALSE( is_leap_year(2100) );
+  ASSERT_TRUE(  is_leap_year(1704) );
+  ASSERT_TRUE(  is_leap_year(1916) );
+  ASSERT_TRUE(  is_leap_year(2012) );
+  ASSERT_TRUE(  is_leap_year(2016) );
+}
+```
+
+
+With comments
+=============
+
+```cpp
+test()
+{
+  // Not Divisible by 4
+  ASSERT_FALSE( is_leap_year(   7) );
+  ASSERT_FALSE( is_leap_year(  17) );
+  ASSERT_FALSE( is_leap_year(2002) );
+  ASSERT_FALSE( is_leap_year(2003) );
+
+  // Multiple of 100 except 400
+  ASSERT_FALSE( is_leap_year(1700) );
+  ASSERT_FALSE( is_leap_year(1800) );
+  ASSERT_FALSE( is_leap_year(1900) );
+  ASSERT_FALSE( is_leap_year(2100) );
+
+  // Rest
+  ASSERT_TRUE(  is_leap_year(1704) );
+  ASSERT_TRUE(  is_leap_year(1916) );
+  ASSERT_TRUE(  is_leap_year(2012) );
+  ASSERT_TRUE(  is_leap_year(2016) );
+}
+```
 
 
 One unit test = One assert
@@ -89,28 +198,126 @@ One unit test = One assert
 
 [Roy Osherove](http://programmers.stackexchange.com/questions/7823) (2010)
 
-> **Proper unit tests should fail for exactly one reason**,  
->   that’s why you should be using one assert per unit test.
+> **Unit tests should fail for exactly one reason.**  
+> That’s why you should use one assert per unit test.
+
+Test     |     | Code
+---------|-----|---------
+`test()` | ->  | `is_leap_year()`
+`test1()` <br> `test2()` <br> `test3()` <br> `test4()` <br> ... | ->  | `is_leap_year()`
 
 
-Granularity
-===========
+Only one assert per test
+========================
 
-    TODO
+```cpp
+test_7_is_not_leap() {
+  ASSERT_FALSE( is_leap_year(   7) );
+}
+test_17_is_not_leap() {
+  ASSERT_FALSE( is_leap_year(  17) );
+}
+test_2002_is_not_leap() {
+  ASSERT_FALSE( is_leap_year(2002) );
+}
+test_2003_is_not_leap() {
+  ASSERT_FALSE( is_leap_year(2003) );
+}
+test_1700_is_not_leap() {
+  ASSERT_FALSE( is_leap_year(1700) );
+}
+test_1800_is_not_leap() {
+  ASSERT_FALSE( is_leap_year(1800) );
+}
+test_1900_is_not_leap() {
+  ASSERT_FALSE( is_leap_year(1900) );
+}
+test_2100_is_not_leap() {
+  ASSERT_FALSE( is_leap_year(2100) );
+}
+test_1704_is_leap() {
+  ASSERT_TRUE(  is_leap_year(1704) );
+}
+test_1916_is_leap() {
+  ASSERT_TRUE(  is_leap_year(1916) );
+}
+test_2012_is_leap() {
+  ASSERT_TRUE(  is_leap_year(2012) );
+}
+test_2016_is_leap() {
+  ASSERT_TRUE(  is_leap_year(2016) );
+}
+```
 
-test1 <br> test2 <br> test3 <br> test4 | ->  | function
----------------------------------------|-----|----------------------------------------
 
+Group asserts within same concept
+=================================
 
-
-Multiple asserts = same concept
-===============================
-
-Again Roy Osherove (see [How do you solve multiple asserts?](http://www.owenpellegrin.com/blog/testing/how-do-you-solve-multiple-asserts/))
+[Roy Osherove](http://www.owenpellegrin.com/blog/testing/how-do-you-solve-multiple-asserts/ "How do you solve multiple asserts?") (2010)
 
 > Test one logical CONCEPT per test.  
 > You can have multiple asserts on the same object.  
 > They will usually be the same concept being tested.
+
+Test     |     | Code
+---------|-----|---------
+`test1()` <br> `test2()` <br> `test3()` <br> `test4()` <br> ... | ->  | `is_leap_year()`
+
+
+Group asserts
+=============
+
+```cpp
+test_not_divisible_by_4_is_not_leap()
+{
+  ASSERT_FALSE( is_leap_year(   7) );
+  ASSERT_FALSE( is_leap_year(  17) );
+  ASSERT_FALSE( is_leap_year(2002) );
+  ASSERT_FALSE( is_leap_year(2003) );
+}
+
+test_multiple_of_100_except_400_is_not_leap()
+{
+  ASSERT_FALSE( is_leap_year(1700) );
+  ASSERT_FALSE( is_leap_year(1800) );
+  ASSERT_FALSE( is_leap_year(1900) );
+  ASSERT_FALSE( is_leap_year(2100) );
+}
+
+test_rest_is_leap()
+{
+  ASSERT_TRUE(  is_leap_year(1704) );
+  ASSERT_TRUE(  is_leap_year(1916) );
+  ASSERT_TRUE(  is_leap_year(2012) );
+  ASSERT_TRUE(  is_leap_year(2016) );
+}
+```
+
+
+Answer from Kevlin
+==================
+
+```cpp
+TEST(A_year_is_not_a_leap_year, if_it_is_not_divisible_by_4)
+{
+    ASSERT_FALSE(is_leap_year(2015));
+}
+
+TEST(A_year_is_a_leap_year, if_it_is_divisible_by_4_but_not_by_100)
+{
+    ASSERT_TRUE(is_leap_year(2016));
+}
+
+TEST(A_year_is_not_a_leap_year, if_it_is_divisible_by_100_but_not_by_400)
+{
+    ASSERT_FALSE(is_leap_year(1900));
+}
+
+TEST(A_year_is_a_leap_year, if_it_is_divisible_by_400)
+{
+    ASSERT_TRUE(is_leap_year(2000));
+}
+```
 
 
 One unit test = One expectation
@@ -118,90 +325,187 @@ One unit test = One expectation
 
 [Kevlin Henney](https://twitter.com/kevlinhenney/status/438707024067825664) (2014)
 
-> Using a mock, any test with more one expectation
+> Using a **mock**, any test with more than one expectation
 > is a test with more than one assertion.
 
 
-Granularity
-===========
+Test a class
+============
 
-    TODO
-
-| test1 | -> | function1
-|-------|----|-----------
-| test2 | -> | function2
-| test3 | -> | function3
-
-
-Granularity
-===========
-
-    TODO
-
-test1 <br> test2 <br> test3 <br> test4 | ->  | function1 <br> function2 <br> function3
----------------------------------------|-----|----------------------------------------
-
-Granularity
-===========
-
-    TODO
-
-test1 <br> test2 <br> test3 <br> test4 | ->  | class
----------------------------------------|-----|----------------------------------------
+Test       |     | Code
+-----------|-----|---------
+`test1()`  | ->  | `function1()`
+`test2()`  | ->  | `function2()`
+`test3()`  | ->  | `function3()`
+`test4()`  | ->  | `function4()`
+`test5()`  | ->  | `function5()`
+`test6()`  | ->  | `function6()`
 
 
-Granularity
-===========
+Test `std::vector`
+==================
 
-    TODO
+```cpp
+test_empty();
+test_begin();
+test_end();
+test_size();
+test_capacity();
+test_reserve();
+test_push_back();
+test_pop_back();
+test_clear();
+```
 
-test1 <br> test2 <br> test3 <br> test4 | ->  | class1 <br> class2
----------------------------------------|-----|----------------------------------------
+
+Test a class
+============
+
+Test                                       |     | Code
+-------------------------------------------|-----|--------------
+`test1()`                                  | ->  | `function1()`
+`test2()`                                  | ->  | `function2()`
+`test3()`                                  | ->  | `function3()`
+`test4()`                                  | ->  | `function4()`
+`test5()`                                  | ->  | `function5()`
+`test6()`                                  | ->  | `function6()`
+----------------                           |-----|--------------
+`test10()` <br> `test11()`                 | ->  | `function1()`
+`test20()` <br> `test21()` <br> `test22()` | ->  | `function2()`
+`test30()` <br> `test31()`                 | ->  | `function3()`
+`test40()` <br> `test41()` <br> `test42()` | ->  | `function4()`
+`test50()` <br> `test51()` <br> `test52()` | ->  | `function5()`
+`test60()` <br> `test61()`                 | ->  | `function6()`
 
 
-Granularity
-===========
 
-    TODO
+Test `std::vector`
+==================
 
-test1 <br> test2 <br> test3 <br> test4 | ->  | class1 <br> class2 | -> |  class3 <br> class4 <br> class5
----------------------------------------|-----|--------------------|----|----------------
+```cpp
+test_empty_1();
+test_empty_2();
+test_begin_1();
+test_begin_2();
+test_end_1();
+test_end_2();
+test_size_1();
+test_size_2();
+test_capacity_1();
+test_capacity_2();
+test_reserve_1();
+test_reserve_2();
+test_push_back_1();
+test_push_back_2();
+test_pop_back_1();
+test_pop_back_2();
+test_clear_1();
+test_clear_2();
+```
 
+
+Test a class
+============
+
+Test                                       |     | Code
+-------------------------------------------|-----|--------------
+`test1()`                                  | ->  | `function1()`
+`test2()`                                  | ->  | `function2()`
+`test3()`                                  | ->  | `function3()`
+`test4()`                                  | ->  | `function4()`
+`test5()`                                  | ->  | `function5()`
+`test6()`                                  | ->  | `function6()`
+----------------                           |-----|--------------
+`test10()` <br> `test11()`                 | ->  | `function1()`
+`test20()` <br> `test21()` <br> `test22()` | ->  | `function2()`
+`test30()` <br> `test31()`                 | ->  | `function3()`
+`test40()` <br> `test41()` <br> `test42()` | ->  | `function4()`
+`test50()` <br> `test51()` <br> `test52()` | ->  | `function5()`
+`test60()` <br> `test61()`                 | ->  | `function6()`
+----------------                           |-----|--------------
+`test10()` <br> `test11()` <br> `test20()` <br> `test21()` <br> `test22()` <br> `test30()` <br> `test31()` <br> `test40()` <br> `test41()` <br> `test42()` <br> `test50()` <br> `test51()` <br> `test52()` <br> `test60()` <br> `test61()` | ->  | `function1()` <br> `function2()` <br> `function3()` <br> `function4()` <br> `function5()` <br> `function6()`
+
+
+Granularity of Unit Test
+========================
+
+Test                                                                  |     | Code
+----------------------------------------------------------------------|-----|------------
+`test10()` <br> `test11()` <br> `test20()` <br> `test21()` <br> `...` | ->  | `function1()` <br> `function2()` <br> `function3()` <br> `function4()` <br> `function5()` <br> `function6()`
+----------------                                                      |-----|------------
+`test10()` <br> `test11()` <br> `test20()` <br> `test21()` <br> `...` | ->  | `ClassA`
+
+
+Granularity of Unit Test
+========================
+
+Test                                                      |     | Code
+----------------------------------------------------------|-----|------------
+`test10()` <br> `test11()` <br> `test20()` <br> `test21()`| ->  | `ClassA`
+----------------                                          |-----|------------
+`test10()` <br> `test11()` <br> `test20()` <br> `test21()`| ->  | `ClassA` <br> `ClassB`
+
+
+Granularity of Unit Test
+========================
+
+Test                                                      |     | Code                  |     | Dependency
+----------------------------------------------------------|-----|-----------------------|-----|------------
+`test10()` <br> `test11()` <br> `test20()` <br> `test21()`| ->  | `ClassA`              |     |
+----------------                                          |-----|------------           |-----|------------
+`test10()` <br> `test11()` <br> `test20()` <br> `test21()`| ->  | `ClassA` <br> `ClassB`|     |
+----------------                                          |-----|------------           |-----|------------
+`test10()` <br> `test11()` <br> `test20()` <br> `test21()`| ->  | `ClassA` <br> `ClassB`| ->  | `ClassC` <br> `ClassD` <br> `ClassE`
 
 
 Test before or after development
 ================================
 
-Process                  | Abbr.   | Description
--------------------------|---------|-----------------------------
-Plain Old Unit Test      | POUT    | Write the test **AFTER** the feature
-[Test-Driven Development](https://fr.wikipedia.org/wiki/Test_driven_development)|TDD| Write the test **BEFORE** the feature
-Defect-Driven Testing    | DDT     | Write the test **BEFORE** the fix
+Process                       | Abbr.| Description
+------------------------------|------|-----------------------------
+Plain Old Unit Test           | POUT | Write the test **AFTER** the feature
+[Test-Driven Development][TDD]| TDD  | Write the test **BEFORE** the feature
+Defect-Driven Testing         | DDT  | Write the test **BEFORE** the fix
+
+[TDD]: https://fr.wikipedia.org/wiki/Test_driven_development
 
 
 Out of scope 
 ============
 
+* [Test-Driven Decoupling](http://reuzz.net/video/watch/vid01KF44GogeBrs)
+* Test-Driven Requirements (TDR)
 * Defect-Driven Development (DDD)
 * Design-Driven Development (D3)
-* [Behavior-Driven Development](https://fr.wikipedia.org/wiki/Behavior_driven_development) (BDD)
-* [Acceptance Test–Driven Development](https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development) (ATDD)
+* [Behavior-Driven Development][BDD] (BDD)
+* [Acceptance Test–Driven Development][ATDD] (ATDD)
 * Example-Driven Development (EDD)
+* [Specification by example][SBE] (SBE)
 * Story test–Driven Development (SDD)
-* [Feature-Driven Development](https://en.wikipedia.org/wiki/Feature-driven_development) (FDD)
-* [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) (DDD)
-* [Model-Driven Engineering](https://en.wikipedia.org/wiki/Model-driven_engineering) (MDE)
-* [Model-driven architecture](https://en.wikipedia.org/wiki/Model-driven_architecture) (MDA)
-* [Model-Driven Software Development](https://en.wikipedia.org/wiki/Model-driven_engineering) (MDSD)
-* [Test-Driven Decoupling](http://reuzz.net/video/watch/vid01KF44GogeBrs)
+* [Feature-Driven Development][FDD] (FDD)
+* [Domain-Driven Design][DDD] (DDD)
+* [Model-Driven Engineering][MDE] (MDE)
+* [Model-driven architecture][MDA] (MDA)
+* [Model-Driven Software Development][MDSD] (MDSD)
+
+[BDD]:  http://fr.wikipedia.org/wiki/Behavior_driven_development
+[ATDD]: http://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development
+[SBE]:  http://en.wikipedia.org/wiki/Specification_by_example
+[FDD]:  http://en.wikipedia.org/wiki/Feature-driven_development
+[DDD]:  http://en.wikipedia.org/wiki/Domain-driven_design
+[MDE]:  http://en.wikipedia.org/wiki/Model-driven_engineering
+[MDA]:  http://en.wikipedia.org/wiki/Model-driven_architecture
+[MDSD]: http://en.wikipedia.org/wiki/Model-driven_engineering
 
 
-Where is Good Unit Tests?
-=========================
+Where are the GUTs?
+===================
 
-* POUT may produce GUTs.
-* TDD must produce GUTs.
-* DDT should produce GUTs.
+**GUT**s = **G**ood **U**nit **T**ests
+
+* POUT may produce GUTs
+* TDD must produce GUTs
+* DDT should produce GUTs
 
 But... What are really GUTs?
 
@@ -211,9 +515,19 @@ Laver ses mains
 
 Philippe Bourgeon (2016)
 
-> Le test unitaire est comme le [lavage des mains](https://fr.wikipedia.org/wiki/Ignace_Philippe_Semmelweis) avant une intervention chirurgicale. Cette simple mesure au XIXe siècle a permis des progrès considérables.
+> Le test unitaire est comme le [lavage des mains][Semmelweis] avant une intervention chirurgicale.
+> Cette simple mesure au XIXe siècle a permis des progrès considérables.
 >
-> Certaines méthodes de programmation des années 90 pronnaient le [raffinnement](https://fr.wikipedia.org/wiki/Raffinement) : le développeur écrivaient des tartines de commentaires avant d'écrire le code. Les tests unitaires sont une bien meilleure solution car les écrits restent (commentaires) et le code s'envole (change). Donc le test est une documentation interactive avec le code : cette documentation est forcée d'évoluer avec le code.
+> Certaines méthodes de programmation des années 90 pronnaient le [raffinnement][raff] :
+> le développeur écrivaient des tartines de commentaires avant d'écrire le code.
+>
+> Les tests unitaires sont une bien meilleure solution
+> car les écrits restent (commentaires) et le code s'envole (change).
+> Donc le test est une documentation interactive avec le code :
+> cette documentation est forcée d'évoluer avec le code.
+
+[Semmelweis]: http://fr.wikipedia.org/wiki/Ignace_Philippe_Semmelweis
+[raff]:       http://fr.wikipedia.org/wiki/Raffinement
 
 
 Write test for people
@@ -265,17 +579,16 @@ Les tests unitaires représentnent la spécification du code.
 * Function names are phrases (with underscores).
 
 
-Words *must* and *should*
+Words *should* and *must*
 =========================
 
-Préférer *must* à *shall* car plus explicite.
-
-Attention *should* dans les spec veut dire *optional*.
-Donc non testé => Éviter *should*
-
-* Reflect outcome not aspiration:  
+* Attention *should* dans les spec veut dire *optional*  
+  Donc non testé => Éviter *should*
+* Exprimer le résultat et non le souhait  
   "X should give Y" --> "X gives Y"
-
+* Préférer *must* à *shall* car plus explicite
+* Ommetre *must*  
+  "X must give Y" --> "X gives Y"
 
 Unit Test coding rules
 ======================
@@ -342,9 +655,9 @@ Projet Ariane 5
 * 1987 : Conception Ariane 5
 * 1988 à 2003 : Ariane 4, 15 ans de service, 97% de succès (116 lancements)
 * 199x : Décision de réutiliser le *Système de Référence Inertielle* (SRI) d'Ariane 4 (réputé fiable).
-   Pour éviter de refaire des tests (800 kF), la calibration n'est pas désactivée (nécessaire pour Ariane 4).
+  Pour éviter de refaire des tests (800 kF), la calibration n'est pas désactivée (nécessaire pour Ariane 4).
 * 1996 : Vol inaugural (v88) d'Ariane 5 (fusée 501)
-* 1997 : Après 16 mois de vérifications, second vol, réussite 
+* 1997 : Après 16 mois de vérifications, second vol, réussite.
 
 
 Ariane 501
@@ -363,18 +676,20 @@ Ariane 501
 * Les débris de la fusée tombent dans la mangrove et sont récupérés en partie dont l'EEPROM contenant les informations d'erreur
 
 
-Code source Ariane 501
-======================
+Code source Ada
+===============
 
 ![Scan du code source Ada du SRI](http://olibre.github.io/CppCoding/GUTs/bug-Ariane-501_by-JeanJacquesLevy-INRIA-2010.jpg)
 
 
-Bug Ariane 501
-==============
+Un petit bug
+============
+
+Pour `L_M_BV_32` (**V**érticale), les bornes -32768..32767 sont vérifiées :
 
 ```ada
 L_M_BV_32 := TBD.T_ENTIER_32S ((1.0/C_M_LSB_BV) * 
-                                   G_M_INFO_DERIVE(T_ALG.E_BV));
+                              G_M_INFO_DERIVE(T_ALG.E_BV));
 
 if L_M_BV_32 > 32767 then
    P_M_DERIVE(T_ALG.E_BV) := 16#7FFF#;
@@ -383,45 +698,48 @@ elsif L_M_BV_32 < -32768 then
 else
    P_M_DERIVE(T_ALG.E_BV) := UC_16S_EN_16NS(TDB.T_ENTIER_16S(L_M_BV_32));
 end if;
+```
+-------
 
+Mais pas pour l'**H**orizontale :
+
+```ada
 P_M_DERIVE(T_ALG.E_BH) := UC_16S_EN_16NS (TDB.T_ENTIER_16S
                                    ((1.0/C_M_LSB_BH) *
-				   G_M_INFO_DERIVE(T_ALG.E_BH)));
+                                   G_M_INFO_DERIVE(T_ALG.E_BH)));
 ```
 
-Dans ce code source Ada, les bornes -32768..32767 sont vérifiées
-* pour BV (**V**érticale) ;
-* mais pas pour BH (**H**orizontale).
 
-
-Commission d'enquête Ariane 501 
-===============================
+Commission d'enquête
+====================
 
 * Rapport rendu un mois après le désastre d'Ariane 501
 * Deux aspects importants du rapport
     1. La trajectoire spécifique d'Ariane 5 a été volontairement exclue des considérations de conception de l'élément qui calcule la trajectoire
     2. La commision d'enquête (composée d'ingénieurs logiciel) conclut à un problème logiciel
 * Gérard Le Lann (INRIA) conclut plutôt à un problème d'intégration système
-* Mark Dowson rappelle les réalités des projets
+* Mark Dowson rappelle les réalités du projet
     * Pressions budgétaire et planning
     * Arguments *If it's not broke don't fix it*
     * Politique des managers
 
-Sources
--------
+Que retenir du cas Ariane 501 ?
+===============================
+
+1. Le **changement** justifie les tests
+2. Ne pas laisser tomber la **qualité** face
+   * aux contraintes budget
+   * aux contraintes planning
+   * aux conservatisme
+   * aux politiques...
+
+Références :
     
 * http://deschamp.free.fr/exinria/divers/ariane_501.html
 * http://www.math.umn.edu/~arnold/disasters/ariane5rep.html (semble être la version anglaise du précédent)
 * http://cmpe.emu.edu.tr/chefranov/Cmps201-fall2011/Notes/Ariane5failure.pdf
 * http://moscova.inria.fr/~levy/talks/10enslongo/enslongo.pdf
 * http://www.rvs.uni-bielefeld.de/publications/Reports/ariane.html (non lu mais parrait intéressant)
-
-
-Apprentissage du cas Ariane 501 
-===============================
-
-1. Le **changement** justifie les tests
-2. Conserver la **qualité** face aux contraintes budget, planning, conservatisme, politique...
 
 
 Couverture de code
@@ -446,11 +764,11 @@ Coverage levels
 Coverage pourcentage
 ====================
 
-Do not specify a pourcentage.
-Just request a high coverage and review what is not covered/tested.
-
-* If the untested/uncovered part is not relevant => Unit-Test can be considered as OK.
-* But if something is missing => Add tests to cover this part.
+* Do not specify a pourcentage
+* Just request a high coverage
+* And check what is not covered (tested)
+  * If the untested part is not relevant => OK (could this code be removed?)
+  * Else something important is not tested => Add tests
 
 
 Testivus and code coverage
@@ -516,8 +834,8 @@ alors le développeur est incité à laisser des lignes de code testées
 mais sans aucune utilité (ou même, à en rajouter).
 
 
-Continous Testing
-=================
+Continuous Testing
+==================
 
 The Pragmatic Programmer by Andrew Hunt and David Thomas
 
@@ -531,7 +849,7 @@ Tip 62
 Tester les invariants et propriétés
 ===================================
 
-After *Code coverage* comes *Value coverage*.
+What is more than *Code coverage*? *Value coverage!*
 
 1. Exemple de QuickCheck avec GTest  
    https://github.com/xinhuang/qcp
@@ -577,8 +895,6 @@ TODO
 
 https://www.reddit.com/r/programming/comments/2vzf3a/kevlin_henney_seven_ineffective_coding_habits_of/
 
-* integers_to_csv
-* is_leap_year
 * ISBN with more than 13 digits are malformed
 * RecentlyUsedList
 * Anatomy of a test case (Given – When – Then)
