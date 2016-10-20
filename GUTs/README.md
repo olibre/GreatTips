@@ -73,23 +73,6 @@ Ce qui n'est pas un "Test Unitaire"
 > afin que ces derniers puissent être exécutés de façon optimale.
 
 
-Découpler les Tests Unitaires
-=============================
-
-[Test double][td]    | Definition
----------------------|-------------------------------------------
-**Dummy** object     | Empty shell, no implementation
-[Test **Stub**][ts]  | Minimal implementations, provide always the same response, no assert
-[**Fake** object][fo]| Act like the real object, but in a simpler way
-[**Mock** object][mo]| Contain assert
-Test **Spy**         | Record events
-
-[td]: http://en.wikipedia.org/wiki/Test_double
-[ts]: http://en.wikipedia.org/wiki/Test_stubs
-[fo]: http://en.wikipedia.org/wiki/Fake_object
-[mo]: http://en.wikipedia.org/wiki/Mock_object
-
-
 Put theory into practice
 ========================
 
@@ -201,10 +184,10 @@ One unit test = One assert
 > **Unit tests should fail for exactly one reason.**  
 > That’s why you should use one assert per unit test.
 
-Test     |     | Code
----------|-----|---------
-`test()` | ->  | `is_leap_year()`
-`test1()` <br> `test2()` <br> `test3()` <br> `test4()` <br> ... | ->  | `is_leap_year()`
+Test                                                            |    | Code
+----------------------------------------------------------------|----|---------
+`test()`                                                        | -> | `is_leap_year()`
+`test1()` <br> `test2()` <br> `test3()` <br> `test4()` <br> ... | -> | `is_leap_year()`
 
 
 Only one assert per test
@@ -259,9 +242,10 @@ Group asserts within same concept
 > You can have multiple asserts on the same object.  
 > They will usually be the same concept being tested.
 
-Test     |     | Code
----------|-----|---------
-`test1()` <br> `test2()` <br> `test3()` <br> `test4()` <br> ... | ->  | `is_leap_year()`
+Test                                    |    | Code
+----------------------------------------|----|---------
+`test()`                                | -> | `is_leap_year()`
+`test1()` <br> `test2()` <br> `test3()` | -> | `is_leap_year()`
 
 
 Group asserts
@@ -327,6 +311,23 @@ One unit test = One expectation
 
 > Using a **mock**, any test with more than one expectation
 > is a test with more than one assertion.
+
+
+Découpler les Tests Unitaires
+=============================
+
+[Test double][td]    | Definition
+---------------------|-------------------------------------------
+**Dummy** object     | Empty shell, no implementation
+[Test **Stub**][ts]  | Minimal implementations, provide always the same response, no assert
+[**Fake** object][fo]| Act like the real object, but in a simpler way
+[**Mock** object][mo]| Contain assert
+Test **Spy**         | Record events
+
+[td]: http://en.wikipedia.org/wiki/Test_double
+[ts]: http://en.wikipedia.org/wiki/Test_stubs
+[fo]: http://en.wikipedia.org/wiki/Fake_object
+[mo]: http://en.wikipedia.org/wiki/Mock_object
 
 
 Test a class
@@ -463,9 +464,9 @@ Test before or after development
 
 Process                       | Abbr.| Description
 ------------------------------|------|-----------------------------
-Plain Old Unit Test           | POUT | Write the test **AFTER** the feature
-[Test-Driven Development][TDD]| TDD  | Write the test **BEFORE** the feature
-Defect-Driven Testing         | DDT  | Write the test **BEFORE** the fix
+Plain Old Unit Test           | POUT | Write the test **AFTER the feature**
+[Test-Driven Development][TDD]| TDD  | Write the test **BEFORE the feature**
+Defect-Driven Testing         | DDT  | Write the test **BEFORE the fix**
 
 [TDD]: https://fr.wikipedia.org/wiki/Test_driven_development
 
@@ -568,8 +569,8 @@ Le Test Unitaire décrit la fonctionnalité testée
 > pour faire évoluer une base de code.
 
 
-Good Unit Test = Specification
-==============================
+GUTs = Specification
+====================
 
 Les tests unitaires représentnent la spécification du code.
 
@@ -579,8 +580,8 @@ Les tests unitaires représentnent la spécification du code.
 * Function names are phrases (with underscores).
 
 
-Words *should* and *must*
-=========================
+*should* and *must*
+===================
 
 * Attention *should* dans les spec veut dire *optional*  
   Donc non testé => Éviter *should*
@@ -685,7 +686,7 @@ Code source Ada
 Un petit bug
 ============
 
-Pour `L_M_BV_32` (**V**érticale), les bornes -32768..32767 sont vérifiées :
+Pour `L_M_BV_32` (**V**értical), les bornes -32768..32767 sont vérifiées :
 
 ```ada
 L_M_BV_32 := TBD.T_ENTIER_32S ((1.0/C_M_LSB_BV) * 
@@ -701,7 +702,7 @@ end if;
 ```
 -------
 
-Mais pas pour l'**H**orizontale :
+Mais pas pour l'**H**orizontal :
 
 ```ada
 P_M_DERIVE(T_ALG.E_BH) := UC_16S_EN_16NS (TDB.T_ENTIER_16S
