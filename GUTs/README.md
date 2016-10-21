@@ -50,7 +50,7 @@ Un bonne définition du "Test Unitaire"
 * Les tests unitaires ne doivent pas interférer entre eux (même un test avec lui-même).
     
     * Donc ils peuvent tous être exécutés en parallèle
-    * Pas d'accé aux ressources file-system, réseau, affinité CPU, base de données
+    * Pas d'accés aux ressources file-system, réseau, affinité CPU, base de données
 
 * Ce qui est unitaire, c'est la fonctionnalité testée
     
@@ -127,8 +127,15 @@ bool is_leap_year (int year)
 }
 ```
 
-One function -> one test
+One test for one feature
 ========================
+
+Test     |    | Code
+---------|----|---------
+`test1()`| -> | `function1()`
+`test2()`| -> | `function2()`
+`test3()`| -> | `function3()`
+`test()` | -> | `is_leap_year()`
 
 ```cpp
 test()
@@ -278,8 +285,8 @@ test_rest_is_leap()
 ```
 
 
-Answer from Kevlin
-==================
+Solution from Kevlin
+====================
 
 ```cpp
 TEST(A_year_is_not_a_leap_year, if_it_is_not_divisible_by_4)
@@ -329,6 +336,7 @@ Test **Spy**         | Record events
 [fo]: http://en.wikipedia.org/wiki/Fake_object
 [mo]: http://en.wikipedia.org/wiki/Mock_object
 
+    TODO Fournir des exemples pour chacun de ces types de "Test double"
 
 Test a class
 ============
@@ -869,6 +877,8 @@ What is more than *Code coverage*? *Value coverage!*
    et compatibilité STL/CMake/GTest/GMock/BoostTest/…  
    https://github.com/emil-e/rapidcheck
 
+    TODO Fournir quelques exemples
+
 
 Unit-Test Frameworks C++14 features
 ===================================
@@ -878,15 +888,24 @@ Unit-Test Frameworks C++14 features
 
 See also https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C.2B.2B
 
+    TODO Fournir quelques exemples
+
 
 Test-Driven Development
 =======================
 
 Développement **piloté** par les tests.
 
-    TODO
-
 Écrire les tests unitaires au départ puis écrire le code de façon à faire fonctionner ces tests unitaires revient à écrire son code sous contrat. : changer le code c'est se confronter au contrat défini dans les tests unitaires. Et c'est plus rassurant que le cassage de code soit détecté au plus tôt car un développeur ne peut pas tout savoir sur le code qu'il modifie.
+
+    TODO compléter Avantages:
+
+* Quand on écrit les tests après on est moins motivé, on a envie de passer à autre chose.
+* La fonctionnalité est écrite pour être testable
+
+
+    TODO fournir images
+
 
 
 TDD #1 Write the GUTs
