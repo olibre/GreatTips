@@ -724,6 +724,7 @@ Commission d'enquête
     * Arguments *If it's not broke don't fix it*
     * Politique des managers
 
+
 Que retenir du cas Ariane 501 ?
 ===============================
 
@@ -765,9 +766,9 @@ Coverage levels
 Coverage pourcentage
 ====================
 
-* Do not specify a pourcentage
-* Just request a high coverage
-* And check what is not covered (tested)
+* Do not specify a pourcentage.
+* Just request a high coverage.
+* And check what is not covered (= not tested)
   * If the untested part is not relevant => OK (could this code be removed?)
   * Else something important is not tested => Add tests
 
@@ -888,7 +889,146 @@ Développement **piloté** par les tests.
 Écrire les tests unitaires au départ puis écrire le code de façon à faire fonctionner ces tests unitaires revient à écrire son code sous contrat. : changer le code c'est se confronter au contrat défini dans les tests unitaires. Et c'est plus rassurant que le cassage de code soit détecté au plus tôt car un développeur ne peut pas tout savoir sur le code qu'il modifie.
 
 
+TDD #1 Write the GUTs
+=====================
 
+```cpp
+TEST(A_year_is_not_a_leap_year, if_it_is_not_divisible_by_4)
+{
+    ASSERT_FALSE(is_leap_year(2015));
+}
+
+TEST(A_year_is_a_leap_year, if_it_is_divisible_by_4_but_not_by_100)
+{
+    ASSERT_TRUE(is_leap_year(2016));
+}
+
+TEST(A_year_is_not_a_leap_year, if_it_is_divisible_by_100_but_not_by_400)
+{
+    ASSERT_FALSE(is_leap_year(1900));
+}
+
+TEST(A_year_is_a_leap_year, if_it_is_divisible_by_400)
+{
+    ASSERT_TRUE(is_leap_year(2000));
+}
+```
+
+
+TDD #2 Write a buildable feature
+================================
+
+```cpp
+bool is_leap_year (int year)
+{
+  return false;
+}
+```
+
+Test                      | Case                                     | Result
+--------------------------|------------------------------------------|-------
+A_year_is_not_a_leap_year | if_it_is_not_divisible_by_4              |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_4_but_not_by_100   | **KO**
+A_year_is_not_a_leap_year | if_it_is_divisible_by_100_but_not_by_400 |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_400                | **KO**
+
+
+TDD #2 Fix the feature
+======================
+
+
+```cpp
+bool is_leap_year (int year)
+{
+  bool leap; // value to return
+
+  if (year % 4) leap = false;
+  else leap = year % 100 ? true : year % 400;
+
+  return leap;
+}
+```
+
+Test                      | Case                                     | Result
+--------------------------|------------------------------------------|-------
+A_year_is_not_a_leap_year | if_it_is_not_divisible_by_4              |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_4_but_not_by_100   |   ok
+A_year_is_not_a_leap_year | if_it_is_divisible_by_100_but_not_by_400 |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_400                | **KO**
+
+
+TDD #3 All test must pass
+=========================
+
+
+```cpp
+bool is_leap_year (int year)
+{
+  bool leap; // value to return
+
+  if (year % 4) leap = false;
+  else leap = year % 100 ? true : !(year % 400);
+
+  return leap;
+}
+```
+
+Test                      | Case                                     | Result
+--------------------------|------------------------------------------|-------
+A_year_is_not_a_leap_year | if_it_is_not_divisible_by_4              |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_4_but_not_by_100   |   ok
+A_year_is_not_a_leap_year | if_it_is_divisible_by_100_but_not_by_400 |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_400                |   ok
+
+
+TDD #4 Final implementation
+===========================
+
+```cpp
+bool is_leap_year (int year)
+{
+  // common year = 365 days
+  bool common_year = year % 4;
+  if  (common_year) return false;
+
+  // leap year = 366 days
+  bool leap_year = year % 100;
+  if  (leap_year) return true;
+
+  common_year = year % 400;
+  if (common_year) return false;
+
+  return true;
+}
+```
+
+Test                      | Case                                     | Result
+--------------------------|------------------------------------------|-------
+A_year_is_not_a_leap_year | if_it_is_not_divisible_by_4              |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_4_but_not_by_100   |   ok
+A_year_is_not_a_leap_year | if_it_is_divisible_by_100_but_not_by_400 |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_400                |   ok
+
+
+TDD #5 Final implementation can be optimized
+============================================
+
+L'implémentation n'a pas besoin d'exprimer la spécification,
+c'est le rôle du test unitaire.
+
+```cpp
+bool is_leap_year_optimized (int year)
+{
+  return !(year % 4) - !(year % 100) + !(year % 400);
+}
+```
+
+Test                      | Case                                     | Result
+--------------------------|------------------------------------------|-------
+A_year_is_not_a_leap_year | if_it_is_not_divisible_by_4              |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_4_but_not_by_100   |   ok
+A_year_is_not_a_leap_year | if_it_is_divisible_by_100_but_not_by_400 |   ok
+A_year_is_a_leap_year     | if_it_is_divisible_by_400                |   ok
 
 
 TODO
@@ -897,7 +1037,6 @@ TODO
 https://www.reddit.com/r/programming/comments/2vzf3a/kevlin_henney_seven_ineffective_coding_habits_of/
 
 * ISBN with more than 13 digits are malformed
-* RecentlyUsedList
 * Anatomy of a test case (Given – When – Then)
 * slide 91
 * slide 101
