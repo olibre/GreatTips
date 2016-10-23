@@ -1270,8 +1270,28 @@ Unit-Test Frameworks C++14 features
 Catch
 =====
 
-    TODO Fournir quelques exemples
+```cpp
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
 
+TEST_CASE("A year is not a leap year if it is not divisible by 4", "[leap]") {
+    REQUIRE( is_leap_year(2015) == false );
+}
+
+TEST_CASE("A year is a leap year if it is divisible by 4 but not by 100", "[leap]") {
+    REQUIRE( is_leap_year(2016) == true );
+}
+
+TEST_CASE("A year is not a leap year if it is divisible by 100 but not by 400", "[leap]") {
+    REQUIRE( is_leap_year(1900) == false );
+}
+
+TEST_CASE("A year is a leap year if it is divisible by 400", "[leap]") {
+    REQUIRE( is_leap_year(2000) == true );
+}
+```
+
+    TODO Fournir plus d'exemples sur la puissance de Catch
 
 Mettle
 ======
