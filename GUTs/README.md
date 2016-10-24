@@ -65,6 +65,7 @@ Chronologie
   Pour éviter de refaire des tests (800 kF), la calibration n'est pas désactivée (nécessaire pour Ariane 4).
 * 1996 : Vol inaugural (v88) d'Ariane 5 (fusée 501)
 * 1997 : Après 16 mois de vérifications, second vol, réussite.
+* Ce bug de 1996 a longtemps été le bug le plus coûteux du monde !
 
 
 Un petit bug, un grand boum !
