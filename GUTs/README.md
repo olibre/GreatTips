@@ -886,6 +886,8 @@ Out of scope
 * [Model-Driven Software Development][MDSD] (MDSD)
 * [Model-Based Testing][MBT] (MBT)
 * [Model-Based Design][MBD] (MBD)
+* [Data-Driven Testing][DDT] (DDT)
+* [Keyword-Driven Testing][KDT] (KDT)
     
 [ATDD]: http://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development
 [SBE]:  http://en.wikipedia.org/wiki/Specification_by_example
@@ -895,6 +897,8 @@ Out of scope
 [MDA]:  http://en.wikipedia.org/wiki/Model-driven_architecture
 [MDSD]: http://en.wikipedia.org/wiki/Model-driven_engineering
 [MBD]:  http://en.wikipedia.org/wiki/Model-based_design
+[DDT]:  http://en.wikipedia.org/wiki/Data-driven_testing
+[KDT]:  http://en.wikipedia.org/wiki/Keyword-driven_testing
 
 
 Where are the GUTs?
@@ -1220,7 +1224,7 @@ Tester les invariants et propriétés
     
 What is more than *Code coverage*? *Value coverage*!
     
-1. Exemple de [QuickCheck avec GTest][qc-gt].
+1. Exemple de [QuickCheck][qc] [avec GTest][qc-gt].
     
 2. [CppQuickCheck][cqc] va plus loin que QuickCheck++
    en ajoutant la sélection aléatoire des générateurs de valeurs
@@ -1231,7 +1235,8 @@ What is more than *Code coverage*? *Value coverage*!
 4. [rapidcheck][rc] est une autre alternative intéressante avec shrinking
    et compatibilité STL/CMake/GTest/GMock/BoostTest/…
    (voir l'[article de son créateur][rcs] sur le site de Spotify)
-    
+
+[qc]:    https://en.wikipedia.org/wiki/QuickCheck
 [qc-gt]: https://github.com/xinhuang/qcp
 [cqc]:   https://github.com/grogers0/CppQuickCheck
 [ac]:    https://github.com/thejohnfreeman/autocheck/wiki
@@ -1307,18 +1312,25 @@ Mettle
 xUnit
 =====
     
-De nombreux frameworks de tests unitaires partageant la même phylosophie.
-Le terme [xUnit] regroupe la grande majorité des frameworks comme JUnit, CppUnit et GTest.
+La grande majorité des frameworks de tests unitaires partagent la même phylosophie, regroupée sous le terme [x**Unit**][x] à l'instar de [J**Unit**][j], [Cpp**Unit**][cpp], [N**Unit**][n], [PHP**Unit**][php], [Http**Unit**][http], [Html**Unit**][http]... mais aussi [GTest][gt].
     
-Quelques points communs :
+Quelques caractéristiques :
     
 * Fonctions **assert** pour comparer le résultat d'un test par rapport à une valeur attendue.
-* Un **test case** représente un test (souvent implémentée comme une classe). 
-* Une **test suite** est l'ensemble des **test cases** partageant la même **fixture**.
-* Une [**fixture**][f] et l'ensemble des preconditions avant de lancer les tests. 
+* Le **test case** représente un seul test (souvent implémenté comme une classe).
+* La **test suite** est l'ensemble des **test cases** partageant la même **fixture**.
+* La [**fixture**][f] et l'ensemble des preconditions avant de lancer les tests.
+* La sortie XML est la même et permet d'être importée par des outils comme Jenkins.
     
-[f]: http://fr.wikipedia.org/wiki/Test_fixture
-
+[f]:    http://fr.wikipedia.org/wiki/Test_fixture
+[x]:    http://fr.wikipedia.org/wiki/XUnit
+[j]:    http://en.wikipedia.org/wiki/JUnit
+[cpp]:  http://en.wikipedia.org/wiki/CppUnit
+[n]:    http://en.wikipedia.org/wiki/NUnit
+[php]:  http://en.wikipedia.org/wiki/PHPUnit
+[http]: http://en.wikipedia.org/wiki/HttpUnit
+[html]: http://en.wikipedia.org/wiki/HtmlUnit
+[gt]:   http://en.wikipedia.org/wiki/Google_Test
 
 Fixture
 =======
@@ -1326,8 +1338,8 @@ Fixture
 Pour tester des composants, un environnement a souvent besoin d'être préparé avec des **stubs**/**mocks**.
 Cette initialisation plus ou moins complexe est facilitée par la [**fixture**][f] :
 
-* `setup()` initialiser tout cet environnement.
-* `teardown()` pour tout libérer proprement (afin de ne pas perturber les autres tests). 
+* `SetUp()` initialise tout cet environnement ;
+* `TearDown()` libére proprement (afin de ne pas perturber les autres tests).
     
         TODO Fournir exemples
 
@@ -1375,18 +1387,19 @@ Some Continuous Testing Tools
     
 Projets libres            | Descriptions
 --------------------------|-------------------    
-[Jenkins][J]              | Outil d'intégration continue très complet (~~anciennement Hudson~~)
+[Jenkins][J]              | Outil d'intégration continue très complet (anciennement Hudson)
 [SonarQube][SC]           | Mesure la qualité du code source en continu
 [GitLab CI][GLCI]         | Intégration Continue par GitLab
 [Travis CI][T]            | Intégration Continue externalisée pour GitHub
 [CTest][CT] (CMake)       | Exécute les tests définis avec CMake
+[Robot Framework][RF]     | Automatisation de test permettant de simplifier la maintenance des scripts
     
 [J]:    http://fr.wikipedia.org/wiki/Jenkins_(logiciel)
 [SC]:   http://fr.wikipedia.org/wiki/SonarQube
 [GLCI]: https://about.gitlab.com/gitlab-ci/
 [T]:    http://fr.wikipedia.org/wiki/Travis_CI
 [CT]:   https://cmake.org/Wiki/CMake/Testing_With_CTest
-
+[RF]:   http://en.wikipedia.org/wiki/Robot_Framework
 
 TODO
 ====
