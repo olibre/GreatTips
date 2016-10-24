@@ -19,8 +19,8 @@ This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trai
 [KHw]: https://en.wikipedia.org/wiki/Kevlin_Henney
 
 
-Who test?
-=========
+Qui teste ?
+===========
     
 |    | &nbsp;
 |----|--------
@@ -157,7 +157,7 @@ Que veut dire "Test Unitaire" ?
 De quoi parle t'on quand on parle de "Test Unitaire" ?
 
 
-Un bonne définition du "Test Unitaire"
+Une bonne définition du "Test Unitaire"
 ======================================
     
 * Les tests unitaires ne doivent pas interférer entre eux (même un test avec lui-même).
