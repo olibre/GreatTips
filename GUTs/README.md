@@ -857,13 +857,15 @@ One class = Multiple features
 Test before or after development
 ================================
     
-Process                       | Abbr.| Description
-------------------------------|------|-----------------------------
-Plain Old Unit Test           | POUT | Write the test **AFTER the feature**
-[Test-Driven Development][TDD]| TDD  | Write the test **BEFORE the feature**
-Defect-Driven Testing         | DDT  | Write the test **BEFORE the fix**
+Process                           | Abbr.| Description
+----------------------------------|------|-----------------------------
+Plain Old Unit Test               | POUT | Write the test **AFTER the feature**
+[Test-Driven Development][TDD]    | TDD  | Write the test **BEFORE the feature**
+[Behavior-Driven Development][BDD]| BDD  | Same as TDD
+Defect-Driven Testing             | DDT  | Write the test **BEFORE the fix**
     
 [TDD]: https://fr.wikipedia.org/wiki/Test_driven_development
+[BDD]:  http://fr.wikipedia.org/wiki/Behavior_driven_development
 
 
 Out of scope 
@@ -873,7 +875,6 @@ Out of scope
 * Test-Driven Requirements (TDR)
 * Defect-Driven Development (DDD)
 * Design-Driven Development (D3)
-* [Behavior-Driven Development][BDD] (BDD)
 * [Acceptance Test–Driven Development][ATDD] (ATDD)
 * Example-Driven Development (EDD)
 * [Specification by example][SBE] (SBE)
@@ -886,7 +887,6 @@ Out of scope
 * [Model-Based Testing][MBT] (MBT)
 * [Model-Based Design][MBD] (MBD)
     
-[BDD]:  http://fr.wikipedia.org/wiki/Behavior_driven_development
 [ATDD]: http://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development
 [SBE]:  http://en.wikipedia.org/wiki/Specification_by_example
 [FDD]:  http://en.wikipedia.org/wiki/Feature-driven_development
@@ -1068,6 +1068,22 @@ A_year_is_not_a_leap_year | if_it_is_not_divisible_by_4              |  ok
 A_year_is_a_leap_year     | if_it_is_divisible_by_4_but_not_by_100   |  ok
 A_year_is_not_a_leap_year | if_it_is_divisible_by_100_but_not_by_400 |  ok
 A_year_is_a_leap_year     | if_it_is_divisible_by_400                |  ok
+
+
+Behavior-Driven Development
+===========================
+    
+* Given
+* When
+* Then
+    
+        TODO
+
+
+Defect-Driven Testing
+===========================
+    
+    TODO
 
 
 The Way of Testivus
@@ -1316,6 +1332,26 @@ Cette initialisation plus ou moins complexe est facilitée par la [**fixture**][
         TODO Fournir exemples
 
 
+Google Test
+===========
+       
+    TODO Fournir exemples
+
+
+Google Mock
+===========
+       
+    TODO Fournir exemples
+
+
+Google Benchmark
+================
+    
+https://github.com/google/benchmark
+    
+    TODO Fournir exemples
+
+
 Continuous Testing
 ==================
 
@@ -1357,6 +1393,5 @@ TODO
     
 * Parler de https://www.reddit.com/r/programming/comments/2vzf3a/kevlin_henney_seven_ineffective_coding_habits_of/
 * Exemple de test pour "ISBN with more than 13 digits are malformed"
-* Anatomy of a test case (Given – When – Then)
 * slide 91
 * slide 101
