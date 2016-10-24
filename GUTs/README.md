@@ -1198,18 +1198,6 @@ alors le développeur est incité à laisser des lignes de code testées
 mais sans aucune utilité (ou même, à en rajouter).
 
 
-Continuous Testing
-==================
-
-The Pragmatic Programmer by Andrew Hunt and David Thomas
-
-Tip 62
-
-> * **Test early**
-> * **Test often**
-> * **Test automatically**
-
-
 Tester les invariants et propriétés
 ===================================
     
@@ -1297,6 +1285,70 @@ Mettle
 ======
 
     TODO Fournir quelques exemples
+
+
+xUnit
+=====
+    
+De nombreux frameworks de tests unitaires partageant la même phylosophie.
+Le terme [xUnit] regroupe la grande majorité des frameworks comme JUnit, CppUnit et GTest.
+    
+Quelques points communs :
+    
+* Fonctions **assert** pour comparer le résultat d'un test par rapport à une valeur attendue.
+* Un **test case** représente un test (souvent implémentée comme une classe). 
+* Une **test suite** est l'ensemble des **test cases** partageant la même **fixture**.
+* Une [**fixture**][f] et l'ensemble des preconditions avant de lancer les tests. 
+    
+[f]: http://fr.wikipedia.org/wiki/Test_fixture
+
+
+Fixture
+=======
+    
+Pour tester des composants, un environnement a souvent besoin d'être préparé avec des **stubs**/**mocks**.
+Cette initialisation plus ou moins complexe est facilitée par la [**fixture**][f] :
+
+* `setup()` initialiser tout cet environnement.
+* `teardown()` pour tout libérer proprement (afin de ne pas perturber les autres tests). 
+    
+        TODO Fournir exemples
+
+
+Continuous Testing
+==================
+
+The Pragmatic Programmer by Andrew Hunt and David Thomas
+
+Tip 62
+
+> * **Test early**
+> * **Test often**
+> * **Test automatically**
+    
+Continuous Testing is spart of:
+    
+* Continuous Integration (intégration continue)
+* Continuous delivery (livraison continue)
+* Continuous deployement (déploiement continue)
+
+
+Some Continuous Testing Tools
+=============================
+    
+Projets libres            | Descriptions
+--------------------------|-------------------    
+[Jenkins][J]              | Outil d'intégration continue très complet (~~anciennement Hudson~~)
+[SonarQube][SC]           | Mesure la qualité du code source en continu
+[GitLab CI][GLCI]         | Intégration Continue par GitLab
+[Travis CI][T]            | Intégration Continue externalisée pour GitHub
+[CTest][CT] (CMake)       | Exécute les tests définis avec CMake
+    
+[J]:    http://fr.wikipedia.org/wiki/Jenkins_(logiciel)
+[SC]:   http://fr.wikipedia.org/wiki/SonarQube
+[GLCI]: https://about.gitlab.com/gitlab-ci/
+[T]:    http://fr.wikipedia.org/wiki/Travis_CI
+[CT]:   https://cmake.org/Wiki/CMake/Testing_With_CTest
 
 
 TODO
