@@ -1331,6 +1331,40 @@ Go Unit Testing
 
 Python Unit Testing
 ===================
+    
+Library [unittest](https://docs.python.org/3/library/unittest.html) (anciennement PyUnit, compatible xUnit)
+    
+```python
+import unittest
+
+class TestLeapYear(unittest.TestCase):
+
+  def test_A_year_is_not_a_leap_year_if_it_is_not_divisible_by_4(self):
+    self.assertFalse(is_leap_year(2015))
+
+  def test_A_year_is_a_leap_year_if_it_is_divisible_by_4_but_not_by_100(self):
+    self.assertTrue(is_leap_year(2016))
+
+  def test_A_year_is_not_a_leap_year_if_it_is_divisible_by_100_but_not_by_400(self):
+    self.assertFalse(is_leap_year(1900))
+
+  def test_A_year_is_a_leap_year_if_it_is_divisible_by_400(self):
+    self.assertTrue(is_leap_year(2000))
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+Run the test
+    
+```bash
+> python test_leap_year.py
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+```
 
 
 Google Test
