@@ -835,6 +835,7 @@ Out of scope
 [MDE]:  http://en.wikipedia.org/wiki/Model-driven_engineering
 [MDA]:  http://en.wikipedia.org/wiki/Model-driven_architecture
 [MDSD]: http://en.wikipedia.org/wiki/Model-driven_engineering
+[MBT]:  http://en.wikipedia.org/wiki/Model-based_testing
 [MBD]:  http://en.wikipedia.org/wiki/Model-based_design
 [DDT]:  http://en.wikipedia.org/wiki/Data-driven_testing
 [KDT]:  http://en.wikipedia.org/wiki/Keyword-driven_testing
@@ -843,14 +844,19 @@ Out of scope
 Where are the GUTs?
 ===================
     
-**GUT**s = **G**ood **U**nit **T**ests
+**GUT**s = **G**ood **U**nit **T**ests  
+**GUT**s is not a methodology.
     
-* POUT may produce GUTs
-* TDD must produce GUTs
-* DDT should produce GUTs
+Methodology | Result
+------------|-------------------
+POUT        | may produce GUTs
+DDT         | should produce GUTs
+TDD <br> BDD| must produce GUTs
     
-**GUT**s can be the result of different methodologies.  
-Even if your organisation does not use TDD (or do not apply TDD strictly),
+**GUT**s can be the result of different methodologies.
+    
+Even if your organisation does not use TDD/BDD
+(or does not apply it strictly),
 you can still obtain **GUT**s.
 
 
@@ -1078,9 +1084,7 @@ Coverage levels
 * **Line** / **Statement**
 * **Branch** (exemple : toutes les combinaisons de `if(a && b && c)`)
 * **Value** (couverture des plages de valeurs)
-* State machine of a high-level model - [Model-Based Testing][MBT] (MBT)
-
-[MBT]: http://en.wikipedia.org/wiki/Model-based_testing
+* State machine of a high-level model - Statistical testing ([MBT][MBT])
 
 
 Coverage pourcentage
