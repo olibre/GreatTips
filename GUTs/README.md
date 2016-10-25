@@ -1,7 +1,26 @@
-Good Unit Tests (GUTs)
-======================
+Cheat sheet
+===========
     
-**GUT**s = **G**ood **U**nit **T**ests
+TDD et BDD préconisent d'écrire les tests :
+    
+* Avant de coder la fonctionnalité
+* Avec les caractéristiques des GUTs :
+    
+  * **GUT**s = **G**ood **U**nit **T**ests
+  * Chaque fonction de test doit écouer pour une unique raison ;
+  * Le nom de la fonction de test doit exprimer un élément de la spécification ;
+  * Les fonctions de tests sont la documentation de la fontionnalité ;
+  * ...
+
+On peut écrire des GUTs même si on ne respectent pas scrupuleusement les TDD/BDD.
+
+Pour optimiser l'exécution des tests en parrallèle de manière reproductible, distinguer ceux qui n'accèdent ni aux fichiers ni au réseau des autres tests.
+
+    TODO Compléter/Résumer...
+
+
+Kevlin Henney
+=============
     
 This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trainings (and also from many other Unit-Testing documents).
     
@@ -28,25 +47,6 @@ Qui teste ?
     
 [PImg]: http://upload.wikimedia.org/wikipedia/en/8/8f/The_pragmatic_programmer.jpg "The Pragmatic Programmer by Andrew Hunt and David Thomas (1999)"
 [PLink]: https://en.wikipedia.org/wiki/The_Pragmatic_Programmer
-
-
-Cheat sheet
-===========
-    
-En bref :
-    
-* TDD et BDD préconisent d'écrire les tests
-    
-   * Avant de coder la fonctionnalité
-   * Avec les caractéristiques GUTs suivantes :
-    
-     * Chaque fonction de test doit écouer pour une unique raison ;
-     * Le nom de la fonction de test doit exprimer un élément de la spécification ;
-     * Les fonctions de tests sont la documentation de la fontionnalité ;
-
-* On peut écrire des GUTs même si on ne respectent pas sccrupuleusement les TDD/BDD.
-* Pour optimiser l'exécution des tests en parrallèle de manière reproductible, distinguer ceux qui n'accèdent ni aux fichiers ni au réseau des autres.
-* ...
 
 
 Technical debt
