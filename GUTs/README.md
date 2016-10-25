@@ -165,7 +165,7 @@ Une bonne définition du "Test Unitaire"
     
     * Donc ils peuvent tous être exécutés en parallèle
     * Pas d'accés aux ressources file-system, réseau, affinité CPU, base de données
-        
+    
 * Ce qui est unitaire, c'est la fonctionnalité testée
     
     * Donc un test unitaire peut tester plusieurs classes et fonctions
@@ -821,12 +821,13 @@ Out of scope
 * [Feature-Driven Development][FDD] (FDD)
 * [Domain-Driven Design][DDD] (DDD)
 * [Model-Driven Engineering][MDE] (MDE)
-* [Model-driven architecture][MDA] (MDA)
+* [Model-Driven Architecture][MDA] (MDA)
 * [Model-Driven Software Development][MDSD] (MDSD)
 * [Model-Based Testing][MBT] (MBT)
 * [Model-Based Design][MBD] (MBD)
 * [Data-Driven Testing][DDT] (DDT)
 * [Keyword-Driven Testing][KDT] (KDT)
+* [Object-Oriented Analysis and Design][OOAD] (OOAD)
     
 [ATDD]: http://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development
 [SBE]:  http://en.wikipedia.org/wiki/Specification_by_example
@@ -839,6 +840,7 @@ Out of scope
 [MBD]:  http://en.wikipedia.org/wiki/Model-based_design
 [DDT]:  http://en.wikipedia.org/wiki/Data-driven_testing
 [KDT]:  http://en.wikipedia.org/wiki/Keyword-driven_testing
+[OOAD]: http://en.wikipedia.org/wiki/Object-oriented_analysis_and_design
 
 
 Where are the GUTs?
@@ -1116,7 +1118,7 @@ Coverage levels
 * **Line** / **Statement**
 * **Branch** (exemple : toutes les combinaisons de `if(a && b && c)`)
 * **Value** (couverture des plages de valeurs)
-* State machine of a high-level model - Statistical testing ([MBT][MBT])
+* **State machine** of a high-level usage model (Statistical testing, [MBT][MBT])
 
 
 Coverage pourcentage
