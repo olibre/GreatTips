@@ -860,6 +860,32 @@ Even if your organisation does not use TDD/BDD
 you can still obtain **GUT**s.
 
 
+Classic Development Cycle in V
+==============================
+    
+[![Cycle en V][v_svg]][v_lnk]
+    
+[v_sng]: http://upload.wikimedia.org/wikipedia/commons/f/f9/V-model.svg
+[v_lnk]: http://commons.wikimedia.org/wiki/File:V-model.svg
+
+
+Cost of bug correction in Cycle in V
+====================================
+    
+Deduced from [Error Cost Escalation Through the Project Life Cycle][nasa] (NASA 2004)
+    
+[SDLC][SDLC] step     | Cost | [STLC][STLC] step   | Cost
+Customer request      |  0   | In production       | 1000x
+Requirements analysis |  1x  | System testing      | 200x
+High level design     |  5x  | Integration testing | 100x
+Detailed design       | 10x  | Unit Testing        | 50x
+Implentation          | 25x
+    
+[nasa]: http://ntrs.nasa.gov/search.jsp?R=20100036670
+[SDLC]: http://en.wikipedia.org/wiki/Software_development_process   "Software Development Life Cycle"
+[STLC]: http://en.wikipedia.org/wiki/Software_testing_life_cycle    "Software Testing Life Cycle"
+
+
 Test-Driven Development
 =======================
     
@@ -1285,6 +1311,18 @@ Cette initialisation plus ou moins complexe est facilitée par la [**fixture**][
 * `TearDown()` libére proprement (afin de ne pas perturber les autres tests).
     
         TODO Fournir exemples
+
+
+JUnit
+=====
+
+
+Go Unit Testing
+===============
+
+
+Python Unit Testing
+===================
 
 
 Google Test
