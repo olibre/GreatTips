@@ -865,7 +865,7 @@ Classic Development Cycle in V
     
 [![Cycle en V][v_svg]][v_lnk]
     
-[v_sng]: http://upload.wikimedia.org/wikipedia/commons/f/f9/V-model.svg
+[v_svg]: http://upload.wikimedia.org/wikipedia/commons/f/f9/V-model.svg
 [v_lnk]: http://commons.wikimedia.org/wiki/File:V-model.svg
 
 
@@ -874,11 +874,12 @@ Cost of bug correction in Cycle in V
     
 Deduced from [Error Cost Escalation Through the Project Life Cycle][nasa] (NASA 2004)
     
-[SDLC][SDLC] step     | Cost | [STLC][STLC] step   | Cost
-Customer request      |  0   | In production       | 1000x
-Requirements analysis |  1x  | System testing      | 200x
-High level design     |  5x  | Integration testing | 100x
-Detailed design       | 10x  | Unit Testing        | 50x
+[SDLC][SDLC] steps    | Cost | [STLC][STLC] steps  | Cost
+----------------------|------|---------------------|------
+Customer request      |  0   | Production error    | 1000x
+Requirements analysis |  1x  | System testing      |  200x
+High level design     |  5x  | Integration testing |  100x
+Detailed design       | 10x  | Unit Testing        |   50x
 Implentation          | 25x
     
 [nasa]: http://ntrs.nasa.gov/search.jsp?R=20100036670
