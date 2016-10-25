@@ -30,6 +30,25 @@ Qui teste ?
 [PLink]: https://en.wikipedia.org/wiki/The_Pragmatic_Programmer
 
 
+Cheat sheet
+===========
+    
+En bref :
+    
+* TDD et BDD préconisent d'écrire les tests
+    
+   * Avant de coder la fonctionnalité
+   * Avec les caractéristiques GUTs suivantes :
+    
+     * Chaque fonction de test doit écouer pour une unique raison ;
+     * Le nom de la fonction de test doit exprimer un élément de la spécification ;
+     * Les fonctions de tests sont la documentation de la fontionnalité ;
+
+* On peut écrire des GUTs même si on ne respectent pas sccrupuleusement les TDD/BDD.
+* Pour optimiser l'exécution des tests en parrallèle de manière reproductible, distinguer ceux qui n'accèdent ni aux fichiers ni au réseau des autres.
+* ...
+
+
 Technical debt
 ==============
     
