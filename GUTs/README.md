@@ -869,23 +869,28 @@ Classic Development Cycle in V
 [v_lnk]: http://commons.wikimedia.org/wiki/File:V-model.svg
 
 
-Cost of bug correction in Cycle in V
-====================================
+Cost of bug correction
+======================
     
 Deduced from [Error Cost Escalation Through the Project Life Cycle][nasa] (NASA 2004)
     
-[SDLC][SDLC] steps    | Cost | [STLC][STLC] steps  | Cost
-----------------------|------|---------------------|------
-Customer request      |  0   | Production error    | 1000x
-Requirements analysis |  1x  | System testing      |  200x
-High level design     |  5x  | Integration testing |  100x
-Detailed design       | 10x  | Unit Testing        |   50x
-Implentation          | 25x
+[SDLC][SDLC] steps            | Cost |&nbsp;| [STLC][STLC] steps  | Cost
+------------------------------|------|------|---------------------|------
+Customers' needs              |  0   |      | Production error    | 1000x
+[Requirements analysis][ra]   |  1x  |      | [Acceptance testing][at]  |  200x
+[Functional specification][fs]|  5x  |      | [Integration testing][it] |  100x
+[Design][sd]                  | 10x  |      | [Unit Testing][ut]        |   50x
+Implentation                  | 25x  |      |                     | 
     
 [nasa]: http://ntrs.nasa.gov/search.jsp?R=20100036670
 [SDLC]: http://en.wikipedia.org/wiki/Software_development_process   "Software Development Life Cycle"
 [STLC]: http://en.wikipedia.org/wiki/Software_testing_life_cycle    "Software Testing Life Cycle"
-
+[ra]:   http://en.wikipedia.org/wiki/Requirements_analysis
+[fs]:   http://en.wikipedia.org/wiki/Functional_specification
+[sd]:   http://en.wikipedia.org/wiki/Software_design
+[at]:   http://en.wikipedia.org/wiki/Acceptance_testing
+[it]:   http://en.wikipedia.org/wiki/Integration_testing
+[ut]:   http://en.wikipedia.org/wiki/Unit_testing
 
 Test-Driven Development
 =======================
