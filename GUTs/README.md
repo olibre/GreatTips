@@ -300,110 +300,51 @@ test()
 ```
 
 
-One unit test = One assert
-==========================
+One unit test = One expectation
+===============================
     
 [Roy Osherove](http://programmers.stackexchange.com/questions/7823) (2010)
     
 > **Unit tests should fail for exactly one reason.**  
 > That’s why you should use one assert per unit test.
     
-&nbsp;    | Unit Test                                                 | Feature
-----------|-----------------------------------------------------------|------------------
-----------|-------------                                              |------------------
-**Bad**   | `test()`                                                  |⮕ `is_leap_year()`
-----------|-------------                                              |------------------
-**Good**  | `test1()`<br> `test2()`<br> `test3()`<br> `test4()`<br>...|⮕ `is_leap_year()`
+[He has also added](http://www.owenpellegrin.com/blog/testing/how-do-you-solve-multiple-asserts/ "How do you solve multiple asserts?") (2010)
+    
+> Test one logical CONCEPT per test.  
+> You can have multiple asserts on the same object.  
+> They will usually be the same concept being tested.
+    
+&nbsp;    | Unit Test                             | Feature
+----------|---------------------------------------|------------------
+**Bad**   | `big_test()`                          |⮕ `is_leap_year()`
+**Good**  | `test1()`<br> `test2()`<br> `test3()` |⮕ `is_leap_year()`
 
 
-One feature = one or more test cases
-====================================
-
+One feature = multiple test cases
+=================================
+    
 Original idea
 -------------
-
+    
 Unit Tests|    Code
-----------|------------
+----------|---------------
 `test1()` | ⮕ `feature1()`
 `test2()` | ⮕ `feature2()`
 `test3()` | ⮕ `feature3()`
-
-
-Idea *One unit test = One assert*
----------------------------------
-
+    
+Idea *One unit test = One expectation*
+--------------------------------------
+    
 Unit Tests                                                 |   Code
------------------------------------------------------------|------------
+-----------------------------------------------------------|---------------
 `test11()`<br>`test12()`<br>`test13()`<br>`test14()`<br>...| ⮕ `feature1()`
 `test21()`<br>`test22()`<br>`test23()`<br>`test24()`<br>...| ⮕ `feature2()`
 `test31()`<br>`test32()`<br>`test33()`<br>`test34()`<br>...| ⮕ `feature3()`
 
 
-Only one assert per test
-========================
-
-```cpp
-test_7_is_not_leap() {
-  ASSERT_FALSE( is_leap_year(   7) );
-}
-test_17_is_not_leap() {
-  ASSERT_FALSE( is_leap_year(  17) );
-}
-test_2002_is_not_leap() {
-  ASSERT_FALSE( is_leap_year(2002) );
-}
-test_2003_is_not_leap() {
-  ASSERT_FALSE( is_leap_year(2003) );
-}
-test_1700_is_not_leap() {
-  ASSERT_FALSE( is_leap_year(1700) );
-}
-test_1800_is_not_leap() {
-  ASSERT_FALSE( is_leap_year(1800) );
-}
-test_1900_is_not_leap() {
-  ASSERT_FALSE( is_leap_year(1900) );
-}
-test_2100_is_not_leap() {
-  ASSERT_FALSE( is_leap_year(2100) );
-}
-test_1704_is_leap() {
-  ASSERT_TRUE(  is_leap_year(1704) );
-}
-test_1916_is_leap() {
-  ASSERT_TRUE(  is_leap_year(1916) );
-}
-test_2012_is_leap() {
-  ASSERT_TRUE(  is_leap_year(2012) );
-}
-test_2016_is_leap() {
-  ASSERT_TRUE(  is_leap_year(2016) );
-}
-```
-
-
-Group asserts within same concept
-=================================
-
-[Roy Osherove](http://www.owenpellegrin.com/blog/testing/how-do-you-solve-multiple-asserts/ "How do you solve multiple asserts?") (2010)
-
-> Test one logical CONCEPT per test.  
-> You can have multiple asserts on the same object.  
-> They will usually be the same concept being tested.
-
-&nbsp;    | Unit Test                                                 | Feature
-----------|-----------------------------------------------------------|------------------
-----------|-------------                                              |------------------
-**Bad**   | `test()`                                                  |⮕ `is_leap_year()`
-----------|-------------                                              |------------------
-**Good**  | `test1()`<br> `test2()`<br> `test3()`<br> `test4()`<br>...|⮕ `is_leap_year()`
-----------|-------------                                              |------------------
-**Better**| `test1()`<br> `test2()`<br> `test3()`                     |⮕ `is_leap_year()`
-
-
-Group asserts
-=============
-
+Split big test function
+=======================
+    
 ```cpp
 test_not_divisible_by_4_is_not_leap()
 {
@@ -433,9 +374,9 @@ test_rest_is_leap()
 
 Où écrire la documentation ?
 ============================
-
+    
 Philippe Bourgeon (2016)
-
+    
 > Le test unitaire est comme le [lavage des mains][Semmelweis] avant une intervention chirurgicale.
 > Cette simple mesure au XIXe siècle a permis des progrès considérables.
 >
@@ -446,16 +387,16 @@ Philippe Bourgeon (2016)
 > car les écrits restent (commentaires) et le code s'envole (change).
 > Donc le test est une documentation interactive avec le code :
 > cette documentation est forcée d'évoluer avec le code.
-
+    
 [Semmelweis]: http://fr.wikipedia.org/wiki/Ignace_Philippe_Semmelweis
 [raff]:       http://fr.wikipedia.org/wiki/Raffinement
 
 
 Write test for people
 =====================
-
+    
 [Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) ([CC-BY-3.0-US](https://creativecommons.org/licenses/by/3.0/us/) 2009), in French:
-
+    
 > Pour qui écrire les tests ?  
 > Pour ceux qui essayeront de comprendre l'implémentation.
 >
@@ -502,7 +443,7 @@ Les tests unitaires représentnent la spécification du code.
 
 *should* and *must*
 ===================
-
+    
 * Attention *should* dans les spec veut dire *optional*  
   Donc non testé 🢥 Éviter *should*
 * Exprimer le résultat et non le souhait  
@@ -514,21 +455,38 @@ Les tests unitaires représentnent la spécification du code.
 
 Coding rules for Unit Test 
 ==========================
-
+    
 > *function names are phrases*
-
+    
 Les règles de codage sont différentes
 pour le code à destination de la prod
 et pour celui des tests unitaires.
 
 
-Document Unit Test
-==================
+Exercise: Rewrite unit test from scratch
+========================================
+    
+[Algorithm from wikipedia](http://en.wikipedia.org/wiki/Leap_year#Algorithm):
+    
+> * **if** (year is not divisible by 4) **then** (it is a common year)
+> * **else** if (year is not divisible by 100) **then** (it is a leap year)
+> * **else** if (year is not divisible by 400) **then** (it is a common year)
+> * **else** (it is a leap year)
+    
+Provide GUTs based on *Google Test* syntax:
+    
+```cpp
+TEST(case_name, test_name)
+```
+
+
+Comment this result
+===================
     
 Improve the following tests:
     
 ```cpp
-test_not_divisible_by_4_is_not_leap()
+TEST(is_leap_year, years_not_divisible_by_4_are_not_leap_years)
 {
   ASSERT_FALSE( is_leap_year(   7) );
   ASSERT_FALSE( is_leap_year(  17) );
@@ -536,7 +494,7 @@ test_not_divisible_by_4_is_not_leap()
   ASSERT_FALSE( is_leap_year(2003) );
 }
 
-test_multiple_of_100_except_400_is_not_leap()
+TEST(is_leap_year, years_divisible_by_4_but_not_by_100_are_leap_years)
 {
   ASSERT_FALSE( is_leap_year(1700) );
   ASSERT_FALSE( is_leap_year(1800) );
@@ -544,32 +502,13 @@ test_multiple_of_100_except_400_is_not_leap()
   ASSERT_FALSE( is_leap_year(2100) );
 }
 
-test_rest_is_leap()
+TEST(is_leap_year, years_divisible_by_100_but_not_by_400_are_not_leap_years)
 {
   ASSERT_TRUE(  is_leap_year(1704) );
   ASSERT_TRUE(  is_leap_year(1916) );
   ASSERT_TRUE(  is_leap_year(2012) );
   ASSERT_TRUE(  is_leap_year(2016) );
 }
-```
-
-
-Rewrite unit test from scratch
-==============================
-    
-[Algorithm from wikipedia][algo]:
-    
-> * **if** (year is not divisible by 4) **then** (it is a common year)
-> * **else** if (year is not divisible by 100) **then** (it is a leap year)
-> * **else** if (year is not divisible by 400) **then** (it is a common year)
-> * **else** (it is a leap year)
-    
-[algo]: https://en.wikipedia.org/wiki/Leap_year#Algorithm
-    
-Provide unit test based on *Google Test* syntax:
-    
-```cpp
-TEST(case_name, test_name)
 ```
 
 
@@ -661,7 +600,7 @@ One unit test = One expectation
 > Using a **mock**, any test with more than one expectation
 > is a test with more than one assertion.
 
-    TODO Fournir exemples de mock, expliquer gmock...
+    TODO Fournir exemples de mock
 
 
 Spy
