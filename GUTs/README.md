@@ -726,7 +726,7 @@ F...
 FAIL: test_A_year_is_a_leap_year_if_it_is_divisible_by_400 (__main__.TestLeapYear)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "p.py", line 28, in test_A_year_is_a_leap_year_if_it_is_divisible_by_400
+  File "test_leap_year.py", line 28, in test_A_year_is_a_leap_year_if_it_is_divisible_by_400
     self.assertTrue(is_leap_year(2000))
 AssertionError: False is not true
 
@@ -792,7 +792,7 @@ FAIL: test_004: A year is a leap year if it is divisible by 400 (__main__.TestLe
 A year is a leap year if it is divisible by 400
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "p.py", line 30, in _
+  File "test_leap_year.py", line 30, in _
     ok (is_leap_year(2000)) == True
 AssertionError: False == True : failed.
 
@@ -851,8 +851,8 @@ Collecting picotest
 Installing collected packages: picotest
 Successfully installed picotest-0.2.0
 
-> python p.py 
-#### p.py
+> python test_leap_year.py 
+#### test_leap_year.py
 * Leap Year
   - [passed] A year is not a leap year if it is not divisible by 4
   - [passed] A year is a leap year if it is divisible by 4 but not by 100
@@ -860,20 +860,20 @@ Successfully installed picotest-0.2.0
   - [Failed] A year is a leap year if it is divisible by 400
 ----------------------------------------------------------------------
 [Failed] Leap Year > A year is a leap year if it is divisible by 400
-  File "p.py", line 34, in _
+  File "test_leap_year.py", line 34, in _
     assert is_leap_year(2000)
 AssertionError
 ----------------------------------------------------------------------
 ## total:4, passed:3, failed:1, error:0, skipped:0, todo:0
 
-> python p.py                                                                      
+> python test_leap_year.py                                                                      
 Traceback (most recent call last):
-  File "p.py", line 37, in <module>
+  File "test_leap_year.py", line 37, in <module>
     unittest.main()
 NameError: name 'unittest' is not defined
-[u:/tmp] 1 $ vim p.py                                                                          
-[u:/tmp] 46s $ python p.py 
-#### p.py
+[u:/tmp] 1 $ vim test_leap_year.py                                                                          
+[u:/tmp] 46s $ python test_leap_year.py 
+#### test_leap_year.py
 * Leap Year
   - [passed] A year is not a leap year if it is not divisible by 4
   - [passed] A year is a leap year if it is divisible by 4 but not by 100
