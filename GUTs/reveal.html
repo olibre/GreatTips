@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Good Unit Tests</title>
+
+		<link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+		<link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="http://lab.hakim.se/reveal-js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<style media="screen" type="text/css">
+					.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 { text-transform: none; }
+					.reveal pre code { max-height: 80%; }
+					.reveal blockquote { font-style: normal; text-align: left; background: rgba(255, 255, 255, 0.2); }
+                </style>
+				<section
+					data-markdown="README.md"
+					data-separator="^\n\n\n"
+					data-separator-vertical="^\n\n"
+					data-separator-notes="^Note:"/>
+			</div>
+		</div>
+
+		<script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+		<script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'http://lab.hakim.se/reveal-js/plugin/markdown/marked.js' },
+					{ src: 'http://lab.hakim.se/reveal-js/plugin/markdown/markdown.js' },
+					{ src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true },
+					{ src: 'http://lab.hakim.se/reveal-js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				],
+
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1
+			});
+		</script>
+	</body>
+</html>
