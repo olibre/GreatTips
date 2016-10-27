@@ -1,5 +1,5 @@
-Cheat sheet
-===========
+Résumé pour les décideurs pressés
+=================================
     
 TDD et BDD préconisent d'écrire les tests :
     
@@ -37,6 +37,7 @@ This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trai
 [97j]: http://akamaicovers.oreilly.com/images/0636920048824/cat.gif "97 Things Every Java Programmer Should Know (2017)"
 [KH]:  http://programmer.97things.oreilly.com/wiki/images/9/98/Kevlin_251x228.jpg
 [KHw]: https://en.wikipedia.org/wiki/Kevlin_Henney
+
 
 
 Classic Development Cycle in V
@@ -78,9 +79,9 @@ Implentation                  | 25x  |      |                     |
 Qui teste ?
 ===========
     
-|    | &nbsp;
-|----|--------
-| Tip 49 <br><br><br> **Test your software <br> or your users will.** | [![Book cover][PImg]][PLink]
+|   | &nbsp;
+|---|--------
+|Tip 49 <br><br> **Test your software <br> or your users will.**| [![Book cover][PImg]][PLink]
     
 [PImg]: http://upload.wikimedia.org/wikipedia/en/8/8f/The_pragmatic_programmer.jpg "The Pragmatic Programmer by Andrew Hunt and David Thomas (1999)"
 [PLink]: https://en.wikipedia.org/wiki/The_Pragmatic_Programmer
@@ -94,6 +95,7 @@ Most of old projects have
 * Technology debt (outdated underlying technologies)
 * Documentation debt (too little or too much)
 * **Test debt**
+
 
 
 Ariane 5
@@ -193,7 +195,7 @@ Commission d'enquête
 [arnold]:         http://www.math.umn.edu/~arnold/disasters/ariane5rep.html        "TODO: version anglaise à confirmer..."
 [bielefeld]:      http://www.rvs.uni-bielefeld.de/publications/Reports/ariane.html "TODO: à lire..."
 [Ariane5failure]: http://cmpe.emu.edu.tr/chefranov/Cmps201-fall2011/Notes/Ariane5failure.pdf
-    
+
 
 Que retenir du cas Ariane 501 ?
 ===============================
@@ -206,6 +208,7 @@ Que retenir du cas Ariane 501 ?
    * à la politique...
     
 [cr]: http://programmer.97things.oreilly.com/wiki/index.php/Continuous_Refactoring
+
 
 
 The Way of Testivus
@@ -233,21 +236,22 @@ The Way of Testivus
 Do not write tests to find bugs
 ===============================
     
-Si la finalité était de trouver des bugs et que l'on n'en trouve pas,
+Si la finalité était de trouver des bugs et que l'on n'en trouve pas,  
 alors on peut se dire qu'écrire des tests ne sert à rien.
     
-La finalité est autre : Détecter les changements dans le code qui causent des régressions.
+La finalité est autre :  
+Détecter les changements dans le code qui causent des régressions.  
 Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
 
 
-Que veut dire "Test Unitaire" ?
-===============================
+Que veut dire *"Test Unitaire"* ?
+=================================
     
-De quoi parle t'on quand on parle de "Test Unitaire" ?
+De quoi parle t'on quand on parle de *"Test Unitaire"* ?
 
 
-Une bonne définition du "Test Unitaire"
-======================================
+Une bonne définition du *"Test Unitaire"*
+=========================================
     
 * Les tests unitaires ne doivent pas interférer entre eux (même un test avec lui-même).
     
@@ -259,8 +263,8 @@ Une bonne définition du "Test Unitaire"
     * Donc un test unitaire peut tester plusieurs classes et fonctions
 
 
-Ce qui n'est pas un "Test Unitaire"
-===================================
+Ce qui n'est pas un *"Test Unitaire"*
+=====================================
     
 [Michael Feathers](http://www.artima.com/weblogs/viewpost.jsp?thread=126923) (2005)
     
@@ -270,24 +274,24 @@ Ce qui n'est pas un "Test Unitaire"
 > * It can't run at the same time as any of your other unit tests ;
 > * You have to do special things to your environment (such as editing config files) to run it.
 > 
-> Les tests qui font cela ne sont pas mauvais,
-> mais ils sont à séparer des vrais "Tests Unitaires"
-> afin que ces derniers puissent être exécutés de façon optimale.
+> **Les tests qui font cela ne sont pas mauvais,**  
+> **mais ils sont à séparer des vrais *"Tests Unitaires"***  
+> **afin que ces derniers puissent être exécutés de façon optimale.**
+
 
 
 Put theory into practice
 ========================
     
-[**Année bissextile**](http://fr.wikipedia.org/wiki/Année_bissextile#Règle_actuelle)
-    
-Depuis le calendrier grégorien, l'année est bissextile :
+L'année est [**bissextile**](http://fr.wikipedia.org/wiki/Année_bissextile#Règle_actuelle) :
     
 * si l'année est divisible par 4 et non divisible par 100, ou
 * si l'année est divisible par 400.
     
-```cpp
-bool is_leap_year(int year);
-```
+        bool is_leap_year(int year);
+
+Exercice : Écrire les tests unitaires
+-------------------------------------
 
 
 Test the function `is_leap_year()`
@@ -400,10 +404,10 @@ One unit test = One expectation
 > You can have multiple asserts on the same object.  
 > They will usually be the same concept being tested.
     
-&nbsp;    | Unit Test                             | Feature
-----------|---------------------------------------|------------------
-**Bad**   | `big_test()`                          |-> `is_leap_year()`
-**Good**  | `test1()`<br> `test2()`<br> `test3()` |-> `is_leap_year()`
+|        | Unit Test                             | Feature
+|--------|---------------------------------------|------------------
+|**Bad** | `big_test()`                          |-> `is_leap_year()`
+|**Good**| `test1()`<br> `test2()`<br> `test3()` |-> `is_leap_year()`
 
 
 One feature = multiple test cases
@@ -458,6 +462,7 @@ test_rest_is_leap()
 ```
 
 
+
 Où écrire la documentation ?
 ============================
     
@@ -486,7 +491,9 @@ Write test for people
 > Pour qui écrire les tests ?  
 > Pour ceux qui essayeront de comprendre l'implémentation.
 >
-> Les bons tests documentent l'implémentation : ils décrivent le fonctionnement du code testé.  
+> Les tests documentent l'implémentation :  
+> Ils décrivent le fonctionnement du code testé.
+>
 > Pour chaque cas de test :
 > 
 > * Décrire le context, le point de départ ou les préconditions
@@ -559,10 +566,11 @@ Exercise: Rewrite unit test from scratch
 > * **else** if (year is not divisible by 400) **then** (it is a common year)
 > * **else** (it is a leap year)
     
-Provide GUTs based on [*Google Test*][gt] syntax:
+Provide GUTs using [*Google Test*][gt] syntax:
     
     TEST(case_name, test_name)
-
+    
+[gt]:   http://en.wikipedia.org/wiki/Google_Test
 
 
 Comment this result
@@ -621,6 +629,7 @@ TEST(A_year_is_a_leap_year, if_it_is_divisible_by_400)
     ASSERT_TRUE(is_leap_year(2000));
 }
 ```
+
 
 
 Unit-Test Frameworks C++14 features
@@ -959,6 +968,7 @@ func Test_A_year_is_a_leap_year_if_it_is_divisible_by_400(t *testing.T) {
 ```
 
 
+
 xUnit
 =====
     
@@ -983,7 +993,6 @@ Quelques caractéristiques :
 [php]:  http://en.wikipedia.org/wiki/PHPUnit
 [http]: http://en.wikipedia.org/wiki/HttpUnit
 [html]: http://en.wikipedia.org/wiki/HtmlUnit
-[gt]:   http://en.wikipedia.org/wiki/Google_Test
 
 
 Fixture
@@ -998,8 +1007,9 @@ Cette initialisation plus ou moins complexe est facilitée par la [**fixture**][
         TODO Fournir exemples
 
 
-Test a class #1
-===============
+
+Test a feature #1
+=================
     
 Pour tester une classe, une approche est d'avoir un test pour chaque fonction de la classe.  
 Cela permet de respecter la couverture des fonctionnalités de la classe.  
@@ -1028,61 +1038,22 @@ Testons la classe `std::vector` en se limitant aux fonctions suivantes :
     pop_back();
     clear();
     
-Comment implémenter chacun de ces tests ? 
+Comment implémenter chacun de ces tests ?
     
     test_empty();
     test_size();
     test_push_back();
     test_pop_back();
     test_clear();
-
-
-Test a class #2
-===============
     
-Amélioration en séparant les asserts dans différentes fonctions.
-    
-Test                                     |   | Code
------------------------------------------|---|--------------
-`test1()`                                | ->| `function1()`
-`test2()`                                | ->| `function2()`
-`test3()`                                | ->| `function3()`
-`test4()`                                | ->| `function4()`
-`test5()`                                | ->| `function5()`
-`test6()`                                | ->| `function6()`
-----------------                         |---|--------------
-`test10()`<br> `test11()`                | ->| `function1()`
-`test20()`<br> `test21()`<br> `test22()` | ->| `function2()`
-`test30()`<br> `test31()`                | ->| `function3()`
-`test40()`<br> `test41()`<br> `test42()` | ->| `function4()`
-`test50()`<br> `test51()`<br> `test52()` | ->| `function5()`
-`test60()`<br> `test61()`                | ->| `function6()`
+Est-ce que chacun de ces tests va pouvoir tester une seule fonction ?
 
 
-Test `std::vector` #3
-=====================
-    
-Est-ce que chacun de ces tests peuvent tester qu'une seule fonction de la classe ? 
-    
-```cpp
-test_empty_1();
-test_empty_2();
-test_size_1();
-test_size_2();
-test_push_back_1();
-test_push_back_2();
-test_pop_back_1();
-test_pop_back_2();
-test_clear_1();
-test_clear_2();
-```
-
-
-Test a class #3
-===============
+Test a feature #2
+=================
     
 En fait, les tests vérifient plusieurs aspects de la classe
-qui nécessitent de combiner plusieurs fonctions.  
+qui nécessitent de combiner plusieurs fonctions.
     
 Test                                     |   | Code
 -----------------------------------------|---|--------------
@@ -1092,21 +1063,17 @@ Test                                     |   | Code
 `test4()`                                | ->| `function4()`
 `test5()`                                | ->| `function5()`
 `test6()`                                | ->| `function6()`
-----------------                         |---|--------------
-`test10()`<br> `test11()`                | ->| `function1()`
-`test20()`<br> `test21()`<br> `test22()` | ->| `function2()`
-`test30()`<br> `test31()`                | ->| `function3()`
-`test40()`<br> `test41()`<br> `test42()` | ->| `function4()`
-`test50()`<br> `test51()`<br> `test52()` | ->| `function5()`
-`test60()`<br> `test61()`                | ->| `function6()`
-----------------                         |---|--------------
+    
+Test                                     |   | Code
+-----------------------------------------|---|--------------
 `test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `test22()`<br> `test30()`<br> `test31()`<br> `test40()`<br> `test41()`<br> `test42()`<br> `test50()`<br> `test51()`<br> `test52()`<br> `test60()`<br> `test61()` | ->  | `function1()`<br> `function2()`<br> `function3()`<br> `function4()`<br> `function5()`<br> `function6()`
 
 
-Test `std::vector` #3
+Test `std::vector` #2
 =====================
     
-Écrire les **GUT**s de la classe std::vector en se limiter aux fonctions suivantes :
+Écrire les **GUT**s de la classe std::vector  
+(se limiter aux fonctions suivantes)
 
     empty();
     size();
@@ -1115,7 +1082,7 @@ Test `std::vector` #3
     clear();
 
 
-Test a feature #1
+Test a feature #3
 =================
     
 Une classe = un ensemble de tests.
@@ -1123,13 +1090,15 @@ Une classe = un ensemble de tests.
 Test                                                              |   | Code
 ------------------------------------------------------------------|---|------------
 `test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `...` | ->| `function1()`<br> `function2()`<br> `function3()`<br> `function4()`<br> `function5()`<br> `function6()`
-----------------                                                  |---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `...` | ->| `ClassA`
+    
+Test                                                              |   | Code
+------------------------------------------------------------------|---|------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `...` | ->| `ClassA` &emsp; &emsp;
     
 Des suggestions ?
 
 
-Test a feature #2
+Test a feature #3
 =================
     
 * Mais quand deux classes sont intiment liées ?
@@ -1139,24 +1108,26 @@ Test a feature #2
 Test                                                   |   | Code
 -------------------------------------------------------|---|------------
 `test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`
-----------------                                       |---|------------
+    
+Test                                                   |   | Code
+-------------------------------------------------------|---|------------
 `test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`<br> `ClassB`
 
 
-Test a feature #3
+Test a feature #4
 =================
     
 * Et que faire des dépendances ?
 * Les découpler avec *dummy* / *stub* / *fake* / *mock* ?
 * Et pouquoi pas les considérer comme faisant partie de la même fonctionnalité ?
-* On va pas découpler les `std::`, non ?
+* On va pas découpler les `std::` &emsp; Non ?
+    
+Test                                                   |   | Code
+-------------------------------------------------------|---|------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`<br> `ClassB` &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
     
 Test                                                   |   | Code                 |   | Dependency
 -------------------------------------------------------|---|----------------------|---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`             |   |
-----------------                                       |---|------------          |---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`<br> `ClassB`|   |
-----------------                                       |---|------------          |---|------------
 `test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`<br> `ClassB`| ->| `ClassC`<br> `ClassD`<br> `ClassE`
 
 
@@ -1178,13 +1149,16 @@ One class = Multiple features
     1. Coder différents jeux de tests unitaires indépendants ;
     2. Mieux : Découper la classe en fonctionnalités distinctes ([continuous refactoring][cr]) ;
     3. Encore mieux: Écrire les tests avant la classe, cela permet de corriger de rectifier le tir avant de devoir réécrire la fonctionnalité.
+    
+[cr]: http://programmer.97things.oreilly.com/wiki/index.php/Continuous_Refactoring
 
 
 Dependencies on hardware
 ========================
     
 * Que faire si l'objet accède à un fichier, un port réseau... ?
-* Essayer de découpler l'objet avec son envronnement.
+* Essayer de découpler l'objet avec son environnement.
+
 
 
 Découpler les Tests Unitaires
@@ -1218,6 +1192,8 @@ Stub
 A test [**Stub**][ts] is a minimal implementations providing always the same response (hard-coded) and does not contain assert.
 
     TODO Fournir exemples
+    
+[ts]: http://en.wikipedia.org/wiki/Test_stubs
 
 
 Fake
@@ -1226,6 +1202,8 @@ Fake
 A [**fake**][fo] object acts like the real object, but in a simpler way.
 
     TODO Fournir exemples
+    
+[fo]: http://en.wikipedia.org/wiki/Fake_object
 
 
 Mock
@@ -1250,6 +1228,8 @@ One unit test = One expectation
 > is a test with more than one assertion.
 
     TODO Fournir exemples de mock
+    
+[mo]: http://en.wikipedia.org/wiki/Mock_object
 
 
 Google Mock
@@ -1264,6 +1244,7 @@ Spy
 A test **spy** is any fack object having the capability to record events for further analysis.
 
     TODO Fournir exemples
+
 
 
 Test before or after development
@@ -1356,18 +1337,28 @@ Les 3 étapes du TDD
 
 1. Écrire les tests unitaires (rien ne compile)
 2. Une implémentation rapidement codée pour passer les tests
-3. Améliorer son implémentation (simplifier, factoriser, optimizer)
+3. Améliorer son implémentation (simplifier, factoriser, optimiser)
+    
+[![Cycle du TDD][tdd_img]][tdd_lnk]
+    
+[tdd_img]: http://upload.wikimedia.org/wikipedia/commons/0/0e/Cycle-global-tdd.png
+[tdd_lnk]: http://commons.wikimedia.org/wiki/File:Cycle-global-tdd.png
 
 
 Deming wheel PDCA
 =================
    
-   Le TDD à quelques points communs avec la [roue de Deming](https://fr.wikipedia.org/wiki/Roue_de_Deming)
+Le TDD à quelques points communs avec la [roue de Deming](https://fr.wikipedia.org/wiki/Roue_de_Deming)
    
-1. **Plan**  Planifier les tests à écrire (la spécification)
-2. **Do**    Développer les tests
-3. **Check** Contrôler le résultat des tests
-4. **Act**   Ajuster l'implémentation
+|         | [![Roue PDCA][r_img]][r_lnk]
+|---------|------------------------------------------------
+|**Plan** | Planifier les tests à écrire (la spécification)
+|**Do**   | Développer les tests
+|**Check**| Contrôler le résultat des tests
+|**Act**  | Ajuster l'implémentation
+    
+[r_img]: http://upload.wikimedia.org/wikipedia/commons/6/6d/Deming_PDCA_cycle.PNG "Roue Plan-Do-Check-Act"
+[r_lnk]: http://commons.wikimedia.org/wiki/File:Deming_PDCA_cycle.PNG
 
 
 POUT versus TDD
@@ -1417,6 +1408,8 @@ TEST(A_year_is_a_leap_year, if_it_is_divisible_by_400)
     ASSERT_TRUE(is_leap_year(2000));
 }
 ```
+    
+Exercice : Implémenter la fonction `is_leap_year()`
 
 
 TDD #2 Write a buildable feature
@@ -1548,7 +1541,7 @@ Behavior-Driven Development
 > * Expliquer comment l'exigence est satisfaite
 > * Décrire le résultat attendu ou les postconditions 
 
-    
+
 BDD Python example
 ==================
 
@@ -1572,7 +1565,7 @@ class  LeapYearSpec:
     assert is_leap_year(2000)
 ```
 
-        
+
 BDD versus TDD
 ==============
 
@@ -1609,24 +1602,31 @@ Real value of tests
 > and skills of those who design and produce the code.
 
 
-Compilation
-===========
-
-&nbsp;            | Release    | Debug | Coverage
-------------------|------------|-------|---------
-`assert()`        | `-D NDEBUG`|       | `-D NDEBUG`
-Optimisation      | `-Ofast`   | `-Og` | `-Og`
-
-
+Compilation C++
+===============
+    
+|                 | Release                     | Debug            | Coverage
+|-----------------|-----------------------------|------------------|-----------------
+|`assert()`       | `-D NDEBUG`                 |                  | `-D NDEBUG`
+|[Optimisation][o]| `-Ofast` <br> (or any other)| `-O0 -fno-inline`| `-O0 -fno-inline`
+    
 Commun aux trois *build types*
-
-* Toujours les symboles de debug => `-g3`
-* C'est fini les `i386` => `-march=sandybridge`
-
-Le plus de compilateurs possibles
-
-* MSVC sous Windows
+------------------------------
+    
+* Toujours les [symboles de debug][d] => `-g3 -fno-eliminate-unused-debug-types`  
+  (les binaires peuvent être [strippés][s] avant livraison au client)
+* C'est fini les `i386` => `-march=sandybridge`  
+  (à adapter selon le conext)
+    
+Utiliser différents compilateurs
+--------------------------------
+    
+* MSVC sous Windows (et un autre ?)
 * GCC et Clang sous Linux
+    
+[o]: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
+[d]: https://gcc.gnu.org/onlinedocs/libstdc++/manual/debug.html
+[s]: http://www.thegeekstuff.com/2012/09/strip-command-examples/
 
 
 Execution
@@ -1636,7 +1636,7 @@ Les tests unitaires sont exécutés avec toutes les combinaisons :
 
 * GCC, Clang
 * Release, Debug, Coverage
-* Valgring avec différentes options
+* Valgring ou pas (tester différentes options)
 
 
 Definition of Done (DoD)
@@ -1656,6 +1656,7 @@ Definition of Done (DoD)
 * [clang-check](http://clang.llvm.org/docs/ClangCheck.html) (static code analyzer, detects code patterns that most probably are bugs and inspects control flow graph and do path-based analysis)
 * [clang-tidy](http://clang.llvm.org/extra/clang-tidy/) (linter, checks coding style and address readability, and can fix C++ source code)
 * No dead code
+
 
 
 Couverture de code
@@ -1688,35 +1689,45 @@ Coverage pourcentage
   * Else => Something important is not tested => Add tests
 
 
-Testivus and code coverage
-==========================
+Testivus and code coverage #1
+=============================
 
 [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007)
 
-> A programmer asked:
+> A programmer asks:
 > 
-> - I am ready to write some unit tests. What code coverage should I aim for?
+> - I am ready to write some unit tests.  
+>   What code coverage should I aim for?
 > 
-> The great master replied:
+> The great master replies:
 > 
-> - Don’t worry about coverage, just write some good tests.
-> 
-> ...
-> 
-> Later, a second programmer asked the same question. The great master pointed at a pot of boiling water and said:
+> - Don’t worry about coverage,  
+>   just write some good tests.
+
+
+Testivus and code coverage #2
+=============================
+
+> Later, a second programmer asks the same question.  
+> The great master points at a pot of boiling water and says:
 > 
 > - How many grains of rice should put in that pot?
 > - How can I possibly tell you? It depends on how many people you need to feed, how hungry they are, what other food you are serving, how much rice you have available, and so on.
 > - Exactly
-> 
-> ...
-> 
-> A third programmer came and asked the same question. The master replied:
-> 
+
+
+Testivus and code coverage #3
+=============================
+
+> A third programmer enters and asks the same question.  
+> The master replies:  
+>
 > - 80%
-> 
-> ...
-> 
+
+
+Testivus and code coverage #4
+=============================
+
 > After, a young apprentice approached the great master:
 > 
 > - Great master, today I overheard you answer the same question about code coverage with three different answers. Why?
@@ -1729,16 +1740,15 @@ Testivus and code coverage
 Goodhart's law
 ==============
     
-[Original](http://en.wikipedia.org/wiki/Goodhart's_law)
----------
+[Charles Goodhart](http://en.wikipedia.org/wiki/Goodhart's_law),
+advisor to the Bank of England and Emeritus Professor at the London School of Economics (1975)
     
 > Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.
-Goodhart's law
+Goodhart's law.
     
-Simplified
-----------
+Popular formulation
     
-> When a measure becomes a target, it ceases to be a good measure
+> When a measure becomes a target, it ceases to be a good measure.
     
 In French
 ---------
@@ -1784,12 +1794,10 @@ QuickCheck
     TODO Fournir quelques exemples
 
 
-
 autocheck
 =========
 
     TODO Fournir quelques exemples
-
 
 
 rapidcheck
@@ -1798,28 +1806,29 @@ rapidcheck
     TODO Fournir quelques exemples
 
 
+
 Continuous Testing
 ==================
 
-The Pragmatic Programmer by Andrew Hunt and David Thomas
+The Pragmatic Programmer by Andrew Hunt and David Thomas (1999)
 
-Tip 62
-
+> Tip 62  
+> 
 > * **Test early**
 > * **Test often**
 > * **Test automatically**
     
-Continuous Testing is spart of:
-    
-* Continuous Integration (intégration continue)
-* Continuous delivery (livraison continue)
-* Continuous deployement (déploiement continue)
+Continuous Testing is spart of | &nbsp;
+-------------------------------|---------------------
+Continuous Integration         | Intégration Continue
+Continuous Delivery            | Livraison Continue
+Continuous Deployement         | Déploiement Continu
 
 
 Some Continuous Testing Tools
 =============================
     
-Projets libres            | Descriptions
+Projet                    | Description
 --------------------------|-------------------    
 [Jenkins][J]              | Outil d'intégration continue très complet (anciennement Hudson)
 [SonarQube][SC]           | Mesure la qualité du code source en continu
