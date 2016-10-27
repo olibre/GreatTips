@@ -14,7 +14,8 @@ TDD et BDD préconisent d'écrire les tests :
 
 On peut écrire des GUTs même si on ne respectent pas scrupuleusement les TDD/BDD.
 
-Pour optimiser l'exécution des tests en parrallèle de manière reproductible, distinguer ceux qui n'accèdent ni aux fichiers ni au réseau des autres tests.
+Pour optimiser l'exécution des tests en parrallèle de manière reproductible,
+distinguer ceux qui n'accèdent ni aux fichiers ni au réseau des autres tests.
 
     TODO Compléter/Résumer...
 
@@ -36,6 +37,42 @@ This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trai
 [97j]: http://akamaicovers.oreilly.com/images/0636920048824/cat.gif "97 Things Every Java Programmer Should Know (2017)"
 [KH]:  http://programmer.97things.oreilly.com/wiki/images/9/98/Kevlin_251x228.jpg
 [KHw]: https://en.wikipedia.org/wiki/Kevlin_Henney
+
+
+Classic Development Cycle in V
+==============================
+    
+[![Cycle en V][v_svg]][v_lnk]
+    
+[v_svg]: http://upload.wikimedia.org/wikipedia/commons/f/f9/V-model.svg
+[v_lnk]: http://commons.wikimedia.org/wiki/File:V-model.svg
+
+
+Cost of bug correction
+======================
+    
+Le coût de correction dépend de l'organisation,
+des process mais aussi des enjeux.
+Le tableau suivant est une extrapolation déduite du
+*[Error Cost Escalation Through the Project Life Cycle][nasa]* (NASA 2004).
+    
+[SDLC][SDLC] steps            | Cost |&nbsp;| [STLC][STLC] steps  | Cost
+------------------------------|------|------|---------------------|------
+Customers' needs              |  0   |      | Production error    | 1000x
+[Requirements analysis][ra]   |  1x  |      | [Acceptance testing][at]  |  200x
+[Functional specification][fs]|  5x  |      | [Integration testing][it] |  100x
+[Design][sd]                  | 10x  |      | [Unit Testing][ut]        |   50x
+Implentation                  | 25x  |      |                     | 
+    
+[nasa]: http://ntrs.nasa.gov/search.jsp?R=20100036670
+[SDLC]: http://en.wikipedia.org/wiki/Software_development_process   "Software Development Life Cycle"
+[STLC]: http://en.wikipedia.org/wiki/Software_testing_life_cycle    "Software Testing Life Cycle"
+[ra]:   http://en.wikipedia.org/wiki/Requirements_analysis
+[fs]:   http://en.wikipedia.org/wiki/Functional_specification
+[sd]:   http://en.wikipedia.org/wiki/Software_design
+[at]:   http://en.wikipedia.org/wiki/Acceptance_testing
+[it]:   http://en.wikipedia.org/wiki/Integration_testing
+[ut]:   http://en.wikipedia.org/wiki/Unit_testing
 
 
 Qui teste ?
@@ -171,6 +208,38 @@ Que retenir du cas Ariane 501 ?
 [cr]: http://programmer.97things.oreilly.com/wiki/index.php/Continuous_Refactoring
 
 
+The Way of Testivus
+===================
+    
+[Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) (2007)
+    
+> 1.  If you write code, write tests.
+> 2.  Don’t get stuck on unit testing dogma.
+> 3.  Embrace unit testing karma.
+> 4.  Think of code and test as one.
+> 5.  The test is more important than the unit.
+> 6.  The best time to test is when the code is fresh.
+> 7.  Tests not run waste away.
+> 8.  An imperfect test today is better than a perfect test someday.
+> 9.  An ugly test is better than no test.
+> 10. Sometimes, the test justifies the means.
+> 11. Only fools use no tools.
+> 12. Good tests fail.
+    
+* What is important for you?
+* Next section is opposite to last point *"Good tests fail"*.
+
+
+Do not write tests to find bugs
+===============================
+    
+Si la finalité était de trouver des bugs et que l'on n'en trouve pas,
+alors on peut se dire qu'écrire des tests ne sert à rien.
+    
+La finalité est autre : Détecter les changements dans le code qui causent des régressions.
+Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
+
+
 Que veut dire "Test Unitaire" ?
 ===============================
     
@@ -183,7 +252,7 @@ Une bonne définition du "Test Unitaire"
 * Les tests unitaires ne doivent pas interférer entre eux (même un test avec lui-même).
     
     * Donc ils peuvent tous être exécutés en parallèle
-    * Pas d'accés aux ressources file-system, réseau, affinité CPU, base de données
+    * Pas d'accés aux ressources file-system, réseau, affinité CPU, base de données, horloge...
     
 * Ce qui est unitaire, c'est la fonctionnalité testée
     
@@ -221,35 +290,33 @@ bool is_leap_year(int year);
 ```
 
 
-Check the function
-==================
+Test the function `is_leap_year()`
+==================================
     
-Is the below test a good idea?
+Is this test a good idea?
     
 ```cpp
-//if (year is not divisible by 4) then (it is a common year)
-//else if (year is not divisible by 100) then (it is a leap year)
-//else if (year is not divisible by 400) then (it is a common year)
-//else (it is a leap year)
 test()
 {
   // Test all years until 10'000
   for (int y=1; y<10*1000; ++y)
   {
     bool leap;
-    if (y % 4) leap = false;
-    else leap = y % 100 ? true : y % 400;
+    if (y % 4)
+      leap = false;
+    else
+      leap = y % 100 ? true : y % 400;
 
-    // Check if tested code has same value
-    x = is_leap_year(y);
-    ASSERT_EQUAL(leap, x);
+    // Check if same result
+    actual = is_leap_year(y);
+    ASSERT_EQUAL(leap, actual);
   }
 }
 ```
 
 
-Feature implemented
-===================
+Implement `is_leap_year()`
+==========================
     
 ```cpp
 bool is_leap_year (int year)
@@ -263,8 +330,8 @@ bool is_leap_year (int year)
 }
 ```
     
-* Same implementation has test!
-* What is the added value of the test?
+* The feature use the same implementation as the test!
+* Finally, what is the added value of the test?
 
 
 Just test some cases
@@ -335,8 +402,8 @@ One unit test = One expectation
     
 &nbsp;    | Unit Test                             | Feature
 ----------|---------------------------------------|------------------
-**Bad**   | `big_test()`                          |⮕ `is_leap_year()`
-**Good**  | `test1()`<br> `test2()`<br> `test3()` |⮕ `is_leap_year()`
+**Bad**   | `big_test()`                          |-> `is_leap_year()`
+**Good**  | `test1()`<br> `test2()`<br> `test3()` |-> `is_leap_year()`
 
 
 One feature = multiple test cases
@@ -347,18 +414,18 @@ Original idea
     
 Unit Tests|    Code
 ----------|---------------
-`test1()` | ⮕ `feature1()`
-`test2()` | ⮕ `feature2()`
-`test3()` | ⮕ `feature3()`
+`test1()` | -> `feature1()`
+`test2()` | -> `feature2()`
+`test3()` | -> `feature3()`
     
 Idea *One unit test = One expectation*
 --------------------------------------
     
 Unit Tests                                                 |   Code
 -----------------------------------------------------------|---------------
-`test11()`<br>`test12()`<br>`test13()`<br>`test14()`<br>...| ⮕ `feature1()`
-`test21()`<br>`test22()`<br>`test23()`<br>`test24()`<br>...| ⮕ `feature2()`
-`test31()`<br>`test32()`<br>`test33()`<br>`test34()`<br>...| ⮕ `feature3()`
+`test11()`<br>`test12()`<br>`test13()`<br>`test14()`<br>...| -> `feature1()`
+`test21()`<br>`test22()`<br>`test23()`<br>`test24()`<br>...| -> `feature2()`
+`test31()`<br>`test32()`<br>`test33()`<br>`test34()`<br>...| -> `feature3()`
 
 
 Split big test function
@@ -437,7 +504,7 @@ Le Test Unitaire décrit la fonctionnalité testée
 > le test doit clairement exprimer
 > ce que fait cette fonctionnalité au lecteur.
 >
-> 🢥 **Le test unitaire doit formaliser la spécification.**
+> => **Le test unitaire doit formaliser la spécification.**
 >
 > Le test unitaire n'ayant pas été écrit
 > avec à l'esprit son rôle de specification
@@ -460,16 +527,16 @@ Les tests unitaires représentnent la spécification du code.
 * Function names are phrases (with underscores).
 
 
-*should* and *must*
+*Should* and *Must*
 ===================
     
 * Attention *should* dans les spec veut dire *optional*  
-  Donc non testé 🢥 Éviter *should*
+  Donc non testé => Éviter *should*
 * Exprimer le résultat et non le souhait  
-  "X should give Y" ⮕ "X gives Y"
+  "X should give Y" -> "X gives Y"
 * Préférer *must* à *shall* car plus explicite
 * Ommetre *must*  
-  "X must give Y" ⮕ "X gives Y"
+  "X must give Y" -> "X gives Y"
 
 
 Coding rules for Unit Test 
@@ -492,11 +559,10 @@ Exercise: Rewrite unit test from scratch
 > * **else** if (year is not divisible by 400) **then** (it is a common year)
 > * **else** (it is a leap year)
     
-Provide GUTs based on *Google Test* syntax:
+Provide GUTs based on [*Google Test*][gt] syntax:
     
-```cpp
-TEST(case_name, test_name)
-```
+    TEST(case_name, test_name)
+
 
 
 Comment this result
@@ -555,6 +621,548 @@ TEST(A_year_is_a_leap_year, if_it_is_divisible_by_400)
     ASSERT_TRUE(is_leap_year(2000));
 }
 ```
+
+
+Unit-Test Frameworks C++14 features
+===================================
+
+* [Catch](https://github.com/philsquared/Catch) (**C**++ **A**utomated **T**est **C**ases in **H**eaders)
+* [Mettle](https://github.com/jimporter/mettle)
+* [73 C++ UT frameworks][UTwiki] listed on Wikipedia
+    
+[UTwiki]: http://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C++
+
+
+Catch
+=====
+
+```cpp
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
+
+TEST_CASE("A year is not a leap year if it is not divisible by 4", "[leap]") {
+    REQUIRE( is_leap_year(2015) == false );
+}
+
+TEST_CASE("A year is a leap year if it is divisible by 4 but not by 100", "[leap]") {
+    REQUIRE( is_leap_year(2016) == true );
+}
+
+TEST_CASE("A year is not a leap year if it is divisible by 100 but not by 400", "[leap]") {
+    REQUIRE( is_leap_year(1900) == false );
+}
+
+TEST_CASE("A year is a leap year if it is divisible by 400", "[leap]") {
+    REQUIRE( is_leap_year(2000) == true );
+}
+```
+
+    TODO Fournir plus d'exemples sur la puissance de Catch
+
+
+Mettle
+======
+
+```cpp
+#include <mettle.hpp>
+
+mettle::suite<> basic("Leap Year", [](auto &_) {
+
+  _.test("A year is not a leap year if it is not divisible by 4", []() {
+    mettle::expect(false, is_leap_year(2015));
+  });
+
+  _.test("A year is a leap year if it is divisible by 4 but not by 100", []() {
+    mettle::expect(true, is_leap_year(2016));
+  });
+
+  _.test("A year is not a leap year if it is divisible by 100 but not by 400", []() {
+    mettle::expect(false, is_leap_year(1900));
+  });
+
+  _.test("A year is a leap year if it is divisible by 400", []() {
+    mettle::expect(true, is_leap_year(2000));
+  })
+}
+
+```
+
+
+Python Unit Test
+================
+    
+Bibliothèque [unittest](https://docs.python.org/3/library/unittest.html)
+(anciennement PyUnit) dont les fonctions de test sont prefixées par `test`.
+    
+```python
+import unittest
+
+class TestLeapYear(unittest.TestCase):
+
+  def test_A_year_is_not_a_leap_year_if_it_is_not_divisible_by_4(self):
+    self.assertFalse(is_leap_year(2015))
+
+  def test_A_year_is_a_leap_year_if_it_is_divisible_by_4_but_not_by_100(self):
+    self.assertTrue(is_leap_year(2016))
+
+  def test_A_year_is_not_a_leap_year_if_it_is_divisible_by_100_but_not_by_400(self):
+    self.assertFalse(is_leap_year(1900))
+
+  def test_A_year_is_a_leap_year_if_it_is_divisible_by_400(self):
+    self.assertTrue(is_leap_year(2000))
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+
+Run Python Unit Test
+====================
+    
+```bash
+> python test_leap_year.py
+F...
+======================================================================
+FAIL: test_A_year_is_a_leap_year_if_it_is_divisible_by_400 (__main__.TestLeapYear)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "p.py", line 28, in test_A_year_is_a_leap_year_if_it_is_divisible_by_400
+    self.assertTrue(is_leap_year(2000))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (failures=1)
+
+> python test_leap_year.py
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+```
+
+
+oktest (python)
+===============
+    
+Annotations `@test`.
+    
+```python
+import unittest
+from oktest import ok, test
+
+class TestLeapYear(unittest.TestCase):
+
+  @test("A year is not a leap year if it is not divisible by 4")
+  def _(self):
+    ok (is_leap_year(2015)) == False
+    
+  @test("A year is a leap year if it is divisible by 4 but not by 100")
+  def _(self):
+    ok (is_leap_year(2016)) == True
+    
+  @test("A year is not a leap year if it is divisible by 100 but not by 400")
+  def _(self):
+    ok (is_leap_year(1900)) == False
+    
+  @test("A year is a leap year if it is divisible by 400")
+  def _(self):
+    ok (is_leap_year(2000)) == True
+
+if __name__ == '__main__':
+    unittest.main()
+```
+
+
+Run oktest
+==========
+    
+```bash
+> sudo pip install oktest
+Collecting oktest
+Installing collected packages: oktest
+Successfully installed oktest-0.15.2
+
+> python test_leap_year.py
+...F
+======================================================================
+FAIL: test_004: A year is a leap year if it is divisible by 400 (__main__.TestLeapYear)
+A year is a leap year if it is divisible by 400
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "p.py", line 30, in _
+    ok (is_leap_year(2000)) == True
+AssertionError: False == True : failed.
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=1)
+
+> python test_leap_year.py
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+```
+
+
+picotest (python)
+=================
+    
+Beautiful !
+    
+```python
+import picotest
+test = picotest.new()
+
+with test("Leap Year"):
+
+  @test("A year is not a leap year if it is not divisible by 4")
+  def _():
+    assert not is_leap_year(2015)
+    
+  @test("A year is a leap year if it is divisible by 4 but not by 100")
+  def _():
+    assert is_leap_year(2016)
+    
+  @test("A year is not a leap year if it is divisible by 100 but not by 400")
+  def _():
+    assert not is_leap_year(1900)
+    
+  @test("A year is a leap year if it is divisible by 400")
+  def _():
+    assert is_leap_year(2000)
+
+if __name__ == '__main__':
+    picotest.main()
+```
+
+
+Run picotest
+============
+    
+```bash
+> sudo pip install picotest
+Collecting picotest
+Installing collected packages: picotest
+Successfully installed picotest-0.2.0
+
+> python p.py 
+#### p.py
+* Leap Year
+  - [passed] A year is not a leap year if it is not divisible by 4
+  - [passed] A year is a leap year if it is divisible by 4 but not by 100
+  - [passed] A year is not a leap year if it is divisible by 100 but not by 400
+  - [Failed] A year is a leap year if it is divisible by 400
+----------------------------------------------------------------------
+[Failed] Leap Year > A year is a leap year if it is divisible by 400
+  File "p.py", line 34, in _
+    assert is_leap_year(2000)
+AssertionError
+----------------------------------------------------------------------
+## total:4, passed:3, failed:1, error:0, skipped:0, todo:0
+
+> python p.py                                                                      
+Traceback (most recent call last):
+  File "p.py", line 37, in <module>
+    unittest.main()
+NameError: name 'unittest' is not defined
+[u:/tmp] 1 $ vim p.py                                                                          
+[u:/tmp] 46s $ python p.py 
+#### p.py
+* Leap Year
+  - [passed] A year is not a leap year if it is not divisible by 4
+  - [passed] A year is a leap year if it is divisible by 4 but not by 100
+  - [passed] A year is not a leap year if it is divisible by 100 but not by 400
+  - [passed] A year is a leap year if it is divisible by 400
+## total:4, passed:4, failed:0, error:0, skipped:0, todo:0
+```
+
+
+JUnit
+=====
+    
+JUnit 4: Annotation `@Test` has remplaced prefix `test`.
+    
+```java
+import org.junit.Test;
+
+public class LeapYearTest {
+  @Test
+  public void A_year_is_not_a_leap_year_if_it_is_not_divisible_by_4() {
+    assertFalse(is_leap_year(2015));
+  }
+  @Test
+  public void A_year_is_a_leap_year_if_it_is_divisible_by_4_but_not_by_100() {
+    assertTrue(is_leap_year(2016));
+  }
+  @Test
+  public void A_year_is_not_a_leap_year_if_it_is_divisible_by_100_but_not_by_400() {
+    assertFalse(is_leap_year(1900));
+  @Test
+  public void A_year_is_a_leap_year_if_it_is_divisible_by_400() {
+    self.assertTrue(is_leap_year(2000))
+  }
+}
+```
+
+
+JUnit using a message in assert
+===============================
+    
+Not really readable.
+    
+```java
+import org.junit.Test;
+
+public class LeapYearTests {
+
+  public void test_leap_year() {
+    assertFalse("A year is not a leap year if it is not divisible by 4",              is_leap_year(2015));
+    assertTrue( "A year is a leap year if it is divisible by 4 but not by 100",       is_leap_year(2016));
+    assertFalse("A year is not a leap year if it is divisible by 100 but not by 400", is_leap_year(1900));
+    assertTrue( "A year is a leap year if it is divisible by 400",                    is_leap_year(2000));
+  }
+}
+```
+
+
+Go Unit Testing
+===============
+    
+    TODO
+
+
+xUnit
+=====
+    
+La grande majorité des frameworks de tests unitaires partagent la même phylosophie,
+regroupée sous le terme [x**Unit**][x] à l'instar de [J**Unit**][j],
+[Cpp**Unit**][cpp], [N**Unit**][n], [PHP**Unit**][php], [Http**Unit**][http],
+[Html**Unit**][http]... mais aussi [GTest][gt].
+    
+Quelques caractéristiques :
+    
+* Fonctions **assert** pour comparer le résultat d'un test par rapport à une valeur attendue.
+* Le **test case** représente un seul test (souvent implémenté comme une classe).
+* La **test suite** est l'ensemble des **test cases** partageant la même **fixture**.
+* La [**fixture**][f] et l'ensemble des preconditions avant de lancer les tests.
+* La sortie XML est la même et permet d'être importée par des outils comme Jenkins.
+    
+[f]:    http://fr.wikipedia.org/wiki/Test_fixture
+[x]:    http://fr.wikipedia.org/wiki/XUnit
+[j]:    http://en.wikipedia.org/wiki/JUnit
+[cpp]:  http://en.wikipedia.org/wiki/CppUnit
+[n]:    http://en.wikipedia.org/wiki/NUnit
+[php]:  http://en.wikipedia.org/wiki/PHPUnit
+[http]: http://en.wikipedia.org/wiki/HttpUnit
+[html]: http://en.wikipedia.org/wiki/HtmlUnit
+[gt]:   http://en.wikipedia.org/wiki/Google_Test
+
+
+Fixture
+=======
+    
+Pour tester des composants, un environnement a souvent besoin d'être préparé avec des **stubs**/**mocks**.
+Cette initialisation plus ou moins complexe est facilitée par la [**fixture**][f] :
+
+* `SetUp()` initialise tout cet environnement ;
+* `TearDown()` libére proprement (afin de ne pas perturber les autres tests).
+    
+        TODO Fournir exemples
+
+
+Test a class #1
+===============
+    
+Pour tester une classe, une approche est d'avoir un test pour chaque fonction de la classe.  
+Cela permet de respecter la couverture des fonctionnalités de la classe.  
+De plus, un échec permet tout de suite de localiser la régression.
+    
+Test       |   | Code
+-----------|---|---------
+`test1()`  | ->| `function1()`
+`test2()`  | ->| `function2()`
+`test3()`  | ->| `function3()`
+`test4()`  | ->| `function4()`
+`test5()`  | ->| `function5()`
+`test6()`  | ->| `function6()`
+    
+Quelles sont les limitations de cette approche ?
+
+
+Test `std::vector` #1
+=====================
+    
+Testons la classe `std::vector` en se limitant aux fonctions suivantes :
+    
+    empty();
+    size();
+    push_back();
+    pop_back();
+    clear();
+    
+Comment implémenter chacun de ces tests ? 
+    
+    test_empty();
+    test_size();
+    test_push_back();
+    test_pop_back();
+    test_clear();
+
+
+Test a class #2
+===============
+    
+Amélioration en séparant les asserts dans différentes fonctions.
+    
+Test                                     |   | Code
+-----------------------------------------|---|--------------
+`test1()`                                | ->| `function1()`
+`test2()`                                | ->| `function2()`
+`test3()`                                | ->| `function3()`
+`test4()`                                | ->| `function4()`
+`test5()`                                | ->| `function5()`
+`test6()`                                | ->| `function6()`
+----------------                         |---|--------------
+`test10()`<br> `test11()`                | ->| `function1()`
+`test20()`<br> `test21()`<br> `test22()` | ->| `function2()`
+`test30()`<br> `test31()`                | ->| `function3()`
+`test40()`<br> `test41()`<br> `test42()` | ->| `function4()`
+`test50()`<br> `test51()`<br> `test52()` | ->| `function5()`
+`test60()`<br> `test61()`                | ->| `function6()`
+
+
+Test `std::vector` #3
+=====================
+    
+Est-ce que chacun de ces tests peuvent tester qu'une seule fonction de la classe ? 
+    
+```cpp
+test_empty_1();
+test_empty_2();
+test_size_1();
+test_size_2();
+test_push_back_1();
+test_push_back_2();
+test_pop_back_1();
+test_pop_back_2();
+test_clear_1();
+test_clear_2();
+```
+
+
+Test a class #3
+===============
+    
+En fait, les tests vérifient plusieurs aspects de la classe
+qui nécessitent de combiner plusieurs fonctions.  
+    
+Test                                     |   | Code
+-----------------------------------------|---|--------------
+`test1()`                                | ->| `function1()`
+`test2()`                                | ->| `function2()`
+`test3()`                                | ->| `function3()`
+`test4()`                                | ->| `function4()`
+`test5()`                                | ->| `function5()`
+`test6()`                                | ->| `function6()`
+----------------                         |---|--------------
+`test10()`<br> `test11()`                | ->| `function1()`
+`test20()`<br> `test21()`<br> `test22()` | ->| `function2()`
+`test30()`<br> `test31()`                | ->| `function3()`
+`test40()`<br> `test41()`<br> `test42()` | ->| `function4()`
+`test50()`<br> `test51()`<br> `test52()` | ->| `function5()`
+`test60()`<br> `test61()`                | ->| `function6()`
+----------------                         |---|--------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `test22()`<br> `test30()`<br> `test31()`<br> `test40()`<br> `test41()`<br> `test42()`<br> `test50()`<br> `test51()`<br> `test52()`<br> `test60()`<br> `test61()` | ->  | `function1()`<br> `function2()`<br> `function3()`<br> `function4()`<br> `function5()`<br> `function6()`
+
+
+Test `std::vector` #3
+=====================
+    
+Écrire les **GUT**s de la classe std::vector en se limiter aux fonctions suivantes :
+
+    empty();
+    size();
+    push_back();
+    pop_back();
+    clear();
+
+
+Test a feature #1
+=================
+    
+Une classe = un ensemble de tests.
+    
+Test                                                              |   | Code
+------------------------------------------------------------------|---|------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `...` | ->| `function1()`<br> `function2()`<br> `function3()`<br> `function4()`<br> `function5()`<br> `function6()`
+----------------                                                  |---|------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `...` | ->| `ClassA`
+    
+Des suggestions ?
+
+
+Test a feature #2
+=================
+    
+* Mais quand deux classes sont intiment liées ?
+* Les séparer avec des *dummy* / *stub* / *fake* / *mock* ?
+* Et pouquoi pas les considérer comme faisant partie de la même fonctionnalité ?
+    
+Test                                                   |   | Code
+-------------------------------------------------------|---|------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`
+----------------                                       |---|------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`<br> `ClassB`
+
+
+Test a feature #3
+=================
+    
+* Et que faire des dépendances ?
+* Les découpler avec *dummy* / *stub* / *fake* / *mock* ?
+* Et pouquoi pas les considérer comme faisant partie de la même fonctionnalité ?
+* On va pas découpler les `std::`, non ?
+    
+Test                                                   |   | Code                 |   | Dependency
+-------------------------------------------------------|---|----------------------|---|------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`             |   |
+----------------                                       |---|------------          |---|------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`<br> `ClassB`|   |
+----------------                                       |---|------------          |---|------------
+`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ->| `ClassA`<br> `ClassB`| ->| `ClassC`<br> `ClassD`<br> `ClassE`
+
+
+Granularity of Unit Test
+========================
+    
+* Bien doser la granularité d'un test unitaire
+* Suivre son instinct
+* Penser à une fonctionnalité unitaire dans son ensemble
+* Ne pas s'embêter à découpler quand cela n'apporte pas grand chose
+
+
+One class = Multiple features
+=============================
+    
+* Que faire si on se rend compte que la classe expose différentes fonctionnalités ?
+* Cela est révélateur d'une conception bancale...
+* Solutions
+    1. Coder différents jeux de tests unitaires indépendants ;
+    2. Mieux : Découper la classe en fonctionnalités distinctes ([continuous refactoring][cr]) ;
+    3. Encore mieux: Écrire les tests avant la classe, cela permet de corriger de rectifier le tir avant de devoir réécrire la fonctionnalité.
+
+
+Dependencies on hardware
+========================
+    
+* Que faire si l'objet accède à un fichier, un port réseau... ?
+* Essayer de découpler l'objet avec son envronnement.
 
 
 Découpler les Tests Unitaires
@@ -622,194 +1230,18 @@ One unit test = One expectation
     TODO Fournir exemples de mock
 
 
+Google Mock
+===========
+       
+    TODO Fournir exemples
+
+
 Spy
 ===
 
 A test **spy** is any fack object having the capability to record events for further analysis.
 
     TODO Fournir exemples
-
-
-Test a class #1
-===============
-    
-Pour tester une classe, une approche est d'avoir un test pour chaque fonction de la classe.  
-Cela permet de respecter la couverture des fonctionnalités de la classe.  
-De plus, un échec permet tout de suite de localiser la régression.
-    
-Test       |   | Code
------------|---|---------
-`test1()`  | ⮕  | `function1()`
-`test2()`  | ⮕  | `function2()`
-`test3()`  | ⮕  | `function3()`
-`test4()`  | ⮕  | `function4()`
-`test5()`  | ⮕  | `function5()`
-`test6()`  | ⮕  | `function6()`
-    
-Quelles sont les limitations de cette approche ?
-
-
-Test `std::vector` #1
-=====================
-    
-Testons la classe `std::vector` en se limitant aux fonctions suivantes :
-    
-    empty();
-    size();
-    push_back();
-    pop_back();
-    clear();
-    
-Comment implémenter chacun de ces tests ? 
-    
-    test_empty();
-    test_size();
-    test_push_back();
-    test_pop_back();
-    test_clear();
-
-
-Test a class #2
-===============
-    
-Amélioration en séparant les asserts dans différentes fonctions.
-    
-Test                                     |   | Code
------------------------------------------|---|--------------
-`test1()`                                | ⮕  | `function1()`
-`test2()`                                | ⮕  | `function2()`
-`test3()`                                | ⮕  | `function3()`
-`test4()`                                | ⮕  | `function4()`
-`test5()`                                | ⮕  | `function5()`
-`test6()`                                | ⮕  | `function6()`
-----------------                         |---|--------------
-`test10()`<br> `test11()`                | ⮕  | `function1()`
-`test20()`<br> `test21()`<br> `test22()` | ⮕  | `function2()`
-`test30()`<br> `test31()`                | ⮕  | `function3()`
-`test40()`<br> `test41()`<br> `test42()` | ⮕  | `function4()`
-`test50()`<br> `test51()`<br> `test52()` | ⮕  | `function5()`
-`test60()`<br> `test61()`                | ⮕  | `function6()`
-
-
-Test `std::vector` #3
-=====================
-    
-Est-ce que chacun de ces tests peuvent tester qu'une seule fonction de la classe ? 
-    
-```cpp
-test_empty_1();
-test_empty_2();
-test_size_1();
-test_size_2();
-test_push_back_1();
-test_push_back_2();
-test_pop_back_1();
-test_pop_back_2();
-test_clear_1();
-test_clear_2();
-```
-
-
-Test a class #3
-===============
-    
-En fait, les tests vérifient plusieurs aspects de la classe
-qui nécessitent de combiner plusieurs fonctions.  
-    
-Test                                     |   | Code
------------------------------------------|---|--------------
-`test1()`                                | ⮕  | `function1()`
-`test2()`                                | ⮕  | `function2()`
-`test3()`                                | ⮕  | `function3()`
-`test4()`                                | ⮕  | `function4()`
-`test5()`                                | ⮕  | `function5()`
-`test6()`                                | ⮕  | `function6()`
-----------------                         |---|--------------
-`test10()`<br> `test11()`                | ⮕  | `function1()`
-`test20()`<br> `test21()`<br> `test22()` | ⮕  | `function2()`
-`test30()`<br> `test31()`                | ⮕  | `function3()`
-`test40()`<br> `test41()`<br> `test42()` | ⮕  | `function4()`
-`test50()`<br> `test51()`<br> `test52()` | ⮕  | `function5()`
-`test60()`<br> `test61()`                | ⮕  | `function6()`
-----------------                         |---|--------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `test22()`<br> `test30()`<br> `test31()`<br> `test40()`<br> `test41()`<br> `test42()`<br> `test50()`<br> `test51()`<br> `test52()`<br> `test60()`<br> `test61()` | ⮕  | `function1()`<br> `function2()`<br> `function3()`<br> `function4()`<br> `function5()`<br> `function6()`
-
-
-Test `std::vector` #3
-=====================
-    
-Écrire les **GUT**s de la classe std::vector en se limiter aux fonctions suivantes :
-
-    empty();
-    size();
-    push_back();
-    pop_back();
-    clear();
-
-
-Test a feature #1
-=================
-    
-Une classe = un ensemble de tests.
-    
-Test                                                              |   | Code
-------------------------------------------------------------------|---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `...` | ⮕  | `function1()`<br> `function2()`<br> `function3()`<br> `function4()`<br> `function5()`<br> `function6()`
-----------------                                                  |---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`<br> `...` | ⮕  | `ClassA`
-    
-Des suggestions ?
-
-
-Test a feature #2
-=================
-    
-* Mais quand deux classes sont intiment liées ?
-* Les séparer avec des *dummy* / *stub* / *fake* / *mock* ?
-* Et pouquoi pas les considérer comme faisant partie de la même fonctionnalité ?
-    
-Test                                                   |   | Code
--------------------------------------------------------|---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ⮕  | `ClassA`
-----------------                                       |---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ⮕  | `ClassA`<br> `ClassB`
-
-
-Test a feature #3
-=================
-    
-* Et que faire des dépendances ?
-* Les découpler avec *dummy* / *stub* / *fake* / *mock* ?
-* Et pouquoi pas les considérer comme faisant partie de la même fonctionnalité ?
-* On va pas découpler les `std::` non ?
-    
-Test                                                   |   | Code                  |   | Dependency
--------------------------------------------------------|---|-----------------------|---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ⮕  | `ClassA`             |   |
-----------------                                       |---|------------           |---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ⮕  | `ClassA`<br> `ClassB`|   |
-----------------                                       |---|------------           |---|------------
-`test10()`<br> `test11()`<br> `test20()`<br> `test21()`| ⮕  | `ClassA`<br> `ClassB`| ⮕  | `ClassC`<br> `ClassD`<br> `ClassE`
-
-
-Granularity of Unit Test
-========================
-    
-* Bien doser la granularité d'un test unitaire
-* Suivre son instinct
-* Penser à une fonctionnalité unitaire dans son ensemble
-* Ne pas s'embêter à découpler quand cela n'apporte pas grand chose
-
-
-One class = Multiple features
-=============================
-    
-* Que faire si on se rend compte que la classe expose différentes fonctionnalités ?
-* Cela est révélateur d'une conception bancale...
-* Solutions
-    1. Coder différents jeux de tests unitaires indépendants ;
-    2. Mieux : Découper la classe en fonctionnalités distinctes ([continuous refactoring][cr]) ;
-    3. Encore mieux: Écrire les tests avant la classe, cela permet de corriger de rectifier le tir avant de devoir réécrire la fonctionnalité.
 
 
 Test before or after development
@@ -881,53 +1313,60 @@ Even if your organisation does not use TDD/BDD
 you can still obtain **GUT**s.
 
 
-Classic Development Cycle in V
-==============================
-    
-[![Cycle en V][v_svg]][v_lnk]
-    
-[v_svg]: http://upload.wikimedia.org/wikipedia/commons/f/f9/V-model.svg
-[v_lnk]: http://commons.wikimedia.org/wiki/File:V-model.svg
-
-
-Cost of bug correction
-======================
-    
-Deduced from [Error Cost Escalation Through the Project Life Cycle][nasa] (NASA 2004)
-    
-[SDLC][SDLC] steps            | Cost |&nbsp;| [STLC][STLC] steps  | Cost
-------------------------------|------|------|---------------------|------
-Customers' needs              |  0   |      | Production error    | 1000x
-[Requirements analysis][ra]   |  1x  |      | [Acceptance testing][at]  |  200x
-[Functional specification][fs]|  5x  |      | [Integration testing][it] |  100x
-[Design][sd]                  | 10x  |      | [Unit Testing][ut]        |   50x
-Implentation                  | 25x  |      |                     | 
-    
-[nasa]: http://ntrs.nasa.gov/search.jsp?R=20100036670
-[SDLC]: http://en.wikipedia.org/wiki/Software_development_process   "Software Development Life Cycle"
-[STLC]: http://en.wikipedia.org/wiki/Software_testing_life_cycle    "Software Testing Life Cycle"
-[ra]:   http://en.wikipedia.org/wiki/Requirements_analysis
-[fs]:   http://en.wikipedia.org/wiki/Functional_specification
-[sd]:   http://en.wikipedia.org/wiki/Software_design
-[at]:   http://en.wikipedia.org/wiki/Acceptance_testing
-[it]:   http://en.wikipedia.org/wiki/Integration_testing
-[ut]:   http://en.wikipedia.org/wiki/Unit_testing
-
 Test-Driven Development
 =======================
     
-TDD : Développement **piloté** par les tests.
+Développement **piloté** par les tests.
+
+Philippe Bourgeaon (2016)
     
-Écrire les tests unitaires au départ puis écrire le code de façon à faire fonctionner ces tests unitaires revient à écrire son code sous contrat. : changer le code c'est se confronter au contrat défini dans les tests unitaires. Et c'est plus rassurant que le cassage de code soit détecté au plus tôt car un développeur ne peut pas tout savoir sur le code qu'il modifie.
+> 1. Écrire les tests unitaires
+> 2. Puis l'implémentation de façon à faire fonctionner ces tests
+> 
+> => Cela revient à écrire son implémentation sous contrat :  
+> Changer le code c'est se confronter au contrat défini dans les tests unitaires.
+> Et c'est plus rassurant que le cassage de code soit détecté au plus tôt
+> car un développeur ne peut pas tout savoir sur le code qu'il modifie.
+
+
+Les 3 étapes du TDD
+===================
+
+1. Écrire les tests unitaires (rien ne compile)
+2. Une implémentation rapidement codée pour passer les tests
+3. Améliorer son implémentation (simplifier, factoriser, optimizer)
+
+
+Deming wheel PDCA
+=================
+   
+   Le TDD à quelques points communs avec la [roue de Deming](https://fr.wikipedia.org/wiki/Roue_de_Deming)
+   
+1. **Plan**  Planifier les tests à écrire (la spécification)
+2. **Do**    Développer les tests
+3. **Check** Contrôler le résultat des tests
+4. **Act**   Ajuster l'implémentation
+
+
+POUT versus TDD
+===============
+
+POUT
+----
+
+* L'implémentation n'est pas forcément codée pour être testable.
+* Après avoir implémenté la fonctionnalité, on est pressé par le planning,
+  on a envie de passer à autre chose, on bacle les tests.
+
+TDD
+---
+
+* On est motivé pour coder les tests car cela revient à réflechir à la spec et à la conception.
+* Puis c'est un challenge de coder une implémentation qui réussi le défi que l'on s"est donné.
+* On peut se permettre tous les refactoring inimaginables, de toute façon les tests sont là pour nous dire si c'est toujours OK.
+* Au final, on a forcément une implémentation documentée par les tests (GUTs).
     
-    TODO fournir schémas
-    
-Avantages:
-* Quand on écrit les tests après on est moins motivé, on a envie de passer à autre chose.
-* La fonctionnalité est écrite pour être testable
-* ...
-    
-        TODO compléter 
+        TODO D'autres idées ? 
 
 * https://www.softwarestrategy.co.uk/training/programming/tddcpp/
 
@@ -1078,46 +1517,123 @@ Behavior-Driven Development
 * Given
 * When
 * Then
+
+[Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) ([CC-BY-3.0-US](https://creativecommons.org/licenses/by/3.0/us/) 2009), in French:
     
-        TODO
+> Pour chaque cas de test :
+> 
+> * Décrire le context, le point de départ ou les préconditions
+> * Expliquer comment l'exigence est satisfaite
+> * Décrire le résultat attendu ou les postconditions 
+
+    
+BDD Python example
+==================
+
+```python
+class  LeapYearSpec:
+
+  @test
+  def given_a_year_when_it_is_not_divisible_by_4_then_it_is_not_a_leap_year(self):
+    assert not is_leap_year (2015)
+
+  @test
+  def given_a_year_when_it_is_divisible_by_4_but_not_by_100_then_it_is_a_leap_year(self):
+    assert is_leap_year (2016)
+
+  @test
+  def given_a_year_when_it_is_divisible_by_100_but_not_by_400_then_it_is_not_a_leap_year(self):
+    assert not is_leap_year(1900)
+
+  @test
+  def given_a_year_when_it_is_divisible_by_400_then_it_is_a_leap_year(self):
+    assert is_leap_year(2000)
+```
+
+        
+BDD versus TDD
+==============
+
+BDD
+---
+    
+    given_a_year_when_it_is_not_divisible_by_4_then_it_is_not_a_leap_year
+    given_a_year_when_it_is_divisible_by_4_but_not_by_100_then_it_is_a_leap_year
+    given_a_year_when_it_is_divisible_by_100_but_not_by_400_then_it_is_not_a_leap_year
+    given_a_year_when_it_is_divisible_by_400_then_it_is_a_leap_year
+
+TDD
+---
+    
+    years_not_divisible_by_4_are_not_leap_years
+    years_divisible_by_4_but_not_by_100_are_leap_years
+    years_divisible_by_100_but_not_by_400_are_not_leap_years
+    years_divisible_by_400_are_leap_years
 
 
 Defect-Driven Testing
-===========================
+=====================
     
     TODO
 
 
-The Way of Testivus
+Real value of tests
 ===================
-    
-[Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) (2007)
-    
-> 1.  If you write code, write tests.
-> 2.  Don’t get stuck on unit testing dogma.
-> 3.  Embrace unit testing karma.
-> 4.  Think of code and test as one.
-> 5.  The test is more important than the unit.
-> 6.  The best time to test is when the code is fresh.
-> 7.  Tests not run waste away.
-> 8.  An imperfect test today is better than a perfect test someday.
-> 9.  An ugly test is better than no test.
-> 10. Sometimes, the test justifies the means.
-> 11. Only fools use no tools.
-> 12. Good tests fail.
-    
-* What is important for you?
-* Next section is opposite to last point *"Good tests fail"*.
+
+[Charles Antony Richard Hoare](https://en.wikiquote.org/wiki/C._A._R._Hoare#Sourced) (1996)
+
+> The real value of tests is not that they detect bugs in the code,
+> but that they detect inadequacies in the methods, concentration,
+> and skills of those who design and produce the code.
 
 
-Do not write unit tests to find bugs
-====================================
-    
-Si la finalité était de trouver des bugs et que l'on n'en trouve pas,
-alors on peut se dire qu'écrire des tests ne sert à rien.
-    
-La finalité est autre : Détecter les changements dans le code qui causent des régressions.
-Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
+Compilation
+===========
+
+&nbsp;            | Release    | Debug | Coverage
+------------------|------------|-------|---------
+`assert()`        | `-D NDEBUG`|       | `-D NDEBUG`
+Optimisation      | `-Ofast`   | `-Og` | `-Og`
+
+
+Commun aux trois *build types*
+
+* Toujours les symboles de debug => `-g3`
+* C'est fini les `i386` => `-march=sandybridge`
+
+Le plus de compilateurs possibles
+
+* MSVC sous Windows
+* GCC et Clang sous Linux
+
+
+Execution
+=========
+
+Les tests unitaires sont exécutés avec toutes les combinaisons :
+
+* GCC, Clang
+* Release, Debug, Coverage
+* Valgring avec différentes options
+
+
+Definition of Done (DoD)
+========================
+
+* Source code respects Security Rules
+* Source code respects Coding Rules (`clang-format`, `cpplint`, `kwstyle`)
+* Source code respects C++ Core Guidelines
+* Doxygen comments are used when relevant (except for setters/getters...)
+* No remaining FIXME
+* No compiler warnings
+* Unit-Tests respect TDD/GUTS guidelines
+* Unit-Tests passed (no code coverage threshold)
+   * Valgrind
+* CppCheck
+* [AddressSanitizer](https://en.wikipedia.org/wiki/AddressSanitizer) using build options `-fsanitize=*` ([clang](http://clang.llvm.org/docs/AddressSanitizer.html) and [gcc](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html#index-fsanitize_003daddress-945))
+* [clang-check](http://clang.llvm.org/docs/ClangCheck.html) (static code analyzer, detects code patterns that most probably are bugs and inspects control flow graph and do path-based analysis)
+* [clang-tidy](http://clang.llvm.org/extra/clang-tidy/) (linter, checks coding style and address readability, and can fix C++ source code)
+* No dead code
 
 
 Couverture de code
@@ -1146,8 +1662,8 @@ Coverage pourcentage
 * Do not specify a pourcentage.
 * Just request a high coverage.
 * And check what is not covered (i.e. not tested)
-  * If the untested part is not relevant 🢥 OK (could this code be removed?)
-  * Else 🢥 Something important is not tested 🢥 Add tests
+  * If the untested part is not relevant => OK (could this code be removed?)
+  * Else => Something important is not tested => Add tests
 
 
 Testivus and code coverage
@@ -1260,152 +1776,6 @@ rapidcheck
     TODO Fournir quelques exemples
 
 
-
-Unit-Test Frameworks C++14 features
-===================================
-
-* [Catch](https://github.com/philsquared/Catch) (**C**++ **A**utomated **T**est **C**ases in **H**eaders)
-* [Mettle](https://github.com/jimporter/mettle)
-* [73 C++ UT frameworks][UTwiki] listed on Wikipedia
-    
-[UTwiki]: http://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#C++
-
-    TODO Fournir quelques exemples
-
-
-Catch
-=====
-
-```cpp
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
-
-TEST_CASE("A year is not a leap year if it is not divisible by 4", "[leap]") {
-    REQUIRE( is_leap_year(2015) == false );
-}
-
-TEST_CASE("A year is a leap year if it is divisible by 4 but not by 100", "[leap]") {
-    REQUIRE( is_leap_year(2016) == true );
-}
-
-TEST_CASE("A year is not a leap year if it is divisible by 100 but not by 400", "[leap]") {
-    REQUIRE( is_leap_year(1900) == false );
-}
-
-TEST_CASE("A year is a leap year if it is divisible by 400", "[leap]") {
-    REQUIRE( is_leap_year(2000) == true );
-}
-```
-
-    TODO Fournir plus d'exemples sur la puissance de Catch
-
-Mettle
-======
-
-    TODO Fournir quelques exemples
-
-
-xUnit
-=====
-    
-La grande majorité des frameworks de tests unitaires partagent la même phylosophie, regroupée sous le terme [x**Unit**][x] à l'instar de [J**Unit**][j], [Cpp**Unit**][cpp], [N**Unit**][n], [PHP**Unit**][php], [Http**Unit**][http], [Html**Unit**][http]... mais aussi [GTest][gt].
-    
-Quelques caractéristiques :
-    
-* Fonctions **assert** pour comparer le résultat d'un test par rapport à une valeur attendue.
-* Le **test case** représente un seul test (souvent implémenté comme une classe).
-* La **test suite** est l'ensemble des **test cases** partageant la même **fixture**.
-* La [**fixture**][f] et l'ensemble des preconditions avant de lancer les tests.
-* La sortie XML est la même et permet d'être importée par des outils comme Jenkins.
-    
-[f]:    http://fr.wikipedia.org/wiki/Test_fixture
-[x]:    http://fr.wikipedia.org/wiki/XUnit
-[j]:    http://en.wikipedia.org/wiki/JUnit
-[cpp]:  http://en.wikipedia.org/wiki/CppUnit
-[n]:    http://en.wikipedia.org/wiki/NUnit
-[php]:  http://en.wikipedia.org/wiki/PHPUnit
-[http]: http://en.wikipedia.org/wiki/HttpUnit
-[html]: http://en.wikipedia.org/wiki/HtmlUnit
-[gt]:   http://en.wikipedia.org/wiki/Google_Test
-
-Fixture
-=======
-    
-Pour tester des composants, un environnement a souvent besoin d'être préparé avec des **stubs**/**mocks**.
-Cette initialisation plus ou moins complexe est facilitée par la [**fixture**][f] :
-
-* `SetUp()` initialise tout cet environnement ;
-* `TearDown()` libére proprement (afin de ne pas perturber les autres tests).
-    
-        TODO Fournir exemples
-
-
-JUnit
-=====
-
-
-Go Unit Testing
-===============
-
-
-Python Unit Testing
-===================
-    
-Library [unittest](https://docs.python.org/3/library/unittest.html) (anciennement PyUnit, compatible xUnit)
-    
-```python
-import unittest
-
-class TestLeapYear(unittest.TestCase):
-
-  def test_A_year_is_not_a_leap_year_if_it_is_not_divisible_by_4(self):
-    self.assertFalse(is_leap_year(2015))
-
-  def test_A_year_is_a_leap_year_if_it_is_divisible_by_4_but_not_by_100(self):
-    self.assertTrue(is_leap_year(2016))
-
-  def test_A_year_is_not_a_leap_year_if_it_is_divisible_by_100_but_not_by_400(self):
-    self.assertFalse(is_leap_year(1900))
-
-  def test_A_year_is_a_leap_year_if_it_is_divisible_by_400(self):
-    self.assertTrue(is_leap_year(2000))
-
-if __name__ == '__main__':
-    unittest.main()
-```
-
-Run the test
-    
-```bash
-> python test_leap_year.py
-....
-----------------------------------------------------------------------
-Ran 4 tests in 0.000s
-
-OK
-```
-
-
-Google Test
-===========
-       
-    TODO Fournir exemples
-
-
-Google Mock
-===========
-       
-    TODO Fournir exemples
-
-
-Google Benchmark
-================
-    
-https://github.com/google/benchmark
-    
-    TODO Fournir exemples
-
-
 Continuous Testing
 ==================
 
@@ -1443,10 +1813,11 @@ Projets libres            | Descriptions
 [CT]:   https://cmake.org/Wiki/CMake/Testing_With_CTest
 [RF]:   http://en.wikipedia.org/wiki/Robot_Framework
 
-TODO
-====
+
+Google Benchmark
+================
     
-* Parler de https://www.reddit.com/r/programming/comments/2vzf3a/kevlin_henney_seven_ineffective_coding_habits_of/
-* Exemple de test pour "ISBN with more than 13 digits are malformed"
-* slide 91
-* slide 101
+https://github.com/google/benchmark
+    
+    TODO Fournir exemples
+
