@@ -9,6 +9,7 @@ DoD concerns only ***code for production***
 
 1.  Source code respects Security Rules
 2.  Source code respects Coding Rules
+    * Run `cpplint` and `kwstyle` for *Naming Rules Compliance*.
 3.  Source code respects C++ Core Guidelines
 4.  Source code does not throw exception (but uses Tredzone messages)
 5.  Doxygen comments are used when relevant (except for setters/getters...)
@@ -29,7 +30,6 @@ DoD concerns only ***code for production***
 14. Check [AddressSanitizer](https://en.wikipedia.org/wiki/AddressSanitizer) using build options `-fsanitize=*` ([clang](http://clang.llvm.org/docs/AddressSanitizer.html) and [gcc](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html#index-fsanitize_003daddress-945))
 15. Check [clang-check](http://clang.llvm.org/docs/ClangCheck.html) (static code analyzer, detects code patterns that most probably are bugs and inspects control flow graph and do path-based analysis)
 16. Check [clang-tidy](http://clang.llvm.org/extra/clang-tidy/) (linter, checks coding style and address readability, and can fix C++ source code)
-17. Run `cpplint` and `kwstyle` for *Naming Rules Compliance*.
 
 
 Code coverage before `git commit`
