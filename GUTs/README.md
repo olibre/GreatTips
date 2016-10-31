@@ -1261,27 +1261,29 @@ Defect-Driven Testing             | DDT  | Write the test **BEFORE the fix**
 [BDD]:  http://fr.wikipedia.org/wiki/Behavior_driven_development
 
 
-Out of scope 
+Out of scope
 ============
     
-* [Test-Driven Decoupling](http://reuzz.net/video/watch/vid01KF44GogeBrs)
-* Test-Driven Requirements (TDR)
-* Defect-Driven Development (DDD)
-* Design-Driven Development (D3)
-* [Acceptance Test–Driven Development][ATDD] (ATDD)
-* Example-Driven Development (EDD)
-* [Specification by example][SBE] (SBE)
-* Story test–Driven Development (SDD)
-* [Feature-Driven Development][FDD] (FDD)
-* [Domain-Driven Design][DDD] (DDD)
-* [Model-Driven Engineering][MDE] (MDE)
-* [Model-Driven Architecture][MDA] (MDA)
-* [Model-Driven Software Development][MDSD] (MDSD)
-* [Model-Based Testing][MBT] (MBT)
-* [Model-Based Design][MBD] (MBD)
-* [Data-Driven Testing][DDT] (DDT)
-* [Keyword-Driven Testing][KDT] (KDT)
-* [Object-Oriented Analysis and Design][OOAD] (OOAD)
+Sigle  | Methodologie
+-------|--------------------------------------------------------------
+~~TDD~~| [Test-Driven Decoupling](http://reuzz.net/video/watch/vid01KF44GogeBrs)
+  TDR  | Test-Driven Requirements
+  DDD  | Defect-Driven Development
+  D3   | Design-Driven Development
+  ATDD | [Acceptance Test–Driven Development][ATDD]
+  EDD  | Example-Driven Development
+  SBE  | [Specification by example][SBE]
+  SDD  | Story test–Driven Development
+  FDD  | [Feature-Driven Development][FDD]
+  DDD  | [Domain-Driven Design][DDD]
+  MDE  | [Model-Driven Engineering][MDE]
+  MDA  | [Model-Driven Architecture][MDA]
+  MDSD | [Model-Driven Software Development][MDSD]
+  MBT  | [Model-Based Testing][MBT]
+  MBD  | [Model-Based Design][MBD]
+  DDT  | [Data-Driven Testing][DDT]
+  KDT  | [Keyword-Driven Testing][KDT]
+  OOAD | [Object-Oriented Analysis and Design][OOAD]
     
 [ATDD]: http://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development
 [SBE]:  http://en.wikipedia.org/wiki/Specification_by_example
@@ -1303,11 +1305,9 @@ Where are the GUTs?
 **GUT**s = **G**ood **U**nit **T**ests  
 **GUT**s is not a methodology.
     
-Methodology | Result
-------------|-------------------
-POUT        | may produce GUTs
-DDT         | should produce GUTs
-TDD <br> BDD| must produce GUTs
+* POUT **may** produce GUTs
+* DDT **should** produce GUTs
+* TDD & BDD **must** produce GUTs
     
 **GUT**s can be the result of different methodologies.
     
@@ -1843,6 +1843,22 @@ Projet                    | Description
 [T]:    http://fr.wikipedia.org/wiki/Travis_CI
 [CT]:   https://cmake.org/Wiki/CMake/Testing_With_CTest
 [RF]:   http://en.wikipedia.org/wiki/Robot_Framework
+
+
+
+Fuzz Testing
+============
+    
+Fuzzing and Monkey testing use random input behaviour.
+    
+    TODO Fournir exemples
+
+
+
+Performance testing
+===================
+    
+    TODO Fournir exemples
 
 
 Google Benchmark
