@@ -7,14 +7,14 @@ TDD et BDD préconisent d'écrire les tests :
 * Avec les caractéristiques des GUTs :
     
   * **GUT**s = **G**ood **U**nit **T**ests
-  * Chaque fonction de test doit écouer pour une unique raison ;
+  * Chaque fonction de test doit échouer pour une unique raison ;
   * Le nom de la fonction de test doit exprimer un élément de la spécification ;
   * Les fonctions de tests sont la documentation de la fontionnalité ;
   * ...
 
-On peut écrire des GUTs même si on ne respectent pas scrupuleusement les TDD/BDD.
+On peut écrire des GUTs même si l'on ne respecte pas scrupuleusement les TDD/BDD.
 
-Pour optimiser l'exécution des tests en parrallèle de manière reproductible,
+Pour optimiser l'exécution des tests en parallèle de manière reproductible,
 distinguer ceux qui n'accèdent ni aux fichiers ni au réseau des autres tests.
 
     TODO Compléter/Résumer...
@@ -129,14 +129,14 @@ Chronologie
 Un petit bug, un grand boum !
 =============================
     
-* Le coût du lancement et des 4 satellites est de 2 milliard de francs
+* Le coût du lancement et des 4 satellites est de 2 milliards de francs
 * L'accélération d'Ariane 5 est cinq fois plus élevée que Ariane 4
 * Cette valeur sur 32 bits et copiée dans un registre de 16 bits trop petit ce qui provoque une interruption matérielle
 * Les deux SRI (même matériel, même logiciel) se désactivent quasi simultannément (à 72 ms près)
 * 37 secondes après le décollage, le pilote automatique prend les commandes
 * Le *On Board Computer* (OBC) détecte que le SRI 1 est en panne et bascule sur le SRI 2
 * Le SRI 2 remonte une erreur, mais l'OBC considère comme valeur de navigation, et braque au maximum la trajectoire de la fusée
-* Un des deux boosters est arrachée à cause de la pression trop élevée et déclenche le système d'autodestruction de la fusée
+* Un des deux boosters est arraché à cause de la pression trop élevée et déclenche le système d'autodestruction de la fusée
 * Les débris de la fusée tombent dans la mangrove et sont récupérés en partie dont l'EEPROM contenant les informations d'erreur
 
 
@@ -152,7 +152,7 @@ Code source Ada
 Le petit bug
 ============
     
-Les bornes -32768..32767 de la composante **V**érticale `BV` sont vérifiées :
+Les bornes -32768..32767 de la composante **V**erticale `BV` sont vérifiées :
     
 ```ada
 L_M_BV_32 := TBD.T_ENTIER_32S ((1.0/C_M_LSB_BV) * 
@@ -181,14 +181,14 @@ P_M_DERIVE(T_ALG.E_BH) := UC_16S_EN_16NS (TDB.T_ENTIER_16S
 Commission d'enquête
 ====================
     
-* [Rapport][Ariane5rapport] rendu un mois après le désastre d'Ariane 501 (read also: [Arnold][arnold] and [Bielefeld][bielefeld])
+* [Rapport][Ariane5rapport] rendu un mois après le désastre d'Ariane 501 (lire aussi : [Arnold][arnold] et [Bielefeld][bielefeld])
 * Deux aspects importants du rapport
     1. La trajectoire spécifique d'Ariane 5 a été volontairement exclue des considérations de conception de l'élément qui calcule la trajectoire
     2. La commision d'enquête (composée d'ingénieurs logiciel) conclut à un problème logiciel
 * [Gérard Le Lann][Ariane5failure] (INRIA) conclut plutôt à un problème d'intégration système
 * [Mark Dowson][Ariane5failure] rappelle les réalités du projet
-    * Pressions budgétaire et planning
-    * Arguments *If it's not broke don't fix it*
+    * Pressions budgétaires et planning
+    * Arguments *If it's not broken don't fix it*
     * Politique des managers
     
 [Ariane5rapport]: http://deschamp.free.fr/exinria/divers/ariane_501.html
@@ -290,7 +290,7 @@ L'année est [**bissextile**](http://fr.wikipedia.org/wiki/Année_bissextile#Rè
     
         bool is_leap_year(int year);
 
-Exercice : Écrire les tests unitaires
+Exercice : écrire les tests unitaires
 -------------------------------------
 
 
@@ -334,7 +334,7 @@ bool is_leap_year (int year)
 }
 ```
     
-* The feature use the same implementation as the test!
+* The feature uses the same implementation as the test!
 * Finally, what is the added value of the test?
 
 
@@ -359,7 +359,7 @@ test()
 }
 ```
     
-* Is this a godd way of testing?
+* Is this a good way of testing?
 * What can be improved?
 
 
@@ -483,7 +483,7 @@ Philippe Bourgeon (2016)
 [raff]:       http://fr.wikipedia.org/wiki/Raffinement
 
 
-Write test for people
+Write tests for people
 =====================
     
 [Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) ([CC-BY-3.0-US](https://creativecommons.org/licenses/by/3.0/us/) 2009), in French:
@@ -515,7 +515,7 @@ Le Test Unitaire décrit la fonctionnalité testée
 >
 > Le test unitaire n'ayant pas été écrit
 > avec à l'esprit son rôle de specification
-> peut être très confu à comprendre.
+> peut être très confus à comprendre.
 >
 > Plus il est difficile de comprendre de ce qui est testé,
 > plus il peut être difficile de faire évoluer une base de code.
@@ -526,7 +526,7 @@ GUTs = Specification
 
 **GUT**s = **G**ood **U**nit **T**ests
 
-Les tests unitaires représentnent la spécification du code.
+Les tests unitaires représentent la spécification du code.
 
 * Unit Test conveys knowledge.
 * Unit Test tells a story.
@@ -542,7 +542,7 @@ Les tests unitaires représentnent la spécification du code.
 * Exprimer le résultat et non le souhait  
   "X should give Y" -> "X gives Y"
 * Préférer *must* à *shall* car plus explicite
-* Ommetre *must*  
+* Omettre *must*  
   "X must give Y" -> "X gives Y"
 
 
@@ -972,7 +972,7 @@ func Test_A_year_is_a_leap_year_if_it_is_divisible_by_400(t *testing.T) {
 xUnit
 =====
     
-La grande majorité des frameworks de tests unitaires partagent la même phylosophie,
+La grande majorité des frameworks de tests unitaires partagent la même philosophie,
 regroupée sous le terme [x**Unit**][x] à l'instar de [J**Unit**][j],
 [Cpp**Unit**][cpp], [N**Unit**][n], [PHP**Unit**][php], [Http**Unit**][http],
 [Html**Unit**][http]... mais aussi [GTest][gt].
@@ -1101,7 +1101,7 @@ Des suggestions ?
 Test a feature #3
 =================
     
-* Mais quand deux classes sont intiment liées ?
+* Mais quand deux classes sont intimement liées ?
 * Les séparer avec des *dummy* / *stub* / *fake* / *mock* ?
 * Et pouquoi pas les considérer comme faisant partie de la même fonctionnalité ?
     
@@ -1181,7 +1181,7 @@ Spy              | Record events
 Dummy
 =====
     
-A **dummy** object is an empty shell withou implementation.
+A **dummy** object is an empty shell without implementation.
 
     TODO Fournir exemples
 
@@ -1321,13 +1321,13 @@ Test-Driven Development
     
 Développement **piloté** par les tests.
 
-Philippe Bourgeaon (2016)
+Philippe Bourgeon (2016)
     
 > 1. Écrire les tests unitaires
 > 2. Puis l'implémentation de façon à faire fonctionner ces tests
 > 
 > => Cela revient à écrire son implémentation sous contrat :  
-> Changer le code c'est se confronter au contrat défini dans les tests unitaires.
+> Changer le code, c'est se confronter au contrat défini dans les tests unitaires.
 > Et c'est plus rassurant que le cassage de code soit détecté au plus tôt
 > car un développeur ne peut pas tout savoir sur le code qu'il modifie.
 
@@ -1348,7 +1348,7 @@ Les 3 étapes du TDD
 Deming wheel PDCA
 =================
    
-Le TDD à quelques points communs avec la [roue de Deming](https://fr.wikipedia.org/wiki/Roue_de_Deming)
+Le TDD a quelques points communs avec la [roue de Deming](https://fr.wikipedia.org/wiki/Roue_de_Deming)
    
 |         | [![Roue PDCA][r_img]][r_lnk]
 |---------|------------------------------------------------
@@ -1629,14 +1629,14 @@ Utiliser différents compilateurs
 [s]: http://www.thegeekstuff.com/2012/09/strip-command-examples/
 
 
-Execution
+Exécution
 =========
 
 Les tests unitaires sont exécutés avec toutes les combinaisons :
 
 * GCC, Clang
 * Release, Debug, Coverage
-* Valgring ou pas (tester différentes options)
+* Valgrind ou pas (tester différentes options)
 
 
 Definition of Done (DoD)
@@ -1663,8 +1663,8 @@ Couverture de code
 ==================
     
 La finalité des tests unitaires n'est pas de faire du coverage.
-Toutefois l'écriture des tests unitaires cherche à couvrir l'ensemble de la fonctionnalitée.
-Du coup les indicateurs de coverage permettent de vérifier si on a oublié quelque chose.
+Toutefois l'écriture des tests unitaires cherche à couvrir l'ensemble de la fonctionnalité.
+Du coup, les indicateurs de coverage permettent de vérifier si on a oublié quelque chose.
 
 
 Test coverage
@@ -1753,7 +1753,7 @@ Popular formulation
 In French
 ---------
     
-> Dès qu’un métrique devient un objectif, la mesure perd de son utilité.
+> Dès qu’une métrique devient un objectif, la mesure perd de son utilité.
     
 Exemples
 --------
