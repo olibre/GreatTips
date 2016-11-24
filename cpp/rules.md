@@ -253,12 +253,12 @@ do
     while read f g
     do
         [[ -f "${f%/*}/$h" ]] &&
-        sed 's|.'"$g"'|"'"$h"'"|' -i "$f"
+        sed "s|.$g|\"$h\"|" -i "$f"
     done
 done
 ```
 
-The above script may mix header having same filename. Therefore this is another script to control the result of the previous script when there are header files with same filename:
+The above script may mix header having same filename. Therefore this is another script to control the result of the previous script when headers have same filename:
     
 ```bash
 find -type f -printf '%f\n' |
