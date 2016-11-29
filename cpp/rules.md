@@ -210,11 +210,38 @@ Following `*.cmake` example disables dependee header warnings (compiler does not
 `F.IQC` &nbsp; Double quotes `""` and angle brackets `<>`
 ---------------------------------------------------------
 
-* Double quotes `"xxxx"` for headers of same module (very recommanded when in same directory)
-* Angle brackets `<xxxx>` (chevrons) for external libraries (i.e. from another project)
-* Any symbol you want when including header from another sub-module but within the same project
+* Double quotes `"xxxx"` for header in the same directory
+* Double quotes `"xxxx"` for header of same module (optional)
+* Angle brackets `<xxxx>` (chevrons) for external libraries (from another project)
+* Both are OK to include header from another module but within the same project
 
-Examples:
+### Local header (in same directory)
+
+This example uses:
+
+* Angle brackets `#include <AAA/a.h>` for header from another module
+* Double quotes `#include "BBB/a.h"` for header of the same module
+* Double quotes `#include "b.h"` for local header
+
+    AA
+    └── include
+        └── AA
+    BB      └── a.h
+    ├── src             | #include <AA/a.h>
+    │   ├── a.cc -------| #include "BB/a.h"
+    │   └── b.h
+    └── include
+        └── BB 
+            ├── a.h ----| #include "b.h"
+            └── b.h
+
+    a.cc
+    ├── includes AA/include/AA/a.h
+    └── includes BB/include/BB/a.h
+                               └─ includes BB/include/BB/b.h
+                                 (does not include BB/src/b.h)
+
+### Examples
 
 ```cpp
 #include "MyHeader.hpp"              // "" when in the same directory as the current C++ file
@@ -228,7 +255,9 @@ Examples:
 #include <iostream>                  // <> for system headers
 ```
 
-The order of `#include` is not important as long as the project compiles using any order.
+### Include external after or before local headers
+
+The sequence of `#include` is not important as long as the project compiles using any order.
 A simple check is to include first the headers of the current sub-module, then libraries, third-parties and finally the system headers (as in the above example).
 
 Moreover the unit test compilation unit first includes the header to be tested:
@@ -241,6 +270,8 @@ Moreover the unit test compilation unit first includes the header to be tested:
 #include <gtest/gtest.h>
 #include <string>
 ```
+
+### Include local header directly
 
 The following bash script replaces `#include <dir/header.h>` by `#include "header.h"` when both files (header and includer) are in the same directory:
 
