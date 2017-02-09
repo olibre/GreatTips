@@ -1,0 +1,55 @@
+plugins {
+    id "net.tribe-seven.swig" version "0.1.1"
+//  id "fr.echoes.gradle.cpp" version "1.2.9"
+}
+apply plugin: 'net.tribe-seven.swig'   //https://github.com/jjzazuet/gradle-swig
+//apply plugin: 'fr.echoes.gradle.cpp' //https://github.com/Tocea/gradle-cpp-plugin
+                                       //https://plugins.gradle.org/plugin/fr.echoes.gradle.cpp
+
+task generateJni(type: SwigTask) {                              // Corresponding swig options
+//  verbose           = true                                                      // -v
+    includePaths      = [file('../../../include'), file('../../../swig/java')]    // -I
+    javaSourcesPath   = file("$buildDir/src/main/java/com/company/app/generated") // -outdir
+    wrapperTargetFile = file("$buildDir/src/main/cpp/wrapper.cc")                 // -o
+    packageName       = 'com.company.app.generated'                               // -package
+    module            = 'jni'                                                     // -module
+    enableCpp         = true                                                      // -c++
+    source            = file('src/main/jni/jni.i')                                // last argument
+
+    inputs.file('src/main/jni/jni.i')
+    inputs.files(fileTree('../../../include'))
+    inputs.files(fileTree('../../../swig/java'))
+    outputs.dir("$buildDir/src/main/java/com/company/app/generated")
+    outputs.file("$buildDir/src/main/cpp/wrapper.cc")
+}
+compileJava     .dependsOn     generateJni
+eclipseClasspath.mustRunAfter  generateJni
+ideaModule      .mustRunAfter  generateJni
+
+sourceSets.main.java.srcDirs += "$buildDir/src/main/java"
+
+task generateCppBuild(type:Exec, dependsOn: generateJni) {
+    description 'Parse the file CMakeLists.txt and generates the build files (usually Makefiles)'
+    commandLine = ['cmake', "$projectDir"]
+    workingDir  = file("$buildDir/cmake")
+    doFirst {
+        mkdir("$buildDir/cmake")
+    }
+
+    inputs.file('CMakeLists.txt')
+    inputs.file("$buildDir/src/main/cpp/wrapper.cc")
+    inputs.files(fileTree("${rootProject.projectDir.parent}" + '/include'))
+    inputs.files(fileTree("${rootProject.projectDir.parent}" + '/swig/java'))
+    outputs.file("$buildDir/cmake/Makefile")
+}
+
+task buildCpp(type:Exec, dependsOn: generateCppBuild) {
+    commandLine = ['cmake', '--build', '.', '--config', 'Release']
+    workingDir  = file("$buildDir/cmake")
+
+    inputs.file("$buildDir/cmake/Makefile")
+    inputs.files(fileTree("${rootProject.projectDir.parent}" + '/src'))
+    outputs.file("$buildDir/cmake/libjni_wrapper.so")
+}
+//build.dependsOn buildCpp
+jar.dependsOn buildCpp  // 'gradle run' depends on task 'jar', not on task 'build' :-/

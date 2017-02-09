@@ -1,0 +1,7 @@
+include 'base'
+include 'jni'
+include 'core'
+//include 'lib/jline3'
+include 'jline3'
+include 'cli'
+include 'gui'

@@ -1,0 +1,84 @@
+<project default="build" name="Generate JNI interface (Java/C/C++), Build C++, Create Jar for com.company.app.jni">
+
+  <property name="root"               value="${basedir}/.." />
+  <property name="external.dir"       value="${root}/External" />
+  <property name="swig.dest.cpp.dir"  value="${basedir}/build/src/main/cpp" />
+  <property name="swig.dest.cpp.file" value="${swig.dest.cpp.dir}/wrapper.cc" />
+  <property name="swig.dest.java.dir" value="${basedir}/build/src/main/java/com/company/app/generated" />
+  <property name="cmake.build.dir"    value="${basedir}/build/cmake" /> <!--DriverlessJniWrapperBuildWin32" /-->
+  <property name="class.dir"          value="${basedir}/build/classes/main" />
+
+  <!-- Main build -->
+  <target name="build" depends="build_java,build_cpp"/>
+
+  <!-- Build the java lib -->
+  <target name="build_java" depends="build_swig">
+    <mkdir dir="${class.dir}"/>
+    <javac srcdir="src/main/java:${swig.dest.java.dir}" destdir="${class.dir}" classpath= "../base/base.jar" includeAntRuntime="false" />
+    <jar destfile="jni.jar">
+      <fileset dir="${class.dir}"/>
+    </jar>
+  </target>
+
+  <!-- Build the c++ lib -->
+  <target name="build_cpp">
+    <mkdir dir="${cmake.build.dir}"/>
+    <exec executable="cmake" dir="${cmake.build.dir}" failonerror="true">
+      <arg value="../.." />
+    </exec>
+    <exec executable="cmake" dir="${cmake.build.dir}" failonerror="true">
+      <arg value="--build" /> <arg value="." />
+      <arg value="--config"/> <arg value="Release" />
+    </exec>
+  </target>
+
+  <target name="build_swig">
+    <!-- Searching swig executable requires $PATH environment variable -->
+    <property environment="env" />
+    <!-- Set swig_exe=swig if swig available in $PATH -->
+    <condition property="swig_exe" value="swig">
+      <available file="swig" filepath="${env.PATH}"/>
+    </condition>
+    <!-- Else set swig_exe=External/swig-2.0.9/swig.exe if Windows -->
+    <condition property="swig_exe" value="${external.dir}/swig-2.0.9/swig.exe">
+      <os family="windows" />
+    </condition>
+    <!-- Else set swig_exe=External/swig-2.0.9/swig64 if Unix -->
+    <condition property="swig_exe" value="${external.dir}/swig-2.0.9/swig64">
+      <os family="unix" />
+    </condition>
+    <!-- value by default is an error message -->
+    <property name="swig_exe" value="OS_is_not_Windows_neither_Unix_and_swig_is_not_in_PATH"/>
+    <echo>Build using swig_exe="${swig_exe}".</echo>
+
+    <!-- call SWIG to generate wrappers -->
+    <mkdir dir="${swig.dest.java.dir}" />
+    <mkdir dir="${swig.dest.cpp.dir}" />
+    <exec executable="${swig_exe}" failonerror="true">
+      <arg value="-I${root}/include" />
+      <arg value="-I${root}/Client-v5/Android/BuildTools/swig/java" />
+      <arg value="-outdir" />
+      <arg value="${swig.dest.java.dir}" />
+      <arg value="-o" />
+      <arg value="${swig.dest.cpp.file}" />
+      <arg value="-java" />
+      <arg value="-package" />
+      <arg value="com.company.app.generated" />
+      <!-- the module name is already specified in "jni.i"
+      <arg value="-module" />
+      <arg value="jni" />
+      -->
+      <arg value="-c++" />
+      <arg value="${basedir}/src/main/jni/jni.i" />
+    </exec>
+  </target>
+
+  <!-- Clean -->
+  <target name="clean">
+    <delete file="${swig.dest.cpp.file}"/>
+    <delete dir="${swig.dest.java.dir}"/>
+    <delete dir="${class.dir}"/>      <!-- Java build -->
+    <delete dir="${cmake.build.dir}"/> <!-- C++ build -->
+  </target>
+
+</project>

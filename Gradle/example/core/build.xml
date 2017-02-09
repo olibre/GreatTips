@@ -1,0 +1,185 @@
+<project default="all" name="Create Runnable Jar for com.company.app.core"
+    xmlns:if="ant:if"
+    xmlns:unless="ant:unless" >
+  <!--ANT 1.9.1 is required to use feature if:set="isWindows" -->
+
+
+  <!-- "root" corresponds to the repository root -->
+  <property name="root"             value="../../.." />
+  <property name="lib.dir"          value="../lib" />
+  <property name="class.dir"        value="build/classes/main" />
+  <property name="src.dir"          value="src/main/java" />
+  <property name="rsc.dir"          value="src/main/resources" />
+
+  <property name="test.src.dir"     value="src/test/java" />
+  <property name="test.class.dir"   value="build/classes/test" />
+  <property name="test.report.dir"  value="build/test-results/test" />
+
+  <property name="antlr.jar"        value="${lib.dir}/antlr.jar" />
+  <property name="sqlite-jdbc.jar"  value="${lib.dir}/sqlite-jdbc.jar" />
+  <property name="junit.jar"        value="${lib.dir}/junit-4.12.jar" />
+  <property name="launch4j.dir"     value="${lib.dir}/launch4j" />
+  <property name="nsisant.jar"      value="${lib.dir}/nsisant.jar" />
+  <property name="app.base.dir"     value="../base"/>
+  <property name="app.base.jar"     value="${app.base.dir}/base.jar" />
+  <property name="app.jni.dir"      value= "../jni" />
+  <property name="app.jni.jar"      value="${app.jni.dir}/jni.jar" />
+
+  <path id="classpath_compile">
+    <pathelement location="${antlr.jar}" />
+    <pathelement location="${app.base.jar}" />
+    <pathelement location="${app.jni.jar}" />
+  </path>
+
+  <path id="classpath_compile_test">
+    <path refid="classpath_compile"/>
+    <pathelement location="${class.dir}" />
+    <pathelement location="${junit.jar}" />
+    <pathelement location="${sqlite-jdbc.jar}" />
+  </path>
+
+  <path id="classpath_test">
+    <path refid="classpath_compile_test"/>
+    <pathelement location="${test.class.dir}" />
+  </path>
+
+
+  <target name="build_base">
+    <ant antfile="build.xml" dir="${app.base.dir}" inheritAll="false" target="build" />
+  </target>
+
+  <target name="build_jni">
+    <ant antfile="build.xml" dir="${app.jni.dir}" inheritAll="false" target="build" />
+  </target>
+
+  <target name="build_version">
+    <exec outputproperty="info.version" executable="perl" failonerror="true" >
+      <arg value="${basedir}/${root}/version.pl" />
+      <arg value="-info_path" />
+      <arg value="${basedir}/${root}" />
+    </exec>
+    <!-- These two tasks set $info.small_version that will be used later by target "package" -->
+    <!-- ${info.version} is also used by target "package" -->
+    <exec outputproperty="info.small_version_untrimmed" executable="perl" failonerror="true" >
+      <arg value="${basedir}/${root}/version.pl" />
+      <arg value="-small" />
+      <arg value="-info_path" />
+      <arg value="${basedir}/${root}" />
+    </exec>
+    <loadresource property="info.small_version">
+      <propertyresource name="info.small_version_untrimmed" />
+      <filterchain>
+        <deletecharacters chars="M" />
+      </filterchain>
+    </loadresource>
+    <echo message= "GIT state of ${info.version}, ${info.small_version}" />
+    <!-- Generate Version.java -->
+    <copy file="src/main/template/Version.java" toFile="build/src/main/java/com/company/Version.java" overwrite ="true">
+      <filterset> <!-- Use default delimiter '@' -->
+        <filter token="VERSION" value="${info.version}"/>
+      </filterset>
+    </copy>
+  </target>
+
+  <target name="compile" depends="build_base,build_jni,build_version">
+    <!-- Create the class directory -->
+    <mkdir dir="${class.dir}"/>
+    <!-- Compile -->
+    <javac srcdir="${src.dir}:build/src/main/java" destdir="${class.dir}" includeAntRuntime="false" encoding="UTF-8">
+      <classpath refid="classpath_compile"/>
+    </javac>
+  </target>
+
+  <target name="build" depends="compile">
+    <!-- Copy pictures, translations, and persistence.xml -->
+    <copy todir="${class.dir}" >
+      <fileset dir="${rsc.dir}" casesensitive="no">
+        <include name="**/*.jpg"/>
+        <include name="**/*.png"/>
+        <include name="**/*.properties"/>
+        <include name="**/*.xsd"/>
+        <include name="**/*.xml"/>
+      </fileset>
+    </copy>
+
+    <!-- Files we want to exclude from external jars -->
+    <patternset id="manifest.exclude">
+      <!-- signatures, they won't be valid -->
+      <exclude name="META-INF/*.DSA"/>
+      <exclude name="META-INF/*.RSA"/>
+      <exclude name="META-INF/*.SF"/>
+      <!-- the index file, because if a partial is present, other objects won't be found -->
+      <exclude name="META-INF/INDEX.LIST"/>
+    </patternset>
+
+    <!-- Build jar -->
+    <jar destfile="MyCompanyApp.jar" index="true" >
+      <manifest>
+        <attribute name="Main-Class" value="com.company.app.MyClass"/>
+        <attribute name="Class-Path" value="${bcprov.name}"/>
+      </manifest>
+      <fileset dir="${class.dir}"/>
+      <zipfileset src="${antlr.jar}">        <patternset refid="manifest.exclude"/> </zipfileset>
+      <zipfileset src="${sqlite-jdbc.jar}">  <patternset refid="manifest.exclude"/> </zipfileset>
+      <zipfileset src="${app.jni.jar}">      <patternset refid="manifest.exclude"/> </zipfileset>
+      <indexjars>
+        <pathelement path="${bcprov.jar}" />
+      </indexjars>
+    </jar>
+  </target>
+
+  <target name="package" depends="build">
+    <!-- Run Launch4j and NSIS only on Windows -->
+    <condition property="isWindows">
+      <os family="windows"/>
+    </condition>
+
+    <!-- Launch4j converts JAR applications into Windows native executables -->
+    <taskdef name="launch4j"
+      classname="net.sf.launch4j.ant.Launch4jTask"
+      classpath="${launch4j.dir}/launch4j.jar:${launch4j.dir}/lib/xstream.jar" />
+    <launch4j if:set="isWindows" configFile="launch4j.xml" fileVersion="${info.small_version}" txtFileVersion="${info.version}"
+      productVersion="${info.small_version}" txtProductVersion="${info.version}"/>
+
+    <!-- NSIS (Nullsoft Scriptable Install System) creates Windows installers -->
+    <taskdef name="nsis" classname="com.danielreese.nsisant.Task" classpath="${nsisant.jar}" />
+    <!-- it seems that we have to use basedir -->
+    <nsis if:set="isWindows" script="installer.nsi" path="${basedir}/${root}/External/NSIS">
+      <define name="VERSION" value="${info.version}"/>
+      <define name="SMALL_VERSION" value="${info.small_version}"/>
+    </nsis>
+  </target>
+
+  <target name="compile_test" depends="build">
+    <mkdir dir="${test.class.dir}"/>
+    <javac includeantruntime="false"
+           srcdir="${test.src.dir}"
+           destdir="${test.class.dir}">
+       <classpath refid="classpath_compile_test"/>
+    </javac>
+  </target>
+
+  <target name="test" depends="compile_test">
+    <mkdir dir="${test.report.dir}" />
+    <junit printsummary="yes" fork="true">
+      <classpath refid="classpath_test"/>
+      <formatter type="xml" />
+      <formatter type="plain" />
+      <batchtest todir="${test.report.dir}">
+      <fileset dir="${test.src.dir}">
+        <include name="**/*Test.java" />
+      </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="all" depends="test,package"/>
+
+  <target name="clean">
+    <delete dir="${class.dir}" />
+    <delete dir="${test.class.dir}"/>
+    <delete dir="${test.report.dir}" />
+    <ant antfile="build.xml" dir="${app.base.dir}" inheritAll="false" target="clean" />
+    <ant antfile="build.xml" dir="${app.jni.dir}"  inheritAll="false" target="clean" />
+  </target>
+</project>

@@ -1,0 +1,178 @@
+import org.gradle.api.tasks.application.CreateStartScripts
+plugins {
+    // Display dependency ASCII graph, example:
+    // gradle ':core:run' ':core:taskTree' --no-repeat
+    id "com.dorongold.task-tree" version "1.2.2"
+}
+group = 'com.company.app'
+version = '0.1.0'
+description = """Write here the full application name"""
+allprojects {
+    apply plugin: 'eclipse' //docs.gradle.org/current/userguide/eclipse_plugin.html
+    apply plugin: 'idea'    //docs.gradle.org/current/userguide/idea_plugin.html
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+// IDE solution requires the generated code
+// Use command: "gradle eclipse generateJava"
+task generateJava {
+    dependsOn ':core:generateVersionInJavaFile', ':jni:generateJni'
+}
+subprojects {
+    // Group all build dirs together (one place for all temporaries)
+    project.buildDir = new File(rootProject.buildDir, project.name)
+    // Java - all subprojects are in Java
+    apply plugin: 'java'
+    sourceCompatibility = 1.8 // requires Java >= 1.8
+    targetCompatibility = 1.8
+    tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+    // Checkstyle - All subprojects use a common 'checkstyle.xml'
+    // Usage: gradle checkstyleMain
+    apply plugin: 'checkstyle' //docs.gradle.org/current/userguide/checkstyle_plugin.html
+    tasks.withType(Checkstyle) {
+        configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+        showViolations false // Do not pollute output
+        reports {
+            html.enabled true
+            doLast { println "== Checkstyle reports available in '${reportsDir}'" }
+        }
+    }
+    // PMD source code analyzer
+    // Usage: gradle pmdMain
+    apply plugin: 'pmd' //docs.gradle.org/current/userguide/pmd_plugin.html
+    tasks.withType(Pmd) { ignoreFailures true }
+    // JDepend: design quality metrics (extensibility, reusability, and maintainability)
+    // Usage: gradle jdependMain
+    apply plugin: 'jdepend' //docs.gradle.org/current/userguide/jdepend_plugin.html
+    tasks.withType(JDepend) {
+        reports {
+            text.enabled true
+            xml .enabled false
+            doLast { println "== JDepend reports available in '${reportsDir}'" }
+        }
+    }
+    // FindBugs static analysis to look for bugs in Java code
+    // Usage: gradle findbugsMain
+    apply plugin: 'findbugs' //docs.gradle.org/current/userguide/findbugs_plugin.html
+    tasks.withType(FindBugs) {
+        ignoreFailures true
+        reports {
+            xml .enabled false
+            html.enabled true
+        }
+    }
+}
+project(':base') {
+    dependencies {
+        compile files( rootProject.file('lib/bcprov.jar') )
+    }
+}
+project(':jni') {
+    dependencies {
+        compile project(':base')
+    }
+}
+project(':gui') {
+    apply plugin: 'application'
+    apply plugin: 'distribution'
+    mainClassName = 'com.company.app.gui.EntryPoint'
+    // alternate entry points
+    task cmdLineMyClass1StartScript(type: CreateStartScripts) {
+        applicationName = 'my_class_1'
+        mainClassName = 'com.company.app.gui.MyClass1'
+        classpath = configurations.runtime
+    }
+    task cmdLineMyClass2StartScript(type: CreateStartScripts) {
+        applicationName = 'my_class_2'
+        mainClassName = 'com.company.app.gui.MyClass2'
+        classpath = configurations.runtime
+    }
+    startScripts.dependsOn = [cmdLineMyClass1StartScript, cmdLineMyClass2StartScript]
+    dependencies {
+        compile project(':core')
+    }
+}
+project(':cli') {
+    apply plugin: 'application'
+    apply plugin: 'distribution'
+    mainClassName = 'com.company.app.cli.CommandLine'
+    dependencies {
+      //compile project(':lib/jline3')
+        compile project(':jline3')
+        compile project(':core')
+    }
+}
+project(':core') {
+    dependencies {
+        compile project(':jni')
+        compile files([
+            rootProject.file('lib/antlr.jar'),
+            ])
+        runtime files([
+            rootProject.file('lib/sqlite.jar'),
+            ])
+        testCompile group:'junit', name:'junit', version:'4.12'
+    }
+}
+
+// Set JNI in java.library.path
+subprojects {
+    def jniLibDir = "${rootProject.project(':jni').buildDir}/cmake"
+    tasks.withType(Test){
+        systemProperty 'java.library.path', jniLibDir
+    }
+    tasks.withType(JavaExec){
+        systemProperty 'java.library.path', jniLibDir
+    }
+    tasks.withType(CreateStartScripts) {
+        defaultJvmOpts += "-Djava.library.path=${jniLibDir}"
+        // Group all start scripts together
+        outputDir = file("${rootProject.buildDir}/scripts")
+        doLast { println "== Start script ${outputDir}/${applicationName}" }
+    }
+}
+
+//project(':lib/jline3') {
+project('jline3') {
+        group = 'org.jline'
+        version = '3.1.2'
+        description = """JLine"""
+        dependencies {
+            compile     group: 'org.fusesource.jansi', name: 'jansi', version:'1.14'
+            compile     group: 'com.googlecode.juniversalchardet', name: 'juniversalchardet', version:'1.0.3'
+            compile     group: 'net.java.dev.jna', name: 'jna', version:'4.2.2'
+            testCompile group: 'org.easymock', name: 'easymock', version:'3.3.1'
+            testCompile group: 'org.powermock', name: 'powermock-module-junit4', version:'1.6.2'
+            testCompile group: 'org.powermock', name: 'powermock-api-easymock', version:'1.6.2'
+            testCompile group: 'org.ow2.asm', name: 'asm', version:'5.0.3'
+            testCompile group: 'junit', name: 'junit', version:'4.12'
+        }
+}
+
+//TODO: Use also the following plugins
+//      (within the below URLs, replace the version "3.3" by "current" to see the latest documentation)
+//
+// - Sign the JAR using pluging signing
+//   https://docs.gradle.org/3.3/userguide/signing_plugin.html
+//
+// - Package/Publish
+//   https://docs.gradle.org/3.3/userguide/standard_plugins.html#sec:incubating_integration_plugins
+//
+// - Convert automatically Maven libraries to Gradle at build time
+//   https://docs.gradle.org/3.3/userguide/build_init_plugin.html
+//   Read also
+//   https://docs.gradle.org/3.3/userguide/init_scripts.html
+//
+// - Try the build dashbord reporting
+//   https://docs.gradle.org/3.3/userguide/buildDashboard_plugin.html
+//
+// - Java code coverage
+//   https://docs.gradle.org/3.3/userguide/jacoco_plugin.html
+//
+// - Play with plugin build-announcements (based on plugin announce)
+//   https://docs.gradle.org/3.3/userguide/build_announcements_plugin.html
+//
+// - Try the "Project Report Plugin"
+//   https://docs.gradle.org/3.3/userguide/project_reports_plugin.html

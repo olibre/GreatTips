@@ -1,0 +1,30 @@
+<project default="build" name="Create Jar for com.company.app.base">
+
+    <property name="class.dir" value="build/classes/main" />
+    <property name="lib.dir"   value="../lib" />
+    <property name="src.dir"   value="src/main/java" />
+    <property name="rsc.dir"   value="src/main/resources" />
+
+    <target name="build">
+      <!-- Compile -->
+      <mkdir dir="${class.dir}"/>
+      <javac srcdir="${src.dir}" dest.dir="${class.dir}"
+             classpath= "${lib.dir}/bcprov.jar" includeAntRuntime="false" />
+      <!-- Add translations -->
+      <copy todir="${class.dir}" >
+        <fileset dir="${rsc.dir}" casesensitive="no">
+          <include name="**/*.properties"/>
+        </fileset>
+      </copy>
+      <!-- Build jar -->
+      <jar destfile="base.jar">
+        <fileset dir="${class.dir}"/>
+      </jar>
+    </target>
+
+    <!-- Clean -->
+    <target name="clean">
+      <delete dir="${class.dir}"/>
+    </target>
+
+</project>

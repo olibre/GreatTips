@@ -1,0 +1,29 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+}
+
+task generateVersionInJavaFile() {
+    doLast {
+        def infoVersion = new ByteArrayOutputStream()
+        exec {
+            commandLine = ['perl', '../../../version.pl', '-info_path', '../../..']
+            standardOutput = infoVersion
+        }
+        println "== infoVersion = $infoVersion"
+        copy {
+            from 'src/main/template/Version.java'
+            into "$buildDir/src/main/java/com/company"
+            filter(ReplaceTokens, tokens:["VERSION":infoVersion.toString()])
+        }
+    }
+    outputs.files("$buildDir/src/main/java/com/company/Version.java")
+}
+compileJava     .dependsOn     generateVersionInJavaFile
+eclipseClasspath.mustRunAfter  generateVersionInJavaFile
+ideaModule      .mustRunAfter  generateVersionInJavaFile
+
+sourceSets.main.java.srcDirs += "$buildDir/src/main/java"
