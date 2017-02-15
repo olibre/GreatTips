@@ -1,5 +1,6 @@
-How to reduce bloatware technical debt?
-=======================================
+% How to reduce bloatware technical debt?
+=========================================
+
 
 Old software project
 ====================
@@ -45,70 +46,15 @@ Software started in the early years 2000 share similar characteristics:
 * Current implementation does not enable high performance
 
 
-Team control
-============
+Advices
+=======
 
-This document provides advices but should not be decided at big boss level.
+This document provides some advices.
+Depending on the project specificities and on the team culture, some advices are relevant, some others can be skiped.
 
-The most important is to give the control to all the team members.
-Not only to the team gurus and other technical leaders.
-More the members have the hands within the source code, tests and documentation, more decision power they should get.
-Members should not decide for parts of the project they do not know.
-Team leader should just indicate their feeling but not ~~decide~~ vote.
-
-When the whole team decides together what to do, each member appropriates herself the technical changes.
-
-For each foolowing advice item, the team democratically decides:
-
-* the relevance,
-* the priority,
-* when to evaluate the results,
-
-The team members must also propose many more items over the months.
-
-Target is to obtain **consensus** not **compromise**/**concession**.
-
-Team leaders must agree with team decision and be responsible for the pratical application.
-Other team mebers must also agree with team decision and be responsible for the pratical application.
-
-Autonomy and democracy is the keys of involvement.
-
-
-Retrospective meetings
-======================
-
-Adopt scrum retrospective meetings for continuous improvement.
-
-* Bottom Up decision work-flow (people who does the job decide how to do it)
-* Test different frequencies between "once a week" and "once a month"
-* "Definition of Done"
-* Collect member ideas and select best ones
-    * Make process more fluid and predictable
-    * Reduce technical debt
-
-Examples:
-
-* Respect the Google Code Style Guide only when it is justified
-* Justify rule breaking (many rules are not respected, What is the reason?)
-* Break the [File Names rule](https://google.github.io/styleguide/cppguide.html#File_Names) to get more readable filenames (using the CamelCase class name)
-
-
-Team self-training
-==================
-
-Encourage trainings like [Lightning talks](https://en.wikipedia.org/wiki/Lightning_talk) and [Unconferences](https://en.wikipedia.org/wiki/Unconference) in order to share skills and knowledge across team members (and across other project teams). Every body is agree on that point. The question is more about how to **encourage this good practice over time**.
-
-Some subject examples:
-
-* Good Unit Tests
-* SOLID principles
-* Design Patterns
-* Modern CMake and dependency configuration
-* Gradle
-* [C++ Core Guidelines](https://github.com/isocpp/CppCoreGuidelines)
-* Generic programming paradigm
-* Meta-programming
-* C++17
+This change is part of the continuous improvement.
+Therefore, team members are encouraged to propose
+many more suggestions over the months.
 
 
 Risk Management
@@ -267,14 +213,15 @@ Performance
     * Use [Automatic Feedback-Directed Optimizer](https://clearlinux.org/features/autofdo)
 
 
-Continuous code refactoring (and cleaning)
-==========================================
+Continuous code cleaning & refactoring
+======================================
 
 * Replace *"[Not Invented Here](https://en.wikipedia.org/wiki/Not_invented_here)"* libraries by widely-used libraries
 * Use modern C++ features
 * Use same language for all the parts when possible
 * Reduce the number of programming languages
-    * When an issue in blocking (rewrite the piece of softaware using another programming language)
+    (rewrite/replace a mudule using another programming language)
+    * When an issue in blocking
     * When implementing a major feature
 * Delete old branches
 * Use more recent third-parties versions
