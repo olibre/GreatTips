@@ -23,7 +23,7 @@ The Gradle plugin "application" offers tasks to start the Java application:
     gradle :gui:run    # To start the GUI application
     gradle :cli:run    # To enter in interactive shell
 
-Moreover, the corresponding command line scripts can also be produced:
+Moreover, the task `startScripts` can produce start scripts:
 
     $ rm build/scripts -r
     $ gradle startScripts
@@ -153,7 +153,7 @@ The reports are produced in the following directories:
     │       │   ├── main.html     # For humans
     │       │   └── main.xml      # For Jenkins
     │       ├── findbugs
-    │       │   └── main.html     # FindBugs can produce only one output format at a time: HTML or XML
+    │       │   └── main.html     # FindBugs produce one format at a time: HTML or XML
     │       ├── jdepend
     │       │   └── main.txt      # JDepends only produce TXT output
     │       └── pmd
@@ -165,7 +165,7 @@ The reports are produced in the following directories:
         │   ├── checkstyle
         │   │   ├── main.html
         │   │   ├── main.xml
-        │   │   ├── test.html    # Java code of the Unit-Tests are also checked but in a separated section
+        │   │   ├── test.html    # Unit-Test code is checked but in a separated section
         │   │   └── test.xml
         │   ├── findbugs
         │   │   ├── main.html
@@ -180,8 +180,8 @@ The reports are produced in the following directories:
         │   │   └── test.xml
         │   └── tests
         │       └── test
-        │           └── index.html    # JUnit result for humans  in build/*/reports/tests/test
-        └── test-results              # JUnit result for Jenkins in build/*/test-results/test
+        │           └── index.html # JUnit result for humans  in /reports/tests/test
+        └── test-results           # JUnit result for Jenkins in /test-results/test
             └── test
                 ├── TEST-com.company.appname.core.TrucTest.xml
                 └── TEST-com.company.appname.core.MachinTest.xml
