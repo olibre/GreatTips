@@ -1,4 +1,4 @@
-package com.company.myapp.cli;
+package com.company.appname.cli;
 
 import java.util.ArrayList;
 import java.util.List;

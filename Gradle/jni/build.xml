@@ -1,10 +1,10 @@
-<project default="build" name="Generate JNI interface (Java/C/C++), Build C++, Create Jar for com.company.app.jni">
+<project default="build" name="Generate JNI interface (Java/C/C++), Build C++, Create Jar for com.company.appname.jni">
 
   <property name="root"               value="${basedir}/.." />
   <property name="external.dir"       value="${root}/External" />
   <property name="swig.dest.cpp.dir"  value="${basedir}/build/src/main/cpp" />
   <property name="swig.dest.cpp.file" value="${swig.dest.cpp.dir}/wrapper.cc" />
-  <property name="swig.dest.java.dir" value="${basedir}/build/src/main/java/com/company/app/generated" />
+  <property name="swig.dest.java.dir" value="${basedir}/build/src/main/java/com/company/appname/generated" />
   <property name="cmake.build.dir"    value="${basedir}/build/cmake" /> <!--DriverlessJniWrapperBuildWin32" /-->
   <property name="class.dir"          value="${basedir}/build/classes/main" />
 
@@ -63,7 +63,7 @@
       <arg value="${swig.dest.cpp.file}" />
       <arg value="-java" />
       <arg value="-package" />
-      <arg value="com.company.app.generated" />
+      <arg value="com.company.appname.generated" />
       <!-- the module name is already specified in "jni.i"
       <arg value="-module" />
       <arg value="jni" />

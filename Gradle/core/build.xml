@@ -1,4 +1,4 @@
-<project default="all" name="Create Runnable Jar for com.company.app.core"
+<project default="all" name="Create Runnable Jar for com.company.appname.core"
     xmlns:if="ant:if"
     xmlns:unless="ant:unless" >
   <!--ANT 1.9.1 is required to use feature if:set="isWindows" -->
@@ -20,15 +20,15 @@
   <property name="junit.jar"        value="${lib.dir}/junit-4.12.jar" />
   <property name="launch4j.dir"     value="${lib.dir}/launch4j" />
   <property name="nsisant.jar"      value="${lib.dir}/nsisant.jar" />
-  <property name="app.base.dir"     value="../base"/>
-  <property name="app.base.jar"     value="${app.base.dir}/base.jar" />
-  <property name="app.jni.dir"      value= "../jni" />
-  <property name="app.jni.jar"      value="${app.jni.dir}/jni.jar" />
+  <property name="appname.base.dir"     value="../base"/>
+  <property name="appname.base.jar"     value="${appname.base.dir}/base.jar" />
+  <property name="appname.jni.dir"      value= "../jni" />
+  <property name="appname.jni.jar"      value="${appname.jni.dir}/jni.jar" />
 
   <path id="classpath_compile">
     <pathelement location="${antlr.jar}" />
-    <pathelement location="${app.base.jar}" />
-    <pathelement location="${app.jni.jar}" />
+    <pathelement location="${appname.base.jar}" />
+    <pathelement location="${appname.jni.jar}" />
   </path>
 
   <path id="classpath_compile_test">
@@ -45,11 +45,11 @@
 
 
   <target name="build_base">
-    <ant antfile="build.xml" dir="${app.base.dir}" inheritAll="false" target="build" />
+    <ant antfile="build.xml" dir="${appname.base.dir}" inheritAll="false" target="build" />
   </target>
 
   <target name="build_jni">
-    <ant antfile="build.xml" dir="${app.jni.dir}" inheritAll="false" target="build" />
+    <ant antfile="build.xml" dir="${appname.jni.dir}" inheritAll="false" target="build" />
   </target>
 
   <target name="build_version">
@@ -115,13 +115,13 @@
     <!-- Build jar -->
     <jar destfile="MyCompanyApp.jar" index="true" >
       <manifest>
-        <attribute name="Main-Class" value="com.company.app.MyClass"/>
+        <attribute name="Main-Class" value="com.company.appname.MyClass"/>
         <attribute name="Class-Path" value="${bcprov.name}"/>
       </manifest>
       <fileset dir="${class.dir}"/>
       <zipfileset src="${antlr.jar}">        <patternset refid="manifest.exclude"/> </zipfileset>
       <zipfileset src="${sqlite-jdbc.jar}">  <patternset refid="manifest.exclude"/> </zipfileset>
-      <zipfileset src="${app.jni.jar}">      <patternset refid="manifest.exclude"/> </zipfileset>
+      <zipfileset src="${appname.jni.jar}">      <patternset refid="manifest.exclude"/> </zipfileset>
       <indexjars>
         <pathelement path="${bcprov.jar}" />
       </indexjars>
@@ -179,7 +179,7 @@
     <delete dir="${class.dir}" />
     <delete dir="${test.class.dir}"/>
     <delete dir="${test.report.dir}" />
-    <ant antfile="build.xml" dir="${app.base.dir}" inheritAll="false" target="clean" />
-    <ant antfile="build.xml" dir="${app.jni.dir}"  inheritAll="false" target="clean" />
+    <ant antfile="build.xml" dir="${appname.base.dir}" inheritAll="false" target="clean" />
+    <ant antfile="build.xml" dir="${appname.jni.dir}"  inheritAll="false" target="clean" />
   </target>
 </project>

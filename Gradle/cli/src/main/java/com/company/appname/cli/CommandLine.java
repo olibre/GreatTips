@@ -1,4 +1,4 @@
-package com.company.myapp.cli;
+package com.company.appname.cli;
 
 import org.jline.reader.Completer;
 import org.jline.reader.EndOfFileException;

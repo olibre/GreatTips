@@ -4,7 +4,7 @@ plugins {
     // gradle ':core:run' ':core:taskTree' --no-repeat
     id "com.dorongold.task-tree" version "1.2.2"
 }
-group = 'com.company.app'
+group = 'com.company.appname'
 version = '0.1.0'
 description = """Write here the full application name"""
 allprojects {
@@ -77,16 +77,16 @@ project(':jni') {
 project(':gui') {
     apply plugin: 'application'
     apply plugin: 'distribution'
-    mainClassName = 'com.company.app.gui.EntryPoint'
+    mainClassName = 'com.company.appname.gui.EntryPoint'
     // alternate entry points
     task cmdLineMyClass1StartScript(type: CreateStartScripts) {
         applicationName = 'my_class_1'
-        mainClassName = 'com.company.app.gui.MyClass1'
+        mainClassName = 'com.company.appname.gui.MyClass1'
         classpath = configurations.runtime
     }
     task cmdLineMyClass2StartScript(type: CreateStartScripts) {
         applicationName = 'my_class_2'
-        mainClassName = 'com.company.app.gui.MyClass2'
+        mainClassName = 'com.company.appname.gui.MyClass2'
         classpath = configurations.runtime
     }
     startScripts.dependsOn = [cmdLineMyClass1StartScript, cmdLineMyClass2StartScript]
@@ -97,7 +97,7 @@ project(':gui') {
 project(':cli') {
     apply plugin: 'application'
     apply plugin: 'distribution'
-    mainClassName = 'com.company.app.cli.CommandLine'
+    mainClassName = 'com.company.appname.cli.CommandLine'
     dependencies {
       //compile project(':lib/jline3')
         compile project(':jline3')

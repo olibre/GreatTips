@@ -1,6 +1,6 @@
-package com.company.myapp.cli;
+package com.company.appname.cli;
 
-import com.company.myapp.Truc;
+import com.company.appname.Truc;
 
 import org.jline.reader.Candidate;
 import org.jline.reader.Completer;

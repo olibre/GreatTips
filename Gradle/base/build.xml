@@ -1,4 +1,4 @@
-<project default="build" name="Create Jar for com.company.app.base">
+<project default="build" name="Create Jar for com.company.appname.base">
 
     <property name="class.dir" value="build/classes/main" />
     <property name="lib.dir"   value="../lib" />

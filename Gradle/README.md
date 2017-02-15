@@ -183,8 +183,8 @@ The reports are produced in the following directories:
         │           └── index.html    # JUnit result for humans  in build/*/reports/tests/test
         └── test-results              # JUnit result for Jenkins in build/*/test-results/test
             └── test
-                ├── TEST-com.company.myapp.core.TrucTest.xml
-                └── TEST-com.company.myapp.core.MachinTest.xml
+                ├── TEST-com.company.appname.core.TrucTest.xml
+                └── TEST-com.company.appname.core.MachinTest.xml
 
 
 

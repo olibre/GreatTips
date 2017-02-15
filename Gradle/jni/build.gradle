@@ -9,9 +9,9 @@ apply plugin: 'net.tribe-seven.swig'   //https://github.com/jjzazuet/gradle-swig
 task generateJni(type: SwigTask) {                              // Corresponding swig options
 //  verbose           = true                                                      // -v
     includePaths      = [file('../../../include'), file('../../../swig/java')]    // -I
-    javaSourcesPath   = file("$buildDir/src/main/java/com/company/app/generated") // -outdir
+    javaSourcesPath   = file("$buildDir/src/main/java/com/company/appname/generated") // -outdir
     wrapperTargetFile = file("$buildDir/src/main/cpp/wrapper.cc")                 // -o
-    packageName       = 'com.company.app.generated'                               // -package
+    packageName       = 'com.company.appname.generated'                               // -package
     module            = 'jni'                                                     // -module
     enableCpp         = true                                                      // -c++
     source            = file('src/main/jni/jni.i')                                // last argument
@@ -19,7 +19,7 @@ task generateJni(type: SwigTask) {                              // Corresponding
     inputs.file('src/main/jni/jni.i')
     inputs.files(fileTree('../../../include'))
     inputs.files(fileTree('../../../swig/java'))
-    outputs.dir("$buildDir/src/main/java/com/company/app/generated")
+    outputs.dir("$buildDir/src/main/java/com/company/appname/generated")
     outputs.file("$buildDir/src/main/cpp/wrapper.cc")
 }
 compileJava     .dependsOn     generateJni
