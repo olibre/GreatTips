@@ -10,7 +10,7 @@ The following lines are an alternative to git-submodule:
 
     cd your-github-directory
     git clone https://github.com/jline/jline3
-    git -C jline3 tag jline-3.1.2
+    git -C jline3 checkout jline-3.1.2
     cd CodingGoodPractices/Gradle/example
     ln -s your-github-directory/jline3 .
 
