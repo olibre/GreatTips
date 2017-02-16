@@ -1,8 +1,9 @@
-Autonomy is the keys of team involvement.
+% Autonomy is the key of team involvement
+=========================================
 
 
-Team control
-============
+Team ownership
+==============
 
 The way to do the job has not be decided at big boss level.
 Best is to give the control to all the team members.
@@ -26,9 +27,9 @@ For each task, the team democratically decides:
 Target is to obtain **consensus** not **compromise**/**concession**.
 
 Team leaders must agree with team decision
-and be responsible for the pratical application.
+and be responsible for the practical application.
 Other team members must also agree with team decision
-and be responsible for the pratical application.
+and be responsible for the practical application.
 
 
 

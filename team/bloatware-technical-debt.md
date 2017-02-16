@@ -26,11 +26,11 @@ Software started in the early years 2000 share similar characteristics:
     * Some other finalized refactoring have been forgetten in old branches
     * Build hell
     * Code style is not anymore consistent
-* Difficult to undersatnd all the parts, because of
+* Difficult to understand all the parts, because of
     * various programming languages
     * various underlying technologies
     * various modules and sub-modules
-    * usefull documentaion not easy to read
+    * useful documentation not easy to read
 * Documentation reflects the mess
     * dispersed in different places
     * some documentation is obsolete
@@ -39,7 +39,7 @@ Software started in the early years 2000 share similar characteristics:
     * but some components are well documented
 * Test is often better than documentation
     * various test tools developed
-    * many tests (unit tests, fonctionnal tests...)
+    * many tests (unit tests, functional tests...)
     * continuous testing does not run all the tests
     * code coverage is not sure (should be very low)
 * Multi-platform (Windows, Linux... Android...)
@@ -50,7 +50,7 @@ Advices
 =======
 
 This document provides some advices.
-Depending on the project specificities and on the team culture, some advices are relevant, some others can be skiped.
+Depending on the project specificities and on the team culture, some advices are relevant, some others can be skipped.
 
 This change is part of the continuous improvement.
 Therefore, team members are encouraged to propose
@@ -61,19 +61,19 @@ Risk Management
 ===============
 
 * Any change not impacting the delivery must be guaranteed by producing same binaries
-* Any change not impacting the behaviour must be guaranteed by passing all non-regression tests
+* Any change not impacting the behavior must be guaranteed by passing all non-regression tests
 * Any change improving performance must be guaranteed by benchmark
 
 Therefore, before any change, implement combined "safety belt and shoulder harness" *(ceinture et bretelles)*.
 
-As these verifications have to be reproductible, script the building and comparison processes.
+As these verifications have to be reproducible, script the building and comparison processes.
 
 
 Artifact Repository
 ===================
 
 * Reduce Git repo size
-* Identify unneccessary binary files and rewrite history
+* Identify unnecessary binary files and rewrite history
 * Use [git-annex](https://en.wikipedia.org/wiki/Git-annex) feature [available since GitLab 7.8](https://about.gitlab.com/2015/02/17/gitlab-annex-solves-the-problem-of-versioning-large-binaries-with-git/) Enterprise Edition (February 2015)
 * Use artifact repository (see https://en.wikipedia.org/wiki/Software_repository)
     * Artifactory
@@ -116,7 +116,7 @@ CMake
 * Allow building external library Boost from CMake
 
 
-Source code Urbanisation
+Source code Urbanization
 ========================
 
 * Reorganize source code tree with clarification in mind
@@ -125,7 +125,7 @@ Source code Urbanisation
 * Split too-big-modules in autonomous smaller ones
 * Extract third parties from core source code (keep only the code with company ownership)
 * Move all third party in artifact repositories (can be other Git  repositories)
-* Produce exactly the same binaries from the same SHA1 (100% same content) => Do not embed timestamp in produced binaries
+* Produce exactly the same binaries from the same SHA1 (100% same content) => Do not embed timestamps in produced binaries
 * Add in the produced delivery the version of each 3rd party, the version of each tool, the OS version and other build dependencies
 
 
@@ -220,7 +220,7 @@ Continuous code cleaning & refactoring
 * Use modern C++ features
 * Use same language for all the parts when possible
 * Reduce the number of programming languages
-    (rewrite/replace a mudule using another programming language)
+    (rewrite/replace a module using another programming language)
     * When an issue in blocking
     * When implementing a major feature
 * Delete old branches
@@ -238,8 +238,8 @@ Continuous Delivery
 Copyright
 =========
 
-* Add tiny copyright notice on top of all company-owened files
-* Check thrird party licenses
+* Add tiny copyright notice on top of all company-owned files
+* Check third party licenses
 
 
 Libre software
