@@ -1,12 +1,12 @@
-This directory provides a Gradle example.  
-Corresponding Ant scripts are provided for information.
+This directory provides a Gradle example.
 
 
 Dependency
 ==========
 
-The library JLine has not been is not yet integrated within this Git repository.  
-This dependency is required to build the project.
+The library JLine is required to build the project
+and has been integrated within this Git repository as a submodule.
+The following lines are an alternative to git-submodule:
 
     cd your-github-directory
     git clone https://github.com/jline/jline3
