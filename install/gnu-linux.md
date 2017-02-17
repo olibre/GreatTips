@@ -359,6 +359,7 @@ Fasd is efficient with zsh and oh-my-zsh.
     cmake .
     sudo make install
 
+
 i3
 ==
 
@@ -371,3 +372,62 @@ It avoid any loss of space and speeds up the navigation between windows.
     sudo apt install i3
 
 To launch it, on the ubuntu login select the i3 window manager on the small white circle near the login.
+
+
+VirtualBox
+==========
+
+VirtualBox is a Virtual Machine Monitor (hypervisor) running on Windows/Linux/Mac.
+For example, VirtualBox can:
+
+* Host a Windows VM on Linux
+* Host a Linux VM on Windows
+
+Installation
+------------
+
+* Windows: https://www.virtualbox.org/wiki/Downloads
+* Linux
+
+        sudo apt install virtualbox
+
+Guest-Additions
+---------------
+
+The **Guest-Additions** improves the user experience: drag-and-drop and better mouse integration.
+You do not need to install it because it is now part of a the default installation.
+
+Extension Pack
+--------------
+
+The VirtualBox [Extension Pack](https://en.wikipedia.org/wiki/VirtualBox#VirtualBox_Extension_Pack) implements the USB 2 & 3 and Remote Desktop protocols. But its end-user license ([PUEL](https://www.virtualbox.org/wiki/VirtualBox_PUEL)) forbids free professional use (only commercial license).
+
+Please do **NOT** install it because you may not need USB 2 & 3 and Remote Desktop protocols.
+
+Tips
+----
+
+* Increase the size of a disk image see [http://superuser.com/a/1147292/112297](http://superuser.com/a/1147292/112297).
+* To access network from a VM you may need to set VM network in **NAT** mode and run the following command from host:
+
+        VBoxManage modifyvm "VM name" --natdnshostresolver1 on
+
+* Reduce the size of a VirtualBox filesystem (extension `*.vdi`)
+    1. Nullify the free space
+        * Linux guest
+    
+              sudo dd if=/dev/zero of=/deleteme bs=4M; sudo rm /deleteme
+            
+        * Windows guest (download SDelete: http://technet.microsoft.com/en-us/sysinternals/bb897443)
+    
+              sdelete.exe C: -z
+
+    2. Shutdown the guest VM            
+    3. Compact the disk file
+        * Linux host
+    
+              vboxmanage modifyhd <path_to_disk.vdi> --compact
+            
+        * Windows guest (download SDelete: http://technet.microsoft.com/en-us/sysinternals/bb897443)
+    
+              "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" modifyhd <path_to_disk.vdi> --compact
