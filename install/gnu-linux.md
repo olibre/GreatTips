@@ -450,3 +450,38 @@ Tips
         * Windows guest (download SDelete: http://technet.microsoft.com/en-us/sysinternals/bb897443)
     
               "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" modifyhd <path_to_disk.vdi> --compact
+
+Perl
+====
+
+Linux
+-----
+
+    sudo apt install perl
+
+Windows
+-------
+
+Tree projects maintain Perl for Windows.
+
+1. Strawberry Perl
+
+   100% Open Source Perl for Windows
+   that is exactly the same as Perl everywhere else
+   including CPAN modules without the need for binary packages.
+   
+   http://strawberryperl.com/
+   
+2. DWIM Perl
+
+   100% Open Source Perl for Windows, based on Strawberry Perl.
+   It aims to include as many useful CPAN modules as possible.
+   It even comes with Padre, the Perl IDE
+
+   http://dwimperl.com/windows.html
+
+3. ActiveState Perl
+
+   Two versions : Community (free) and Commercial
+   
+   http://www.activestate.com/activeperl/downloads
