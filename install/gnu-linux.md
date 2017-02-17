@@ -54,18 +54,16 @@ The [**paging file**](https://en.wikipedia.org/wiki/Paging) in Windows correspon
 Removing this file may save many gigabytes within the file-system but doing so may change Windows behaviour when you boot this OS later.
 Follow the below procedure (and dialog box illustrations) to disable/remove this paging file.
 
-1.  From main Windows bar: Start → Computer → Context menu (mouse right click) → Properties → Change settings
-2.  Dialog box "System Properties": Advanced → Settings...
-3.  Dialog box "Performance Options": Advanced → Change...
-4.  Dialog box "Virtual Memory": Un-check "Automatically manage paging file size for all drives", then select "No paging file" and button "Set"
+1. From main Windows bar: Start → Computer → Context menu (mouse right click) → Properties → Change settings  
+   ![Main window of the System control panel](img/ControlPanel-System.jpg)
+2. Dialog box "System Properties": Advanced → Settings...  
+   ![Dialog box "System Properties" has a tab "Advanced" having the button "Settings..."](img/SystemProperties.png)
+3. Dialog box "Performance Options": Advanced → Change...  
+   ![Dialog box "Performance Options" has a tab "Advanced" having the button "Change..."](img/PerformanceOptions.jpg)
+4. Dialog box "Virtual Memory": Un-check "Automatically manage paging file size for all drives",  
+   then select "No paging file" and validate with button "Set".  
+   ![Dialog box "Virtual Memory"](img/VirtualMemory.jpg)
 
-![](img/ControlPanel-System.jpg)
-
-![](img/SystemProperties.jpg)
-
-![](img/PerformanceOptions.jpg)
-
-![](img/VirtualMemory.jpg)
 
 Connection to network
 =====================
