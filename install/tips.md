@@ -41,6 +41,7 @@ Install packages
     bash-completion      # Optional
     man-pages            # man pages for kernel/glibc/...
     man-pages-fr         # Si pas comprendre Anglais
+    gedit-plugins        # Display special characters with gedit
 
 
 Enabling multicast reception
@@ -182,4 +183,21 @@ bind '"\e[18~":" ( mkdir -p \"${PrjRoot}\"/build && cd $_ && cmake .. $PrjOpts &
 
 # F8 => Test
 bind '"\e[19~":" ctest -j6 --build \"${PrjRoot}\"/build \n"'
+
+# Auto-complete the command line with a previous command starting with the same characters:
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+ 
+# Bind the [PageUp], [Start] (and 'PageDown], [End]) to move the cursor the start (end) of the command line
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+"\e[5~": beginning-of-line
+"\e[6~": end-of-line
+ 
+# Bind [Alt][Left] and [Alt][Right] to go forward/backward one word (There *is* already a binding for that: [Alt][f] and [Alt][b])
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+ 
+# Auto-complete with a single press of 'tab' key instead of two
+set show-all-if-ambiguous on
 ```
