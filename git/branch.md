@@ -22,7 +22,7 @@ Development branches supposed to be merged at the same time in two submodules wi
 Common work is gathered in the branch `develop`. During their sprints, teams uses team branches prefixed by `dev-`.
 Those branches are supposed to be regularly merged into `develop`, ideally at the end of every sprint, with the help and approval of the release manager.
 
-![Branching Model Overview](http://olibre.github.io/CppCoding/img/branching.svg)
+![Branching Model Overview](img/branching.svg)
 
 The mainline `develop`
 ----------------------
