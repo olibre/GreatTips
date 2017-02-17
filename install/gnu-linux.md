@@ -485,3 +485,48 @@ Tree projects maintain Perl for Windows.
    Two versions : Community (free) and Commercial
    
    http://www.activestate.com/activeperl/downloads
+
+
+### JDK 32 bits Java-8
+
+Download **Java SE Development Kit** for Windows x86 (i586) without Demos and Samples[
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
+### Java Cryptography Extension
+
+Vanilla Java is limited on security strength (e.g. password length) to comply with potential country cryptographic restrictions.
+As our product use strong security keys, we need to install the [Java Cryptography Extension](https://en.wikipedia.org/wiki/Java_Cryptography_Extension) (JCE).
+
+Download the JCE Unlimited Strength Jurisdiction Policy archive (zip).
+[http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html](http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html)
+
+Copy the two JAR files from the above archive to the Java installation (`JRE/lib/security`).
+Overwrite the local `local_policy.jar` and `US_export_policy.jar` files.
+
+### Apache Ant
+
+Installation steps : [http://ant.apache.org/manual/install.html](http://ant.apache.org/manual/install.html)
+
+Download Zip file : [http://ant.apache.org/bindownload.cgi?Preferred=http%3A%2F%2Fapache.crihan.fr%2Fdist%2F#Current%20Release%20of%20Ant](http://ant.apache.org/bindownload.cgi?Preferred=http%3A%2F%2Fapache.crihan.fr%2Fdist%2F#Current%20Release%20of%20Ant)
+The archive contains shell and batch scripts that executes the JVM (java) passing the ant.jar file (bytecode) as parameter.
+
+Define the two environment variables **`JAVA_HOME`** and `**ANT_HOME**` and append **`;%JAVA_HOME%\bin;%ANT_HOME%\bin`** to the environment variables `**%Path%**`.
+
+Ant uses the environment variable **`%JAVA_HOME%`** and does not need to find `**java**` within the `**%Path%**`.
+The **`%JAVA_HOME%\bin`** in `**%Path%**` is not for Ant but for other tools like SMC (State Machine Compiler).
+
+### Eclipse 32 bits
+
+Eclipse is not really required to build CardManager but it is useful for edition and for debugging the application.
+
+Download the 32-bits version, select "Eclipse IDE for Java Developers"[
+http://www.eclipse.org/downloads/eclipse-packages/](http://www.eclipse.org/downloads/eclipse-packages/)
+
+### Visual Studio Express 2012
+
+Download the file `wdexpress_full.exe`
+(I do not know if downloading the other file `VS2012_WDX_ENU.iso` is required...)[
+https://www.microsoft.com/download/details.aspx?id=34673](https://www.microsoft.com/download/details.aspx?id=34673)
+
+Visual Studio requires at least 5GB free space on local storage.
+On first run, Visual Studio requests a product key (a link is provided to create an account on Microsoft website).
