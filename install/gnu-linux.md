@@ -83,10 +83,15 @@ This configuration does not work on **Ubuntu Unity 16.04** (bug on 802.1x suppor
 Please install rather  **Ubuntu GNOME 16.04** (Gnome3) and change later the Desktop Interface.
 
 1.  Download certificat `network-ca.pem`
+
 2.  Enter Wired Settings
+
     ![](img/WiredSettings.jpg)
+    
 3. Enter configuration panel
+
    ![](img/Network.jpg)
+   
 4. Dans l'onglet **Security**
 
     1.  Activer 802.1x
@@ -224,7 +229,7 @@ Printer
 
 3.  Click on the "+" to add a printer
 
-     ![](img/Printers.jpg.png)
+     ![](img/Printers.jpg)
      
 4. Enter the network IP of your printer
 
