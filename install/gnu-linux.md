@@ -426,6 +426,11 @@ Tips
 
         VBoxManage modifyvm "VM name" --natdnshostresolver1 on
 
+* If the throughput from the VM is slower than the host  
+  In the network settings of the VM,
+  change the "Adaptater type" of the interfaces
+  to "Paravirtualized Network (virtio-net)".
+
 * Reduce the size of a VirtualBox filesystem (extension `*.vdi`)
     1. Nullify the free space
         * Linux guest
