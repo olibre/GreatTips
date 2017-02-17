@@ -170,36 +170,36 @@ You now have incoming and outgoing emails!
 ### Address book linked to the Active Directory
 
 1. Go to the address book
+
 2. Create a new LDAP directory
+
    ![](img/ThunderbirdAdressbookNewLDAP.png)
+   
 3. Fill the properties like this:
     * Hostname: IP adress
     * Base DN:  ou=mycompany,dc=mycompany-net,dc=local
     * Port number: 3268
     * Bind DN: MYCOMPANY-NET\firstname.lastname
 
-    ![](img/thunderbird_adressbook_ldap.png)
+    ![](img/Thunderbird-Adressbook-LDAP-DirectoryServerProperties.jpg)
 
 4. Edit the preferences
 
-    ![](img/thunderbird_adressbook_edit_pref.png)
+    ![](img/Thunderbird-Adressbook-Edit-Preferences.jpg)
 
 5. Select the LDAP directory
 
-    ![](img/thunderbird_adressbook_edit_pref_ldap.png)
+    ![](img/Thunderbird-Adressbook-Edit-Preferences-Composition.jpg)
 
 ### Lightning (Thunderbird Calendar add-on)
 
-
     $ sudo apt install xul-ext-lightning
-
 
 or by using the Add-ons manager page from Thunderbird (see http://www.heber.it/?p=170#anchor_1)
 
 /!\ TODO Cette configuration ne semble pas fonctionner :-/
 
-
-![](img/Screenshot%20from%202016-10-04%2018-34-08.png)
+![](img/Lightning-EditCalendard.jpg)
 
 ### DavMail
 
@@ -209,26 +209,35 @@ $ sudo apt install davmail
 
 or download from http://sourceforge.net/projects/davmail/files/davmail/
 
-#### Configuration
-
 1.  Manually start davmail. If the GUI failed to start, do a right click on the taskbar icon and select _"settings"_.
+
 2.  Enter the exchange server URL In the field **"OWA (Exchange) URL"**
-    ![](img/Screenshot%20from%202016-10-04%2018-33-56.png)
+
+    ![]img/DavMailGatewaySettings.jpg)
 
 Printer
 =======
 
 1.  Go to "Settings"
+
 2.  Select "Printers"
+
 3.  Click on the "+" to add a printer
-     ![](img/1.png)
+
+     ![](img/Printers.jpg.png)
+     
 4. Enter the network IP of your printer
+
 5. Choose **LPD-Printer**, then "Add"
-    ![](img/2.png)
-6. For example choose **Canon ImageRunner C2550 Foomatic/pxlcolor** (see [askubuntu.com/q/274426](https://askubuntu.com/q/274426/)), then "Select".
+
+    ![](img/Printers-Add.jpg)
+    
+6. For example choose **Canon ImageRunner C2550 Foomatic/pxlcolor** (see [askubuntu.com/q/274426](https://askubuntu.com/q/274426/)), then "Select".  
    Be carefully if you select the wrong driver, the _Print Test Page_ may print continuously and empty your paper tray.
-    ![](img/Screenshot%20from%202016-11-30%2016-38-48.png)
-    ![](img/Screenshot%20from%202016-11-30%2016-33-14.png)
+   
+    ![](img/Printers-Select.jpg)
+    
+    ![](img/Printers-Canon.jpg)
 
 
 Docker
