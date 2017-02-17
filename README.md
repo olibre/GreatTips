@@ -12,7 +12,6 @@ Table of content
 * [C++](cpp)
     * [Rules](cpp/rules.md)
     * [Metrics](cpp/lint.md)
-    * [See also](cpp/links.md)
 * [Java/Gradle/Ant](java)
 * [Empoworing team members](team)
 
