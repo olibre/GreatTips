@@ -17,33 +17,33 @@ Append in your `~/.gitconfig`
 
 ```ini
 [color]
-	ui = auto              # Use terminal color when available
+    ui = auto              # Use terminal color when available
 [push]
-	default = simple       # Make “git push” without argument push the current branch to the remote branch with the same name.
+    default = simple       # Make “git push” without argument push the current branch to the remote branch with the same name.
 [pull]
-	rebase = preserve      # Ensure “git pull” will use rebase instead of merge, preserving existing local merges
+    rebase = preserve      # Ensure “git pull” will use rebase instead of merge, preserving existing local merges
 [rebase]
     autoStash = true       # 'git pull --rebase' => 'git stash' before and 'git stash pop' after
 [diff]
-	mnemonicPrefix = true  # Improve “git diff” output of source/target
-	renames = true         # and detect renames
+    mnemonicPrefix = true  # Improve “git diff” output of source/target
+    renames = true         # and detect renames
 [log]
-	abbrevCommit = true    # Make “git log” show abbreviated SHA1
+    abbrevCommit = true    # Make “git log” show abbreviated SHA1
 [rerere]
-	enabled = true         # Make Git automatically record and re-apply conflicts resolution
-	autoupdate = true      # Automatically add to index auto-resolved conflicts
-	
+    enabled = true         # Make Git automatically record and re-apply conflicts resolution
+    autoupdate = true      # Automatically add to index auto-resolved conflicts
+
 [alias]
     # Show improved logs (colors, branch graphs…)
-    lo  = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset' --relative-date --ignore-space-change --ignore-blank-lines
-    lof = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset' --relative-date --ignore-space-change --ignore-blank-lines --follow --find-copies-harder
+    lo  = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines
+    lof = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines --follow --find-copies-harder
     # Shortcut for status command
     st = status
     # Amend latest commit keeping the same commit message
     oops = commit --amend --no-edit
     track-all-remote-branches = ! git branch -a | grep \"^\\s*remotes/[^>]*$\" | xargs --interactive -L1 git checkout --track
     di = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
-    
+
 [http]
     proxy = http://your-login:your-password@your-company-hostname:8080/
     sslVerify = false
@@ -51,20 +51,34 @@ Append in your `~/.gitconfig`
     proxy = http://your-login:your-password@your-company-hostname:8080/
     sslVerify = false
 
+# [diff] and [merge] inspired from mattst http://stackoverflow.com/a/34119867/938111
+
 [merge]
     conflictstyle = diff3
     tool = meld
 [mergetool "meld"]
     # Choose one of these 2 lines (not both)
-#   cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
-    cmd = meld "$LOCAL" "$BASE"   "$REMOTE" --output "$MERGED"
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+    #md = meld "$LOCAL" "$BASE"   "$REMOTE" --output "$MERGED"
 
 [diff]
-    tool = meld
+    tool    = meld #kdiff3
+    guitool = meld #kdiff3 #kompare
+    algorithm = patience
 [difftool]
     prompt = false
-[difftool "meld"]
-    cmd = meld "$LOCAL" "$REMOTE"
+#[difftool "kdiff3"]
+#    cmd = kdiff3 $LOCAL $REMOTE --output $MERGED
+#[difftool "meld"]
+#    cmd = meld "$LOCAL" "$REMOTE"
+
+[core]
+    autocrlf = input # preserve CRLF when file has been created on Windows
+
+[fetch]
+    prune = true # delete local branches that have been deleted on remote repo
+[gui]
+    pruneDuringFetch = true
 ```
 
 Set Unix line endings in git config like [GitHub recommends](https://help.github.com/articles/dealing-with-line-endings#platform-all):
