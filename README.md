@@ -56,7 +56,7 @@ Work in progress:
 Public Domain Dedication
 ========================
 CC0 1.0 Universal
-------------------------
+-----------------
 
 <sup>
 [Creative Commons Zero] &emsp; *No Rights Reserved*  &emsp; ![(CC) ZERO] ![(0) PUBLIC DOMAIN]
