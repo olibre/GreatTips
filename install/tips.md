@@ -1,4 +1,4 @@
-% Installation tips of the developer environment
+% Tips about developer environment configuration
 ================================================
 
 Terminal keys and colors
@@ -16,6 +16,8 @@ Else you use a fast and recent X11 client (i.e. not Windows)
 Become a sudoer
 ===============
 
+You are here because you cannot do `sudo visudo` but you can try:
+
     su  # enter root password
     visudo
 
@@ -31,6 +33,8 @@ or if you prefer having to enter your password:
 Install packages
 ================
 
+Use `sudo apt install` or `sudo dnf install` or any other packge manager...
+
     gcc-c++ git cmake boost-devel zlib-devel gtest-devel
     lcov gcovr           # Source-code coverage
     openssl-devel        # Often required by app dependencies
@@ -42,7 +46,15 @@ Install packages
     man-pages            # man pages for kernel/glibc/...
     man-pages-fr         # Si pas comprendre Anglais
     gedit-plugins        # Display special characters with gedit
-
+    libbsd-devel         # For Pid file management
+    libpcap-devel        # To read PCAP files (see tcpdump)
+    lz4-devel            # For compression
+    ansible              # To deploy package and configuration on machines
+    sqlite-devel         # some database libs
+    rocksdb-devel        # some database libs
+    mysql-connector-c++  # some database libs
+    libcurl-devel
+    poco-devel perl-XML-*
 
 Enabling multicast reception
 ============================
@@ -84,21 +96,21 @@ On Windows desktop:
 
 * Check if you can access to your remote shared folder using `telnet <your-VM-hostname> 139` (if it connects the route is OK)  
   If you do not have `telnet` see if you can use [PowerShell](http://stackoverflow.com/a/35624189/938111)
-* Access to your remote folder using `\\<hostname>`  
-  (Attention: the hostname printed on remote machine by the commande `hostname` may be different from the `hostname` used from your Windows machine to access it)
+* Access to your remote folder using `\\<hostname>` (or use the remote IP)  
+  Attention: the hostname printed on remote machine by the commande `hostname` may be different from the `hostname` used from your Windows machine to access it.
 
 
 Synchronize Password
 ====================
 
-Linux-based VMs are not always configured to be automatically synchronised with LDAP server.
-In order to have samba access from Windows to the Linux VM,
+GNU/Linux machines are not always configured to be automatically synchronised with LDAP server.
+In order to have samba access from Windows to the GNU/Linux machine,
 use the command `pdbedit` to enter the same password as the Windows one. 
 
     $ sudo bash
     # pdbedit -u <your-LDAP-login>
     <your-LDAP-login>:178793962:<your-full-name>
-    # pdbedit -u laubert -a
+    # pdbedit -u <your-LDAP-login> -a
     new password:
     retype new password:
     Unix username:        <your-LDAP-login>
@@ -118,7 +130,7 @@ use the command `pdbedit` to enter the same password as the Windows one.
 Configure Proxy
 ===============
 
-On linux machines, an authentified proxy can be configure to access public ressources on internet.
+On GNU/Linux machines, an authentified proxy can be configure to access internet.
 
 ```bash
 sudo yum install cntlm
