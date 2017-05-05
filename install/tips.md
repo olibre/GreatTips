@@ -56,19 +56,36 @@ you need to allow the multicast IPs:
 
 
 
-Access VM files from Windows
-============================
+Access your remote files from your Windows desktop
+==================================================
 
-1. Install Samba `yum install samba`
-2. Enable samba in firewall `firewall-cmd --add-service=samba`
-3. Add your user to the samba users database `pdbedit -a -u yourlogin` (and enter password)
-4. Enable shared folder access `chcon -Rt samba_share_t /home/user/public` (Do not share folder where your `.ssh` or other sensitive data is accessible)
-5. Run Samba deamon `service smb start`
-6. Check if your Windows machine can access your VM share using `telnet <your-VM-hostname> 139` (if it connects the route is OK)
-7. Ensure Samba deamon is well launched with `service smb status`
+On remote GNU/Linux server
 
-You can access to your remote folder from Windows using `\\<hostname>`  
-(Attention: the hostname printed by the commande `hostname` may be different from the `hostname` used by your Windows machine to access it)
+    # Install samba
+    sudo apt install samba
+    sudo dnf install samba
+
+    # Ensure firewall allows service samba
+    service firewalld status
+    firewall-cmd --add-service=samba
+
+    # Add you to the samba users database
+    sudo pdbedit -a -u yourlogin # then enter password
+
+    # Decide the folder(s) to shared
+    # Do not share folder where your .ssh or other sensitive data is accessible
+    chcon -Rt samba_share_t /home/user/public 
+    
+    # Run Samba deamon
+    sudo service smb start
+    service smb status
+
+On Windows desktop:
+
+* Check if you can access to your remote shared folder using `telnet <your-VM-hostname> 139` (if it connects the route is OK)  
+  If you do not have `telnet` see if you can use [PowerShell](http://stackoverflow.com/a/35624189/938111)
+* Access to your remote folder using `\\<hostname>`  
+  (Attention: the hostname printed on remote machine by the commande `hostname` may be different from the `hostname` used from your Windows machine to access it)
 
 
 Synchronize Password
