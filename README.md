@@ -58,10 +58,9 @@ Public Domain Dedication
 CC0 1.0 Universal
 -----------------
 
-[Creative Commons Zero] &emsp; *[No Rights Reserved]*  &emsp; ![(CC) ZERO] ![(0) PUBLIC DOMAIN]
+[Creative Commons Zero] &emsp; *No Rights Reserved*  &emsp; ![(CC) ZERO] ![(0) PUBLIC DOMAIN]
 
 [Creative Commons Zero]: https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers" 
-[No Rights Reserved]:    https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
 [(CC) ZERO]:             https://licensebuttons.net/l/zero/1.0/80x15.png "Logo Creative Commons Zero (CC0) 1.0"
 [(0) PUBLIC DOMAIN]:     https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain"
 
@@ -70,6 +69,7 @@ has waived all copyright and related or neighboring rights to [CodingGoodPractic
 This work is published from France since 2015.
 Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
 
+[CC0 Legal Code]:      https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
 [CodingGoodPractices]: https://github.com/olibre/CodingGoodPractices "CodingGoodPractices project hosted on GitHub" 
 [`COPYING`]:           ./COPYING
 
