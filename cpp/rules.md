@@ -1497,12 +1497,14 @@ See more on [GCC warning options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Opti
 Style settings
 ==============
 
-Add in each C++ file these two lines (for [Emacs](http://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html#Specifying-File-Variables) and [Vim](vimdoc.sourceforge.net/htmldoc/options.html#tabstop))
+The two following lines lines can be inserted to all C++ file:
 
     // -*- mode: C++; coding: utf-8; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4; c-file-style: "linux" -*-
-    // vi:ft=cpp fenc=utf-8 et sw=4 ts=8 sts=4 tw=80:
+    // vi:ft=cpp fenc=utf-8 ts=8 et sw=4 sts=4 tw=80
 
-These Vim settings are abreviated:
+The first line is for [Emacs](http://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html#Specifying-File-Variables) and the second one for [Vim](vimdoc.sourceforge.net/htmldoc/options.html#tabstop).
+
+See more details about these abreviated Vim settings:
 
 * [`ft`](http://vimdoc.sourceforge.net/htmldoc/options.html#'ft')`=cpp`
 * [`fenc`](http://vimdoc.sourceforge.net/htmldoc/options.html#'fenc')`=utf-8`
