@@ -24,7 +24,8 @@ Download python packages
 
 Install dependencies of your project
 
-    sudo -E pip install watchdog
+    sudo -EH pip install watchdog
+    sudo find /path/to/python/libs -type d -exec chmod -v a+rx {} '+' -o -exec  chmod -v a+r {} '+'
 
 Some packages need other dependencies
 
@@ -37,3 +38,4 @@ Upgrade all `pip` packages
     do
         sudo -E /opt/exchange/Python/bin/pip install --upgrade "$package"
     done
+    sudo find /path/to/python/libs -type d -exec chmod -v a+rx {} '+' -o -exec  chmod -v a+r {} '+'
