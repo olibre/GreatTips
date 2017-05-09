@@ -33,9 +33,9 @@ Some packages need other dependencies
 
 Upgrade all `pip` packages
 
-    sudo -E /opt/exchange/Python/bin/pip list |
+    sudo -EH /opt/exchange/Python/bin/pip list |
     while read package version
     do
-        sudo -E /opt/exchange/Python/bin/pip install --upgrade "$package"
+        sudo -EH /opt/exchange/Python/bin/pip install --upgrade "$package"
     done
     sudo find /path/to/python/libs -type d -exec chmod -v a+rx {} '+' -o -exec  chmod -v a+r {} '+'
