@@ -1499,9 +1499,19 @@ Style settings
 
 Add in each C++ file these two lines (for [Emacs](http://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html#Specifying-File-Variables) and [Vim](vimdoc.sourceforge.net/htmldoc/options.html#tabstop))
 
-    // -*- Mode: C++; coding: utf-8; mode: tcl; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4; c-file-style: "linux" -*-
-    // vi:fenc=utf-8 ft=tcl et sw=4 ts=8 sts=4 tw=80:
-    
+    // -*- mode: C++; coding: utf-8; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4; c-file-style: "linux" -*-
+    // vi:ft=cpp fenc=utf-8 et sw=4 ts=8 sts=4 tw=80:
+
+These Vim settings are abreviated:
+
+* [`ft`](http://vimdoc.sourceforge.net/htmldoc/options.html#'ft')`=cpp`
+* [`fenc`](http://vimdoc.sourceforge.net/htmldoc/options.html#'fenc')`=utf-8`
+* [`et`](http://vimdoc.sourceforge.net/htmldoc/options.html#'et')
+* [`sw`](http://vimdoc.sourceforge.net/htmldoc/options.html#'sw')`=4`
+* [`ts`](http://vimdoc.sourceforge.net/htmldoc/options.html#'ts')`=8`
+* [`sts`](http://vimdoc.sourceforge.net/htmldoc/options.html#'sts')`=4`
+* [`tw`](http://vimdoc.sourceforge.net/htmldoc/options.html#'tw')`=80`
+
 Clang-format
 ------------
 
