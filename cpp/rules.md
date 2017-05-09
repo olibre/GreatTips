@@ -1497,7 +1497,7 @@ See more on [GCC warning options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Opti
 Style settings
 ==============
 
-The two following lines lines can be inserted to all C++ file:
+The two following lines lines can be inserted to all C++ files:
 
     // -*- mode: C++; coding: utf-8; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 4; c-file-style: "linux" -*-
     // vi:ft=cpp fenc=utf-8 ts=8 et sw=4 sts=4 tw=80
