@@ -58,19 +58,18 @@ Public Domain Dedication
 CC0 1.0 Universal
 -----------------
 
-<sup>
-[Creative Commons Zero] &emsp; *No Rights Reserved*  &emsp; ![(CC) ZERO] ![(0) PUBLIC DOMAIN]
-</sup>
+[Creative Commons Zero] &emsp; *[No Rights Reserved]*  &emsp; ![(CC) ZERO] ![(0) PUBLIC DOMAIN]
+
+[Creative Commons Zero]: https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers" 
+[No Rights Reserved]:    https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
+[(CC) ZERO]:             https://licensebuttons.net/l/zero/1.0/80x15.png "Logo Creative Commons Zero (CC0) 1.0"
+[(0) PUBLIC DOMAIN]:     https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain"
 
 To the extent possible under law, [olibre](mailto:olibre@Lmap.org) 
-has waived all copyright and related or neighboring rights to [CppCoding]. 
+has waived all copyright and related or neighboring rights to [CodingGoodPractices]. 
 This work is published from France since 2015.
 Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
 
-[`COPYING`]:            COPYING
-[CppCoding]:            https://github.com/olibre/CppCoding "CppCoding project hosted on GitHub" 
-[Creative Commons Zero]:https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers" 
-[CC0 Legal Code]:       https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
-[(CC) ZERO]:            https://licensebuttons.net/l/zero/1.0/80x15.png "Logo Creative Commons Zero (CC0) 1.0"
-[(0) PUBLIC DOMAIN]:    https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain"
+[CodingGoodPractices]: https://github.com/olibre/CodingGoodPractices "CodingGoodPractices project hosted on GitHub" 
+[`COPYING`]:           ./COPYING
 
