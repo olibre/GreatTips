@@ -4,9 +4,8 @@ GUTs = Good Unit Tests
 Les bonnes façons de faire les Tests Unitaires.
 -----------------------------------------------
 
-Copyright &nbsp; 2016-2017 &nbsp; [olibre](mailto:olibre@Lmap.org)  
 Public Domain Dedication &emsp; CC0 1.0 Universal &emsp; [Creative Commons Zero]  
-*No Rights Reserved*  &emsp; ![(CC) ZERO] &emsp; ![(0) PUBLIC DOMAIN]
+![(0) PUBLIC DOMAIN] &emsp; *No Rights Reserved*  &emsp; ![(CC) ZERO]
 
 [Creative Commons Zero]: https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers" 
 [(CC) ZERO]:             https://licensebuttons.net/l/zero/1.0/80x15.png "Logo Creative Commons Zero (CC0) 1.0"
