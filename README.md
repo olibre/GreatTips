@@ -58,7 +58,7 @@ Public Domain Dedication
 CC0 1.0 Universal
 -----------------
 
-[Creative Commons Zero] &emsp; *No Rights Reserved*  &emsp; ![(CC) ZERO] ![(0) PUBLIC DOMAIN]
+[Creative Commons Zero] &emsp; *No Rights Reserved*  &emsp; ![(CC) ZERO] &nbsp; ![(0) PUBLIC DOMAIN]
 
 [Creative Commons Zero]: https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers" 
 [(CC) ZERO]:             https://licensebuttons.net/l/zero/1.0/80x15.png "Logo Creative Commons Zero (CC0) 1.0"
