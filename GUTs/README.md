@@ -1,9 +1,21 @@
 GUTs = Good Unit Tests
 ======================
 
-Les bonnes façons de faire les tests unitaires.
+Les bonnes façons de faire les Tests Unitaires.
+-----------------------------------------------
 
-Copyright 2016-2017 olivre <olibre@Lmap.org>
+Copyright &nbsp; 2016-2017 &nbsp; [olibre](mailto:olibre@Lmap.org)  
+Public Domain Dedication &emsp; CC0 1.0 Universal &emsp; [Creative Commons Zero]  
+*No Rights Reserved*  &emsp; ![(CC) ZERO] &emsp; ![(0) PUBLIC DOMAIN]
+
+[Creative Commons Zero]: https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers" 
+[(CC) ZERO]:             https://licensebuttons.net/l/zero/1.0/80x15.png "Logo Creative Commons Zero (CC0) 1.0"
+[(0) PUBLIC DOMAIN]:     https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain"
+
+To the extent possible under law, [olibre](mailto:olibre@Lmap.org) has waived all copyright and related or neighboring rights to this training presentation materials. This work is published from France in 2016 and 2017. Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
+
+[CC0 Legal Code]:      https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
+[`COPYING`]:           /COPYING
 
 
 Résumé - Abstract
