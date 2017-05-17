@@ -1,23 +1,25 @@
-Résumé pour les décideurs pressés
-=================================
-    
-TDD et BDD préconisent d'écrire les tests :
-    
-* Avant de coder la fonctionnalité
-* Avec les caractéristiques des GUTs :
-    
-  * **GUT**s = **G**ood **U**nit **T**ests
-  * Chaque fonction de test doit échouer pour une unique raison ;
-  * Le nom de la fonction de test doit exprimer un élément de la spécification ;
-  * Les fonctions de tests sont la documentation de la fontionnalité ;
-  * ...
+GUTs = Good Unit Tests
+======================
 
-On peut écrire des GUTs même si l'on ne respecte pas scrupuleusement les TDD/BDD.
+Les bonnes façons de faire les tests unitaires.
 
-Pour optimiser l'exécution des tests en parallèle de manière reproductible,
-distinguer ceux qui n'accèdent ni aux fichiers ni au réseau des autres tests.
+Copyright 2016-2017 olivre <olibre@Lmap.org>
 
-    TODO Compléter/Résumer...
+
+Résumé - Abstract
+=================
+        
+* Écrire les tests avant de coder la fonctionnalité (préconisation TDD et BDD)
+* Chaque fonction de test doit échouer pour une seule raison
+* Le nom de la fonction de test doit exprimer un élément de la spécification
+* Ces fonctions de tests (noms) sont la documentation de la fontionnalité
+
+On peut quand même faire des **GUT**s (**G**ood **U**nit **T**ests)
+même si l'on ne respecte pas scrupuleusement les TDD/BDD.
+
+Les *Tests Unitaires* sont définis comme pouvant être exécutés en parallèle sur la même machine.  
+Le test qui ne permet pas cela n'est pas considéré comme un *Test Unitaire*.  
+C'est le cas des tests accédant aux fichiers, à la mémoire partagée ou au réseau.
 
 
 Kevlin Henney
