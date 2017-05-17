@@ -1225,7 +1225,7 @@ Mock
 ====
 
 A [**Mock**][mo] object is a fake object containning asserts.
-    
+
 One unit test = One assert
 --------------------------
     
@@ -1251,6 +1251,8 @@ Google Mock
 ===========
        
     TODO Fournir exemples
+
+See also: [Mockaron](https://github.com/TankerApp/mockaron)
 
 
 Spy
@@ -1868,7 +1870,9 @@ Fuzzing and Monkey testing use random input behaviour.
     
     TODO Fournir exemples
 
-
+See also OSS-Fuzz
+* https://opensource.googleblog.com/2017/05/oss-fuzz-five-months-later-and.html
+* https://github.com/google/oss-fuzz/
 
 Performance testing
 ===================
@@ -1882,4 +1886,3 @@ Google Benchmark
 https://github.com/google/benchmark
     
     TODO Fournir exemples
-
