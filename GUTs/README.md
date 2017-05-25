@@ -1,8 +1,11 @@
-GUTs = Good Unit Tests
-======================
+GUTs = Great Unit Tests
+=======================
 
-Les bonnes façons de faire les Tests Unitaires.
------------------------------------------------
+* De belles façons de faire les Tests Unitaires &nbsp; ;-)
+
+
+CC0 - Domaine public
+--------------------
 
 Public Domain Dedication &emsp; CC0 1.0 Universal &emsp; [Creative Commons Zero]  
 ![(0) PUBLIC DOMAIN] &emsp; *No Rights Reserved*  &emsp; ![(CC) ZERO]
@@ -25,7 +28,7 @@ Résumé - Abstract
 * Le nom de la fonction de test doit exprimer un élément de la spécification
 * Ces fonctions de tests (noms) sont la documentation de la fontionnalité
 
-On peut quand même faire des **GUT**s (**G**ood **U**nit **T**ests)
+On peut quand même faire des **GUT**s (**G**reat **U**nit **T**ests)
 même si l'on ne respecte pas scrupuleusement les TDD/BDD.
 
 Les *Tests Unitaires* sont définis comme pouvant être exécutés en parallèle sur la même machine.  
@@ -36,7 +39,7 @@ C'est le cas des tests accédant aux fichiers, à la mémoire partagée ou au r�
 Kevlin Henney
 =============
     
-This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trainings (and also from many other Unit-Testing documents).
+This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trainings (and also from many other Unit-Testing documents). 
     
 [HKi]: http://www.infoq.com/author/Kevlin-Henney#Presentations "Presentations of Kevlin Henney on infoq.com"
 [HKs]: http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-testing "One good presentation on slideshare.net"
@@ -44,7 +47,9 @@ This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trai
 | Kevlin is a trainer on language and development process.
 |--------------------------------------------
 | [![book cover][97p]][97L] ![book cover][97j] [![Kevlin's face][KH]][KHw]
-    
+
+Kevlin has popularized the wording **GUTs** meaning **G**ood **U**nit **T**ests. This document aims to go further and proposes the **G**reat **U**nit **T**ests.
+
 [97p]: http://akamaicovers.oreilly.com/images/9780596809492/cat.gif "97 Things Every Programmer Should Know (2010)"
 [97L]: http://programmer.97things.oreilly.com/wiki/index.php/Contributions_Appearing_in_the_Book
 [97j]: http://akamaicovers.oreilly.com/images/0636920048824/cat.gif "97 Things Every Java Programmer Should Know (2017)"
@@ -136,14 +141,14 @@ Chronologie
   Pour éviter de refaire des tests (800 kF), la calibration n'est pas désactivée (nécessaire pour Ariane 4).
 * 1996 : Vol inaugural (v88) d'Ariane 5 (fusée 501)
 * 1997 : Après 16 mois de vérifications, second vol, réussite.
-* Ce bug de 1996 a longtemps été le bug le plus coûteux du monde !
+
+Ce bug a longtemps été le bug le plus coûteux du monde, peut-être 3 milliards de francs (de l'époque) pour les 4 satellites, le lancement, les 16 mois de retrad du projet et l'image ternie de la marque.
 
 
 Un petit bug, un grand boum !
 =============================
     
-* Le coût du lancement et des 4 satellites est de 2 milliards de francs
-* L'accélération d'Ariane 5 est cinq fois plus élevée que Ariane 4
+* L'accélération d'Ariane 5 est cinq fois plus élevée qu'Ariane 4
 * Cette valeur sur 32 bits et copiée dans un registre de 16 bits trop petit ce qui provoque une interruption matérielle
 * Les deux SRI (même matériel, même logiciel) se désactivent quasi simultannément (à 72 ms près)
 * 37 secondes après le décollage, le pilote automatique prend les commandes
@@ -222,6 +227,85 @@ Que retenir du cas Ariane 501 ?
     
 [cr]: http://programmer.97things.oreilly.com/wiki/index.php/Continuous_Refactoring
 
+
+[Autres cas](https://en.wikipedia.org/wiki/List_of_software_bugs)
+============
+
+* 1980 [NORAD](https://en.wikipedia.org/wiki/North_American_Aerospace_Defense_Command) alerte d'une attaque de missiles car le logiciel ne gèrait pas la défaillance électrique
+* 1983 Un satellite soviétique alerte d'une attaque de missiles (l'officier russe n'y croit pas)
+* 1983 Vancouver Stock Exchange corrige son index de 525 à 1099 à cause des erreurs d'arrondi
+* 1985 La NASA [ne détecte aucun trou d'ozone](https://earthobservatory.nasa.gov/Features/RemoteSensingAtmosphere/remote_sensing5.php) pendant 7 ans car elle écarte les grandes variations
+* 1993 Bug du Pentium sur les flottant
+* 1998 Désintégration Mars Climate Orbiter car une mesure est en *pound/second* au lieu de *newton/second*
+* Médical : Surdose de rayons X...
+* [Avion](https://youtu.be/U0LBj_8xs_w), hélicoptère...
+
+
+Toyota
+======
+
+*Accérelation innatendue du véhicule*
+
+* 2010 - Toyota rappelle à nouveau un million de véhicules car ce n'est pas la mécanique qui est en cause mais le [code spaghetti bourré de négligeances](https://linuxfr.org/news/encore-un-exemple-de-code-spaghetti-toyota)  
+    
+* Il a fallu attendre une centaine de morts, des milliers d'accidents et une poursuite en justice  
+    
+* 2013 - [Michael Barr](https://en.wikipedia.org/wiki/Michael_Barr_%28software_engineer%29) trouvé [81 514 violations](http://www.safetyresearch.net/Library/BarrSlides_FINAL_SCRUBBED.pdf) des règles de [MISRA C 2004](https://en.wikipedia.org/wiki/MISRA_C#MISRA_C:2004) dans le code source de Toyota. Les développeurs ont souvent transgressé leurs propres règles et sans donner de justifications.  
+    
+* Coût : image de la marque et plusieurs milliard $
+    
+  > *« Rien n'arrête une Toyota, même pas ses freins. »*
+
+
+Apple [`goto fail` bug](https://en.wikipedia.org/wiki/Unreachable_code#goto_fail_bug) (2014)
+=======================
+
+```c
+static OSStatus
+SSLVerifySignedServerKeyExchange(...)
+{
+  OSStatus        err;
+  ...
+  if ((err = SSLHashSHA1.update(&hashCtx, &serverRandom)) != 0)
+    goto fail;
+  if ((err = SSLHashSHA1.update(&hashCtx, &signedParams)) != 0)
+    goto fail;
+    goto fail;
+  if ((err = SSLHashSHA1.final(&hashCtx, &hashOut)) != 0)
+    goto fail;
+  ...
+fail:
+  SSLFreeBuffer(&signedHashes);
+  SSLFreeBuffer(&hashCtx);
+  return err;
+}
+```
+
+* 2016 Option [GCC 6 `-Wmisleading-indentation` ](https://developers.redhat.com/blog/2016/02/26/gcc-6-wmisleading-indentation-vs-goto-fail/)
+
+Valve Steam (2015)
+===========
+
+* Le client Linux peut effacer les fichiers
+
+```bash
+STEAMROOT="$(cd "${0%/*}" && echo $PWD)"
+  
+# Scary!
+rm -rf "$STEAMROOT/"*
+```
+
+* Le commentaire `Scary!` est d'origine
+
+
+Post-it à lire quand on se rase/maquille le matin
+=================================================
+
+* La non-qualité côute plus cher  
+  Qui pratique le *quick and dirty* ?  
+    
+* Gérer les erreurs  
+  Refuser la négligeance
 
 
 The Way of Testivus
