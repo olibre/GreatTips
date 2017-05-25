@@ -35,7 +35,7 @@ CC0 1.0 Universal
 [(0) PUBLIC DOMAIN]:     https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain"
 
 To the extent possible under law, [olibre](mailto:olibre@Lmap.org) 
-has waived all copyright and related or neighboring rights to [GreatePractices]. 
+has waived all copyright and related or neighboring rights to [GreatPractices]. 
 This work is published from France since 2015.
 Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
 
