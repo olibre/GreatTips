@@ -9,7 +9,7 @@ This documentation is maintained with faireness in mind and shared in [Public Do
 Documents
 =========
 
-* [GNU/Linux installation for coders](install)
+* [GNU/Linux installation for coders](./install)
 * [Git](./git)
 * [Java/Groovy/Gradle/Ant](./java)
 * [C++](./cpp)
@@ -17,8 +17,8 @@ Documents
     * [Metrics](cpp/lint.md)
     * [C++ Core Guidelines](cpp/cpp_core_guidelines.md)
 * [CMake](./cmake)
-* [Empoworing team members](team)
-* [Great Unit Tests](./GUTs)
+* [Empoworing team members](./team)
+* [Great Unit Tests](./unit-test)
 * [Logging](./log)
 * [Diagrams within Markdown](./markdown)
 
