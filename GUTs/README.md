@@ -250,11 +250,34 @@ Toyota
     
 * Il a fallu attendre une centaine de morts, des milliers d'accidents et une poursuite en justice  
     
-* 2013 - [Michael Barr](https://en.wikipedia.org/wiki/Michael_Barr_%28software_engineer%29) trouvé [81 514 violations](http://www.safetyresearch.net/Library/BarrSlides_FINAL_SCRUBBED.pdf) des règles de [MISRA C 2004](https://en.wikipedia.org/wiki/MISRA_C#MISRA_C:2004) dans le code source de Toyota. Les développeurs ont souvent transgressé leurs propres règles et sans donner de justifications.  
+* 2013 - [Michael Barr](https://en.wikipedia.org/wiki/Michael_Barr_%28software_engineer%29) trouve [81 514 violations](http://www.safetyresearch.net/Library/BarrSlides_FINAL_SCRUBBED.pdf) des règles de [MISRA C 2004](https://en.wikipedia.org/wiki/MISRA_C#MISRA_C:2004) dans le code source de Toyota. Les développeurs ont souvent transgressé leurs propres règles et sans donner de justifications.  
     
 * Coût : image de la marque et plusieurs milliard $
     
   > *« Rien n'arrête une Toyota, même pas ses freins. »*
+
+
+[Knight Capital Group](https://fr.wikipedia.org/wiki/Knight_Capital_Group) (2012)
+======================
+[Comment perdre 440 million $ en 45 minutes ?](https://en.wikipedia.org/wiki/Knight_Capital_Group#2012_stock_trading_disruption)
+
+* Pour des besoins de test, une fonction *Power Peg* avait été codée dans le logiciel de prod
+* Les développeurs gardent ce vieux code (non utilisé)
+* Un technicien oublie d'installer la nouvelle version sur un des huit serveurs SMARS (automate de trading)
+* La configuration active le *Power Peg* qui fait dévier à la hausse et à la baisse les cours de la bourse
+* Ce *Power Peg* a envoyé des millions d'ordre pour 397 millions d'actions sur 154 titres du NYSE
+* 4 millions d'ordres exécutés ont fortement perturbé 148 titres (ex: entre 3.50 et 14.76 $)
+
+
+Qu'est devenu KCG ?
+===================
+
+* 2012 Le capital (350 millions $) perd 75% dès le lendemain  
+  &emsp; &emsp; 4 jours après, KCG lève 400 million $  
+    
+* 2015 Vente de la plateforme de traiding *KCG Hotspot* à BATS pour 365 millions $  
+    
+* 2017 Virtu Financial achète KCG Holdings pour 1,4 milliard $
 
 
 Apple [`goto fail` bug](https://en.wikipedia.org/wiki/Unreachable_code#goto_fail_bug) (2014)
@@ -264,7 +287,7 @@ Apple [`goto fail` bug](https://en.wikipedia.org/wiki/Unreachable_code#goto_fail
 static OSStatus
 SSLVerifySignedServerKeyExchange(...)
 {
-  OSStatus        err;
+  OSStatus err;
   ...
   if ((err = SSLHashSHA1.update(&hashCtx, &serverRandom)) != 0)
     goto fail;
@@ -281,7 +304,8 @@ fail:
 }
 ```
 
-* 2016 Option [GCC 6 `-Wmisleading-indentation` ](https://developers.redhat.com/blog/2016/02/26/gcc-6-wmisleading-indentation-vs-goto-fail/)
+* 2016 => Option [GCC 6 `-Wmisleading-indentation` ](https://developers.redhat.com/blog/2016/02/26/gcc-6-wmisleading-indentation-vs-goto-fail/)
+
 
 Valve Steam (2015)
 ===========
