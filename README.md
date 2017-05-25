@@ -3,7 +3,7 @@ Good and Great Practices for Coders
 
 > *Empowering practices for happy coders about Git, Unit tests, C++, Python, Java, Gradle, CMake, Agile, GNU/LInux installation, pandoc... &nbsp; Not the best or the greatest because any one can propose improvements :-)*
 
-This documentation is maintained with faireness in mind and shared in [Public Domain][#public-domain-dedication].
+This documentation is maintained with faireness in mind and shared in [Public Domain](#public-domain-dedication).
 
 
 Documents
