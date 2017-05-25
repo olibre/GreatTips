@@ -1,20 +1,23 @@
-GUTs = Great Unit Tests
-=======================
+GUTs &emsp; Great Unit Tests
+============================
 
-* De belles façons de faire les Tests Unitaires &nbsp; ;-)
+*De belles façons de faire les Tests Unitaires* &nbsp; ;-)
 
 
-CC0 - Domaine public
---------------------
+Contenu librement réutilisable
+------------------------------
 
-Public Domain Dedication &emsp; CC0 1.0 Universal &emsp; [Creative Commons Zero]  
-![(0) PUBLIC DOMAIN] &emsp; *No Rights Reserved*  &emsp; ![(CC) ZERO]
+* ![(CC) ZERO] &emsp; CC0 1.0 Universal &emsp; [Creative Commons Zero]
+* ![(0) PUBLIC DOMAIN] &emsp; Public Domain Dedication &emsp; *No Rights Reserved*
 
 [Creative Commons Zero]: https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers" 
 [(CC) ZERO]:             https://licensebuttons.net/l/zero/1.0/80x15.png "Logo Creative Commons Zero (CC0) 1.0"
 [(0) PUBLIC DOMAIN]:     https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain"
 
-To the extent possible under law, [olibre](mailto:olibre@Lmap.org) has waived all copyright and related or neighboring rights to this training presentation materials. This work is published from France in 2016 and 2017. Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
+To the extent possible under law, [olibre](mailto:olibre@Lmap.org) has waived all copyright and  
+related or neighboring rights to this training presentation materials.  
+This work is published from France in 2016 and 2017.  
+Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
 
 [CC0 Legal Code]:      https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
 [`COPYING`]:           /COPYING
@@ -28,27 +31,33 @@ Résumé - Abstract
 * Le nom de la fonction de test doit exprimer un élément de la spécification
 * Ces fonctions de tests (noms) sont la documentation de la fontionnalité
 
-On peut quand même faire des **GUT**s (**G**reat **U**nit **T**ests)
-même si l'on ne respecte pas scrupuleusement les TDD/BDD.
 
-Les *Tests Unitaires* sont définis comme pouvant être exécutés en parallèle sur la même machine.  
-Le test qui ne permet pas cela n'est pas considéré comme un *Test Unitaire*.  
-C'est le cas des tests accédant aux fichiers, à la mémoire partagée ou au réseau.
+Résumé - Abstract
+=================
+        
+* On peut quand même faire des **GUT**s (**G**reat **U**nit **T**ests)  
+  même si l'on ne respecte pas scrupuleusement les TDD/BDD.
+    
+* Les *Tests Unitaires* sont définis comme pouvant être exécutés en parallèle sur la même machine.  
+* Le test qui ne permet pas cela n'est pas considéré comme un *Test Unitaire*.  
+* C'est le cas des tests accédant aux fichiers, à la mémoire partagée ou au réseau.
 
 
 Kevlin Henney
 =============
     
-This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trainings (and also from many other Unit-Testing documents). 
+This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trainings   
+(and also from many other Unit-Testing documents)
     
 [HKi]: http://www.infoq.com/author/Kevlin-Henney#Presentations "Presentations of Kevlin Henney on infoq.com"
 [HKs]: http://www.slideshare.net/Kevlin/what-we-talk-about-when-we-talk-about-unit-testing "One good presentation on slideshare.net"
     
-| Kevlin is a trainer on language and development process.
+| Kevlin is a trainer on language and development process
 |--------------------------------------------
 | [![book cover][97p]][97L] ![book cover][97j] [![Kevlin's face][KH]][KHw]
 
-Kevlin has popularized the wording **GUTs** meaning **G**ood **U**nit **T**ests. This document aims to go further and proposes the **G**reat **U**nit **T**ests.
+Kevlin has popularized the wording **GUTs** meaning **G**ood **U**nit **T**ests.  
+This document aims to go further and proposes the **G**reat **U**nit **T**ests.
 
 [97p]: http://akamaicovers.oreilly.com/images/9780596809492/cat.gif "97 Things Every Programmer Should Know (2010)"
 [97L]: http://programmer.97things.oreilly.com/wiki/index.php/Contributions_Appearing_in_the_Book
@@ -70,9 +79,9 @@ Classic Development Cycle in V
 Cost of bug correction
 ======================
     
-Le coût de correction dépend de l'organisation,
-des process mais aussi des enjeux.
-Le tableau suivant est une extrapolation déduite du
+Le coût de correction dépend de l'organisation,  
+des process mais aussi des enjeux.  
+Le tableau suivant est une extrapolation déduite du  
 *[Error Cost Escalation Through the Project Life Cycle][nasa]* (NASA 2004).
     
 [SDLC][SDLC] steps            | Cost |&nbsp;| [STLC][STLC] steps  | Cost
@@ -108,7 +117,7 @@ Qui teste ?
 Technical debt
 ==============
     
-Most of old projects have
+### Most of old projects have:
     
 * Technology debt (outdated underlying technologies)
 * Documentation debt (too little or too much)
@@ -229,63 +238,71 @@ Que retenir du cas Ariane 501 ?
 
 
 [Autres cas](https://en.wikipedia.org/wiki/List_of_software_bugs)
-============
+------------
 
-* 1980 [NORAD](https://en.wikipedia.org/wiki/North_American_Aerospace_Defense_Command) alerte d'une attaque de missiles car le logiciel ne gèrait pas la défaillance électrique
-* 1983 Un satellite soviétique alerte d'une attaque de missiles (l'officier russe n'y croit pas)
-* 1983 Vancouver Stock Exchange corrige son index de 525 à 1099 à cause des erreurs d'arrondi
-* 1985 La NASA [ne détecte aucun trou d'ozone](https://earthobservatory.nasa.gov/Features/RemoteSensingAtmosphere/remote_sensing5.php) pendant 7 ans car elle écarte les grandes variations
-* 1993 Bug du Pentium sur les flottant
-* 1998 Désintégration Mars Climate Orbiter car une mesure est en *pound/second* au lieu de *newton/second*
+* **1980** [NORAD](https://en.wikipedia.org/wiki/North_American_Aerospace_Defense_Command) alerte d'une attaque de missiles  
+  (le logiciel ne gèrait pas la défaillance électrique)
+* **1983** Un satellite soviétique alerte d'une attaque de missiles  
+  (l'officier russe n'y croit pas)
+* **1983** Vancouver Stock Exchange corrige son index de 525 à 1099  
+  (erreurs d'arrondi)
+* **1985** La NASA [ne détecte aucun trou d'ozone](https://earthobservatory.nasa.gov/Features/RemoteSensingAtmosphere/remote_sensing5.php) pendant 7 ans  
+  (grandes variations écartées)
+* **1993** Bug du Pentium sur les flottant
+* **1998** Désintégration Mars Climate Orbiter  
+  (une mesure est en *pound/second* au lieu de *newton/second*)
 * Médical : Surdose de rayons X...
 * [Avion](https://youtu.be/U0LBj_8xs_w), hélicoptère...
 
 
 Toyota
-======
+------
 
 *Accérelation innatendue du véhicule*
 
-* 2010 - Toyota rappelle à nouveau un million de véhicules car ce n'est pas la mécanique qui est en cause mais le [code spaghetti bourré de négligeances](https://linuxfr.org/news/encore-un-exemple-de-code-spaghetti-toyota)  
-    
-* Il a fallu attendre une centaine de morts, des milliers d'accidents et une poursuite en justice  
-    
-* 2013 - [Michael Barr](https://en.wikipedia.org/wiki/Michael_Barr_%28software_engineer%29) trouve [81 514 violations](http://www.safetyresearch.net/Library/BarrSlides_FINAL_SCRUBBED.pdf) des règles de [MISRA C 2004](https://en.wikipedia.org/wiki/MISRA_C#MISRA_C:2004) dans le code source de Toyota. Les développeurs ont souvent transgressé leurs propres règles et sans donner de justifications.  
-    
-* Coût : image de la marque et plusieurs milliard $
-    
-  > *« Rien n'arrête une Toyota, même pas ses freins. »*
+* **2010** Toyota rappelle à nouveau un million de véhicules   
+  car ce n'est pas la mécanique qui est en cause  
+  mais le [code spaghetti bourré de négligeances](https://linuxfr.org/news/encore-un-exemple-de-code-spaghetti-toyota)    
+* Il a fallu attendre une centaine de morts,  
+  des milliers d'accidents et une poursuite en justice  
+* **2013** [Michael Barr](https://en.wikipedia.org/wiki/Michael_Barr_%28software_engineer%29) trouve [81 514 violations](http://www.safetyresearch.net/Library/BarrSlides_FINAL_SCRUBBED.pdf) des règles de [MISRA C 2004](https://en.wikipedia.org/wiki/MISRA_C#MISRA_C:2004).  
+  (les développeurs transgressaient leurs propres règles et sans donner de justifications)  
+* Coût : image de la marque et plusieurs milliard $    
+  *« Rien n'arrête une Toyota, même pas ses freins. »*
 
 
 [Knight Capital Group](https://fr.wikipedia.org/wiki/Knight_Capital_Group) (2012)
-======================
-[Comment perdre 440 million $ en 45 minutes ?](https://en.wikipedia.org/wiki/Knight_Capital_Group#2012_stock_trading_disruption)
+----------------------
 
-* Pour des besoins de test, une fonction *Power Peg* avait été codée dans le logiciel de prod
-* Les développeurs gardent ce vieux code (non utilisé)
-* Un technicien oublie d'installer la nouvelle version sur un des huit serveurs SMARS (automate de trading)
-* La configuration active le *Power Peg* qui fait dévier à la hausse et à la baisse les cours de la bourse
-* Ce *Power Peg* a envoyé des millions d'ordre pour 397 millions d'actions sur 154 titres du NYSE
-* 4 millions d'ordres exécutés ont fortement perturbé 148 titres (ex: entre 3.50 et 14.76 $)
+[*Comment perdre 440 million $ en 45 minutes ?*](https://en.wikipedia.org/wiki/Knight_Capital_Group#2012_stock_trading_disruption)
+
+* Pour des besoins de test, une fonction *Power Peg* est codée dans un logiciel de Prod
+* Les développeurs gardent ce vieux code *Power Peg* (non utilisé)
+* Un technicien oublie d'installer la nouvelle version   
+  sur un des huit serveurs SMARS (automate de trading)
+* La config active le *Power Peg* qui fait dévier  
+  à la hausse et à la baisse les cours de la bourse
+* Ce *Power Peg* envoye des ordres pour 397 millions d'actions sur 154 titres du NYSE
+* 4 millions d'ordres exécutés perturbent 148 titres (ex: entre 3.50 $ et 14.76 $)
 
 
 Qu'est devenu KCG ?
-===================
+-------------------
 
-* 2012 Le capital (350 millions $) perd 75% dès le lendemain  
-  &emsp; &emsp; 4 jours après, KCG lève 400 million $  
+* **2012** Le capital (350 millions $) perd 75% dès le lendemain  
+* 4 jours après, KCG lève 400 million $  
     
-* 2015 Vente de la plateforme de traiding *KCG Hotspot* à BATS pour 365 millions $  
     
-* 2017 Virtu Financial achète KCG Holdings pour 1,4 milliard $
+* **2015** Vente des logiciels *KCG Hotspot* à BATS pour 365 millions $  
+    
+* **2017** Virtu Financial achète KCG Holdings pour 1,4 milliard $
 
 
-Apple [`goto fail` bug](https://en.wikipedia.org/wiki/Unreachable_code#goto_fail_bug) (2014)
-=======================
+Apple [bug](https://en.wikipedia.org/wiki/Unreachable_code#goto_fail_bug) (2014)
+-----------
 
 ```c
-static OSStatus
-SSLVerifySignedServerKeyExchange(...)
+OSStatus SSLVerifySignedServerKeyExchange(...)
 {
   OSStatus err;
   ...
@@ -304,11 +321,11 @@ fail:
 }
 ```
 
-* 2016 => Option [GCC 6 `-Wmisleading-indentation` ](https://developers.redhat.com/blog/2016/02/26/gcc-6-wmisleading-indentation-vs-goto-fail/)
+**2016** => Nouvelle option [GCC 6 `-Wmisleading-indentation` ](https://developers.redhat.com/blog/2016/02/26/gcc-6-wmisleading-indentation-vs-goto-fail/)
 
 
 Valve Steam (2015)
-===========
+-----------
 
 * Le client Linux peut effacer les fichiers
 
@@ -322,57 +339,56 @@ rm -rf "$STEAMROOT/"*
 * Le commentaire `Scary!` est d'origine
 
 
-Post-it à lire quand on se rase/maquille le matin
-=================================================
-
 * La non-qualité côute plus cher  
-  Qui pratique le *quick and dirty* ?  
+  (qui pratique le *quick and dirty* ?)  
     
 * Gérer les erreurs  
   Refuser la négligeance
 
 
 The Way of Testivus
-===================
+-------------------
     
 [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) (2007)
     
-> 1.  If you write code, write tests.
-> 2.  Don’t get stuck on unit testing dogma.
-> 3.  Embrace unit testing karma.
-> 4.  Think of code and test as one.
-> 5.  The test is more important than the unit.
-> 6.  The best time to test is when the code is fresh.
-> 7.  Tests not run waste away.
-> 8.  An imperfect test today is better than a perfect test someday.
-> 9.  An ugly test is better than no test.
-> 10. Sometimes, the test justifies the means.
-> 11. Only fools use no tools.
-> 12. Good tests fail.
+1.  If you write code, write tests
+2.  Don’t get stuck on unit testing dogma
+3.  Embrace unit testing karma
+4.  Think of code and test as one
+5.  The test is more important than the unit
+6.  The best time to test is when the code is fresh
+7.  Tests not run waste away
+8.  An imperfect test today is better than a perfect test someday
+9.  An ugly test is better than no test
+10. Sometimes, the test justifies the means
+11. Only fools use no tools
+12. Good tests fail
     
-* What is important for you?
-* Next section is opposite to last point *"Good tests fail"*.
+(What is important for you?  
+What about *"Good tests fail"*?)
 
 
 Do not write tests to find bugs
-===============================
+-------------------------------
     
 Si la finalité était de trouver des bugs et que l'on n'en trouve pas,  
 alors on peut se dire qu'écrire des tests ne sert à rien.
     
 La finalité est autre :  
-Détecter les changements dans le code qui causent des régressions.  
-Et si le code ne change plus => Continuons à lancer les tests unitaires car cela pourrait changer.
+Détecter les changements dans le code  
+qui causent des régressions.  
+Et si le code ne change plus =>  
+Garder des builds à xx heures car le code pourrait changer.
 
 
 Que veut dire *"Test Unitaire"* ?
-=================================
+---------------------------------
     
 De quoi parle t'on quand on parle de *"Test Unitaire"* ?
 
 
 Une bonne définition du *"Test Unitaire"*
-=========================================
+-----------------------------------------
     
 * Les tests unitaires ne doivent pas interférer entre eux (même un test avec lui-même).
     
@@ -385,38 +401,40 @@ Une bonne définition du *"Test Unitaire"*
 
 
 Ce qui n'est pas un *"Test Unitaire"*
-=====================================
+-------------------------------------
     
 [Michael Feathers](http://www.artima.com/weblogs/viewpost.jsp?thread=126923) (2005)
     
-> * It talks to the database ;
-> * It communicates across the network ;
-> * It touches the file system ;
-> * It can't run at the same time as any of your other unit tests ;
-> * You have to do special things to your environment (such as editing config files) to run it.
-> 
-> **Les tests qui font cela ne sont pas mauvais,**  
-> **mais ils sont à séparer des vrais *"Tests Unitaires"***  
-> **afin que ces derniers puissent être exécutés de façon optimale.**
+* It talks to the database
+* It communicates across the network
+* It touches the file system
+* It can't run at the same time as any of your other unit tests
+* You have to do special things to your environment to run it  
+  (such as editing config files)
+
+**Les tests qui font cela ne sont pas mauvais,**  
+**mais ils sont à séparer des vrais *"Tests Unitaires"***  
+**afin que ces derniers puissent être exécutés de façon optimale.**
 
 
 
 Put theory into practice
-========================
+------------------------
     
-L'année est [**bissextile**](http://fr.wikipedia.org/wiki/Année_bissextile#Règle_actuelle) :
+### Une année est [**bissextile**](http://fr.wikipedia.org/wiki/Année_bissextile#Règle_actuelle) :
     
-* si l'année est divisible par 4 et non divisible par 100, ou
-* si l'année est divisible par 400.
+* si l'année est divisible par 4  
+  et non divisible par 100  
+  ou
+* si l'année est divisible par 400
     
         bool is_leap_year(int year);
 
-Exercice : écrire les tests unitaires
--------------------------------------
+### Exercice : Écrire les tests unitaires
 
 
 Test the function `is_leap_year()`
-==================================
+---------------------------------
     
 Is this test a good idea?
     
@@ -441,7 +459,7 @@ test()
 
 
 Implement `is_leap_year()`
-==========================
+-------------------------
     
 ```cpp
 bool is_leap_year (int year)
@@ -460,7 +478,7 @@ bool is_leap_year (int year)
 
 
 Just test some cases
-====================
+--------------------
     
 ```cpp
 test()
@@ -485,7 +503,7 @@ test()
 
 
 With comments
-=============
+-------------
     
 ```cpp
 test()
@@ -512,7 +530,7 @@ test()
 
 
 One unit test = One expectation
-===============================
+-------------------------------
     
 [Roy Osherove](http://programmers.stackexchange.com/questions/7823) (2010)
     
@@ -532,7 +550,7 @@ One unit test = One expectation
 
 
 One feature = multiple test cases
-=================================
+---------------------------------
     
 Original idea
 -------------
@@ -554,7 +572,7 @@ Unit Tests                                                 |   Code
 
 
 Split big test function
-=======================
+-----------------------
     
 ```cpp
 test_not_divisible_by_4_is_not_leap()
@@ -585,7 +603,7 @@ test_rest_is_leap()
 
 
 Où écrire la documentation ?
-============================
+----------------------------
     
 Philippe Bourgeon (2016)
     
@@ -605,9 +623,9 @@ Philippe Bourgeon (2016)
 
 
 Write tests for people
-=====================
+----------------------
     
-[Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) ([CC-BY-3.0-US](https://creativecommons.org/licenses/by/3.0/us/) 2009), in French:
+[Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) ([CC-BY-3.0-US](https://creativecommons.org/licenses/by/3.0/us/) 2009)
     
 > Pour qui écrire les tests ?  
 > Pour ceux qui essayeront de comprendre l'implémentation.
@@ -622,10 +640,11 @@ Write tests for people
 > * Décrire le résultat attendu ou les postconditions 
 
 
-Le Test Unitaire décrit la fonctionnalité testée
-================================================
+Le test unitaire décrit la fonctionnalité testée
+------------------------------------------------
     
-[Nat Pryce et Steve Freeman](https://books.google.fr/books?id=QJA3dM8Uix0C) à la [conférence XP Day 2006 "Are Your Tests Really Driving Your Development?"](http://www.theregister.co.uk/2007/03/09/test_driven_development/), in French:
+[Nat Pryce et Steve Freeman](https://books.google.fr/books?id=QJA3dM8Uix0C) à la  
+[conférence XP Day 2006 "Are Your Tests Really Driving Your Development?"](http://www.theregister.co.uk/2007/03/09/test_driven_development/), in French:
     
 > Le test unitaire doit aller plus loin
 > que la simple vérification de la fonctionalité :
@@ -642,12 +661,10 @@ Le Test Unitaire décrit la fonctionnalité testée
 > plus il peut être difficile de faire évoluer une base de code.
 
 
-GUTs = Specification
-====================
+Le test unitaire est le specification
+-------------------------------------
 
-**GUT**s = **G**ood **U**nit **T**ests
-
-Les tests unitaires représentent la spécification du code.
+### **G**reat **U**nit **T**ests
 
 * Unit Test conveys knowledge.
 * Unit Test tells a story.
@@ -656,7 +673,7 @@ Les tests unitaires représentent la spécification du code.
 
 
 *Should* and *Must*
-===================
+-------------------
     
 * Attention *should* dans les spec veut dire *optional*  
   Donc non testé => Éviter *should*
@@ -668,7 +685,7 @@ Les tests unitaires représentent la spécification du code.
 
 
 Coding rules for Unit Test 
-==========================
+--------------------------
     
 > *function names are phrases*
     
@@ -678,7 +695,7 @@ et pour celui des tests unitaires.
 
 
 Exercise: Rewrite unit test from scratch
-========================================
+----------------------------------------
     
 [Algorithm from wikipedia](http://en.wikipedia.org/wiki/Leap_year#Algorithm):
     
@@ -695,7 +712,7 @@ Provide GUTs using [*Google Test*][gt] syntax:
 
 
 Comment this result
-===================
+-------------------
     
 Improve the following tests:
     
@@ -727,7 +744,7 @@ TEST(is_leap_year, years_divisible_by_100_but_not_by_400_are_not_leap_years)
 
 
 Solution from Kevlin Henney
-===========================
+---------------------------
     
 ```cpp
 TEST(A_year_is_not_a_leap_year, if_it_is_not_divisible_by_4)
@@ -754,7 +771,7 @@ TEST(A_year_is_a_leap_year, if_it_is_divisible_by_400)
 
 
 Unit-Test Frameworks C++14 features
-===================================
+-----------------------------------
 
 * [Catch](https://github.com/philsquared/Catch) (**C**++ **A**utomated **T**est **C**ases in **H**eaders)
 * [Mettle](https://github.com/jimporter/mettle)
@@ -764,7 +781,7 @@ Unit-Test Frameworks C++14 features
 
 
 Catch
-=====
+-----
 
 ```cpp
 #define CATCH_CONFIG_MAIN
@@ -791,7 +808,7 @@ TEST_CASE("A year is a leap year if it is divisible by 400", "[leap]") {
 
 
 Mettle
-======
+------
 
 ```cpp
 #include <mettle.hpp>
@@ -819,7 +836,7 @@ mettle::suite<> basic("Leap Year", [](auto &_) {
 
 
 Python Unit Test
-================
+----------------
     
 Bibliothèque [unittest](https://docs.python.org/3/library/unittest.html)
 (anciennement PyUnit) dont les fonctions de test sont prefixées par `test`.
@@ -847,7 +864,7 @@ if __name__ == '__main__':
 
 
 Run Python Unit Test
-====================
+--------------------
     
 ```bash
 > python test_leap_year.py
@@ -875,7 +892,7 @@ OK
 
 
 oktest (python)
-===============
+---------------
     
 Annotations `@test`.
     
@@ -907,7 +924,7 @@ if __name__ == '__main__':
 
 
 Run oktest
-==========
+----------
     
 ```bash
 > sudo pip install oktest
@@ -941,7 +958,7 @@ OK
 
 
 picotest (python)
-=================
+-----------------
     
 Beautiful !
     
@@ -973,7 +990,7 @@ if __name__ == '__main__':
 
 
 Run picotest
-============
+------------
     
 ```bash
 > sudo pip install picotest
@@ -1014,7 +1031,7 @@ NameError: name 'unittest' is not defined
 
 
 JUnit
-=====
+-----
     
 JUnit 4: Annotation `@Test` has remplaced prefix `test`.
     
@@ -1042,7 +1059,7 @@ public class LeapYearTest {
 
 
 JUnit using a message in assert
-===============================
+-------------------------------
     
 Not really readable.
     
@@ -1062,24 +1079,26 @@ public class LeapYearTests {
 
 
 Spock
-=====
+-----
+
 TODO
 https://en.wikipedia.org/wiki/Spock_(testing_framework)
 http://spockframework.org
 https://github.com/spockframework
 
 TestNG
-======
+------
+
 TODO
 https://en.wikipedia.org/wiki/TestNG
 http://testng.org
 https://github.com/cbeust/testng
 
 
-Go Unit Test
-============
+Go
+--
     
-Test functions are prefixed by `Test`.
+Test functions are prefixed by `Test`
     
 ```go
 import "testing"
@@ -1106,7 +1125,7 @@ func Test_A_year_is_a_leap_year_if_it_is_divisible_by_400(t *testing.T) {
 
 
 xUnit
-=====
+-----
     
 La grande majorité des frameworks de tests unitaires partagent la même philosophie,
 regroupée sous le terme [x**Unit**][x] à l'instar de [J**Unit**][j],
@@ -1132,7 +1151,7 @@ Quelques caractéristiques :
 
 
 Fixture
-=======
+-------
     
 Pour tester des composants, un environnement a souvent besoin d'être préparé avec des **stubs**/**mocks**.
 Cette initialisation plus ou moins complexe est facilitée par la [**fixture**][f] :
@@ -1145,7 +1164,7 @@ Cette initialisation plus ou moins complexe est facilitée par la [**fixture**][
 
 
 Test a feature #1
-=================
+-----------------
     
 Pour tester une classe, une approche est d'avoir un test pour chaque fonction de la classe.  
 Cela permet de respecter la couverture des fonctionnalités de la classe.  
@@ -1164,7 +1183,7 @@ Quelles sont les limitations de cette approche ?
 
 
 Test `std::vector` #1
-=====================
+---------------------
     
 Testons la classe `std::vector` en se limitant aux fonctions suivantes :
     
@@ -1186,7 +1205,7 @@ Est-ce que chacun de ces tests va pouvoir tester une seule fonction ?
 
 
 Test a feature #2
-=================
+-----------------
     
 En fait, les tests vérifient plusieurs aspects de la classe
 qui nécessitent de combiner plusieurs fonctions.
@@ -1206,7 +1225,7 @@ Test                                     |   | Code
 
 
 Test `std::vector` #2
-=====================
+---------------------
     
 Écrire les **GUT**s de la classe std::vector  
 (se limiter aux fonctions suivantes)
@@ -1219,7 +1238,7 @@ Test `std::vector` #2
 
 
 Test a feature #3
-=================
+-----------------
     
 Une classe = un ensemble de tests.
     
@@ -1235,7 +1254,7 @@ Des suggestions ?
 
 
 Test a feature #3
-=================
+-----------------
     
 * Mais quand deux classes sont intimement liées ?
 * Les séparer avec des *dummy* / *stub* / *fake* / *mock* ?
@@ -1251,7 +1270,7 @@ Test                                                   |   | Code
 
 
 Test a feature #4
-=================
+-----------------
     
 * Et que faire des dépendances ?
 * Les découpler avec *dummy* / *stub* / *fake* / *mock* ?
@@ -1268,7 +1287,7 @@ Test                                                   |   | Code               
 
 
 Granularity of Unit Test
-========================
+------------------------
     
 * Bien doser la granularité d'un test unitaire
 * Suivre son instinct
@@ -1277,7 +1296,7 @@ Granularity of Unit Test
 
 
 One class = Multiple features
-=============================
+-----------------------------
     
 * Que faire si on se rend compte que la classe expose différentes fonctionnalités ?
 * Cela est révélateur d'une conception bancale...
@@ -1290,7 +1309,7 @@ One class = Multiple features
 
 
 Dependencies on hardware
-========================
+------------------------
     
 * Que faire si l'objet accède à un fichier, un port réseau... ?
 * Essayer de découpler l'objet avec son environnement.
@@ -1298,7 +1317,7 @@ Dependencies on hardware
 
 
 Découpler les Tests Unitaires
-=============================
+-----------------------------
     
 [Test double][td]| Definition
 -----------------|-------------------------------------------
@@ -1315,7 +1334,7 @@ Spy              | Record events
 
 
 Dummy
-=====
+-----
     
 A **dummy** object is an empty shell without implementation.
 
@@ -1323,7 +1342,7 @@ A **dummy** object is an empty shell without implementation.
 
 
 Stub
-====
+----
     
 A test [**Stub**][ts] is a minimal implementations providing always the same response (hard-coded) and does not contain assert.
 
@@ -1333,7 +1352,7 @@ A test [**Stub**][ts] is a minimal implementations providing always the same res
 
 
 Fake
-====
+----
     
 A [**fake**][fo] object acts like the real object, but in a simpler way.
 
@@ -1343,20 +1362,18 @@ A [**fake**][fo] object acts like the real object, but in a simpler way.
 
 
 Mock
-====
+----
 
 A [**Mock**][mo] object is a fake object containning asserts.
 
-One unit test = One assert
---------------------------
+### One unit test = One assert
     
 [Roy Osherove](http://programmers.stackexchange.com/questions/7823) (2010)
     
 > **Unit tests should fail for exactly one reason.**  
 > That’s why you should use one assert per unit test.
 
-One unit test = One expectation
--------------------------------
+### One unit test = One expectation
     
 [Kevlin Henney](https://twitter.com/kevlinhenney/status/438707024067825664) (2014)
     
@@ -1369,15 +1386,29 @@ One unit test = One expectation
 
 
 Google Mock
-===========
+-----------
        
     TODO Fournir exemples
 
-See also: [Mockaron](https://github.com/TankerApp/mockaron)
+
+Trompeloeil
+-----------
+
+![trompeloeil logo](https://raw.githubusercontent.com/rollbear/trompeloeil/master/trompeloeil-logo.png)
+
+* Header only C++14 mocking framework 
+* [GitHub](https://github.com/TankerApp/mockaron)
+
+
+Mockaron
+--------
+
+* [GitHub](https://github.com/TankerApp/mockaron)
+* [Présentation](cpp-frug.github.io/paris/events/2017-05-18_n17/mockaron/mock.html)
 
 
 Spy
-===
+---
 
 A test **spy** is any fack object having the capability to record events for further analysis.
 
@@ -1386,7 +1417,7 @@ A test **spy** is any fack object having the capability to record events for fur
 
 
 Test before or after development
-================================
+--------------------------------
     
 Process                           | Abbr.| Description
 ----------------------------------|------|-----------------------------
@@ -1400,7 +1431,7 @@ Defect-Driven Testing             | DDT  | Write the test **BEFORE the fix**
 
 
 Out of scope
-============
+------------
     
 Sigle  | Methodologie
 -------|--------------------------------------------------------------
@@ -1438,24 +1469,19 @@ Sigle  | Methodologie
 
 
 Where are the GUTs?
-===================
+-------------------
     
-**GUT**s = **G**ood **U**nit **T**ests  
-**GUT**s is not a methodology.
+**G**reat **U**nit **T**ests not a methodology
     
-* POUT **may** produce GUTs
-* DDT **should** produce GUTs
-* TDD & BDD **must** produce GUTs
+* POUT **may** produce **GUT**s
+* DDT **should** produce **GUT**s
+* TDD & BDD **must** produce **GUT**s
     
-**GUT**s can be the result of different methodologies.
-    
-Even if your organisation does not use TDD/BDD
-(or does not apply it strictly),
-you can still obtain **GUT**s.
+**GUT**s are **the result** of different methodologies
 
 
 Test-Driven Development
-=======================
+-----------------------
     
 Développement **piloté** par les tests.
 
@@ -1471,7 +1497,7 @@ Philippe Bourgeon (2016)
 
 
 Les 3 étapes du TDD
-===================
+-------------------
 
 1. Écrire les tests unitaires (rien ne compile)
 2. Une implémentation rapidement codée pour passer les tests
@@ -1484,7 +1510,7 @@ Les 3 étapes du TDD
 
 
 Deming wheel PDCA
-=================
+-----------------
    
 Le TDD a quelques points communs avec la [roue de Deming](https://fr.wikipedia.org/wiki/Roue_de_Deming)
    
@@ -1500,7 +1526,7 @@ Le TDD a quelques points communs avec la [roue de Deming](https://fr.wikipedia.o
 
 
 POUT versus TDD
-===============
+---------------
 
 POUT
 ----
@@ -1523,7 +1549,7 @@ TDD
 
 
 TDD #1 Write the GUTs
-=====================
+---------------------
     
 ```cpp
 TEST(A_year_is_not_a_leap_year, if_it_is_not_divisible_by_4)
@@ -1551,7 +1577,7 @@ Exercice : Implémenter la fonction `is_leap_year()`
 
 
 TDD #2 Write a buildable feature
-================================
+--------------------------------
     
 ```cpp
 bool is_leap_year (int year)
@@ -1569,7 +1595,7 @@ A_year_is_a_leap_year     | if_it_is_divisible_by_400                |**KO**
 
 
 TDD #2 Fix the feature
-======================
+----------------------
     
 ```cpp
 bool is_leap_year (int year)
@@ -1592,8 +1618,8 @@ A_year_is_a_leap_year     | if_it_is_divisible_by_400                |**KO**
 
 
 TDD #3 All test must pass
-=========================
-    
+-------------------------
+
 ```cpp
 bool is_leap_year (int year)
 {
@@ -1615,7 +1641,7 @@ A_year_is_a_leap_year     | if_it_is_divisible_by_400                |  ok
 
 
 TDD #4 Final implementation
-===========================
+---------------------------
     
 ```cpp
 bool is_leap_year (int year)
@@ -1644,7 +1670,7 @@ A_year_is_a_leap_year     | if_it_is_divisible_by_400                |  ok
 
 
 TDD #5 Implementation can be optimized
-======================================
+--------------------------------------
     
 L'implémentation n'a pas besoin d'exprimer la spécification,
 c'est le rôle du test unitaire.
@@ -1665,26 +1691,27 @@ A_year_is_a_leap_year     | if_it_is_divisible_by_400                |  ok
 
 
 Behavior-Driven Development
-===========================
+---------------------------
     
 * Given
 * When
 * Then
 
-[Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) ([CC-BY-3.0-US](https://creativecommons.org/licenses/by/3.0/us/) 2009), in French:
+
+[Gerard Meszaros](http://programmer.97things.oreilly.com/wiki/index.php/Write_Tests_for_People) ([CC-BY-3.0-US](https://creativecommons.org/licenses/by/3.0/us/) 2009)
     
 > Pour chaque cas de test :
 > 
-> * Décrire le context, le point de départ ou les préconditions
-> * Expliquer comment l'exigence est satisfaite
-> * Décrire le résultat attendu ou les postconditions 
+> **Given** &nbsp; Décrire le context, le point de départ ou les préconditions  
+> **When** &emsp; Expliquer comment l'exigence est satisfaite  
+> **Then** &emsp; Décrire le résultat attendu ou les postconditions 
 
 
 BDD Python example
-==================
+------------------
 
 ```python
-class  LeapYearSpec:
+class LeapYearSpec:
 
   @test
   def given_a_year_when_it_is_not_divisible_by_4_then_it_is_not_a_leap_year(self):
@@ -1704,34 +1731,41 @@ class  LeapYearSpec:
 ```
 
 
-BDD versus TDD
-==============
+TDD versus BDD
+--------------
 
-BDD
----
-    
-    given_a_year_when_it_is_not_divisible_by_4_then_it_is_not_a_leap_year
-    given_a_year_when_it_is_divisible_by_4_but_not_by_100_then_it_is_a_leap_year
-    given_a_year_when_it_is_divisible_by_100_but_not_by_400_then_it_is_not_a_leap_year
-    given_a_year_when_it_is_divisible_by_400_then_it_is_a_leap_year
-
-TDD
----
+### TDD
     
     years_not_divisible_by_4_are_not_leap_years
     years_divisible_by_4_but_not_by_100_are_leap_years
     years_divisible_by_100_but_not_by_400_are_not_leap_years
     years_divisible_by_400_are_leap_years
 
+### BDD
+    
+    given_a_year_when_it_is_not_divisible_by_4_then_it_is_not_a_leap_year
+    given_a_year_when_it_is_divisible_by_4_but_not_by_100_then_it_is_a_leap_year
+    given_a_year_when_it_is_divisible_by_100_but_not_by_400_then_it_is_not_a_leap_year
+    given_a_year_when_it_is_divisible_by_400_then_it_is_a_leap_year
+
 
 Defect-Driven Testing
-=====================
-    
+---------------------
+
     TODO
 
 
+Not yet TDD/BDD/DDT
+-------------------
+
+Even if you do not use TDD, BDD, DDT...
+or you do not apply them strictly
+you can still obtain **GUT**s.
+
+
+
 Real value of tests
-===================
+-------------------
 
 [Charles Antony Richard Hoare](https://en.wikiquote.org/wiki/C._A._R._Hoare#Sourced) (1996)
 
@@ -1741,23 +1775,21 @@ Real value of tests
 
 
 Compilation C++
-===============
+---------------
     
 |                 | Release                     | Debug            | Coverage
 |-----------------|-----------------------------|------------------|-----------------
 |`assert()`       | `-D NDEBUG`                 |                  | `-D NDEBUG`
 |[Optimisation][o]| `-Ofast` <br> (or any other)| `-O0 -fno-inline`| `-O0 -fno-inline`
     
-Commun aux trois *build types*
-------------------------------
-    
+### Commun aux trois *build types*
+
 * Toujours les [symboles de debug][d] => `-g3 -fno-eliminate-unused-debug-types`  
   (les binaires peuvent être [strippés][s] avant livraison au client)
 * C'est fini les `i386` => `-march=sandybridge`  
   (à adapter selon le conext)
     
-Utiliser différents compilateurs
---------------------------------
+### Utiliser différents compilateurs
     
 * MSVC sous Windows (et un autre ?)
 * GCC et Clang sous Linux
@@ -1768,7 +1800,7 @@ Utiliser différents compilateurs
 
 
 Exécution
-=========
+---------
 
 Les tests unitaires sont exécutés avec toutes les combinaisons :
 
@@ -1778,7 +1810,7 @@ Les tests unitaires sont exécutés avec toutes les combinaisons :
 
 
 Definition of Done (DoD)
-========================
+------------------------
 
 * Source code respects Security Rules
 * Source code respects Coding Rules (`clang-format`, `cpplint`, `kwstyle`)
@@ -1798,7 +1830,7 @@ Definition of Done (DoD)
 
 
 Couverture de code
-==================
+------------------
     
 La finalité des tests unitaires n'est pas de faire du coverage.
 Toutefois l'écriture des tests unitaires cherche à couvrir l'ensemble de la fonctionnalité.
@@ -1806,7 +1838,7 @@ Du coup, les indicateurs de coverage permettent de vérifier si on a oublié que
 
 
 Test coverage
-=============
+-------------
 
 Coverage levels
 
@@ -1818,7 +1850,7 @@ Coverage levels
 
 
 Coverage pourcentage
-====================
+--------------------
 
 * Do not specify a pourcentage.
 * Just request a high coverage.
@@ -1828,7 +1860,7 @@ Coverage pourcentage
 
 
 Testivus and code coverage #1
-=============================
+-----------------------------
 
 [Alberto Savoia](http://www.artima.com/weblogs/viewpost.jsp?thread=203994) ([forum](http://www.artima.com/forums/flat.jsp?forum=106&thread=204677)) (2007)
 
@@ -1844,7 +1876,7 @@ Testivus and code coverage #1
 
 
 Testivus and code coverage #2
-=============================
+-----------------------------
 
 > Later, a second programmer asks the same question.  
 > The great master points at a pot of boiling water and says:
@@ -1855,7 +1887,7 @@ Testivus and code coverage #2
 
 
 Testivus and code coverage #3
-=============================
+-----------------------------
 
 > A third programmer enters and asks the same question.  
 > The master replies:  
@@ -1864,7 +1896,7 @@ Testivus and code coverage #3
 
 
 Testivus and code coverage #4
-=============================
+-----------------------------
 
 > After, a young apprentice approached the great master:
 > 
@@ -1876,7 +1908,7 @@ Testivus and code coverage #4
 
 
 Goodhart's law
-==============
+--------------
     
 [Charles Goodhart](http://en.wikipedia.org/wiki/Goodhart's_law),
 advisor to the Bank of England and Emeritus Professor at the London School of Economics (1975)
@@ -1888,13 +1920,11 @@ Popular formulation
     
 > When a measure becomes a target, it ceases to be a good measure.
     
-In French
----------
+### In French
     
 > Dès qu’une métrique devient un objectif, la mesure perd de son utilité.
     
-Exemples
---------
+### Exemples
     
 Quand un manager exige 90% de couverture de code,
 alors le développeur est incité à laisser des lignes de code testées
@@ -1902,7 +1932,7 @@ mais sans aucune utilité (ou même, à en rajouter).
 
 
 Tester les invariants et propriétés
-===================================
+-----------------------------------
     
 What is more than *Code coverage*? *Value coverage*!
     
@@ -1927,26 +1957,26 @@ What is more than *Code coverage*? *Value coverage*!
 
 
 QuickCheck
-==========
+----------
 
     TODO Fournir quelques exemples
 
 
 autocheck
-=========
+---------
 
     TODO Fournir quelques exemples
 
 
 rapidcheck
-==========
+----------
 
     TODO Fournir quelques exemples
 
 
 
 Continuous Testing
-==================
+------------------
 
 The Pragmatic Programmer by Andrew Hunt and David Thomas (1999)
 
@@ -1964,7 +1994,7 @@ Continuous Deployement         | Déploiement Continu
 
 
 Some Continuous Testing Tools
-=============================
+-----------------------------
     
 Projet                    | Description
 --------------------------|-------------------    
@@ -1985,7 +2015,7 @@ Projet                    | Description
 
 
 Fuzz Testing
-============
+------------
     
 Fuzzing and Monkey testing use random input behaviour.
     
@@ -1995,14 +2025,15 @@ See also OSS-Fuzz
 * https://opensource.googleblog.com/2017/05/oss-fuzz-five-months-later-and.html
 * https://github.com/google/oss-fuzz/
 
+
 Performance testing
-===================
-    
+-------------------
+
     TODO Fournir exemples
 
 
 Google Benchmark
-================
+----------------
     
 https://github.com/google/benchmark
     
