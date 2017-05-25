@@ -35,11 +35,10 @@ CC0 1.0 Universal
 [(0) PUBLIC DOMAIN]:     https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain"
 
 To the extent possible under law, [olibre](mailto:olibre@Lmap.org) 
-has waived all copyright and related or neighboring rights to [CodingGoodPractices]. 
+has waived all copyright and related or neighboring rights to [GreatePractices]. 
 This work is published from France since 2015.
 Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
 
-[CC0 Legal Code]:      https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
-[CodingGoodPractices]: https://github.com/olibre/CodingGoodPractices "CodingGoodPractices project hosted on GitHub" 
-[`COPYING`]:           ./COPYING
-
+[CC0 Legal Code]: https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
+[GreatPractices]: https://github.com/olibre/GreatPractices "GreatPractices project hosted on GitHub" 
+[`COPYING`]:      ./COPYING
