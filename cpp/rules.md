@@ -786,27 +786,32 @@ int32_t divideByTwo (int32_t         qty,    ///<[in] quantity
 ```
 
 
-`N.TTP` &nbsp; Type template parameter in `T_CamelCase`
--------------------------------------------------------
+`N.TTP` &nbsp; Type template parameter `CamelCase_t` expresses the capability
+-----------------------------------------------------------------------------
+
+* The suffix `_t` may clarify code but is optional
 
 ```cpp
-template<typename T_FirstType, template<typename> typename T_SecondType = MyClassArray>
+template<typename Callable,  template<typename> typename BigContainer, typename ForwardArray = MyClassArray>
 class MyClass
 {
-    T_SecondType<T_FirstType> container;
+    Callable                   _callback;
+    BigContainer<ForwardArray> _container;
 };
 ```
 
 
-## `N.NTP` &nbsp; Non-Type template parameter in `T_UPPER_CASE`
+`N.NTP` &nbsp; Non-type template parameter `UPPER_CASE` (or `CamelCase`)
+------------------------------------------------------------------------
 
-* Non-Type template parameters are constants, therefore in `T_UPPER_CASE`
+* Non-Type template parameters are constants, therefore could be logic to be in `UPPER_CASE`
+* However `CamelCase` may also be used if it renders better
 
 ```cpp
-template<size_t T_SIZE = 512>
+template<size_t SIZE = 512>
 class MyClass
 {
-    int32_t myArray[T_SIZE];
+    int32_t _myArray[SIZE];
 };
 ```
 
