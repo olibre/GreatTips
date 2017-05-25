@@ -163,7 +163,7 @@ Code source Ada
     
 [![Scan du code source Ada du SRI][AdaCode]][AdaRef]
     
-[AdaCode]: http://olibre.github.io/CppCoding/GUTs/bug-Ariane-501_by-JeanJacquesLevy-INRIA-2010.jpg "La composante verticale (variable L_M_BV_32) est vérifiée avant conversion 16 bits, mais pas pour la composante horizontale"
+[AdaCode]: ./bug-Ariane-501_by-JeanJacquesLevy-INRIA-2010.jpg "La composante verticale (variable L_M_BV_32) est vérifiée avant conversion 16 bits, mais pas pour la composante horizontale"
 [AdaRef]:  http://moscova.inria.fr/~levy/talks/10enslongo/enslongo.pdf
 
 
