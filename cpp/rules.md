@@ -1460,7 +1460,10 @@ Compiler flag                  | Comment
 `-Wunused`                     | Unused entity (functions, labels, variables, typedefs, parameters, ...)
 `-Wwrite-strings`              | Deprecated conversion from string literals to 'char *' (enable by default in C++)
 `-fmax-errors=50`              | Limit number of errors to 50. Default is 0 => no limit.
+`-Werror=implicit-function-declaration` | Implicit function declarations allows to call functions without declaring them, and therefore is bug-prone because these functions use a different calling convention and have a fixed return type of int. Resulting issues are pointer truncation (on 64-bit architectures), exposure of padding bits (particular for bool-returning functions on x86_64), and unexpected lack of hardening. Implicit function declarations are not part of C++.
+`-Werror=implicit-int`         |  Implicit ints are usually source code bugs, and the presence of such code may interfere with future C language directions 
 
+Some develper use `-Werror` to fail compilation for any warning. But when `-Werror` is set within a build chain, a new compiler version or a change on third-party may fail the build for any minor warning. Please think also about people building your software.
 
 Clang has a crazy compilation option `-Weverything` that enables all possible warnings. The idea is to enable all and disable the annoying ones.
 
@@ -1476,11 +1479,8 @@ Compiler flag                  | Comment
 `-Wno-gnu-zero-variadic-macro-arguments` |
 `-Wno-documentation`           |
 `-Wno-shadow`                  |
-`-Wno-missing-prototypes`      | 
-
-Consider also `-Werror` to fail compilation for any activated warning.
-If `-Werror` is mandatory within a build chain, a change on third-party or compiler may faild the build for any minor warning.
-Think also about the users compiling your software.
+`-Wno-missing-prototypes`      |
+`-fsave-optimization-record`   | Indicate why some code has not been optimized [(see C++FRUG #17)](https://github.com/cpp-frug/paris/tree/master/events/2017-05-18_n17#clang-new-compilation-flag) 
 
 See more on [GCC warning options](http://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html).
 
