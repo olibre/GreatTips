@@ -1,31 +1,36 @@
-CodingGoodPractices
-===================
+Good and Great Practices for Coders
+===================================
 
-*Fine practices about C++, Java, Unit tests, Scrum, GNU/LInux installation, Git, CMake, Gradle, pandoc...*
+*Empowering practices for happy coders about Git, Unit tests, C++, Python, Java, Gradle, CMake, Agile, GNU/LInux installation, pandoc...*  
+*Not the best or the greatest because any one can propose improvements :-)*
 
 This documentation is shared in [Public Domain][#publicdomaindedication].
 
-Table of content
-================
+Documents
+=========
 
-* [Install developer environment on GNU/Linux](install)
-* [C++](cpp)
+* [GNU/Linux installation for coders](install)
+* [Git](./git)
+* [Java/Groovy/Gradle/Ant](./java)
+* [C++](./cpp)
     * [Rules](cpp/rules.md)
     * [Metrics](cpp/lint.md)
-* [Java/Gradle/Ant](java)
+    * [C++ Core Guidelines](cpp/cpp_core_guidelines.md)
+* [CMake](./cmake)
 * [Empoworing team members](team)
-
+* [Great Unit Tests](./GUTs)
+* [Logging](./log)
 
 
 Convert Markdown to nice HTML/PDF/...
 =====================================
 
-All the documentation is written using [Markdown]. The CppCoding project provides a [`Makefile`] to convert Markdown content to HTML and PDF files (using [`pandoc`]). Command `make help` describes the available actions.
+All the documentation is written using [Markdown]. The **GreatPractices** project provides a [`Makefile`] to convert Markdown content to HTML and PDF files (using [`pandoc`]). Command `make help` describes the available actions.
 
 Empowering `pandoc`
 -------------------
 
-Moreover the [`Makefile`] empowers the Markdown conversion:
+Moreover the root [`Makefile`] enhances Markdown conversion:
 
 1. Embeds local images in HTML but keep outside extrernal images (i.e. for `http://` URL)
 2. Keep links between Markdown pages when converting to HTML/PDF
