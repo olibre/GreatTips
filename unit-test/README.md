@@ -3,6 +3,9 @@ Great Unit Tests
 
 *De belles façons de faire les Tests Unitaires* &nbsp; ;-)
 
+[reveal](http://olibre.github.io/GreatPractices/unit-test/reveal.html) &emsp;
+[github](https://github.com/olibre/GreatPractices/tree/master/unit-test) &emsp:
+[jekyll](http://olibre.github.io/GreatPractices/unit-test/)
 
 Contenu de cette présentation librement modifiable/réutilisable
 ---------------------------------------------------------------
