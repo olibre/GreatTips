@@ -1,32 +1,3 @@
-Résumé
-======
-
-
-Test Unitaire
--------------
-
-* Définition = peut être lancé en parallèle sur la même machine
-* Donc n'en est pas si accéde aux fichiers, à la mémoire partagée ou au réseau
-
-
-Great Unit Test
----------------
-
-* Écrire les tests avant de coder la fonctionnalité (préconisation TDD et BDD)
-* Chaque fonction de test doit échouer pour une seule raison
-* Le nom de la fonction de test doit exprimer un élément de la spécification
-* Ces fonctions de tests (noms) sont la documentation de la fontionnalité
-
-
-Méthodologie GUT ?
-------------------
-
-* **G**reat **U**nit **T**est ne dépend d'aucune méthodologie
-* On peut obtenir des GUT même sans TDD/BDD
-* TDD/BDD => plus efficace/naturel pour obtenir des GUT
-
-
-
 Kevlin Henney
 =============
 
@@ -48,6 +19,37 @@ This document aims to go further and proposes the **G**reat **U**nit **T**ests.
 [97j]: http://akamaicovers.oreilly.com/images/0636920048824/cat.gif "97 Things Every Java Programmer Should Know (2017)"
 [KH]:  http://programmer.97things.oreilly.com/wiki/images/9/98/Kevlin_251x228.jpg
 [KHw]: https://en.wikipedia.org/wiki/Kevlin_Henney
+
+
+
+Résumé
+======
+
+*Ce que cette présentation va expliquer.*
+
+
+Définition
+----------
+
+Test Unitaire : Peut être lancé en parallèle sur la même machine
+
+(le test qui accéde aux fichiers ou au réseau n'est pas un TU)
+
+
+Great Unit Test
+---------------
+
+* Chaque fonction de test doit échouer pour une seule raison
+* Le nom de la fonction de test doit exprimer un élément de la spécification
+* Le nom de la fonction de test porte la documentation du code testé
+
+
+Méthodologie GUT ?
+------------------
+
+* GUT ne dépend d'aucune méthodologie
+* TDD/BDD : Écrire les tests avant de coder la fonctionnalité 
+* C'est plus efficace et naturel pour obtenir des GUT
 
 
 
@@ -73,7 +75,7 @@ Customers' needs              |  0   |      | Production error         | 1000x
 [Design][sd]                  | 10x  |      | [Unit Testing][ut]       |   50x
 Implentation                  | 25x  |      |                          |
 
-Quels coefficients pour votre organisation ?
+Quels coefficients pour vos projets ?
 
 [nasa]: http://ntrs.nasa.gov/search.jsp?R=20100036670
 [SDLC]: http://en.wikipedia.org/wiki/Software_development_process   "Software Development Life Cycle"
@@ -95,4 +97,3 @@ Qui teste ?
 
 [PImg]: http://upload.wikimedia.org/wikipedia/en/8/8f/The_pragmatic_programmer.jpg "The Pragmatic Programmer by Andrew Hunt and David Thomas (1999)"
 [PLink]: https://en.wikipedia.org/wiki/The_Pragmatic_Programmer
-
