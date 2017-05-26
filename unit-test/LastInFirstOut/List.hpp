@@ -3,7 +3,7 @@
 
 #include <deque>
 #include <string>
-#include <algorithm> 
+#include <algorithm>
 
 class List
 {
@@ -14,7 +14,7 @@ class List
         void add(const std::string& value) {
             auto it = std::find(_list.begin(), _list.end(), value);
             if (it==_list.end())
-                _list.push_back(value); 
+                _list.push_back(value);
             else
                  std::move(it, it, _list.end());
         }
@@ -22,7 +22,7 @@ class List
         std::string last() const { return _list.front();}
         size_t size() const {return _list.size();}
 
-    private: 
+    private:
         std::deque<std::string> _list;
 };
 

@@ -3,7 +3,7 @@ Recently Used List
 
 http://cyber-dojo.org/setup/show_exercises/?language=C%2B%2B%20(clang%2B%2B)&test=GoogleTest
 
-Develop a recently-used-list class to hold strings 
+Develop a recently-used-list class to hold strings
 uniquely in Last-In-First-Out order.
 
 * A recently-used-list is initially empty.

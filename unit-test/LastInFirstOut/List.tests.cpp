@@ -4,7 +4,7 @@
 using namespace ::testing;
 
 /*
-Develop a recently-used-list class to hold strings 
+Develop a recently-used-list class to hold strings
 uniquely in Last-In-First-Out order.
 o) A recently-used-list is initially empty.
 o) The most recently added item is first, the least
@@ -63,7 +63,7 @@ TEST(The_first_item, is_the_index_Nth)
 }
 
 
-// Items in the list are unique, so duplicate insertions 
+// Items in the list are unique, so duplicate insertions
 //   are moved rather than added.
 
 TEST(Each_item, is_unique)

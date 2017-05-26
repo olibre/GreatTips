@@ -8,11 +8,11 @@ xUnit
 Historiquement, les noms des frameworks de tests unitaires avaient souvent la même racine :
 
 * [J**Unit**][j]
-* [Cpp**Unit**][cpp] 
-* [N**Unit**][n] 
-* [PHP**Unit**][php] 
+* [Cpp**Unit**][cpp]
+* [N**Unit**][n]
+* [PHP**Unit**][php]
 * [Http**Unit**][http]
-* [Html**Unit**][http] 
+* [Html**Unit**][http]
 
 Le terme [x**Unit**][x] désigne les frameworks qui partagent les mêmes caractéristiques (tout comme pour [GTest][gt]).
 
@@ -56,4 +56,4 @@ Fonctions communes aux fixtures
 * **`TearDown()`** le libère proprement
 
   (évite de perturber le test suivant,  
-  ou de faux-positifs de fuite de mémoire) 
+  ou de faux-positifs de fuite de mémoire)

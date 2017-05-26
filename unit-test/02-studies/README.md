@@ -83,11 +83,11 @@ Un petit bug...
 
 * Le SRI 2 remonte une erreur, mais l'OBC la considère comme valeur de navigation,  
   et braque au maximum la trajectoire de la fusée.
-  
+
 * Un des deux boosters est arraché à cause de la pression trop élevée  
   et déclenche le système d'auto-destruction de la fusée.
-  
-* Les débris de la fusée tombent dans la mangrove et sont récupérés en partie   
+
+* Les débris de la fusée tombent dans la mangrove et sont récupérés en partie  
   dont l'EEPROM contenant les informations de l'erreur.
 
 
@@ -237,7 +237,7 @@ Toyota
 ---------------------
 
 * <!--.element: class="fragment"--> **2012** Le capital (350 millions $) perd 75% dès le lendemain
-  
+
 * <!--.element: class="fragment"--> 4 jours après, KCG lève 400 million $  
 
 * <!--.element: class="fragment"--> **2015** Vente des logiciels *KCG Hotspot* à BATS pour 365 millions $

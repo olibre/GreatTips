@@ -1,7 +1,7 @@
 Kevlin Henney
 =============
 
-This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trainings   
+This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trainings  
 (and also from many other Unit-Testing documents)
 
 [HKi]: http://www.infoq.com/author/Kevlin-Henney#Presentations "Presentations of Kevlin Henney on infoq.com"
@@ -48,7 +48,7 @@ Méthodologie GUT ?
 ------------------
 
 * GUT ne dépend d'aucune méthodologie
-* TDD/BDD : Écrire les tests avant de coder la fonctionnalité 
+* TDD/BDD : Écrire les tests avant de coder la fonctionnalité
 * C'est plus efficace et naturel pour obtenir des GUT
 
 

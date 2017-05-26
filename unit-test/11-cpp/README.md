@@ -161,7 +161,7 @@ Autres options de compilation
 
 Pousser les bugs à se révéler
 -----------------------------
- 
+
 ### Utiliser différents compilateurs
 
 * MSVC sous Windows (et un autre ?)
