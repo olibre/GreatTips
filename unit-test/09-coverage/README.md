@@ -1,5 +1,6 @@
 Couverture de code
 ==================
+<!--.slide: data-background="#404" data-background-transition="zoom"-->
 
 
 Couverture de code

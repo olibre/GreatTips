@@ -1,10 +1,10 @@
 Études de cas
 =============
+<!--.slide: data-background="#253" data-background-transition="zoom"-->
 
 
 Ariane 5
 --------
-
 
 La théorie
 ----------
@@ -64,31 +64,35 @@ Coût de l'image ternie de la marque.
 Un petit bug...
 ---------------
 
-* L'accélération d'Ariane 5 est cinq fois plus élevée qu'Ariane 4.
+* L'accélération d'Ariane 5 est  
+  cinq fois plus élevée qu'Ariane 4.
 
-* La valeur *accélération* sur 32 bits et copiée dans un registre de 16 bits  
-  trop petit ce qui provoque une interruption matérielle.
+* La valeur *accélération* sur 32 bits et copiée  
+  dans un registre de 16 bits (trop petit)  
+  ce qui provoque une interruption matérielle.
 
-* Les deux *Système de Référence Inertielle* (même matériel, même logiciel)  
-  se désactivent quasi simultannément (à 72 ms près).
+* Les deux *Système de Référence Inertielle*  
+  (même matériel, même logiciel)  
+  se désactivent simultannément (à 72 ms près).
 
-* 37 secondes après le décollage, le pilote automatique prend les commandes.
+* 37 secondes après le décollage,  
+  le pilote automatique prend les commandes.
 
 
 ... un grand boum !
 -------------------
 
-* Le *On Board Computer* (OBC) détecte que le SRI 1 est en panne  
+* Le *On Board Computer* (OBC) détecte le SRI 1 en panne  
   et bascule sur le SRI 2.
 
-* Le SRI 2 remonte une erreur, mais l'OBC la considère comme valeur de navigation,  
-  et braque au maximum la trajectoire de la fusée.
+* Le SRI 2 remonte une erreur, mais l'OBC la considère comme  
+  valeur de navigation et braque la trajectoire de la fusée.
 
 * Un des deux boosters est arraché à cause de la pression trop élevée  
   et déclenche le système d'auto-destruction de la fusée.
 
-* Les débris de la fusée tombent dans la mangrove et sont récupérés en partie  
-  dont l'EEPROM contenant les informations de l'erreur.
+* Les débris de la fusée tombent dans la mangrove  
+  et sont récupérés dont l'EEPROM contenant les info de l'erreur.
 
 
 Code source Ada
@@ -103,9 +107,9 @@ Code source Ada
 Le petit bug
 ------------
 
-Les bornes -32768..32767 de la composante **V**erticale `BV` sont vérifiées :
+Test des bornes -32768..32767 de la composante **V**erticale `BV`
 
-```ada
+```c
 L_M_BV_32 := TBD.T_ENTIER_32S ((1.0/C_M_LSB_BV) *
                               G_M_INFO_DERIVE(T_ALG.E_BV));
 
@@ -118,29 +122,34 @@ else
 end if;
 ```
 
--------
+<div class="fragment">
 
-Mais pas pour l'**H**orizontale `BH` :
+<br>
 
-```ada
+Et pour l'**H**orizontale `BH` ?
+
+<pre><code class="c">
 P_M_DERIVE(T_ALG.E_BH) := UC_16S_EN_16NS (TDB.T_ENTIER_16S
                                    ((1.0/C_M_LSB_BH) *
                                    G_M_INFO_DERIVE(T_ALG.E_BH)));
-```
+</code></pre>
+</div>
 
 
 Commission d'enquête
 --------------------
 
-* [Rapport][Ariane5rapport] rendu un mois après l'incident  
+[Rapport][Ariane5rapport] rendu un mois après l'incident  
 
-    1. La conception du calculateur de la trajectoire  
-       a volontairement exclue la spécificité d'Ariane 5.
+1. <!--.element: class="fragment"-->
+  La conception du calculateur de la trajectoire  
+  a volontairement exclue la spécificité d'Ariane 5.
 
-    2. La commision d'enquête (composée d'ingénieurs logiciel)  
-       conclut à un problème logiciel.
+2. <!--.element: class="fragment"-->
+  La commision d'enquête (composée d'ingénieurs logiciel)  
+  conclut à un problème logiciel.
 
-Lire aussi : [Arnold][arnold] et [Bielefeld][bielefeld]
+<!--.element: class="fragment"--> Lire aussi : [Arnold][arnold] et [Bielefeld][bielefeld]
 
 [Ariane5rapport]: http://deschamp.free.fr/exinria/divers/ariane_501.html
 [arnold]:         http://www.math.umn.edu/~arnold/disasters/ariane5rep.html        "TODO: version anglaise à confirmer..."
@@ -150,13 +159,16 @@ Lire aussi : [Arnold][arnold] et [Bielefeld][bielefeld]
 Enquêtes indépendantes
 ----------------------
 
-* [Gérard Le Lann][Ariane5failure] (INRIA) conclut  
-  à un problème d'intégration système
+1. <!--.element: class="fragment"-->
+   [Gérard Le Lann][Ariane5failure] (INRIA) conclut  
+   à un problème d'intégration système
 
-* [Mark Dowson][Ariane5failure] rappelle les réalités du projet
-    * Pressions budgétaires et planning
-    * Arguments *If it's not broken don't fix it*
-    * Politique des managers
+2. <!--.element: class="fragment"-->
+   [Mark Dowson][Ariane5failure] insiste sur l'environement de travail  
+    - Pressions budgétaires
+    - Pressions sur les délais
+    - *If it's not broken don't fix it*
+    - Carriérisme des managers, Politique
 
 [Ariane5failure]: http://cmpe.emu.edu.tr/chefranov/Cmps201-fall2011/Notes/Ariane5failure.pdf
 
@@ -164,9 +176,11 @@ Enquêtes indépendantes
 Que retenir du cas Ariane 501 ?
 -------------------------------
 
-1. Le **changement** justifie le test  <!-- .element: class="fragment" -->
+1. <!--.element: class="fragment"-->
+   Le **changement** justifie le test
 
-2. Ne pas laisser tomber la **qualité** face  <!-- .element: class="fragment" -->
+2. <!--.element: class="fragment"-->
+   Ne pas laisser tomber la **qualité** face
    * aux contraintes budget
    * aux contraintes planning
    * au conservatisme ([continuous refactoring][cr])
@@ -268,7 +282,7 @@ fail:
 }
 ```
 
-**2016** => Nouvelle option [GCC 6 `-Wmisleading-indentation` ](https://developers.redhat.com/blog/2016/02/26/gcc-6-wmisleading-indentation-vs-goto-fail/)
+<!--.element: class="fragment"--> **2016** => Nouvelle option [GCC 6 `-Wmisleading-indentation` ](https://developers.redhat.com/blog/2016/02/26/gcc-6-wmisleading-indentation-vs-goto-fail/)
 
 
 Valve Steam (2015)

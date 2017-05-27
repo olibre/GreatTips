@@ -2,22 +2,25 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
   <title>Great Unit Tests</title>
-
+  <meta name="description" content="Formation sur les Tests Unitaires">
+  <meta name="author"      content="olibre">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../reveal.js/css/reveal.css">
-  <link rel="stylesheet" href="../reveal.js/css/theme/black.css">
+  <link rel="stylesheet" href="../reveal.js/css/theme/night.css" id="theme">
   <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css"> <!-- syntax highlighting -->
-
-  <!-- Printing and PDF exports -->
   <script>
-    var link = document.createElement('link');
+    var link = document.createElement('link');  <!-- Printing and PDF export -->
     link.rel = 'stylesheet';
     link.type = 'text/css';
     link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal-js/css/print/pdf.css' : '../reveal-js/css/print/paper.css';
     document.getElementsByTagName('head')[0].appendChild( link );
   </script>
+  <!--[if lt IE 9]>
+  <script src="../reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -25,9 +28,34 @@
       <style media="screen" type="text/css">
         .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 { text-transform: none; }
         .reveal pre code { max-height: 80%; }
-        .reveal blockquote { font-style: normal; text-align: left; background: rgba(255, 255, 255, 0.2); }
+     /* .reveal blockquote { font-style: normal; text-align: left; background: rgba(255, 255, 255, 0.2); } */
       </style>
-      <section data-markdown="README.md"                  data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+      <section data-markdown="README.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+      <section>
+        <section id="themes">
+          <h3>(configurer le thème)</h2>
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/black.css'); return false;">Black</a> -
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/white.css'); return false;">White</a> -
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/league.css'); return false;">League</a> -
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/sky.css'); return false;">Sky</a> -
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/beige.css'); return false;">Beige</a> -
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/simple.css'); return false;">Simple</a> <br>
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/serif.css'); return false;">Serif</a> -
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/blood.css'); return false;">Blood</a> -
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/night.css'); return false;">Night</a> -
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/moon.css'); return false;">Moon</a> -
+          <a href="#" onclick="document.getElementById('theme').setAttribute('href','../reveal.js/css/theme/solarized.css'); return false;">Solarized</a>
+        </section>
+        <section id="transitions">
+          <h3>(configurer la transition)</h2>
+          <a href="?transition=none#/transitions">None</a> -
+          <a href="?transition=fade#/transitions">Fade</a> -
+          <a href="?transition=slide#/transitions">Slide</a> -
+          <a href="?transition=convex#/transitions">Convex</a> -
+          <a href="?transition=concave#/transitions">Concave</a> -
+          <a href="?transition=zoom#/transitions">Zoom</a>
+        </section>
+      </section>
       <section data-markdown="01-intro/README.md"         data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
       <section data-markdown="02-studies/README.md"       data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
       <section data-markdown="03-theory/README.md"        data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
@@ -54,12 +82,16 @@
     // More info https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
       history: true,
+      parallaxBackgroundImage: '01-intro/reveal-parallax-1.jpg',
+      parallaxBackgroundSize: '2100px 900px', // CSS syntax, only pixels are supported (don't use % or auto)
       // More info https://github.com/hakimel/reveal.js#dependencies
       dependencies: [
-        { src: '../reveal.js/plugin/markdown/marked.js' },
-        { src: '../reveal.js/plugin/markdown/markdown.js' },
-        { src: '../reveal.js/plugin/notes/notes.js', async: true },
-        { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+        { src: '../reveal.js/plugin/notes/notes.js', async: true }
       ],
 
       width: "100%",

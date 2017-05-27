@@ -1,5 +1,6 @@
 C++
 ===
+<!--.slide: data-background="#325" data-background-transition="zoom"-->
 
 
 Unit-Test Frameworks
@@ -77,7 +78,6 @@ mettle::suite<> basic("Leap Year", [](auto &_) {
 ```
 
 
-
 Tester les invariants
 ---------------------
 
@@ -100,7 +100,6 @@ rapidcheck
 ----------
 
     TODO Fournir quelques exemples
-
 
 
 Mock
@@ -127,7 +126,6 @@ Mockaron
 
 * [GitHub](https://github.com/TankerApp/mockaron)
 * [Présentation](cpp-frug.github.io/paris/events/2017-05-18_n17/mockaron/mock.html)
-
 
 
 C++ Great Practices
@@ -178,21 +176,16 @@ Pousser les bugs à se révéler
 Definition of Done (DoD)
 ------------------------
 
-* Source code respects Security Rules
 * Source code respects Coding Rules
-* Source code respects C++ Core Guidelines
-* Doxygen comments are used when relevant
 * No remaining FIXME
 * No compiler warnings
-* Unit-Tests respect TDD/GUTS guidelines
-* Unit-Tests passed (no code coverage threshold)
+* Unit-Tests passed
+* Code coverage depending on context
 * Valgrind
 * CppCheck
-* [AddressSanitizer](https://en.wikipedia.org/wiki/AddressSanitizer) using build options `-fsanitize=*` ([clang](http://clang.llvm.org/docs/AddressSanitizer.html) and [gcc](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html#index-fsanitize_003daddress-945))
-* [clang-check](http://clang.llvm.org/docs/ClangCheck.html) (static code analyzer, detects code patterns that most probably are bugs and inspects control flow graph and do path-based analysis)
-* [clang-tidy](http://clang.llvm.org/extra/clang-tidy/) (linter, checks coding style and address readability, and can fix C++ source code)
+* [AddressSanitizer](https://en.wikipedia.org/wiki/AddressSanitizer) using `-fsanitize=*` ([clang](http://clang.llvm.org/docs/AddressSanitizer.html) and [gcc](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html#index-fsanitize_003daddress-945))
+* [clang-check](http://clang.llvm.org/docs/ClangCheck.html)  
+  (static code analyzer of control flow graph to detect bug-prone patterns)
+* [clang-tidy](http://clang.llvm.org/extra/clang-tidy/)  
+  (linter: coding style, readability and fix your C++ code)
 * No dead code
-
-
-
-Continuous Testing

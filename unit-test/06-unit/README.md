@@ -1,5 +1,6 @@
 Que veut dire le U dans TU ?
 ============================
+<!--.slide: data-background="#034" data-background-transition="zoom"-->
 
 *Quelle granularité ?*
 

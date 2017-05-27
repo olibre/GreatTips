@@ -1,5 +1,7 @@
 Kevlin Henney
 =============
+<!--.slide: data-background="#007" data-background-transition="zoom"-->
+
 
 This documents has been inspired from [**Kevlin**][HKi] [**Henney**][HKs]'s trainings  
 (and also from many other Unit-Testing documents)
@@ -24,8 +26,9 @@ This document aims to go further and proposes the **G**reat **U**nit **T**ests.
 
 Résumé
 ======
+<!--.slide: data-background="#720" data-background-transition="zoom"-->
 
-*Ce que cette présentation va expliquer.*
+*Les messages à faire passer.*
 
 
 Définition
@@ -54,7 +57,8 @@ Méthodologie GUT ?
 
 
 Classic Development Cycle in V
-==============================
+------------------------------
+<!--.slide: data-background="#440" data-background-transition="zoom"-->
 
 [![Cycle en V][v_svg]][v_lnk]
 
@@ -73,7 +77,7 @@ Customers' needs              |  0   |      | Production error         | 1000x
 [Requirements analysis][ra]   |  1x  |      | [Acceptance testing][at] |  200x
 [Functional specification][fs]|  5x  |      | [Integration testing][it]|  100x
 [Design][sd]                  | 10x  |      | [Unit Testing][ut]       |   50x
-Implentation                  | 25x  |      |                          |
+&nbsp;                        |&nbsp;| 25x  | Implentation             |
 
 Quels coefficients pour vos projets ?
 
@@ -89,11 +93,11 @@ Quels coefficients pour vos projets ?
 
 
 Qui teste ?
-===========
+-----------
 
-|   | &nbsp;
-|---|--------
-|Tip 49 <br><br> **Test your software <br> or your users will.**| [![Book cover][PImg]][PLink]
+| &nbsp;                     | Tip 49
+|----------------------------|--------
+|[![Book cover][PImg]][PLink]|**Test your software <br>or your users will**
 
 [PImg]: http://upload.wikimedia.org/wikipedia/en/8/8f/The_pragmatic_programmer.jpg "The Pragmatic Programmer by Andrew Hunt and David Thomas (1999)"
 [PLink]: https://en.wikipedia.org/wiki/The_Pragmatic_Programmer

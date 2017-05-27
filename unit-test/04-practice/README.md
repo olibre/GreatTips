@@ -1,5 +1,6 @@
 Un peu de pratique
 ==================
+<!--.slide: data-background="#007" data-background-transition="zoom"-->
 
 *Sortez vos claviers &emsp; ;-)*
 
@@ -10,13 +11,20 @@ Put theory into practice
 ### Une année est [**bissextile**](http://fr.wikipedia.org/wiki/Année_bissextile#Règle_actuelle) :
 
 * si l'année est divisible par 4  
-  et non divisible par 100  
-  ou
-* si l'année est divisible par 400
+  et non divisible par 100
+* ou si l'année est divisible par 400
 
         bool is_leap_year(int year);
 
-### Exercice : Écrire les tests unitaires
+-------------------
+
+Exercice : **Coder**
+
+
+Par où commencer ?
+------------------
+
+**Écrire les tests unitaires** <!--.element: class="fragment"-->
 
 
 Test the function `is_leap_year()`
