@@ -78,6 +78,14 @@ mettle::suite<> basic("Leap Year", [](auto &_) {
 ```
 
 
+lest
+----
+
+*lest errors escape testing*
+
+https://github.com/martinmoene/lest
+
+
 Tester les invariants
 ---------------------
 
