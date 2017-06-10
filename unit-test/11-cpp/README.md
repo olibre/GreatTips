@@ -118,14 +118,14 @@ Trompeloeil
 ![trompeloeil logo](https://raw.githubusercontent.com/rollbear/trompeloeil/master/trompeloeil-logo.png)
 
 * Header only C++14 mocking framework
-* [GitHub](https://github.com/TankerApp/mockaron)
+* [GitHub](https://github.com/rollbear/trompeloeil)
 
 
 Mockaron
 --------
 
 * [GitHub](https://github.com/TankerApp/mockaron)
-* [Présentation](cpp-frug.github.io/paris/events/2017-05-18_n17/mockaron/mock.html)
+* [Présentation](http://cpp-frug.github.io/paris/events/2017-05-18_n17/mockaron/mock.html)
 
 
 C++ Great Practices
