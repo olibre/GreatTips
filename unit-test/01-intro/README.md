@@ -34,9 +34,10 @@ Résumé
 Définition
 ----------
 
-Test Unitaire : Peut être lancé en parallèle sur la même machine
+Test Unitaire : **Peut être lancé en parallèle sur la même machine**
 
-(le test qui accéde aux fichiers ou au réseau n'est pas un TU)
+* Le test qui accéde aux fichiers ou au réseau est un test intéressant à conserver mais ne correspond pas à cette définition
+* Néanmoins les données peuvent être chargées à l'avance pour jouer une suite des tests unitaires
 
 
 Great Unit Test
