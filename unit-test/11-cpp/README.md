@@ -89,17 +89,23 @@ QuickCheck
 
     TODO Fournir quelques exemples
 
+* https://github.com/grogers0/CppQuickCheck
+
 
 autocheck
 ---------
 
     TODO Fournir quelques exemples
 
+* https://github.com/thejohnfreeman/autocheck
+
 
 rapidcheck
 ----------
 
     TODO Fournir quelques exemples
+
+* https://github.com/emil-e/rapidcheck
 
 
 Mock
