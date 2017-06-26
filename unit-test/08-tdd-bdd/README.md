@@ -6,26 +6,31 @@ Methodologies
 Technical debt
 --------------
 
-* Technology debt (outdated underlying technologies)
-* Documentation debt (too little or too disseminated)
-* **Test debt**
+* <!--.element: class="fragment"-->
+  Technology debt (outdated underlying technologies)
+* <!--.element: class="fragment"-->
+  Documentation debt (too little or too disseminated)
+* <!--.element: class="fragment"-->
+  **Test debt**
 
 <!--.element: class="fragment"-->
 
-* How is your project in debt?
-* How to reduce your **test debt**?
+* <!--.element: class="fragment"-->
+  How is your project in debt?
+* <!--.element: class="fragment"-->
+  How to reduce your **test debt**?
 
 
 Relation between Test and development
 -------------------------------------
 
-&nbsp;                            Process                           |Sigle| Description
---------------------------------------------------------------------|-----|-----------------------------
-<!--.element: class="fragment"--> Plain Old Unit Test               | POUT| Write the test **AFTER the feature**
-<!--.element: class="fragment"--> [Test-First Programming][TFD]     | TFD | Write the test **BEFORE the feature**
-<!--.element: class="fragment"--> [Test-Driven Development][TDD]    | TDD | The test is **the design** of the implementation
-<!--.element: class="fragment"--> [Behavior-Driven Development][BDD]| BDD | Same as TDD but **business oriented**
-<!--.element: class="fragment"--> Defect-Driven Testing             | DDT | Write the test **BEFORE the fix**
+Process                           |Sigle| Description
+----------------------------------|-----|-----------------------------
+Plain Old Unit Test               | POUT| Write the test **AFTER the feature** <!--.element: class="fragment"-->
+[Test-First Programming][TFD]     | TFD | Write the test **BEFORE the feature** <!--.element: class="fragment"-->
+[Test-Driven Development][TDD]    | TDD | The test is **the design** of the implementation <!--.element: class="fragment"-->
+[Behavior-Driven Development][BDD]| BDD | Same as TDD but **business oriented** <!--.element: class="fragment"-->
+Defect-Driven Testing             | DDT | Write the test **BEFORE the fix** <!--.element: class="fragment"-->
 
 [TFD]: https://stackoverflow.com/a/17707188/938111
 [TDD]: https://fr.wikipedia.org/wiki/Test_driven_development
@@ -35,7 +40,7 @@ Relation between Test and development
 Out of scope (1)
 ------------
 
-Sigle  | Methodologie
+Sigle  | Process
 -------|--------------------------------------------------------------
 ~~TDD~~| [Test-Driven Decoupling](http://reuzz.net/video/watch/vid01KF44GogeBrs)
   TDR  | Test-Driven Requirements
@@ -49,12 +54,12 @@ Sigle  | Methodologie
 Out of scope (2)
 ------------
 
-Sigle  | Methodologie
--------|--------------------------------------------------------------
-  EDD  | Example-Driven Development
-  SBE  | [Specification By Example][SBE]
-  SDD  | Story test–Driven Development
-  FDD  | [Feature-Driven Development][FDD]
+Sigle | Process
+------|--------------------------------------------------------------
+ EDD  | Example-Driven Development
+ SBE  | [Specification By Example][SBE]
+ SDD  | Story test–Driven Development
+ FDD  | [Feature-Driven Development][FDD]
 
 [SBE]:  http://en.wikipedia.org/wiki/Specification_by_example
 [FDD]:  http://en.wikipedia.org/wiki/Feature-driven_development
@@ -63,13 +68,13 @@ Sigle  | Methodologie
 Out of scope (3)
 ------------
 
-Sigle  | Methodologie
--------|--------------------------------------------------------------
-  DDD  | [Domain-Driven Design][DDD]
-  MDE  | [Model-Driven Engineering][MDE]
-  MDA  | [Model-Driven Architecture][MDA]
-  MDSD | [Model-Driven Software Development][MDSD]
-  OOAD | [Object-Oriented Analysis and Design][OOAD]
+Sigle | Process
+------|--------------------------------------------------------------
+ DDD  | [Domain-Driven Design][DDD]
+ MDE  | [Model-Driven Engineering][MDE]
+ MDA  | [Model-Driven Architecture][MDA]
+ MDSD | [Model-Driven Software Development][MDSD]
+ OOAD | [Object-Oriented Analysis and Design][OOAD]
 
 [DDD]:  http://en.wikipedia.org/wiki/Domain-driven_design
 [MDE]:  http://en.wikipedia.org/wiki/Model-driven_engineering
@@ -81,12 +86,12 @@ Sigle  | Methodologie
 Out of scope (4)
 ------------
 
-Sigle  | Methodologie
--------|--------------------------------------------------------------
-  MBD  | [Model-Based Design][MBD]
-  MBT  | [Model-Based Testing][MBT]
-  DDT  | [Data-Driven Testing][DDT]
-  KDT  | [Keyword-Driven Testing][KDT]
+Sigle | Process
+------|--------------------------------------------------------------
+ MBD  | [Model-Based Design][MBD]
+ MBT  | [Model-Based Testing][MBT]
+ DDT  | [Data-Driven Testing][DDT]
+ KDT  | [Keyword-Driven Testing][KDT]
 
 [MBD]:  http://en.wikipedia.org/wiki/Model-based_design
 [MBT]:  http://en.wikipedia.org/wiki/Model-based_testing
