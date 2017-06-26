@@ -19,13 +19,13 @@ Technical debt
 Test before or after development
 --------------------------------
 
-Process                           | Sigle| Description
-----------------------------------|------|-----------------------------
-Plain Old Unit Test               | POUT | Write the test **AFTER the feature**
-[Test-First Programming][TDD]     | TDD  | Write the test **BEFORE the feature**
-[Test-Driven Development][TDD]    | TDD  | The test is the design of the implementation
-[Behavior-Driven Development][BDD]| BDD  | Same as TDD but business oriented
-Defect-Driven Testing             | DDT  | Write the test **BEFORE the fix**
+                                  Process                           |Sigle| Description
+--------------------------------------------------------------------|-----|-----------------------------
+<!--.element: class="fragment"--> Plain Old Unit Test               | POUT| Write the test **AFTER the feature**
+<!--.element: class="fragment"--> [Test-First Programming][TFD]     | TFD | Write the test **BEFORE the feature**
+<!--.element: class="fragment"--> [Test-Driven Development][TDD]    | TDD | The test is **the design** of the implementation
+<!--.element: class="fragment"--> [Behavior-Driven Development][BDD]| BDD | Same as TDD but **business oriented**
+<!--.element: class="fragment"--> Defect-Driven Testing             | DDT | Write the test **BEFORE the fix**
 
 [TFD]: https://stackoverflow.com/a/17707188/938111
 [TDD]: https://fr.wikipedia.org/wiki/Test_driven_development
@@ -97,11 +97,14 @@ Sigle  | Methodologie
 Where is the GUT?
 -----------------
 
-**G**reat **U**nit **T**ests not a methodology
+<!--.element: class="fragment"-->
+**G**reat **U**nit **T**ests is **not** a methodology
 
-* POUT **may** produce **GUT**s
-* DDT **should** produce **GUT**s
-* TDD & BDD **must** produce **GUT**s
+* <!--.element: class="fragment"--> POUT **may** produce **GUT**s
+* <!--.element: class="fragment"--> TFD **should** produce **GUT**s
+* <!--.element: class="fragment"--> TDD **must** produce **GUT**s
+* <!--.element: class="fragment"--> BDD **must** produce **GUT**s
+* <!--.element: class="fragment"--> DDT **should** produce **GUT**s
 
 **GUT**s are **the result** of different methodologies
 
@@ -109,7 +112,7 @@ Where is the GUT?
 Test-Driven Development
 -----------------------
 
-Développement **piloté** par les tests.
+Développement **piloté** par les tests: de la conception à l'imlémentation.
 
 Philippe Bourgeon (2016)
 
