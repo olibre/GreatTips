@@ -19,18 +19,20 @@ Technical debt
 Test before or after development
 --------------------------------
 
-Process                           | Abbr.| Description
+Process                           | Sigle| Description
 ----------------------------------|------|-----------------------------
 Plain Old Unit Test               | POUT | Write the test **AFTER the feature**
-[Test-Driven Development][TDD]    | TDD  | Write the test **BEFORE the feature**
-[Behavior-Driven Development][BDD]| BDD  | Same as TDD
+[Test-First Programming][TDD]     | TDD  | Write the test **BEFORE the feature**
+[Test-Driven Development][TDD]    | TDD  | The test is the design of the implementation
+[Behavior-Driven Development][BDD]| BDD  | Same as TDD but business oriented
 Defect-Driven Testing             | DDT  | Write the test **BEFORE the fix**
 
+[TFD]: https://stackoverflow.com/a/17707188/938111
 [TDD]: https://fr.wikipedia.org/wiki/Test_driven_development
-[BDD]:  http://fr.wikipedia.org/wiki/Behavior_driven_development
+[BDD]: https://fr.wikipedia.org/wiki/Behavior_driven_development
 
 
-Out of scope
+Out of scope (1)
 ------------
 
 Sigle  | Methodologie
@@ -40,32 +42,56 @@ Sigle  | Methodologie
   DDD  | Defect-Driven Development
   D3   | Design-Driven Development
   ATDD | [Acceptance Test–Driven Development][ATDD]
+
+[ATDD]: http://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development
+
+
+Out of scope (2)
+------------
+
+Sigle  | Methodologie
+-------|--------------------------------------------------------------
   EDD  | Example-Driven Development
-  SBE  | [Specification by example][SBE]
+  SBE  | [Specification By Example][SBE]
   SDD  | Story test–Driven Development
   FDD  | [Feature-Driven Development][FDD]
+
+[SBE]:  http://en.wikipedia.org/wiki/Specification_by_example
+[FDD]:  http://en.wikipedia.org/wiki/Feature-driven_development
+
+
+Out of scope (3)
+------------
+
+Sigle  | Methodologie
+-------|--------------------------------------------------------------
   DDD  | [Domain-Driven Design][DDD]
   MDE  | [Model-Driven Engineering][MDE]
   MDA  | [Model-Driven Architecture][MDA]
   MDSD | [Model-Driven Software Development][MDSD]
-  MBT  | [Model-Based Testing][MBT]
-  MBD  | [Model-Based Design][MBD]
-  DDT  | [Data-Driven Testing][DDT]
-  KDT  | [Keyword-Driven Testing][KDT]
   OOAD | [Object-Oriented Analysis and Design][OOAD]
 
-[ATDD]: http://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development
-[SBE]:  http://en.wikipedia.org/wiki/Specification_by_example
-[FDD]:  http://en.wikipedia.org/wiki/Feature-driven_development
 [DDD]:  http://en.wikipedia.org/wiki/Domain-driven_design
 [MDE]:  http://en.wikipedia.org/wiki/Model-driven_engineering
 [MDA]:  http://en.wikipedia.org/wiki/Model-driven_architecture
 [MDSD]: http://en.wikipedia.org/wiki/Model-driven_engineering
-[MBT]:  http://en.wikipedia.org/wiki/Model-based_testing
+[OOAD]: http://en.wikipedia.org/wiki/Object-oriented_analysis_and_design
+
+
+Out of scope (4)
+------------
+
+Sigle  | Methodologie
+-------|--------------------------------------------------------------
+  MBD  | [Model-Based Design][MBD]
+  MBT  | [Model-Based Testing][MBT]
+  DDT  | [Data-Driven Testing][DDT]
+  KDT  | [Keyword-Driven Testing][KDT]
+
 [MBD]:  http://en.wikipedia.org/wiki/Model-based_design
+[MBT]:  http://en.wikipedia.org/wiki/Model-based_testing
 [DDT]:  http://en.wikipedia.org/wiki/Data-driven_testing
 [KDT]:  http://en.wikipedia.org/wiki/Keyword-driven_testing
-[OOAD]: http://en.wikipedia.org/wiki/Object-oriented_analysis_and_design
 
 
 Where is the GUT?
