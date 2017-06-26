@@ -7,19 +7,19 @@ Technical debt
 --------------
 
 * Technology debt (outdated underlying technologies)
-* Documentation debt (too little or too much)
+* Documentation debt (too little or too disseminated)
 * **Test debt**
 
-<!-- -->
+<!--.element: class="fragment"-->
 
 * How is your project in debt?
 * How to reduce your **test debt**?
 
 
-Test before or after development
---------------------------------
+Relation between Test and development
+-------------------------------------
 
-                                  Process                           |Sigle| Description
+&nbsp;                            Process                           |Sigle| Description
 --------------------------------------------------------------------|-----|-----------------------------
 <!--.element: class="fragment"--> Plain Old Unit Test               | POUT| Write the test **AFTER the feature**
 <!--.element: class="fragment"--> [Test-First Programming][TFD]     | TFD | Write the test **BEFORE the feature**
