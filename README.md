@@ -5,6 +5,8 @@ Good and Great Practices for Coders
 
 This documentation is maintained with faireness in mind and shared in [Public Domain](#public-domain-dedication).
 
+View this Markdown file [in presentation format](http://olibre.github.io/GreatPractices/pres.html#/) (reveal.js).
+
 
 Documents
 =========
