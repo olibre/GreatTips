@@ -91,29 +91,18 @@ Tester les invariants
 
 *Couverture de données*
 
+Les premières implémentations en C++ ont été [C++ QuickCheck](https://github.com/grogers0/CppQuickCheck), puis [AutoCheck](https://github.com/thejohnfreeman/autocheck).
 
-QuickCheck
-----------
-
-    TODO Fournir quelques exemples
-
-* https://github.com/grogers0/CppQuickCheck
+Aujourd'hui, c'est le projet [RapidCheck](https://github.com/emil-e/rapidcheck) qui est le plus actif et propose le plus de fonctionnalités.
 
 
-autocheck
----------
-
-    TODO Fournir quelques exemples
-
-* https://github.com/thejohnfreeman/autocheck
-
-
-rapidcheck
+RapidCheck
 ----------
 
     TODO Fournir quelques exemples
 
 * https://github.com/emil-e/rapidcheck
+
 
 
 Mock
