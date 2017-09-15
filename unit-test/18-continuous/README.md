@@ -14,7 +14,7 @@ The Pragmatic Programmer by Andrew Hunt and David Thomas (1999)
 > * **Test often**
 > * **Test automatically**
 
-Continuous Testing is spart of | &nbsp;
+Continuous Testing is part of  | &nbsp;
 -------------------------------|---------------------
 Continuous Integration         | Intégration Continue
 Continuous Delivery            | Livraison Continue
