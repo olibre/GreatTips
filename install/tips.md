@@ -21,13 +21,19 @@ You are here because you cannot do `sudo visudo` but you can try:
     su  # enter root password
     visudo
 
-Append in the bottom
+Append in the bottom, before the line `#includedir /etc/sudoers.d`
 
     yourlogin ALL=(ALL) NOPASSWD:ALL
 
 or if you prefer having to enter your password:
 
     yourlogin ALL=(ALL) ALL
+
+or intermediate, only for commands `xxx` and `yyy`:
+
+    yourlogin ALL=(ALL:ALL) ALL
+    yourlogin ALL=(ALL:ALL) NOPASSWD: /usr/sbin/xxx
+    yourlogin ALL=(ALL:ALL) NOPASSWD: /usr/sbin/yyy
 
 
 Install packages
