@@ -12,7 +12,7 @@ Else you use a fast and recent X11 client (i.e. not Windows)
 
     export TERM=xterm-256color
 
-    
+
 Become a sudoer
 ===============
 
@@ -25,15 +25,25 @@ Append in the bottom, before the line `#includedir /etc/sudoers.d`
 
     yourlogin ALL=(ALL) NOPASSWD:ALL
 
-or if you prefer having to enter your password:
+
+No password for `sudo`
+======================
+
+Edit file `/etc/sudoers`
+
+    sudo visudo
+
+To never had to enter a password for any command,
+append in the bottom, before the line `#includedir /etc/sudoers.d`  
+(or replace the line `yourlogin ALL=(ALL) NOPASSWD:ALL`)
 
     yourlogin ALL=(ALL) ALL
 
-or intermediate, only for commands `xxx` and `yyy`:
+or only for commands `apt` and `adduser`:
 
     yourlogin ALL=(ALL:ALL) ALL
-    yourlogin ALL=(ALL:ALL) NOPASSWD: /usr/sbin/xxx
-    yourlogin ALL=(ALL:ALL) NOPASSWD: /usr/sbin/yyy
+    yourlogin ALL=(ALL:ALL) NOPASSWD: /usr/bin/apt
+    yourlogin ALL=(ALL:ALL) NOPASSWD: /usr/sbin/adduser
 
 
 Install packages
