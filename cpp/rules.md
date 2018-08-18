@@ -49,7 +49,7 @@ To contibute:
 * `lower_case` = minuscule `[a-z]` and digit `[0-9]` (and underscore `'_'` to delimite words)
 * `UPPER_CASE` = majuscule `[A-Z]` and digit `[0-9]` (and underscore `'_'` to delimite words)
 * `camelCase` = start with a lowercase word and capitalize next words
-* `CamelCase` = capitalize and concatenate words
+* `PascalCase` = capitalize and concatenate words
 
 
 
@@ -604,7 +604,7 @@ as modern IDEs display underlying types.
 Notation                          | Meaning
 ----------------------------------|----------------------
 `UPPER_CASE`                      | Macros and Constants
-`CamelCase` and `lower_case_type` | Types and nested types
+`PascalCase` and `lower_case_type` | Types and nested types
 `camelCase` and `lower_case`      | Functions and Variables
 
 
@@ -628,7 +628,7 @@ Notation                          | Meaning
 
 ## `N.CST` &nbsp; Constant/Enum in `UPPER_CASE`
 
-* `enum class` (C++11) values can use `CamelCase` notation because the prefix `EnumName::` clarify the meaning
+* `enum class` (C++11) values can use `PascalCase` notation because the prefix `EnumName::` clarify the meaning
 
 Priority:
 
@@ -664,9 +664,9 @@ static const int32_t MAX_COUNTER = 20; // Link is internal for both
 See also [codeproject.com/The One Definition Rule in C++11 and C++14: Constant Expressions and Inline Functions](http://www.codeproject.com/Articles/762413/The-One-Definition-Rule-in-Cplusplus-and-Cplusplus).
 
 
-## `N.TYP` &nbsp; Types in `CamelCase`
+## `N.TYP` &nbsp; Types in `PascalCase`
 
-* User-defined `class`/`struct`/`union`/`enum` names in `CamelCase`
+* User-defined `class`/`struct`/`union`/`enum` names in `PascalCase`
 * Underscore `'_'` should not be required, but can be accepted
 * Notation `lower_case_type` (i.e. suffix `_type`) can be used for nested types
 * Suffix `*_t` should not be used because reserved for potential future C++ standard types (see type shadowing)
@@ -691,7 +691,7 @@ class myNewClass;
 ```
 
 
-## `N.ITF` &nbsp; Interface in `ICamelCase`
+## `N.ITF` &nbsp; Interface in `IPascalCase`
 
 * Prefix `'I'` for class specifing an interface (i.e. pure abstract class)  
   <small>(See also [corresponding question on StackExchange][])</small>
@@ -786,7 +786,7 @@ int32_t divideByTwo (int32_t         qty,    ///<[in] quantity
 ```
 
 
-`N.TTP` &nbsp; Type template parameter `CamelCase_t` expresses the capability
+`N.TTP` &nbsp; Type template parameter `PascalCase_t` expresses the capability
 -----------------------------------------------------------------------------
 
 * The suffix `_t` may clarify code but is optional
@@ -801,11 +801,11 @@ class MyClass
 ```
 
 
-`N.NTP` &nbsp; Non-type template parameter `UPPER_CASE` (or `CamelCase`)
+`N.NTP` &nbsp; Non-type template parameter `UPPER_CASE` (or `PascalCase`)
 ------------------------------------------------------------------------
 
 * Non-Type template parameters are constants, therefore could be logic to be in `UPPER_CASE`
-* However `CamelCase` may also be used if it renders better
+* However `PascalCase` may also be used if it renders better
 
 ```cpp
 template<size_t SIZE = 512>
