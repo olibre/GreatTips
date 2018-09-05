@@ -39,10 +39,11 @@ Therefore, this document aims to provide *lovely rules for happy devs*:
 We prefer an helpful guide rather than a list of static outdated restrictions.
 Please help maintening this document: suggest/add/remove/clarify/simplify rules.
 
-To contibute:
+Choose the way you want to contribute:
 
-* Fork [this project](https://github.com/olibre/CppCoding) and edit the corresponding Markdown file.
-* You can also directly annotate this file (or open an [issue](https://github.com/olibre/CppCoding/issues)).
+* Fork [this project](https://github.com/olibre/CppCoding), edit the corresponding Markdown file and request a merge.
+* Annotate this Markdown file.
+* Open an [issue](https://github.com/olibre/CppCoding/issues)).
 
 ## Notation shortcuts
 
