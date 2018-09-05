@@ -8,7 +8,7 @@ If you use PuTTY/MobaXterm/... on Windows to access your Linux VM, add in your `
 
     export TERM=linux
     
-Else you use a fast and recent X11 client (i.e. not Windows)
+Or a recent X11 client:
 
     export TERM=xterm-256color
 
@@ -23,7 +23,7 @@ You are here because you cannot do `sudo visudo` but you can try:
 
 Append in the bottom, before the line `#includedir /etc/sudoers.d`
 
-    yourlogin ALL=(ALL) NOPASSWD:ALL
+    yourlogin ALL=(ALL) ALL
 
 
 No password for `sudo`
@@ -35,9 +35,9 @@ Edit file `/etc/sudoers`
 
 To never had to enter a password for any command,
 append in the bottom, before the line `#includedir /etc/sudoers.d`  
-(or replace the line `yourlogin ALL=(ALL) NOPASSWD:ALL`)
+(or replace the line `yourlogin ALL=(ALL) ALL`)
 
-    yourlogin ALL=(ALL) ALL
+    yourlogin ALL=(ALL) NOPASSWD: ALL
 
 or only for commands `apt` and `adduser`:
 
@@ -53,24 +53,13 @@ Use `sudo apt install` or `sudo dnf install` or any other packge manager...
 
     gcc-c++ git cmake boost-devel zlib-devel gtest-devel
     lcov gcovr           # Source-code coverage
-    openssl-devel        # Often required by app dependencies
     clang                # Run static analyzer, formatter...
     ccache               # Reduce build time
-    samba                # Access remote files from Windows
     doxygen graphviz     # Generate source-code doc
     bash-completion      # Optional
     man-pages            # man pages for kernel/glibc/...
     man-pages-fr         # Si pas comprendre Anglais
     gedit-plugins        # Display special characters with gedit
-    libbsd-devel         # For Pid file management
-    libpcap-devel        # To read PCAP files (see tcpdump)
-    lz4-devel            # For compression
-    ansible              # To deploy package and configuration on machines
-    sqlite-devel         # some database libs
-    rocksdb-devel        # some database libs
-    mysql-connector-c++  # some database libs
-    libcurl-devel
-    poco-devel perl-XML-*
 
 Enabling multicast reception
 ============================
@@ -110,11 +99,27 @@ On remote GNU/Linux server
 
 On Windows desktop:
 
-* Check if you can access to your remote shared folder using `telnet <your-VM-hostname> 139` (if it connects the route is OK)  
-  If you do not have `telnet` see if you can use [PowerShell](http://stackoverflow.com/a/35624189/938111)
-* Access to your remote folder using `\\<hostname>` (or use the remote IP)  
+* Check access to your remote folder
+    
+        telnet <your-VM-hostname> 139
+  
+  If you do not have `telnet` see if you can use [PowerShell](http://stackoverflow.com/a/35624189/938111).
+  
+* Access to your remote folder using `\\<your-VM-hostname>` (or use the remote IP)  
   Attention: the hostname printed on remote machine by the commande `hostname` may be different from the `hostname` used from your Windows machine to access it.
 
+Optional : To follow symbolic link, add following lines in `/etc/samba/smb.conf` within section `global`
+
+    [global]
+    follow symlinks = yes
+    wide links = yes
+    unix extensions = no
+    allow insecure wide links = yes
+
+Optional : Disable execution right to text files
+
+    [homes]
+    create mask = 0644
 
 Synchronize Password
 ====================
@@ -156,7 +161,7 @@ Edit `/etc/cntlm.conf` and add:
 
 ```
 Username <your-LDAP-login>
-Domain OAD
+Domain <YOUR-DOMAIN>
 Proxy 172.26.96.40:8080
 ```
 
@@ -166,7 +171,7 @@ Execute the following command:
 cntlm -u <your-LDAP-login>@<YOUR-DOMAIN> -c /etc/cntlm.conf -fHv 172.26.96.40:8080
 ```
 
-It displays information including lines similar to those shown here (they are false hashes of course):
+Output looks like:
 
 ```
 PassLM          F24088884CAA1525DE181A69088B6BC0
@@ -174,7 +179,8 @@ PassNT          E6C2328DE92875B434CAB1C4154C605A
 PassNTLMv2      1538049C3DC73B6324C38D7B43E3D9BR
 ```
 
-Paste those into `/etc/cntlm.conf`. Edit `/etc/sysconfig/cntlmd` and change the last line to:
+Copy-paste these output lines into `/etc/cntlm.conf`.  
+Edit `/etc/sysconfig/cntlmd` and change the last line to:
 
 ```
 OPTARGS="-c /etc/cntlm.conf"
@@ -187,17 +193,23 @@ sudo mkdir /var/run/cntlm
 sudo chown cntlm: /var/run/cntlm
 sudo systemctl daemon-reload
 sudo systemctl enable cntlm
+
+# Old Red-Hat
 sudo systemctl start cntlm
 sudo systemctl status cntlm
+
+# Red-Hat 7.2
+sudo service cntlm start
+sudo service cntlm status
 ```
 
-Then check if the proxy is correctly launched
+Check the proxy:
 
 ```bash
 sudo netstat -tlpn | grep 3128
 ```
 
-You can also add in your `~/.bashrc`
+Add in your `~/.bashrc`
 
 ```bash
 export https_proxy=127.0.0.1:3128
