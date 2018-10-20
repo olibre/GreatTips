@@ -89,7 +89,7 @@ Provide recent tools
 * Share packages with other teams
 * On Ubuntu Linux, the team may use *Ubuntu Make*
 
-The team decide the list of tools. Example:
+The team decides the list of tools. Example:
 
 * git
 * cmake
@@ -135,6 +135,8 @@ Improve documentation
 * Portal : One single entry point to access all project parts (Git repos, jenkins, redmine, any documentation)
 * Group together and clean the dispatched documentations
 * Encourage documentation across the source tree using README.md files (Markdown)
+* Generate documentation from source code using, for example, [Doxygen + Clang](http://www.stack.nl/~dimitri/doxygen/manual/config.html#cfg_clang_assisted_parsing), [`clang-doc`](https://clang.llvm.org/extra/clang-doc.html) or [`cldoc`](https://github.com/jessevdk/cldoc)...
+* Show the tests (Unit Tests, Acceptance Tests...) as source code specification.
 
 
 Test suite
@@ -193,10 +195,10 @@ More warnings
 =============
 
 * Use several compilers (GCC, Clang, MSVC)
-* Use warning `clang -WDocument` to detect inconsistencies between code and  doxygen comments
-* Use warning `clang -WEverything`
 * Use warning `-Weffc++` based on Effective C++ series of books from Scott Meyers
 * Use warning `-pedantic` to detect code not following ISO C++ (e.g. GNU extensions)
+* Use warning [`clang -WDocumentation`](https://clang.llvm.org/docs/UsersManual.html#cmdoption-wdocumentation) to detect inconsistencies between code and  doxygen comments
+* Test warning `clang -WEverything`
 * See more at https://github.com/olibre/CodingGoodPractices/blob/gh-pages/cpp/rules.md#cwrn--activate-compilation-warnings
 
 
