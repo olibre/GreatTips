@@ -17,8 +17,8 @@ The above commands do the same as directly editing the file `~/.gitconfig`
 ```ini
 $ cat ~/.gitconfig
 [user]
-  name  = Joe Jackson
-  email = jjackson@example.com
+name  = Joe Jackson
+email = jjackson@example.com
 ```
 If you use different names accross your Git repository, configure it for each Git repository after clonning it:
 
@@ -36,79 +36,19 @@ Above command line is same as putting the following lines in `~/.gitconfig`:
 
 ```ini
 [core]
-  editor = vim
+editor = vim
 ```
 
 Default editor is used on `git commit myfile` or `git rebase -i`
 
 
-Other tricks
+Line endings
 ------------
 
-Append in your `~/.gitconfig`
-
-```ini
-[color]
-    ui = auto              # Use terminal color when available
-[push]
-    default = simple       # Make “git push” without argument push the current branch to the remote branch with the same name.
-[pull]
-    rebase = preserve      # Ensure “git pull” will use rebase instead of merge, preserving existing local merges
-[rebase]
-    autoStash = true       # 'git pull --rebase' => 'git stash' before and 'git stash pop' after
-[diff]
-    mnemonicPrefix = true  # Improve “git diff” output of source/target
-    renames = true         # and detect renames
-[log]
-    abbrevCommit = true    # Make “git log” show abbreviated SHA1
-[rerere]
-    enabled = true         # Make Git automatically record and re-apply conflicts resolution
-    autoupdate = true      # Automatically add to index auto-resolved conflicts
-
-[alias]
-    # Show improved logs (colors, branch graphs…)
-    lo  = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines
-    lof = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines --follow --find-copies-harder
-    # Shortcut for status command
-    st = status
-    # Amend latest commit keeping the same commit message
-    oops = commit --amend --no-edit
-    track-all-remote-branches = ! git branch -a | grep \"^\\s*remotes/[^>]*$\" | xargs --interactive -L1 git checkout --track
-    di = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
-
-# Below merge/diff inspired from mattst http://stackoverflow.com/a/34119867/938111
-
-[merge]
-    conflictstyle = diff3
-    tool = meld
-[mergetool "meld"]
-    # Choose one of these 2 lines (not both)
-    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
-    #md = meld "$LOCAL" "$BASE"   "$REMOTE" --output "$MERGED"
-
-[diff]
-    tool    = meld #kdiff3
-    guitool = meld #kdiff3 #kompare
-    algorithm = patience
-[difftool]
-    prompt = false
-#[difftool "kdiff3"]
-#    cmd = kdiff3 $LOCAL $REMOTE --output $MERGED
-#[difftool "meld"]
-#    cmd = meld "$LOCAL" "$REMOTE"
-
-[core]
-    autocrlf = input # preserve CRLF when file has been created on Windows
-
-[fetch]
-    prune = true # delete local branches that have been deleted on remote repo
-[gui]
-    pruneDuringFetch = true
-```
-
-Set Unix line endings in git config like [GitHub recommends](https://help.github.com/articles/dealing-with-line-endings#platform-all):
+Always Unix line endings, but preserve wrong line endings if already pushed.
+See also [GitHub help](https://help.github.com/articles/dealing-with-line-endings#platform-all).
     
-* on Linux or OS X
+* on Linux/macOS/...
     
         git config --global core.autocrlf input
     
@@ -116,16 +56,96 @@ Set Unix line endings in git config like [GitHub recommends](https://help.github
     
         git config --global core.autocrlf true
 
+Result on Linux/macOS:
+
+```ini
+[core]
+autocrlf = input  # preserve CRLF when file has been created on Windows
+```
+
+
+Other tricks
+------------
+
+
+Append in your `~/.gitconfig`
+
+```ini
+[color]
+ui = auto              # Use terminal color when available
+
+[push]
+default = simple       # Make “git push” without argument push the current branch to the remote branch with the same name.
+
+[pull]
+rebase = preserve      # Ensure “git pull” will use rebase instead of merge, preserving existing local merges
+
+[rebase]
+autoStash = true       # 'git pull --rebase' => 'git stash' before and 'git stash pop' after
+
+[diff]
+mnemonicPrefix = true  # Improve “git diff” output of source/target
+renames = true         # and detect renames
+
+[log]
+abbrevCommit = true    # Make “git log” show abbreviated SHA1
+
+[rerere]
+enabled = true         # Make Git automatically record and re-apply conflicts resolution
+autoupdate = true      # Automatically add to index auto-resolved conflicts
+
+[alias]
+# Shortcut for status command
+st = status
+# Show improved logs (colors, branch graphs...)
+lo  = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines
+lof = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines --follow --find-copies-harder
+# Amend latest commit keeping the same commit message
+oops = commit --amend --no-edit
+track-all-remote-branches = ! git branch -a | grep \"^\\s*remotes/[^>]*$\" | xargs --interactive -L1 git checkout --track
+di = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
+
+# Below merge/diff inspired from mattst http://stackoverflow.com/a/34119867/938111
+
+[merge]
+conflictstyle = diff3
+tool = meld
+
+[mergetool "meld"]
+# Choose one of these 2 lines (not both)
+cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+#md = meld "$LOCAL" "$BASE"   "$REMOTE" --output "$MERGED"
+
+[diff]
+tool    = meld #kdiff3
+guitool = meld #kdiff3 #kompare
+algorithm = patience
+
+[difftool]
+prompt = false
+# [difftool "kdiff3"]
+# cmd = kdiff3 $LOCAL $REMOTE --output $MERGED
+# [difftool "meld"]
+# cmd = meld "$LOCAL" "$REMOTE"
+
+[fetch]
+prune = true # delete local branches that have been deleted on remote repo
+
+[gui]
+pruneDuringFetch = true
+```
+
 Proxy
 -----
 
 ```ini
 [http]
-    proxy = http://your-login:your-password@your-company-hostname:8080/
-    sslVerify = false
+proxy = http://your-login:your-password@your-company-hostname:8080/
+sslVerify = false
+
 [https]
-    proxy = http://your-login:your-password@your-company-hostname:8080/
-    sslVerify = false
+proxy = http://your-login:your-password@your-company-hostname:8080/
+sslVerify = false
 ```
 
 
