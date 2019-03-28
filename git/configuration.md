@@ -1,17 +1,46 @@
 Git configuration
 =================
 
-Before clonning a Git repository, first configure your identity.
+User name and e-mail
+--------------------
+
+Before any commit, first configure your identity.
 
     git config --global user.name "Joe Jackson"
     git config --global user.email "jjackson@example.com"
 
-- `user.name` must be populated with your real name in the following format "FirstName LastName"
-- `user.email` must be your official company email
+- `user.name` in format "FirstName LastName"
+- `user.email` your official email
 
-Set your favorite editor as the defualt editor used by Git (helfull while using `git commit myfile`).
+The above commands do the same as directly editing the file `~/.gitconfig`
 
-    git config --global core.editor vim   # or emacs/nano/gedit/kate/...
+    $ cat ~/.gitconfig
+    [user]
+      email    =  o.hessling@sesamm.com
+      name     =  Oliver
+
+If you use different names accross your Git repository, configure it for each Git repository after clonning it:
+
+    git config --local user.name "Joe Jackson"
+    git config --local user.email "jjackson@example.com"
+
+Text editor
+-----------
+
+Default editor is `nano`. Set your favorite editor:
+
+    git config --global core.editor vim   # or emacs/gedit/kate/geany/nano/...
+
+Above command line is same as putting the following lines in `~/.gitconfig`:
+
+    [core]
+      editor = vim
+
+Default editor is used on `git commit myfile` or `git rebase -i`
+
+
+Other tricks
+------------
 
 Append in your `~/.gitconfig`
 
