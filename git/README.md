@@ -1,7 +1,7 @@
 Configuration
 -------------
 
-* [config](git/configuration.md)
+* [`~/.gitconfig`](./configuration.md)
 
 
 Commit
@@ -12,5 +12,5 @@ Commit
 Branching
 ---------
 
-* [branch](git/branch.md)
+* [branch](./branch.md)
 * https://learngitbranching.js.org/
