@@ -14,11 +14,12 @@ Before any commit, first configure your identity.
 
 The above commands do the same as directly editing the file `~/.gitconfig`
 
-    $ cat ~/.gitconfig
-    [user]
-      email    =  o.hessling@sesamm.com
-      name     =  Oliver
-
+```ini
+$ cat ~/.gitconfig
+[user]
+  name  = Joe Jackson
+  email = jjackson@example.com
+```
 If you use different names accross your Git repository, configure it for each Git repository after clonning it:
 
     git config --local user.name "Joe Jackson"
@@ -33,8 +34,10 @@ Default editor is `nano`. Set your favorite editor:
 
 Above command line is same as putting the following lines in `~/.gitconfig`:
 
-    [core]
-      editor = vim
+```ini
+[core]
+  editor = vim
+```
 
 Default editor is used on `git commit myfile` or `git rebase -i`
 
