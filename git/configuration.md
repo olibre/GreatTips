@@ -76,14 +76,7 @@ Append in your `~/.gitconfig`
     track-all-remote-branches = ! git branch -a | grep \"^\\s*remotes/[^>]*$\" | xargs --interactive -L1 git checkout --track
     di = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
 
-[http]
-    proxy = http://your-login:your-password@your-company-hostname:8080/
-    sslVerify = false
-[https]
-    proxy = http://your-login:your-password@your-company-hostname:8080/
-    sslVerify = false
-
-# [diff] and [merge] inspired from mattst http://stackoverflow.com/a/34119867/938111
+# Below merge/diff inspired from mattst http://stackoverflow.com/a/34119867/938111
 
 [merge]
     conflictstyle = diff3
@@ -122,6 +115,18 @@ Set Unix line endings in git config like [GitHub recommends](https://help.github
 * on Windows
     
         git config --global core.autocrlf true
+
+Proxy
+-----
+
+```ini
+[http]
+    proxy = http://your-login:your-password@your-company-hostname:8080/
+    sslVerify = false
+[https]
+    proxy = http://your-login:your-password@your-company-hostname:8080/
+    sslVerify = false
+```
 
 
 Git submodule hell
