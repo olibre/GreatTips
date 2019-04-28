@@ -17,13 +17,13 @@ https://chiffrer.info/
 Chiffrer
 ========
 
-✔ Chiffrer, Chiffrement
-❌ Crypter, Cryptage (acceptés par l'OQLF)
-❌ Encrypter, Chiffrage
-✔ Déchiffrer (décoder avec la clé secrète)
-✔ Décrypter (décoder sans connaître la clé)
-❌ Message crypté
-✔ Chaîne cryptée (télévision)
+✔️ Chiffrer, Chiffrement  
+❌ Crypter, Cryptage (acceptés par l'OQLF)  
+❌ Encrypter, Chiffrage  
+✔️ Déchiffrer (décoder avec la clé secrète)  
+✔️ Décrypter (décoder sans connaître la clé)  
+❌ Message crypté  
+✔️ Chaîne cryptée (télévision)
 
 
 
