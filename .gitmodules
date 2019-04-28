@@ -1,3 +1,7 @@
 [submodule "java/jline3"]
 	path = java/jline3
 	url = https://github.com/jline/jline3
+[submodule "external/reveal"]
+	path = external/reveal
+	url = https://github.com/hakimel/reveal.js
+	branch = master
