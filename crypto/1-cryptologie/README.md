@@ -38,13 +38,13 @@ Alice et Bob partagent la même clé secrète
 Clé symétrique AES
 ------------------
 
-* Facile à chiffrer/déchiffrer
+* Rapide à chiffrer/déchiffrer
 * Difficile à décrypter
 
 AES (2001), clé 128 bits (2^128 possibilités) ou plus
 
 * En testant 10^12 clés par seconde, il faudrait un milliard de fois l'âge de l'univers pour tout tester
-* On suppose que la NSA met 80 ans en utilisant de nombreuses machines... (2017)
+* On suppose que la NSA met 80 ans en utilisant de nombreuses machines many-core (2017)
 
 
 Cryptographie symétrique
@@ -52,7 +52,7 @@ Cryptographie symétrique
 
 * Astuce : changer fréquement sa clé
 * Toujours aussi rapide à chiffrer/déchiffrer
-* Beacoup trop de clés à décrypter !!!
+* Beacoup trop de clés à décrypter !
 
     Alice ---> Bob
     clé1       clé1  (1 ms)
