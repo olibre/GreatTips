@@ -57,10 +57,10 @@ Clé symétrique AES
   ~= 10⁸⁰ (atomes dans l'univers)
 
 
-Clé symétrique AES
-------------------
+AES 128 bits
+------------
 
-* 128 bits: avec 10¹² clés par seconde  
+* Avec 10¹³ clés par seconde  
   => Un million de milliard  
   &emsp; de fois l'age de l'univers
 
