@@ -1,15 +1,19 @@
 Cryptologie
 ===========
 
-*science du secret*
+*Science du secret*
+-------------------
 
-* Cryptographie, *écriture secrète* (chiffrer)
-* Cryptanalyse, *analyse du secret* (décrypter)
-* Stéganographie, *art de la dissimulation*
+* **Cryptographie**, *écriture secrète* (chiffrer)
+* **Cryptanalyse**, *analyse du secret* (décrypter)
+* **Stéganographie**, *art de la dissimulation*
 
 
-Crypter ou Chiffrer ?
-=====================
+Crypter ou 
+==========
+
+Chiffrer ?
+==========
 
 https://chiffrer.info/
 
@@ -30,21 +34,51 @@ Chiffrer
 Cryptographie symétrique
 ========================
 
-    Alice ---> Bob
+`Alice ---> Bob`
 
 Alice et Bob partagent la même clé secrète
+
+
+Cryptographie symétrique
+========================
+
+* Rapide à chiffrer/déchiffrer
+* Difficile à décrypter
 
 
 Clé symétrique AES
 ------------------
 
-* Rapide à chiffrer/déchiffrer
-* Difficile à décrypter
+* 1998
+* 8-bits processor
+* low RAM
+* 128, 192 et 256 bits
+* 2²⁵⁶ possibilités = 10⁷⁷  
+  ~= 10⁸⁰ (atomes dans l'univers)
 
-AES (2001), clé 128 bits (2^128 possibilités) ou plus
 
-* En testant 10^12 clés par seconde, il faudrait un milliard de fois l'âge de l'univers pour tout tester
-* On suppose que la NSA met 80 ans en utilisant de nombreuses machines many-core (2017)
+AES 128 bits
+------------
+
+* Avec 10¹³ clés par seconde  
+  => Un million de milliard  
+  &emsp; de fois l'age de l'univers
+
+
+Clé symétrique AES
+------------------
+
+* NSA mettrait 80 ans  
+  en utilisant de nombreuses  
+  machines many-core... (2017)
+
+
+Clé symétrique AES
+------------------
+
+* Aucune attaque connue et utilisable
+* Accélération matérielle (processeur)
+* Utilisé par USA, Russie...
 
 
 Cryptographie symétrique
@@ -54,16 +88,17 @@ Cryptographie symétrique
 * Toujours aussi rapide à chiffrer/déchiffrer
 * Beacoup trop de clés à décrypter !
 
-    Alice ---> Bob
-    clé1       clé1  (1 ms)
-    clé2       clé2  (1 ms)
-    ...        ...   (1 ms)
+`Alice ---> Bob` &emsp; &emsp; &emsp; &emsp;  
+`clé1` &emsp; &emsp; `clé1  (1 ms)`  
+`clé2` &emsp; &emsp; `clé2  (1 ms)`  
+`....` &emsp; &emsp; `....  (1 ms)`  
 
 
 Inconvénient du symétrique
 --------------------------
 
-Le grand nombre de clés secrètes à se communiquer secrètement.
+Le grand nombre de clés secrètes  
+à se communiquer secrètement.
 
     Alice  ➡ Bob
       ⬆    ↗  ⬇
@@ -73,30 +108,30 @@ Le grand nombre de clés secrètes à se communiquer secrètement.
 Comment s'échanger secrètement les clés ?
 -----------------------------------------
 
-Eve intercèpe les messages entre Alice et Bob
-
             Eve
-    Alice -------> Bob
+    Alice ➡ ➡ ➡ ➡ Bob
+
+Eve intercèpe les messages entre Alice et Bob
 
 
 Diffie-Hellman (1976)
-=====================
+---------------------
 
                 Eve
 
     Alice    ➡  g^a           Bob
                 g^b    ⬅
     clé g^ab ➡ clé AES
-               message ⬅ AES+g^ab
+               message ⬅  clé AES
 
-* Facile de calculer g^ab pour Alice et Bob
-* Eve connait g^a et g^b mais...
+* Facile de calculer `g^ab` pour Alice et Bob
+* Eve connait `g^a` et `g^b` mais...
 * ... difficile d'inverser l'exponentiation
 
 
 
 Man in the middle
-=================
+-----------------
 
     Alice ➡  g^a ➡ Mallory ➡ g^m ➡ Bob
           ⬅  g^n ⬅         ⬅ g^b ⬅
@@ -105,11 +140,12 @@ Man in the middle
 
 
 
-Cryptographie asymétrique (1970)
-================================
+Cryptographie asymétrique
+-------------------------
 
-1. Clé pour chiffrer
-2. Une autre pour déchiffrer
+* 1970
+* une clé pour chiffrer
+* une autre pour déchiffrer
 
 
 Confidentialité
@@ -118,10 +154,12 @@ Confidentialité
 * Clé publique = chiffrer
 * Clé privée = déchiffrer
 
+[]()
+
     Alice    ➡  publique A        Bob
                 publique B ⬅
     privée A ➡  message1
-                message2   ⬅ privée A
+                message2   ⬅ privée B
 
 
 Signature électronique
@@ -130,30 +168,47 @@ Signature électronique
 * Clé privée = signer (chiffrer)
 * Clé publique = authentifier (déchiffrer)
 
+[]()
+
     Alice    ➡  publique A        Bob
                 publique B ⬅
     privée A ➡  msg1 signé
-                msg2 signé ⬅ privée A
+                msg2 signé ⬅ privée B
 
 
 RSA (1977)
 ----------
 
-* Brevet expiré en 2000
-* Un PC de bureau casse un clé RSA de 256 bits en quelques minutes
-* En 2009, des scientifiques cassent une clé RSA de 768 bits
-* Et en 2049 ? (si secret pendant 30 ans)
-* La recommandation est d'utiliser 2048 bits
-* Pas de méthode connue de la communauté pour casser une clé de 1024 bits
+* 2000, brevet logiciel ➡ domaine public 
+* Un PC de bureau casse RSA 256 bits  
+  en quelques minutes
+* 2009, attaque pour casser un clé 768 bits
+* 2049 ? (si secret pendant 30 ans)
+
+
+RSA
+---
+
+* Recommandation = 2048 bits
+* Pas de méthode connue pour casser clé 1024 bits
 * Utilisé par USA, Russie...
 
 
 Problème des clés asymetriques
 ------------------------------
 
-* Calculs complexes pour chiffer/déchiffrer
-* Utilisé seulement pour échanger les clés symétriques, l'authentification...
-* La suite du chiffrement utilise des clés symétriques
+Calculs complexes  
+(10 à 100 fois plus lent que symétrique)
+  
+
+
+Mix asymetriques et symétriques
+-------------------------------
+  
+* Asymétrique utilisé pour échanger les symétriques  
+  (authentification)
+* La suite du chiffrement utilise les symétriques
+
 
 
 Infrastructure à clés publiques (PKI)
@@ -173,20 +228,29 @@ Infrastructure à clés publiques (PKI)
 Hardware Security Module (HSM)
 ------------------------------
 
-* Unité de calcul seule à connaître des secrets (clé privée)
-* Auto-déstruction de ses données en cas de manipulation physique
-* Plusieurs formats : Ordinateur, carte PCI, carte à puce...
-* Il permet de signer, émettre un certificat fils, déchiffrer un message...
+* Unité de calcul seule à connaître la clé privée
+* Auto-déstruction des clés si manipulation physique
+* Plusieurs formats : PC, carte PCI, carte à puce...
+* Permet de signer, émettre un certificat fils,  
+  déchiffrer un message...
+
 
 
 Fonction de hachage
 -------------------
 
-* MD5 (1991), SHA-1 (1995), SHA-256 (2001), SHA-3 (2012)
 * Empreinte (condensat) de quelques dizaine d'octets
-* Impossible de retrouver le message d'origine (sauf si peu d'octets)
-* Extrement difficile de forger un message ayant la même empreinte
-* Failles découvertes MD5 (1996) et SHA-1 (2005) => Fin d'utilisation
+* Impossible de retrouver le message d'origine
+* Difficile de forger un faux ayant la même empreinte
+
+
+Fonction de hachage
+-------------------
+
+* 1991: **MD5**     (faille découverte en 1996)
+* 1995: **SHA-1**   (2005)
+* 2001: **SHA-256**
+* 2012: **SHA-3**
 
 
 Intégrité
@@ -204,23 +268,31 @@ On ne conserve pas les mots de passe en clair.
 
     fonction_de_hashage(mot_de_passe + sel) -> empreinte salée
 
-* L'utilisateur rentre son mot de passe sur l'interface web
-* Celle-ci calcule l'empreinte salée qui est envoyé au serveur distant
-* Le serveur distant compare l'empreinte salée avec la sienne
+
+Masquer les mots de passe
+-------------------------
+
+* L'utilisateur rentre son mot de passe
+* L'empreinte salée est envoyé au serveur distant
+* Le serveur distant la compare avec celle stockée en base
+
+
+Masquer les mots de passe
+-------------------------
+
 * Le sel est l'ajout d'octets au mot de passe d'origine
 * Le sel des utilisateurs sont différents
 * Ainsi, l'attaque par dictionnaire perd de son intérêt
 
 
-Attaque force brute
--------------------
+Limiter l'attaque force brute
+-----------------------------
 
-Pour les limiter, les algorithmes peuvent :
+* beaucoup de calculs séquentiels => plus de temps
+* beaucoup de mémoire vive => éviter multi-threading
+* ne se paralélise pas bien sur GPU
+* inadapté aux ordinateurs quantiques
 
-* nécessiter beaucoup de calculs séquentiels pour ralonger le temps
-* nécessiter beaucoup de mémoire vive pour éviter le multi-threading
-* ne pas bien se paraléliser sur GPU
-* ne pas être adaptés aux ordinateurs quantiques
 
 
 Résumons les bases

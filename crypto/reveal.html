@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Cryptologie - Blockchaine - Cryptomonnaie - Smartcontracts - Exchange - Business</title>
+
+		<meta name="description" content="Introduction aux cryptomonnaies">
+		<meta name="author" content="olibre">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="../external/reveal/css/reset.css">
+		<link rel="stylesheet" href="../external/reveal/css/reveal.css">
+		<link rel="stylesheet" href="../external/reveal/css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../external/reveal/lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../external/reveal/css/print/pdf.css' : '../external/reveal/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../external/reveal/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<style media="screen" type="text/css">
+			.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 { text-transform: none; }
+			.reveal pre code { max-height: 80%; font-size: +150%; line-height: +120%; }
+			/* .reveal blockquote { font-style: normal; text-align: left; background: rgba(255, 255, 255, 0.2); } */
+			</style>
+
+			<div class="slides">
+				<section data-markdown="1-cryptologie/README.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+
+			</div>
+
+		</div>
+
+		<script src="../external/reveal/js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: '../external/reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../external/reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../external/reveal/plugin/highlight/highlight.js', async: true },
+					{ src: '../external/reveal/plugin/search/search.js', async: true },
+					{ src: '../external/reveal/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../external/reveal/plugin/notes/notes.js', async: true }
+				],
+				
+				width: "100%",
+				height: "100%",
+				// For videos in 4:3
+				//width : 1440,
+				//height : 1080,
+				margin: 0.1,
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+
+		</script>
+
+	</body>
+</html>
