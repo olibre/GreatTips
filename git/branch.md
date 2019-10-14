@@ -1,5 +1,20 @@
-Git branching model and workflow
-================================
+Git branches
+============
+
+Understand the difference between the following:
+
+    git merge --fast-forward     origin/<another-branch>
+    git merge --no-fast-forward  origin/<another-branch>
+    git merge --squash           origin/<another-branch>
+    git rebase                   origin/<another-branch>
+
+![animated image showing the difference between git commands merge/rebase](img/git-fast-forward-merge-rebase-squash.gif)
+
+Practice: https://learngitbranching.js.org/
+
+
+Branching model & workflow
+==========================
 
 This branching model ensures code consistency over the project
 while multiple teams are actively developing and modifying the code.
