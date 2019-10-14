@@ -56,7 +56,7 @@ C'était le bug le plus coûteux du monde.
 
 3 milliards de francs (de l'époque)  
 pour les 4 satellites, le lancement,  
-les 16 mois de retrad du projet...
+les 16 mois de retard du projet...
 
 Coût de l'image ternie de la marque.
 
@@ -73,7 +73,7 @@ Un petit bug...
 
 * Les deux *Système de Référence Inertielle*  
   (même matériel, même logiciel)  
-  se désactivent simultannément (à 72 ms près).
+  se désactivent simultanément (à 72 ms près).
 
 * 37 secondes après le décollage,  
   le pilote automatique prend les commandes.
@@ -142,8 +142,8 @@ Commission d'enquête
 [Rapport][Ariane5rapport] rendu un mois après l'incident  
 
 1. <!--.element: class="fragment"-->
-  La conception du calculateur de la trajectoire  
-  a volontairement exclue la spécificité d'Ariane 5.
+  Les concepteurs du calculateur de la trajectoire  
+  ont volontairement exclu la spécificité d'Ariane 5.
 
 2. <!--.element: class="fragment"-->
   La commision d'enquête (composée d'ingénieurs logiciel)  
@@ -164,7 +164,7 @@ Enquêtes indépendantes
    à un problème d'intégration système
 
 2. <!--.element: class="fragment"-->
-   [Mark Dowson][Ariane5failure] insiste sur l'environement de travail  
+   [Mark Dowson][Ariane5failure] insiste sur l'environnement de travail  
     - Pressions budgétaires
     - Pressions sur les délais
     - *If it's not broken don't fix it*
@@ -194,16 +194,16 @@ Que retenir du cas Ariane 501 ?
 ------------
 
 * **1980** [NORAD](https://en.wikipedia.org/wiki/North_American_Aerospace_Defense_Command) alerte d'une attaque de missiles  
-  &emsp; &emsp; (le logiciel ne gèrait pas la défaillance électrique)
+  &emsp; &emsp; (le logiciel ne gérait pas la défaillance électrique)
 * **1983** Un satellite soviétique alerte d'une attaque de missiles  
   &emsp; &emsp; (l'officier russe n'y croit pas)
 * **1983** Vancouver Stock Exchange corrige son index de 525 à 1099  
   &emsp; &emsp; (erreurs d'arrondi)
 * **1985** La NASA [ne détecte aucun trou d'ozone](https://earthobservatory.nasa.gov/Features/RemoteSensingAtmosphere/remote_sensing5.php) pendant 7 ans  
   &emsp; &emsp; (grandes variations écartées)
-* **1993** Bug du Pentium sur les flottant
+* **1993** Bug du Pentium sur les flottants
 * **1998** Désintégration Mars Climate Orbiter  
-  &emsp; &emsp; (une mesure est en *pound/second* au lieu de *newton/second*)
+  &emsp; &emsp; (unité *pound/second* au lieu de *newton/second*)
 * Médical : Surdose de rayons X...
 * [Avion](https://youtu.be/U0LBj_8xs_w), hélicoptère...
 
@@ -211,11 +211,11 @@ Que retenir du cas Ariane 501 ?
 Toyota
 ------
 
-*Accérelation innatendue du véhicule*
+*Accélération inattendue du véhicule*
 
 * <!--.element: class="fragment"--> **2010** Toyota rappelle à nouveau un million de véhicules  
   &emsp; &emsp;                              car ce n'est pas la mécanique qui est en cause  
-  &emsp; &emsp;                              mais le [code spaghetti bourré de négligeances](https://linuxfr.org/news/encore-un-exemple-de-code-spaghetti-toyota)
+  &emsp; &emsp;                              mais le [code spaghetti bourré de négligences](https://linuxfr.org/news/encore-un-exemple-de-code-spaghetti-toyota)
 
 * <!--.element: class="fragment"--> Il a fallu attendre une centaine de morts,  
   <!-- --->                         des milliers d'accidents et une poursuite en justice
@@ -230,7 +230,7 @@ Toyota
 [Knight Capital Group](https://fr.wikipedia.org/wiki/Knight_Capital_Group) (2012)
 ----------------------
 
-[*Comment perdre 440 million $ en 45 minutes ?*](https://en.wikipedia.org/wiki/Knight_Capital_Group#2012_stock_trading_disruption)
+[*Comment perdre 440 millions $ en 45 minutes ?*](https://en.wikipedia.org/wiki/Knight_Capital_Group#2012_stock_trading_disruption)
 
 * <!--.element: class="fragment"--> La fonction de test *Power Peg* est codée dans un logiciel de Prod
 
@@ -250,9 +250,9 @@ Toyota
 (qu'est devenu KCG ?)
 ---------------------
 
-* <!--.element: class="fragment"--> **2012** Le capital (350 millions $) perd 75% dès le lendemain
+* <!--.element: class="fragment"--> **2012** Baisse de la capitalisation (350 millions $) de 75% dès le lendemain
 
-* <!--.element: class="fragment"--> 4 jours après, KCG lève 400 million $  
+* <!--.element: class="fragment"--> 4 jours après, KCG lève 400 millions $  
 
 * <!--.element: class="fragment"--> **2015** Vente des logiciels *KCG Hotspot* à BATS pour 365 millions $
 
@@ -288,7 +288,7 @@ fail:
 Valve Steam (2015)
 -----------
 
-Le client Linux peut effacer les fichiers
+Ce script peut effacer tout le `$HOME`.
 
 ```bash
 STEAMROOT="$(cd "${0%/*}" && echo $PWD)"
@@ -297,14 +297,14 @@ STEAMROOT="$(cd "${0%/*}" && echo $PWD)"
 rm -rf "$STEAMROOT/"*
 ```
 
-Le commentaire `Scary!` est d'origine
+Le commentaire `Scary!` est d'origine.
 
 
 Que retenir de ces études de cas ?
 ----------------------------------
 
-* La non-qualité côute plus cher  <!-- .element: class="fragment" -->  
+* La non-qualité coûte plus cher  <!-- .element: class="fragment" -->  
   (qui pratique le *quick and dirty* ?)
 
 * Gérer les erreurs  <!-- .element: class="fragment" -->  
-  Refuser la négligeance
+  Refuser la négligence
