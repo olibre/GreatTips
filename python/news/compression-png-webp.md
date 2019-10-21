@@ -568,4 +568,14 @@ googlelogo_white_background_color_272x92dp-nq8-nq8-nq8-nq8-fs8-adv      2782  25
 googlelogo_white_background_color_272x92dp-nq8-nq8-nq8-nq8-nq8-fs8-adv  2728  2518  3544
 ```
 
+Images au format WebP
+=====================
+    
+Les deux images utilisées dans cette dépêche sont au format [WebP](https://fr.wikipedia.org/wiki/WebP). Ce format, publié en 2010, a l’avantage de peser sept fois moins en « [compression avec pertes](https://fr.wikipedia.org/wiki/Compression_de_données#Compression_avec_pertes) » que la version [PNG](https://fr.wikipedia.org/wiki/Portable_Network_Graphics) « sans pertes » avec un rendu comparable d'après mes yeux. Cependant le PNG, publié en 1996, a l'avantage d'être pris en charge par la quasi totalité des logiciels utilisés pour lire cette dépêche.
+
+
+Donc ces images en WebP risquent de ne pas sʼafficher. Merci de nous en faire part dans les commentaires. Nous rectifierons le tir pour la prochaine dépêche. 😁
+
+
+Par ailleurs, si votre navigateur est configuré en mode *dark* (avec un fond sombre), vous appréciez avoir des images ayant un fond transparent et compatibles avec un fond sombre. D’ailleurs, sur la précédente dépêche, des détails du [gentil serpent](https://linuxfr.org/news/python-pour-la-rentree-2019-partie-3-installation-de-python-et-de-paquets#toc-windows) sont visibles uniquement avec un fond sombre.
 
