@@ -275,3 +275,8 @@ Other errors
 * **`307` Temporary Redirect** - Same as 308, but we don’t know if the resource will be back on the original URL
   or another different URL in the future.
 
+
+WebSocket
+=========
+
+To be completed…
