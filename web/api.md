@@ -5,10 +5,11 @@
 HTTP
 ====
 
-Different API types:
+Different API mindset:
 
-* Single entrypoint with messages within body request (similar as for WebSocket)
-* CRUD = Reuse of HTTP methods (`POST`, `GET`, `PUT`, `DELETE`...)
+* Single entrypoint with parameters only in the body request (similar to WebSocket messages)
+* CRUD = Reuse of the HTTP methods (`POST`, `GET`, `PUT`, `DELETE`…)
+  instead of creating new ones in URL path or body parameter
 * REST = CRUD applied to resources (entrypoint = plural form of a resource name)
 * RESTful = REST with standardized API documentation (OpenAPI = Swagger, reDoc)
 * GraphQL = single entrypoint with query language
@@ -17,17 +18,22 @@ Different API types:
 Features
 --------
 
-* Authentication can be provided within the header request
+* Authentication is usually provided using the request header
 * Pagination (TDOD)
 
 
-REST URI
---------
+URL
+---
 
-URI can be:
+REST URL can be:
 
 * `https://www.example.com/api/v1/books`
 * `https://api.example.com/v1/books`
+
+GraphQL URL can be:
+
+* `https://www.example.com/api/v1`
+* `https://api.example.com/v1`
 
 
 HTTP persistent connection
@@ -35,11 +41,13 @@ HTTP persistent connection
 
 * HTTP/1.0
     * Header `Connection: keep-alive`
+
 * HTTP/1.1
-    *  Chunked transfer encoding https://en.wikipedia.org/wiki/Chunked_transfer_encoding
-    *  HTTP pipelining https://en.wikipedia.org/wiki/HTTP_pipelining
+    *  [Chunked transfer encoding](https://en.wikipedia.org/wiki/Chunked_transfer_encoding)
+    *  [HTTP pipelining](https://en.wikipedia.org/wiki/HTTP_pipelining)
+
 * HTTP/2.0
-    * Multiplexing https://en.wikipedia.org/wiki/HTTP/2#TCP_head-of-line_blocking
+    * [Multiplexing](https://en.wikipedia.org/wiki/HTTP/2#TCP_head-of-line_blocking)
 
 
 CRUD methods (HTTP requests)
@@ -67,9 +75,10 @@ to filter multiple resources to mass delete/disable/cancel.
 The request body usually conveys the parameters in the JSON format, but other formats can be used such as plain text,
 XML, CSV or even binary format in base64 representation.
 
-The API may accept other [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods):
+The API may also accept other [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods):
 
-* `PATCH /books/{isbn}` is more recent and has a subtle difference with the `PUT` method.
+* `PATCH /books/{id}` is more recent ([2010])[https://tools.ietf.org/html/rfc5789]
+  and has a subtle difference with `PUT /books/{id}`.
   `PUT` means a full replacement, and `PATCH`, a partial modification.
   However, to simplify the API design, the `PUT` method is often used for a partial update,
   without the presence of the `PATCH` method.
@@ -85,11 +94,12 @@ HTTP response status codes
 --------------------------
 
 Inspired from:
+* https://www.restapitutorial.com/lessons/httpmethods.html#get (CC BY-SA 4.0)
+* https://github.com/for-GET/http-decision-diagram
 * Kay Plößer (Ploesser) has posted in May 2019 the article
-  https://www.moesif.com/blog/technical/api%20design/Which-HTTP-Status-Code-To-Use-For-Every-CRUD-App
+  [Which HTTP Status Code to Use for Every CRUD App ](https://www.moesif.com/blog/technical/api%20design/Which-HTTP-Status-Code-To-Use-For-Every-CRUD-App)
 * https://gist.github.com/subfuzion/669dfae1d1a27de83e69
 * https://metamug.com/article/status-codes-for-rest-api.html
-* (CC BY-SA 4.0) https://www.restapitutorial.com/lessons/httpmethods.html#get
 
 
 ### Status Classes
