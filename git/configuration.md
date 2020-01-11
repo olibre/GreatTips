@@ -25,6 +25,17 @@ If you use different names accross your Git repository, configure it for each Gi
     git config --local user.name "Joe Jackson"
     git config --local user.email "jjackson@example.com"
 
+
+Core
+====
+
+```ini
+[core]
+	editor = vim
+	autocrlf = input
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+```
+
 Text editor
 -----------
 
@@ -56,7 +67,7 @@ See also [GitHub help](https://help.github.com/articles/dealing-with-line-ending
     
         git config --global core.autocrlf true
 
-Result on Linux/macOS:
+Result on Linux and macOS:
 
 ```ini
 [core]
@@ -64,48 +75,82 @@ autocrlf = input  # preserve CRLF when file has been created on Windows
 ```
 
 
-Other tricks
-------------
+Colors optimized for dark background
+====================================
 
+```ini
+[color]
+	ui = true      # Use colors in terminal
+	branch = auto
+	diff = auto
+	status = auto
+	showbranch = auto
+
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+```
+
+Push, Pull, Rebase
+==================
 
 Append in your `~/.gitconfig`
 
 ```ini
-[color]
-ui = auto              # Use terminal color when available
+[push]                 # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault
+default = simple       # "git push" without argument pushes the current branch to the remote branch with the same name
 
-[push]
-default = simple       # Make “git push” without argument push the current branch to the remote branch with the same name.
-
-[pull]
-rebase = preserve      # Ensure “git pull” will use rebase instead of merge, preserving existing local merges
+[pull]                 # https://git-scm.com/docs/git-config#Documentation/git-config.txt-pullrebase
+# rebase = merges      # "git pull" uses rebase instead of merge, but preserves existing local merges
+rebase = interactive
 
 [rebase]
-autoStash = true       # 'git pull --rebase' => 'git stash' before and 'git stash pop' after
-
-[diff]
-mnemonicPrefix = true  # Improve “git diff” output of source/target
-renames = true         # and detect renames
-
-[log]
-abbrevCommit = true    # Make “git log” show abbreviated SHA1
+stat      = true       # show a diffstat of what changed upstream since the last rebase
+autoStash = true       # git stash   +   git pull --rebase   +   git stash pop
+missingCommitsCheck = warn  # git rebase -i will print a warning if some commits are removed
 
 [rerere]
 enabled = true         # Make Git automatically record and re-apply conflicts resolution
 autoupdate = true      # Automatically add to index auto-resolved conflicts
 
-[alias]
-# Shortcut for status command
-st = status
-# Show improved logs (colors, branch graphs...)
-lo  = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines
-lof = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines --follow --find-copies-harder
-# Amend latest commit keeping the same commit message
-oops = commit --amend --no-edit
-track-all-remote-branches = ! git branch -a | grep \"^\\s*remotes/[^>]*$\" | xargs --interactive -L1 git checkout --track
-di = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
+[fetch]
+prune = true           # Delete local branches that have been deleted on remote repo
 
-# Below merge/diff inspired from mattst http://stackoverflow.com/a/34119867/938111
+[gui]
+pruneDuringFetch = true
+```
+
+Push, Pull, Rebase
+==================
+
+Install Vimdiff, Meld, KDiff3 or Kompare.
+Also install [git-interactive-rebase-tool](https://github.com/MitMaro/git-interactive-rebase-tool).
+
+```ini
+[diff]
+mnemonicPrefix = true  # Improve "git diff" output of source/target
+renames = true         # and detect renames
+tool    = vimdiff # meld #kdiff3
+guitool = meld #kdiff3 #kompare
+algorithm = patience
+
+[sequence]
+editor = interactive-rebase-tool
+
+# Below merge/diff from http://stackoverflow.com/a/34119867/938111
 
 [merge]
 conflictstyle = diff3
@@ -116,23 +161,41 @@ tool = meld
 cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 #md = meld "$LOCAL" "$BASE"   "$REMOTE" --output "$MERGED"
 
-[diff]
-tool    = meld #kdiff3
-guitool = meld #kdiff3 #kompare
-algorithm = patience
-
 [difftool]
 prompt = false
+
 # [difftool "kdiff3"]
 # cmd = kdiff3 $LOCAL $REMOTE --output $MERGED
+
 # [difftool "meld"]
 # cmd = meld "$LOCAL" "$REMOTE"
+```
 
-[fetch]
-prune = true # delete local branches that have been deleted on remote repo
+Aliases
+=======
 
-[gui]
-pruneDuringFetch = true
+```ini
+[log]
+abbrevCommit = true    # Make "git log" show abbreviated SHA1
+
+[alias]
+
+# Shortcut for status command
+st = status -sb
+
+# Show improved logs (colors, branch graphs...)
+l   = log --graph --oneline --decorate
+lo  = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines
+lof = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad %ar)%Creset' --date=short --ignore-space-change --ignore-blank-lines --follow --find-copies-harder
+hist = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+
+# Amend latest commit keeping the same commit message
+oops = commit --amend --no-edit
+track-all-remote-branches = ! git branch -a | grep \"^\\s*remotes/[^>]*$\" | xargs --interactive -L1 git checkout --track
+
+di = diff --ignore-space-at-eol --ignore-space-change --ignore-all-space --ignore-blank-lines
+
+
 ```
 
 Proxy
