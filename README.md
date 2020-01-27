@@ -96,6 +96,7 @@ DevOps
 
 * Pour progresser en DevOps (et pas seulement Ops) https://github.com/bregman-arie/devops-exercises
 * Un outil très complet (en Java) pour builder les images docker, config K8S, tracking des issues… https://github.com/theonedev/onedev
+* Permission Manager is an easy RBAC management for Kubernetes (create users, assign namespaces/permissions, and distribute Kubeconfig YAML files) https://github.com/sighupio/permission-manager
 
 
 Other
