@@ -102,3 +102,4 @@ Other
 -----
 
 * [The Book of Secret Knowledge](https://github.com/trimstray/the-book-of-secret-knowledge/blob/master/README.md#anger-table-of-contents), various materials and tools, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools…
+* Interactive kill https://github.com/sindresorhus/fkill-cli
