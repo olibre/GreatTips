@@ -50,6 +50,11 @@ Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
 Miscelanous links
 =================
 
+Web
+---
+
+* Respect users privacy => Drop all tracking, do not gather any data at all  https://marmelab.com/blog/2020/01/28/about-privacy.html
+
 
 Security
 --------
