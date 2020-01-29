@@ -53,7 +53,7 @@ Miscelanous links
 Web
 ---
 
-* Respect users privacy => Drop all tracking, do not gather any data at all  https://marmelab.com/blog/2020/01/28/about-privacy.html
+* Respect user privacy => Drop all tracking, no gather any data at all  https://marmelab.com/blog/2020/01/28/about-privacy.html
 
 
 Security
@@ -62,7 +62,7 @@ Security
 * [Tools, resources and references to practice ethical hacking](https://github.com/sundowndev/hacker-roadmap)
 * [The Hacker's Choice](https://github.com/hackerschoice) (IT Security Research Group) [Tips, Tricks & Hacks](https://github.com/hackerschoice/thc-tips-tricks-hacks-cheat-sheet)
 * [hackerEnv](https://github.com/abdulr7mann/hackerEnv), automation tool that sweep IPs and scan ports, vulnerabilities and exploit them
-
+* SpiderFoot as penetration test or to gather information about what your organisation might have exposed over the Internet https://github.com/smicallef/spiderfoot
 
 Programming languages
 ---------------------
@@ -102,6 +102,17 @@ DevOps
 * Pour progresser en DevOps (et pas seulement Ops) https://github.com/bregman-arie/devops-exercises
 * Un outil très complet (en Java) pour builder les images docker, config K8S, tracking des issues… https://github.com/theonedev/onedev
 * Permission Manager is an easy RBAC management for Kubernetes (create users, assign namespaces/permissions, and distribute Kubeconfig YAML files) https://github.com/sighupio/permission-manager
+
+
+Artificial Intelligeance
+------------------------
+
+* Introduction to Deep Learning https://github.com/aamini/introtodeeplearning
+
+Hardware
+--------
+
+* eBook-like open hardware project  https://github.com/joeycastillo/The-Open-Book
 
 
 Other
