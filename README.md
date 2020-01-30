@@ -64,6 +64,7 @@ Security
 * [hackerEnv](https://github.com/abdulr7mann/hackerEnv), automation tool that sweep IPs and scan ports, vulnerabilities and exploit them
 * SpiderFoot as penetration test or to gather information about what your organisation might have exposed over the Internet https://github.com/smicallef/spiderfoot
 
+
 Programming languages
 ---------------------
 
@@ -80,6 +81,9 @@ Programming languages
 |No global state                     | V    |
 |Hot code reloading                  | [V](https://vlang.io)    |
 
+* Python debugger/profiler (program flow visualizations) useful for algo learning https://github.com/CCExtractor/vardbg ([Y combinator](https://news.ycombinator.com/item?id=22170206))
+* Python coloured output https://github.com/willmcgugan/rich
+* Rust intruduction (2020) https://www.softax.pl/blog/rust-lang-in-a-nutshell-1-introduction/ ([Y combinator](https://news.ycombinator.com/item?id=22176968))
 * GoFrame https://github.com/gogf/gf
 * GetFlutter = 1000 open-source pre-build widgets library to develop both Flutter mobile app and web app https://github.com/ionicfirebaseapp/getflutter
 * Playwright est une lib Node pour tester automatiquement l'UI sur différents navigateurs Chromium (dont MS-Edge), WebKit et Firefox en mode Headless (pas besoin d'un serveur graphique) sur Linux, macOS et Win https://github.com/microsoft/playwrigh
@@ -109,10 +113,18 @@ Artificial Intelligeance
 
 * Introduction to Deep Learning https://github.com/aamini/introtodeeplearning
 
+
 Hardware
 --------
 
 * eBook-like open hardware project  https://github.com/joeycastillo/The-Open-Book
+
+
+
+Health & Work efficiency
+------------------------
+
+* Long cold shower https://news.ycombinator.com/item?id=22167687 (Netherlands study 2016) 
 
 
 Other
@@ -120,3 +132,4 @@ Other
 
 * [The Book of Secret Knowledge](https://github.com/trimstray/the-book-of-secret-knowledge/blob/master/README.md#anger-table-of-contents), various materials and tools, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools…
 * Interactive kill https://github.com/sindresorhus/fkill-cli
+* Linux screen sharing https://news.ycombinator.com/item?id=22178011
