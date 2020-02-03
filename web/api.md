@@ -276,6 +276,12 @@ Other errors
   or another different URL in the future.
 
 
+See also
+--------
+
+https://gist.github.com/subfuzion/669dfae1d1a27de83e69
+
+
 WebSocket
 =========
 
