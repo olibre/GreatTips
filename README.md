@@ -25,8 +25,16 @@ Internal documentation
 * [Diagrams within Markdown](./markdown)
 
 
+
 External documentation
 ======================
+
+
+Design
+------
+
+* Ant Design https://pro.ant.design/
+* Material Design https://material.io/
 
 
 Web
@@ -69,9 +77,10 @@ Programming languages
 * Rust intruduction (2020) https://www.softax.pl/blog/rust-lang-in-a-nutshell-1-introduction/ ([Y combinator](https://news.ycombinator.com/item?id=22176968))
 * GoFiber = Go web framework easy to learn by Node-developsers https://github.com/gofiber/fiber
 * GoFrame (not a good idea to be locked with some libraries if cannot use others)  https://github.com/gogf/gf
+* Go Material Design = https://github.com/fyne-io/fyne
 * GetFlutter = 1000 open-source pre-build widgets library to develop both Flutter mobile app and web app https://github.com/ionicfirebaseapp/getflutter
 * Playwright est une lib Node pour tester automatiquement l'UI sur différents navigateurs Chromium (dont MS-Edge), WebKit et Firefox en mode Headless (pas besoin d'un serveur graphique) sur Linux, macOS et Win https://github.com/microsoft/playwrigh
-* Ant Design https://pro.ant.design/
+* Javascript Functional Programming => Learn Reactive Extensions (Rx) http://reactivex.io/learnrx/
 
 Les résultats du sondage JavaScript https://2019.stateofjs.com/overview/  
 (belle représentation des technos sur deux axes connaissance et opinion positive/négative)
@@ -82,6 +91,13 @@ Les résultats du sondage JavaScript https://2019.stateofjs.com/overview/
 * Aux côtés de React et Vue, un troisième arrive en force : https://svelte.dev/
 * GraphQL est de plus en plus utilisé et apprécié (notamment, avec Apollo comme client)
 * Par contre, plus Redux est utilisé, moins il est apprécié 
+
+
+Challenges
+----------
+
+* What I cannot create, I do not understand https://github.com/danistefanovic/build-your-own-x
+* Application ideas to improve coding skills https://github.com/florinpop17/app-ideas
 
 
 DevOps
@@ -121,8 +137,13 @@ Linux
 Other
 -----
 
+* Database inside https://github.com/pingcap/awesome-database-learning
+* I hate Regex https://github.com/geongeorge/i-hate-regex
 * [The Book of Secret Knowledge](https://github.com/trimstray/the-book-of-secret-knowledge/blob/master/README.md#anger-table-of-contents), various materials and tools, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools…
 * Interactive kill https://github.com/sindresorhus/fkill-cli
+* Coopérative http://www.coopaname.coop/article/coopaname-cest-politique
+
+
 
 Public Domain Dedication
 ========================
