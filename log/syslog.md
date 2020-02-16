@@ -1,13 +1,13 @@
-Objectifs
-=========
+Motivation
+==========
 
-1. Facile pour les développeurs : Écriture des Log, Maintenance du Framework.
-2. Facile pour le manuel de l'utilisateur : Maintenance de la liste des logs et de leur description (avec internationalisation).
-3. Facile pour l'IT du client => Les logs sont structurés et nativement compréhensibles par les outils d'analyse de logs.
-
-Ce document a pour objectif de spécifier la structure en sortie des logs, l'API pour les développeurs et la façon de rassembler les différents éléments des logs (nom des paramètres, sévérité, texte du syslog et sa description pour le manuel).
+Ce document définit la structure en sortie des logs, l'API pour les développeurs et la façon de rassembler les différents éléments des logs (nom des paramètres, sévérité, texte du syslog et sa description pour le manuel).
 
 Ce document ne traite pas de l'amélioration du contenu de chacun des logs (paramètres, texte, description, niveau de log).
+
+1. Facile pour les développeurs : Écriture des logs, Maintenance du framework.
+2. Facile pour le manuel de l'utilisateur : Maintenance de la liste des logs et de leur description (avec internationalisation).
+3. Facile pour l'IT du client => Les logs sont structurés et nativement compréhensibles par les outils d'analyse de logs.
 
 
 Analyse automatique des logs
