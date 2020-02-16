@@ -8,7 +8,7 @@ warning| WARN  | Warning conditions               | Warning messages, not an err
 notice | -     | Normal but significant condition | Events that are unusual but not error conditions - might be summarized in an email to developers or admins to spot potential problems - no immediate action required.
 info   | INFO  | Informational message            | Normal operational messages - may be harvested for reporting, measuring throughput, etc. - no action required. Commons-logging: Interesting runtime events (startup/shutdown). Expect these to be immediately visible on a console, so be conservative and keep to a minimum.
 debug  | DEBUG | Debug-level message              | Info useful to developers for debugging the application, not useful during operations. Commons-logging: detailed information on the flow through the system. Expect these to be written to logs only.
--      | TRACE | Most detailed information        | Info useful during development to trace execution and values of variables or parameters. Calls with this severity should be removed from the code once the development is finished.
+|-     | TRACE | Most detailed information        | Info useful during development to trace execution and values of variables or parameters. Calls with this severity should be removed from the code once the development is finished.
 
 Guidelines
 ----------
