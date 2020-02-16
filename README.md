@@ -35,12 +35,8 @@ Design
 
 * Ant Design https://pro.ant.design/
 * Material Design https://material.io/
-
-
-Web
----
-
-* Respect [internaut](https://en.wikipedia.org/wiki/Internaut) privacy => Drop all tracking, Disallow anyone to collect any data at all  https://marmelab.com/blog/2020/01/28/about-privacy.html
+* Illustrations libres/gratuites https://dev.to/ahmed_sulaiman/13-places-to-find-beautiful-free-illustrations-580e
+* 25 videos to learn CSS Grid https://cssgrid.io/ 
 
 
 Security
@@ -54,8 +50,8 @@ Security
 * Spy GitHub users https://github.com/eth0izzle/shhgit
 
 
-Programming languages
----------------------
+Programming
+-----------
 
 |Features                            | Programming languages |
 |----------------------------------- | --------------------- |
@@ -93,11 +89,14 @@ Les résultats du sondage JavaScript https://2019.stateofjs.com/overview/
 * Par contre, plus Redux est utilisé, moins il est apprécié 
 
 
-Challenges
+Training
 ----------
 
 * What I cannot create, I do not understand https://github.com/danistefanovic/build-your-own-x
 * Application ideas to improve coding skills https://github.com/florinpop17/app-ideas
+* Learn and get certificats https://www.reddit.com/r/YouShouldKnow/comments/f4dtul/ysk_these_free_sites_to_educate_yourself_and_get/
+* Books updated from StackOverflow answers https://books.goalkicker.com/
+
 
 
 DevOps
@@ -106,6 +105,7 @@ DevOps
 * Pour progresser en DevOps (et pas seulement Ops) https://github.com/bregman-arie/devops-exercises
 * Un outil très complet (en Java) pour builder les images docker, config K8S, tracking des issues… https://github.com/theonedev/onedev
 * Permission Manager is an easy RBAC management for Kubernetes (create users, assign namespaces/permissions, and distribute Kubeconfig YAML files) https://github.com/sighupio/permission-manager
+* Configure Elastic cluster https://thoughts.t37.net/designing-the-perfect-elasticsearch-cluster-the-almost-definitive-guide-e614eabc1a87
 
 
 Artificial Intelligeance
@@ -142,6 +142,7 @@ Other
 * [The Book of Secret Knowledge](https://github.com/trimstray/the-book-of-secret-knowledge/blob/master/README.md#anger-table-of-contents), various materials and tools, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools…
 * Interactive kill https://github.com/sindresorhus/fkill-cli
 * Coopérative http://www.coopaname.coop/article/coopaname-cest-politique
+* Respect [internaut](https://en.wikipedia.org/wiki/Internaut) privacy => Drop all tracking, Disallow anyone to collect any data at all  https://marmelab.com/blog/2020/01/28/about-privacy.html
 
 
 
