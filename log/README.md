@@ -16,8 +16,10 @@ TRACE  | Chaque fonction, avec optionnellement ses paramètres INPUT et son OUTP
 
 See more about [syslog and Log4J log levels](./log.md)
 
-See also this awesome Go logger: https://github.com/synw/emodebug
+See also this awesome Dart logger with emojis 🤩 https://github.com/synw/emodebug
 
+🚀
+===
 
 The syslog protocol
 ===================
