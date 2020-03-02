@@ -71,12 +71,14 @@ Programming
 * Python debugger/profiler (program flow visualizations) useful for algo learning https://github.com/CCExtractor/vardbg ([Y combinator](https://news.ycombinator.com/item?id=22170206))
 * Python coloured output https://github.com/willmcgugan/rich
 * Rust intruduction (2020) https://www.softax.pl/blog/rust-lang-in-a-nutshell-1-introduction/ ([Y combinator](https://news.ycombinator.com/item?id=22176968))
+* Rust quick learning https://fasterthanli.me/blog/2020/a-half-hour-to-learn-rust/
 * GoFiber = Go web framework easy to learn by Node-developsers https://github.com/gofiber/fiber
 * GoFrame (not a good idea to be locked with some libraries if cannot use others)  https://github.com/gogf/gf
 * Go Material Design = https://github.com/fyne-io/fyne
 * GetFlutter = 1000 open-source pre-build widgets library to develop both Flutter mobile app and web app https://github.com/ionicfirebaseapp/getflutter
 * Playwright est une lib Node pour tester automatiquement l'UI sur différents navigateurs Chromium (dont MS-Edge), WebKit et Firefox en mode Headless (pas besoin d'un serveur graphique) sur Linux, macOS et Win https://github.com/microsoft/playwrigh
 * Javascript Functional Programming => Learn Reactive Extensions (Rx) http://reactivex.io/learnrx/
+* Vue.js (30 minutes) https://www.youtube.com/watch?v=OrxmtDw4pVI
 
 Les résultats du sondage JavaScript https://2019.stateofjs.com/overview/  
 (belle représentation des technos sur deux axes connaissance et opinion positive/négative)
@@ -90,13 +92,26 @@ Les résultats du sondage JavaScript https://2019.stateofjs.com/overview/
 
 
 Training
-----------
+--------
 
 * What I cannot create, I do not understand https://github.com/danistefanovic/build-your-own-x
 * Application ideas to improve coding skills https://github.com/florinpop17/app-ideas
 * Learn and get certificats https://www.reddit.com/r/YouShouldKnow/comments/f4dtul/ysk_these_free_sites_to_educate_yourself_and_get/
 * Books updated from StackOverflow answers https://books.goalkicker.com/
 
+
+CSS
+---
+
+* Simpsons https://pattle.github.io/simpsons-in-css/
+* Font Awesome https://fontawesome.com/
+* Material Design Icons https://materialdesignicons.com/
+* Ionicons https://ionicons.com/
+
+SEO
+---
+
+* 12 SEO practices https://ahrefs.com/blog/seo-best-practices/
 
 
 DevOps
@@ -132,6 +147,7 @@ Linux
 
 * Linux screen sharing https://news.ycombinator.com/item?id=22178011
 * Awesome Linux software https://github.com/luong-komorebi/Awesome-Linux-Software
+* TL;DR Simplified and community-driven man pages https://github.com/tldr-pages/tldr
 
 
 Other
