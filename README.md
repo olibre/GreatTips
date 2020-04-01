@@ -53,18 +53,18 @@ Security
 Programming
 -----------
 
-|Features                            | Programming languages |
-|----------------------------------- | --------------------- |
-|Fast compilation                    | V, D, Go, Delphi|
-|Simplicity & maintainability        | V, Go, [Nim](https://nim-lang.org/), Python, [Julia](https://en.wikipedia.org/wiki/Julia_(programming_language)), Jupyter, Elm, Kotlin, Dart, Elixir   |
-|Great perf. and zero cost C interop | V, C, C++, D, Delphi, Erlang, Rust|
-|Safety (immutability, no null, option types, free from data races) | V, Rust|
-|Easy concurrency                    | V, Go|
-|Easy cross compilation              | V, Go|
-|Compile time code generation        | V, D |
-|Small compiler with no dependency   | V    |
-|No global state                     | V    |
-|Hot code reloading                  | [V](https://vlang.io)    |
+Features                            | Programming languages |
+----------------------------------- | ---------------------
+Fast compilation                    | V, D, Go, Delphi
+Simplicity & maintainability        | V, Go, [Nim](https://nim-lang.org/), Python, [Julia](https://en.wikipedia.org/wiki/Julia_(programming_language)), Jupyter, Elm, Kotlin, Dart, Elixir
+Great perf. and zero cost C interop | V, C, C++, D, Delphi, Erlang, Rust
+Safety (immutability, no null, option types, free from data races) | V, Rust
+Easy concurrency                    | V, Go
+Easy cross compilation              | V, Go
+Compile time code generation        | V, D
+Small compiler with no dependency   | V
+No global state                     | V
+Hot code reloading                  | [V](https://vlang.io)
 
 * Python Cheatsheet https://github.com/gto76/python-cheatsheet
 * Python-based algorithms https://github.com/TheAlgorithms/Python
@@ -79,16 +79,17 @@ Programming
 * Playwright est une lib Node pour tester automatiquement l'UI sur différents navigateurs Chromium (dont MS-Edge), WebKit et Firefox en mode Headless (pas besoin d'un serveur graphique) sur Linux, macOS et Win https://github.com/microsoft/playwrigh
 * Javascript Functional Programming => Learn Reactive Extensions (Rx) http://reactivex.io/learnrx/
 * Vue.js (30 minutes) https://www.youtube.com/watch?v=OrxmtDw4pVI
+* Reproductible Builds https://reproducible-builds.org/
 
-Les résultats du sondage JavaScript https://2019.stateofjs.com/overview/  
-(belle représentation des technos sur deux axes connaissance et opinion positive/négative)
+Les résultats du sondage JavaScript https://2019.stateofjs.com/overview/
 
+* Représentation intéressante des technos sur les deux axes "connaissance" et "opinion positive/négative"
 * TypeScript a le vent en poupe
-* Angular est de moins en moins apprécié : énormément de réponses I've USED it before, and would NOT use it again
+* Angular est de moins en moins apprécié : énormément de réponses *I've USED it before, and would NOT use it again*
 * React (et Vue) sont de plus en plus utilisés
-* Aux côtés de React et Vue, un troisième arrive en force : https://svelte.dev/
+* [Svelte](https://svelte.dev/) arrive en force aux côtés de React et Vue 
 * GraphQL est de plus en plus utilisé et apprécié (notamment, avec Apollo comme client)
-* Par contre, plus Redux est utilisé, moins il est apprécié 
+* Par contre, plus Redux est utilisé, moins il est apprécié
 
 
 Training
@@ -98,6 +99,13 @@ Training
 * Application ideas to improve coding skills https://github.com/florinpop17/app-ideas
 * Learn and get certificats https://www.reddit.com/r/YouShouldKnow/comments/f4dtul/ysk_these_free_sites_to_educate_yourself_and_get/
 * Books updated from StackOverflow answers https://books.goalkicker.com/
+
+Dev tools
+----------
+
+* `diffoscope` https://diffoscope.org/
+* `icdiff` https://www.jefftk.com/icdiff
+* DevTodo, command line TODO manager https://swapoff.org/devtodo.html
 
 
 CSS
