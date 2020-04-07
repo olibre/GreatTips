@@ -77,7 +77,8 @@ Hot code reloading                  | [V](https://vlang.io)
 * Go Material Design = https://github.com/fyne-io/fyne
 * GetFlutter = 1000 open-source pre-build widgets library to develop both Flutter mobile app and web app https://github.com/ionicfirebaseapp/getflutter
 * Playwright est une lib Node pour tester automatiquement l'UI sur différents navigateurs Chromium (dont MS-Edge), WebKit et Firefox en mode Headless (pas besoin d'un serveur graphique) sur Linux, macOS et Win https://github.com/microsoft/playwrigh
-* Javascript Functional Programming => Learn Reactive Extensions (Rx) http://reactivex.io/learnrx/
+* JS Functional Programming => Learn Reactive Extensions (Rx) http://reactivex.io/learnrx/
+* JS Algorithms and Data Structures https://github.com/trekhleb/javascript-algorithms
 * Vue.js (30 minutes) https://www.youtube.com/watch?v=OrxmtDw4pVI
 * Reproductible Builds https://reproducible-builds.org/
 
@@ -97,8 +98,14 @@ Training
 
 * What I cannot create, I do not understand https://github.com/danistefanovic/build-your-own-x
 * Application ideas to improve coding skills https://github.com/florinpop17/app-ideas
-* Learn and get certificats https://www.reddit.com/r/YouShouldKnow/comments/f4dtul/ysk_these_free_sites_to_educate_yourself_and_get/
 * Books updated from StackOverflow answers https://books.goalkicker.com/
+* Freely available programming books https://github.com/EbookFoundation/free-programming-books
+* Coding Interview University https://github.com/jwasham/coding-interview-university
+* Learn large-scale systems design https://github.com/donnemartin/system-design-primer
+* Learn and get certificats https://www.reddit.com/r/YouShouldKnow/comments/f4dtul/ysk_these_free_sites_to_educate_yourself_and_get/
+* APIs for any project https://github.com/donnemartin/system-design-primer (business, anime, animals, news, finance, games...)
+* Different paths to take to become a front-end, back-end, or dev-ops engineer https://github.com/kamranahmedse/developer-roadmap
+
 
 Dev tools
 ----------
@@ -106,6 +113,8 @@ Dev tools
 * `diffoscope` https://diffoscope.org/
 * `icdiff` https://www.jefftk.com/icdiff
 * DevTodo, command line TODO manager https://swapoff.org/devtodo.html
+* Collection of .gitignore Templates https://github.com/github/gitignore
+* Command line notes and tips https://github.com/jlevy/the-art-of-command-line
 
 
 CSS
@@ -158,6 +167,7 @@ Linux
 * Linux screen sharing https://news.ycombinator.com/item?id=22178011
 * Awesome Linux software https://github.com/luong-komorebi/Awesome-Linux-Software
 * TL;DR Simplified and community-driven man pages https://github.com/tldr-pages/tldr
+* Oh My Zsh https://github.com/ohmyzsh/ohmyzsh
 
 
 Other
