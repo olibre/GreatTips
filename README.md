@@ -115,6 +115,8 @@ CSS
 * Font Awesome https://fontawesome.com/
 * Material Design Icons https://materialdesignicons.com/
 * Ionicons https://ionicons.com/
+* CSS Theme Switcher by Reverse-Engineering https://www.youtube.com/watch?v=rXuHGLzSmSE
+
 
 SEO
 ---
