@@ -30,14 +30,25 @@ External documentation
 ======================
 
 
-Design
-------
+Design / CSS
+------------
 
 * Ant Design https://pro.ant.design/
 * Material Design https://material.io/
 * Illustrations libres/gratuites https://dev.to/ahmed_sulaiman/13-places-to-find-beautiful-free-illustrations-580e
 * 25 videos to learn CSS Grid https://cssgrid.io/ 
+* Name all the colors in CC0 1.0 https://colornames.org/
+* Simpsons https://pattle.github.io/simpsons-in-css/
+* Font Awesome https://fontawesome.com/
+* Material Design Icons https://materialdesignicons.com/
+* Ionicons https://ionicons.com/
+* CSS Theme Switcher by Reverse-Engineering https://www.youtube.com/watch?v=rXuHGLzSmSE
+* Compress JPG with ImageMagick https://www.webnuz.com/article/2020-04-09/TIL%3A%20The%20Best%20Way%20to%20Compress%20JPG%20Files%20with%20ImageMagick
 
+SEO
+---
+
+* 12 SEO practices https://ahrefs.com/blog/seo-best-practices/
 
 Security
 --------
@@ -70,6 +81,7 @@ Hot code reloading                  | [V](https://vlang.io)
 * Python-based algorithms https://github.com/TheAlgorithms/Python
 * Python debugger/profiler (program flow visualizations) useful for algo learning https://github.com/CCExtractor/vardbg ([Y combinator](https://news.ycombinator.com/item?id=22170206))
 * Python coloured output https://github.com/willmcgugan/rich
+* Python weired behavior explained https://github.com/satwikkansal/wtfpython
 * Rust intruduction (2020) https://www.softax.pl/blog/rust-lang-in-a-nutshell-1-introduction/ ([Y combinator](https://news.ycombinator.com/item?id=22176968))
 * Rust quick learning https://fasterthanli.me/blog/2020/a-half-hour-to-learn-rust/
 * GoFiber = Go web framework easy to learn by Node-developsers https://github.com/gofiber/fiber
@@ -128,7 +140,9 @@ Training
     - Linkedin https://engineering.linkedin.com/blog/topic/feed-personalization
     - Netflix Recommendations https://youtu.be/kY-BCNHd_dM
     - Spotify Recommendations https://medium.com/s/story/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe
-
+* How To Interview Engineers When You're Not Technical
+    - https://www.greghausheer.com/articles/how-to-interview-engineers-when-youre-not-technical
+    - https://www.greghausheer.com/articles/how-to-interview-engineers-when-youre-not-technical-part-ii
 
 Dev tools
 ----------
@@ -181,21 +195,6 @@ and share them across the computers you use (home, work...).
 * rcm https://github.com/thoughtbot/rcm
 * GNU Stow https://www.gnu.org/software/stow/
 * bare git repo https://www.atlassian.com/git/tutorials/dotfiles
-
-CSS
----
-
-* Simpsons https://pattle.github.io/simpsons-in-css/
-* Font Awesome https://fontawesome.com/
-* Material Design Icons https://materialdesignicons.com/
-* Ionicons https://ionicons.com/
-* CSS Theme Switcher by Reverse-Engineering https://www.youtube.com/watch?v=rXuHGLzSmSE
-
-
-SEO
----
-
-* 12 SEO practices https://ahrefs.com/blog/seo-best-practices/
 
 
 DevOps
