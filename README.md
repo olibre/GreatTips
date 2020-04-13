@@ -140,6 +140,48 @@ Dev tools
 * Command line notes and tips https://github.com/jlevy/the-art-of-command-line
 
 
+Dotfiles Managers
+-----------------
+
+Backup your customized configuration files (`~/.bashrc`, `~/.gitconfig`...)
+and share them across the computers you use (home, work...).
+
+### `yamd` - Easy too use
+
+* https://yadm.io in Python
+* YADM = Yet Another Dotfiles Manager 
+* Full Git encapsulation => Simple daily usage
+* Easy install/updgrade on Ubuntu/Debian: `apt install yamd`
+* Add OpenSuse RPM repository to install/upgrade on Fedora (see https://yadm.io/docs/install)
+* No installation using `pip` (no `pip install --user yadm`)
+
+### `chezmoi` - Hybrid Git encapsulation
+
+* https://chezmoi.io in Go
+* Hybrid Git encapsulation: `chezmoi cd` to open a subshell to Git repo (`exit` to return)
+* Ubuntu/Debian/Fedora installations can rely on Snappy:
+    ```
+    sudo ndf install snapd                # provide "snap" command line
+    sudo ln -s /var/lib/snapd/snap /snap  # prevent error: classic confinement requires snaps under /snap 
+    sudo snap install chezmoi --classic   # storage: 20 MB
+    ```
+
+### `dotdrop` - Jinja2-templatable config files
+
+* https://deadc0de.re/dotdrop/ in Python
+* Manual repo management: `( cd ~/.dd; dotdrop import ~/.bashrc )` or `alias dotdrop='dotdrop --cfg=~/.dd/config.yaml`
+* Inconsistency with Git commands: import/add, compare/diff...
+* Easy install/upgrade anywhere with `python3 -m pip install --user --upgrade dotdrop`
+
+
+### Other Dotfiles Managers
+
+* homeshick https://github.com/andsens/homeshick
+* homesick https://github.com/technicalpickles/homesick
+* rcm https://github.com/thoughtbot/rcm
+* GNU Stow https://www.gnu.org/software/stow/
+* bare git repo https://www.atlassian.com/git/tutorials/dotfiles
+
 CSS
 ---
 
