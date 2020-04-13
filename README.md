@@ -45,10 +45,29 @@ Design / CSS
 * CSS Theme Switcher by Reverse-Engineering https://www.youtube.com/watch?v=rXuHGLzSmSE
 * Compress JPG with ImageMagick https://www.webnuz.com/article/2020-04-09/TIL%3A%20The%20Best%20Way%20to%20Compress%20JPG%20Files%20with%20ImageMagick
 
-SEO
----
+Web site architecture
+---------------------
 
 * 12 SEO practices https://ahrefs.com/blog/seo-best-practices/
+* Demystifying SSR, CSR, universal and static rendering with animations  
+  https://dev.to/kefranabg/demystifying-ssr-csr-universal-and-static-rendering-with-animations-m7d
+    * SSR = Server Side Rendering (WordPress)
+    * CSR = Client Side Rendering CDN (Full JS: Vue, React, Angular)
+    * Universal Rendering (Svelte, Next.js, Nuxt.js, Angular Universal)
+    * Static Rendering = Markup (Hugo, Jekyll)
+    * JAMStack = JS+API+Markup (Svelte/Saper, Next.js, Gatsby, VuePress, Gridsome)
+
+&nbsp;          | SSR | CSR |Universal| Static | JAMStack
+----------------|:---:|:---:|:-------:|:--------:|:--------
+Requires hosting| yes | no  | yes     | no       | yes (API)|
+CDN             | 👎   | 👍  | 👎      | 👍       | 👍
+SEO             | 👍   | 👎  | 👍      | 👍       | depends on content from API
+Initial load    | ⚡️⚡️  |  ⚡️  | ⚡️⚡️      | ⚡️⚡️⚡️      | ⚡️⚡️ 
+Reload          | yes | no  | no      | no       | depends on the tool
+Fluid UX        | 👎  | 👍   | 👍      | 👍       | 👍
+Frequent updates| 👍  | 👍   | 👍      | 👎       | 👎/👍`*`
+
+`*` To be frequently updated, JAMStack website can use APIs to retrieve content but looses SEO benefits. Approche can be hybrid: only very recent content is delivered by API, while static content is continuously re-built & delivered acroos CDN.
 
 Security
 --------
