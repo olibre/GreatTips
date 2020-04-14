@@ -188,7 +188,7 @@ and share them across the computers you use (home, work...).
 * No installation using `pip` (no `pip install --user yadm`)
 * Enter subshell for Git commands: `yadm enter` (`exit` to return)
 * Simple to use:
-    - Keep same filename
+    - Keep leading dot `.` (in filename)
     - What is changed in Git repo is applyied (even removal)
 
 ### `chezmoi` - Hybrid Git encapsulation
@@ -196,22 +196,25 @@ and share them across the computers you use (home, work...).
 * https://chezmoi.io in Go
 * Ubuntu/Debian/Fedora installations can rely on Snappy:
     ```
-    sudo ndf install snapd                # provide "snap" command line
+    sudo dnf install snapd                # provide "snap" command line
     sudo ln -s /var/lib/snapd/snap /snap  # prevent error: classic confinement requires snaps under /snap 
     sudo snap install chezmoi --classic   # storage: 20 MB
     snap run chezmoi
     ```
 * Enter subshell for Git commands: `chezmoi cd` (`exit` to return)
-* Replace first filename character `.` by `dot_`
+* Replace leading dot `.` by `dot_`
 * Require `-r` option to (recursively) add a configuration folder (silent failure even with `-v`)
 
 ### `dotdrop` - Jinja2-templatable config files
 
 * https://deadc0de.re/dotdrop/ in Python
-* Easy install/upgrade anywhere with `python3 -m pip install --user --upgrade dotdrop`
-* Manual repo management: `( cd ~/.dd; dotdrop import ~/.bashrc )` or `alias dotdrop='dotdrop --cfg=~/.dd/config.yaml`
+* Disclamer: I do not have installed Dotdrop in the recommanded way, I do not use `dotdrop.sh` because I do not want to `git submodule` (I do not want to upgrade all installed software using `git submodule update` individually, I prefer a script doing `pip install --upgrade` for all installed user Python packages)
+* Easy install/upgrade anywhere with `python3 -m pip install --user --upgrade dotdrop` (I think I do not need `dotdrop.sh`)
+* Use [default Dotdrop `config.yaml` location](https://github.com/deadc0de6/dotdrop/wiki/config#location) or provide it in another way: `( cd ~/dd; dotdrop import ~/.bashrc )` or `alias dotdrop='dotdrop --cfg=~/dd/config.yaml` or `export DOTDROP_CONFIG=~/dd/config.yaml`
+* Simple tool = Do not handle Git commands (manual repo management) 
 * Dotdrop and Git use different command names: import/add, compare/diff...
-* Dotdrop drops dot: Archived filename without first character `.` if `keepdot:false` in `~/.dd/config.yaml`
+* Dotdrop drops dot: Archived filename without leading dot `.` if `keepdot:false` (default) in `~/.dd/config.yaml`
+* Do not recover simple `config.yaml` errors: missing `profiles:` or empty hostname profile
 
 ### Other Dotfiles Managers
 
