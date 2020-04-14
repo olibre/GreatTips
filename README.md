@@ -182,29 +182,35 @@ and share them across the computers you use (home, work...).
 ### `yamd` - Easy too use
 
 * https://yadm.io in Python
-* YADM = Yet Another Dotfiles Manager 
-* Full Git encapsulation => Simple daily usage
+* YADM = Yet Another Dotfiles Manager
 * Easy install/updgrade on Ubuntu/Debian: `apt install yamd`
 * Add OpenSuse RPM repository to install/upgrade on Fedora (see https://yadm.io/docs/install)
 * No installation using `pip` (no `pip install --user yadm`)
+* Enter subshell for Git commands: `yadm enter` (`exit` to return)
+* Simple to use:
+    - Keep same filename
+    - What is changed in Git repo is applyied (even removal)
 
 ### `chezmoi` - Hybrid Git encapsulation
 
 * https://chezmoi.io in Go
-* Hybrid Git encapsulation: `chezmoi cd` to open a subshell to Git repo (`exit` to return)
 * Ubuntu/Debian/Fedora installations can rely on Snappy:
     ```
     sudo ndf install snapd                # provide "snap" command line
     sudo ln -s /var/lib/snapd/snap /snap  # prevent error: classic confinement requires snaps under /snap 
     sudo snap install chezmoi --classic   # storage: 20 MB
+    snap run chezmoi
     ```
+* Enter subshell for Git commands: `chezmoi cd` (`exit` to return)
+* Replace first filename character `.` by `dot_`
+* Require `-r` option to (recursively) add a configuration folder (silent failure even with `-v`)
 
 ### `dotdrop` - Jinja2-templatable config files
 
 * https://deadc0de.re/dotdrop/ in Python
-* Manual repo management: `( cd ~/.dd; dotdrop import ~/.bashrc )` or `alias dotdrop='dotdrop --cfg=~/.dd/config.yaml`
-* Inconsistency with Git commands: import/add, compare/diff...
 * Easy install/upgrade anywhere with `python3 -m pip install --user --upgrade dotdrop`
+* Manual repo management: `( cd ~/.dd; dotdrop import ~/.bashrc )` or `alias dotdrop='dotdrop --cfg=~/.dd/config.yaml`
+* Dotdrop and Git use different command names: import/add, compare/diff...
 
 
 ### Other Dotfiles Managers
