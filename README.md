@@ -1,5 +1,5 @@
-Good and Great Practices for Coders
-===================================
+Good and Great Tips for Coders
+==============================
 
 > *Empowering practices for happy coders about Git, Unit tests, C++, Python, Java, Gradle, CMake, Agile, GNU/LInux installation, pandoc... &nbsp; Not the best or the greatest because any one can propose improvements :-)*
 
@@ -217,8 +217,8 @@ and share them across the computers you use (home, work...).
 * Simple tool = Do not handle Git commands (manual repo management) 
 * Dotdrop and Git use different command names: import/add, compare/diff...
 * Dotdrop drops dot: Archived filename without leading dot `.` if `keepdot:false` (default) in `~/.dd/config.yaml`
-* Do not recover simple `config.yaml` errors: missing `profiles:` or empty hostname profile
-* Easy to hack beacause all operations are  
+* Do not recover simple `config.yaml` errors: missing `profiles:` or empty hostname profile https://github.com/deadc0de6/dotdrop/issues/221
+* Easy to hack beacause Git is not managed by `dotdrop` and because all other operations are clearly described in the `config.yaml`
 
 ### Installation of `dotdrop` to be almost `yamd`-compatible 
 
