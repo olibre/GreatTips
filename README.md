@@ -183,15 +183,16 @@ and share them across the computers you use (home, work...).
 
 * https://yadm.io in Python
 * YADM = Yet Another Dotfiles Manager
-* Easy install/updgrade on Ubuntu/Debian: `apt install yamd`
-* Add OpenSuse RPM repository to install/upgrade on Fedora (see https://yadm.io/docs/install)
-* No installation using `pip` (no `pip install --user yadm`)
+* Easy install/updgrade on Ubuntu/Debian `apt install yamd` and macOS `brew install yadm`
+* Add OpenSuse RPM repository for Fedora and other RPM-based distros: https://yadm.io/docs/install
+* But missing installation with `pip install --user yadm`
 * Enter subshell for Git commands: `yadm enter` (`exit` to return)
+* Support three template engines depending on file extension: `awk`, `j2cli` and `envtpl` 
 * Simple to use:
     - Keep leading dot `.` (in filename)
     - What is changed in Git repo is applyied (even removal)
 
-### `chezmoi` - Hybrid Git encapsulation
+### `chezmoi` - Filename prefixes as deployment operations
 
 * https://chezmoi.io in Go
 * Ubuntu/Debian/Fedora installations can rely on Snappy:
@@ -202,10 +203,12 @@ and share them across the computers you use (home, work...).
     snap run chezmoi
     ```
 * Enter subshell for Git commands: `chezmoi cd` (`exit` to return)
+* Encode operations to apply during deployment as filename prefixes 
 * Replace leading dot `.` by `dot_`
-* Require `-r` option to (recursively) add a configuration folder (silent failure even with `-v`)
+* Require `-r` option to (recursively) add a configuration folder (silent failure even with `-v`) https://github.com/twpayne/chezmoi/issues/668
+* Support template based on Go [`text/template`](https://pkg.go.dev/text/template) (append `*.tmpl`)
 
-### `dotdrop` - Jinja2-templatable config files
+### `dotdrop` - Easy to hack (manual Git management)
 
 * https://deadc0de.re/dotdrop/ in Python
 * Disclamer: I do not have installed Dotdrop in the recommanded way, I do not use `dotdrop.sh` because I do not want to `git submodule` (I do not want to upgrade all installed software using `git submodule update` individually, I prefer a script doing `pip install --upgrade` for all installed user Python packages)
@@ -215,14 +218,74 @@ and share them across the computers you use (home, work...).
 * Dotdrop and Git use different command names: import/add, compare/diff...
 * Dotdrop drops dot: Archived filename without leading dot `.` if `keepdot:false` (default) in `~/.dd/config.yaml`
 * Do not recover simple `config.yaml` errors: missing `profiles:` or empty hostname profile
+* Easy to hack beacause all operations are  
 
-### Other Dotfiles Managers
+### Installation of `dotdrop` to be almost `yamd`-compatible 
+
+YADM repo looking is often a convention: respect of original path/filenames.
+
+Two almost `yamd`-compatible installations are described here:
+1. Two Git repo (`dotdrop` repo + `dotfiles` sub repo)
+2. The `dotfiles` repo archives itself the `~/.config/dotdrop/config.yaml`
+
+Use same filename as YADM setting `keepdot:true` in `~/.config/dotdrop/config.yaml`:
+
+``yaml
+config:
+  keepdot: true      # same filename as YADM
+  dotpath: dotfiles  # set your dotfiles repo path/name
+  backup: true
+  banner: false
+  create: true
+  link_dotfile_default: nolink
+  link_on_import: nolink
+  longkey: false
+dotfiles:
+[...]
+```
+
+In order to have a dotfiles repo without `dotdrop` configuration and subfolder, use two repos:
+* The `dotdrop` repo
+* The `dotfiles` repo
+
+Use `tree -a -I .git ~/.config/dotdrop/` to have a look on your dotfiles backup:
+
+```php
+$ tree -a -I .git ~/.config/dotdrop/
+~/.config/dotdrop/
+├── config.yaml     # above configuration file
+├── .gitmodules     # main repo: ~/.config/dotdrop/ 
+└── dotfiles        # Git submodule similar to YADM repo 
+    ├── .gitconfig
+    ├── .bashrc
+    ├── .config
+    │   └── htop
+    │       └── htoprc
+    └── .ssh
+        └── config
+```
+
+In the second installation, no need of the main `dotdrop` repo because the `~/.config/dotdrop/config.yaml` is archived within the `dotfiles` repo. After each `dotdrop import`, also perform:
+
+    dotdrop import ~/.config/dotdrop/config.yaml
+    cd ~/.config/dotdrop/dotfiles
+    git add .config/dotdrop/
+    git commit -m 'Update dotdrop config'
+
+## Encrypt sensitive data
+
+* YADM [presents](https://yadm.io/docs/encryption) [git-crypt](https://github.com/AGWA/git-crypt)
+* `dotdrop` [proposes](https://github.com/deadc0de6/dotdrop/wiki/sensitive-dotfiles) gpg encryption
+
+### Other dotfiles managers
 
 * homeshick https://github.com/andsens/homeshick
 * homesick https://github.com/technicalpickles/homesick
 * rcm https://github.com/thoughtbot/rcm
 * GNU Stow https://www.gnu.org/software/stow/
 * bare git repo https://www.atlassian.com/git/tutorials/dotfiles
+
+See also: https://dotfiles.github.io/utilities/
 
 
 DevOps
