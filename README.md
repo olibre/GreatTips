@@ -211,7 +211,7 @@ and share them across the computers you use (home, work...).
 * Easy install/upgrade anywhere with `python3 -m pip install --user --upgrade dotdrop`
 * Manual repo management: `( cd ~/.dd; dotdrop import ~/.bashrc )` or `alias dotdrop='dotdrop --cfg=~/.dd/config.yaml`
 * Dotdrop and Git use different command names: import/add, compare/diff...
-
+* Dotdrop drops dot: Archived filename without first character `.` if `keepdot:false` in `~/.dd/config.yaml`
 
 ### Other Dotfiles Managers
 
