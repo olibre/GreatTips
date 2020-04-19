@@ -1,11 +1,12 @@
 Good and Great Tips for Coders
 ==============================
 
-> *Empowering practices for happy coders about Git, Unit tests, C++, Python, Java, Gradle, CMake, Agile, GNU/LInux installation, pandoc... &nbsp; Not the best or the greatest because any one can propose improvements :-)*
+*Empowering tips for happy coders about Git, Unit tests, C++, Python, Java, Gradle, CMake, Agile, GNU/LInux installation, pandoc...*  
+*Not the best or the greatest because continuously evolving and any one can propose improvements.* 😉
+
+This documentation can also be read [in slide-show format](http://olibre.github.io/GreatPractices/pres.html#/) (reveal.js).
 
 This documentation is maintained with faireness in mind and shared in [Public Domain](#public-domain-dedication).
-
-View this Markdown file [in presentation format](http://olibre.github.io/GreatPractices/pres.html#/) (reveal.js).
 
 
 Internal documentation
