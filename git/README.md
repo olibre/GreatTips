@@ -1,3 +1,9 @@
+Configuration
+-------------
+
+* [`~/.gitconfig`](./configuration.md)
+
+
 Mono-repo mono-branch
 ---------------------
 
@@ -24,13 +30,11 @@ After many years practitioning different use cases, my position is Simplicity:
 * On responsabilise le développeur, et on blinde le CI pour détecter les erreurs
 * Frustration des codeurs à devoir rédiger des documents sous MS-Office, connaître l'organisation des répertoires partagés... => Markdown => Frustration des managers car ne connaissent pas GitLab => Générer la doc à partir du MD => Site web => Mettre des liens "Edit this document"
 
-Bien sûr, pour des livraisons sans dépendance, le multi-repo est parfait.
+Bien sûr, pour des projet sans dépendance, OK pour des repos Git séparés. :+1:
 
+En conclusion, c'est élégant d'avoir de beaux commits, de belles branches, et plein de petits repos... Mais le coût n'est pas à négliger : les cerveaux de se concentrent sur d'autres tâches qui apportent peu de plus value à la finalité du projet. On passe trop de temps à faire de l’orfèvrerie au lieu de se concentrer sur le but : livraison => déploiement => expérience des utilisateurs finaux.
 
-Configuration
--------------
-
-* [`~/.gitconfig`](./configuration.md)
+C'est pour cela que j'en suis arrivé à apprécier d'avoir plusieurs équipes partageant un même repo et la même branche. Considérons les différents contributeurs au projet comme des adultes, laissons les prendre leurs responsabilités, plutôt que de leur mettre des règles frustrantes qui les infantilisent.
 
 
 Commit
