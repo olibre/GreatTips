@@ -43,6 +43,8 @@ Design / CSS
 * Ionicons https://ionicons.com/
 * CSS Theme Switcher by Reverse-Engineering https://www.youtube.com/watch?v=rXuHGLzSmSE
 * Compress JPG with ImageMagick https://www.webnuz.com/article/2020-04-09/TIL%3A%20The%20Best%20Way%20to%20Compress%20JPG%20Files%20with%20ImageMagick
+* HTML minimalist stylesheet https://github.com/andybrewer/mvp
+* BEM Naming visual tool for CSS classes https://9elements.com/bem-cheat-sheet/
 
 
 Web site architecture
@@ -113,6 +115,7 @@ Hot code reloading                  | [V](https://vlang.io)
 * JS Algorithms and Data Structures https://github.com/trekhleb/javascript-algorithms
 * Vue.js (30 minutes) https://www.youtube.com/watch?v=OrxmtDw4pVI
 * Reproductible Builds https://reproducible-builds.org/
+* Angular et Clean Architecture de Uncle Bob (Onion Architecture) https://github.com/im-a-giraffe/angular-clean-architecture
 
 Les résultats du sondage JavaScript https://2019.stateofjs.com/overview/
 
