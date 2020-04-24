@@ -4,6 +4,11 @@ Configuration
 * [`~/.gitconfig`](./configuration.md)
 
 
+External links
+--------------
+
+* Visualized Git Commands https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1
+
 Mono-repo mono-branch
 ---------------------
 
