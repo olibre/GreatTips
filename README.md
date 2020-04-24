@@ -137,7 +137,8 @@ Training
 * Learn and get certificats https://www.reddit.com/r/YouShouldKnow/comments/f4dtul/ysk_these_free_sites_to_educate_yourself_and_get/
 * APIs for any project https://github.com/donnemartin/system-design-primer (business, anime, animals, news, finance, games...)
 * Different paths to take to become a front-end, back-end, or dev-ops engineer https://github.com/kamranahmedse/developer-roadmap
-* Machine Learning System designs from Facebook, Twitter, Google, Airbnb, Uber, Instagram and Netflix
+* Machine Learning System designs
+    - AutoML-Zero = mix de ML et algo génétiques https://arxiv.org/abs/2003.03384
     - Twitter Newsfeed https://blog.twitter.com/engineering/en_us/topics/insights/2017/using-deep-learning-at-scale-in-twitters-timelines.html
     - Twitter Ads https://blog.twitter.com/engineering/en_us/topics/insights/2019/improving-engagement-on-digital-ads-with-delayed-feedback.html
     - Instagram Newsfeed https://instagram-engineering.com/lessons-learned-at-instagram-stories-and-feed-machine-learning-54f3aaa09e56
