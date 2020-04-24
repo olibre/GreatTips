@@ -1,16 +1,15 @@
-Good and Great Tips for Coders
-==============================
+Great Tips, Mindsets and Practices for Coders
+=============================================
 
-*Empowering tips for happy coders about Git, Unit tests, C++, Python, Java, Gradle, CMake, Agile, GNU/LInux installation, pandoc...*  
-*Not the best or the greatest because continuously evolving and any one can propose improvements.* 😉
+*Empowering tips, mindsets and practices for happy coders about Training, Coding, Git, Unit tests, Agile, GNU/Linux installation, Markdown/Pandoc... Not the best ones because continuously evolving and any one can propose improvements.* 😉
 
-This documentation can also be read [in slide-show format](http://olibre.github.io/GreatPractices/pres.html#/) (reveal.js).
+Maintained with faireness in mind and shared in [Public Domain](#public-domain-dedication).
 
-This documentation is maintained with faireness in mind and shared in [Public Domain](#public-domain-dedication).
+Also available as a [slide show](http://olibre.github.io/GreatTips/pres.html#/) (using Reveal.js).
 
 
-Internal documentation
-======================
+Internal links
+==============
 
 * [GNU/Linux installation for coders](./install)
 * [Git](./git)
@@ -26,9 +25,8 @@ Internal documentation
 * [Diagrams within Markdown](./markdown)
 
 
-
-External documentation
-======================
+External links
+==============
 
 
 Design / CSS
@@ -45,6 +43,7 @@ Design / CSS
 * Ionicons https://ionicons.com/
 * CSS Theme Switcher by Reverse-Engineering https://www.youtube.com/watch?v=rXuHGLzSmSE
 * Compress JPG with ImageMagick https://www.webnuz.com/article/2020-04-09/TIL%3A%20The%20Best%20Way%20to%20Compress%20JPG%20Files%20with%20ImageMagick
+
 
 Web site architecture
 ---------------------
@@ -69,6 +68,7 @@ Fluid UX        | 👎  | 👍   | 👍      | 👍       | 👍
 Frequent updates| 👍  | 👍   | 👍      | 👎       | 👎/👍`*`
 
 `*` To be frequently updated, JAMStack website can use APIs to retrieve content but looses SEO benefits. Approche can be hybrid: only very recent content is delivered by API, while static content is continuously re-built & delivered acroos CDN.
+
 
 Security
 --------
@@ -137,33 +137,39 @@ Training
 * Learn and get certificats https://www.reddit.com/r/YouShouldKnow/comments/f4dtul/ysk_these_free_sites_to_educate_yourself_and_get/
 * APIs for any project https://github.com/donnemartin/system-design-primer (business, anime, animals, news, finance, games...)
 * Different paths to take to become a front-end, back-end, or dev-ops engineer https://github.com/kamranahmedse/developer-roadmap
-* Machine Learning System designs
-    - AutoML-Zero = mix de ML et algo génétiques https://arxiv.org/abs/2003.03384
-    - Twitter Newsfeed https://blog.twitter.com/engineering/en_us/topics/insights/2017/using-deep-learning-at-scale-in-twitters-timelines.html
-    - Twitter Ads https://blog.twitter.com/engineering/en_us/topics/insights/2019/improving-engagement-on-digital-ads-with-delayed-feedback.html
-    - Instagram Newsfeed https://instagram-engineering.com/lessons-learned-at-instagram-stories-and-feed-machine-learning-54f3aaa09e56
-    - Instagram Explore https://ai.facebook.com/blog/powered-by-ai-instagrams-explore-recommender-system/
-    - Facebook Deep Entity Classification https://engineering.fb.com/security/fighting-abuse-scale-2019/
-    - Uber Eats Recommendations
-        - https://eng.uber.com/uber-eats-query-understanding/
-        - https://eng.uber.com/uber-eats-recommending-marketplace/
-        - https://eng.uber.com/uber-eats-graph-learning/
-    - Uber Maps https://eng.uber.com/nlp-deep-learning-uber-maps/
-    - Airbnb
-        - https://medium.com/airbnb-engineering/using-machine-learning-to-predict-value-of-homes-on-airbnb-9272d3d4739d
-        - https://medium.com/airbnb-engineering/listing-embeddings-for-similar-listing-recommendations-and-real-time-personalization-in-search-601172f7603e
-        - https://medium.com/airbnb-engineering/learning-market-dynamics-for-optimal-pricing-97cffbcc53e3
-        - https://medium.com/airbnb-engineering/categorizing-listing-photos-at-airbnb-f9483f3ab7e3
-        - https://medium.com/airbnb-engineering/applying-deep-learning-to-airbnb-search-7ebd7230891f
-        - https://medium.com/airbnb-engineering/discovering-and-classifying-in-app-message-intent-at-airbnb-6a55f5400a0c
-    - Airbnb Experiences https://medium.com/airbnb-engineering/machine-learning-powered-search-ranking-of-airbnb-experiences-110b4b1a0789
-    - Google http://highscalability.com/blog/2016/3/16/jeff-dean-on-large-scale-deep-learning-at-google.html
-    - Linkedin https://engineering.linkedin.com/blog/topic/feed-personalization
-    - Netflix Recommendations https://youtu.be/kY-BCNHd_dM
-    - Spotify Recommendations https://medium.com/s/story/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe
 * How To Interview Engineers When You're Not Technical
     - https://www.greghausheer.com/articles/how-to-interview-engineers-when-youre-not-technical
     - https://www.greghausheer.com/articles/how-to-interview-engineers-when-youre-not-technical-part-ii
+
+
+Artificial Intelligeance & Machine Learning
+-------------------------------------------
+
+* Introduction to Deep Learning https://github.com/aamini/introtodeeplearning
+* AutoML-Zero = mix de ML et algo génétiques https://arxiv.org/abs/2003.03384
+* Twitter Newsfeed https://blog.twitter.com/engineering/en_us/topics/insights/2017/using-deep-learning-at-scale-in-twitters-timelines.html
+* Twitter Ads https://blog.twitter.com/engineering/en_us/topics/insights/2019/improving-engagement-on-digital-ads-with-delayed-feedback.html
+* Instagram Newsfeed https://instagram-engineering.com/lessons-learned-at-instagram-stories-and-feed-machine-learning-54f3aaa09e56
+* Instagram Explore https://ai.facebook.com/blog/powered-by-ai-instagrams-explore-recommender-system/
+* Facebook Deep Entity Classification https://engineering.fb.com/security/fighting-abuse-scale-2019/
+* Uber Eats Recommendations
+    - https://eng.uber.com/uber-eats-query-understanding/
+    - https://eng.uber.com/uber-eats-recommending-marketplace/
+    - https://eng.uber.com/uber-eats-graph-learning/
+* Uber Maps https://eng.uber.com/nlp-deep-learning-uber-maps/
+* Airbnb
+    - https://medium.com/airbnb-engineering/using-machine-learning-to-predict-value-of-homes-on-airbnb-9272d3d4739d
+    - https://medium.com/airbnb-engineering/listing-embeddings-for-similar-listing-recommendations-and-real-time-personalization-in-search-601172f7603e
+    - https://medium.com/airbnb-engineering/learning-market-dynamics-for-optimal-pricing-97cffbcc53e3
+    - https://medium.com/airbnb-engineering/categorizing-listing-photos-at-airbnb-f9483f3ab7e3
+    - https://medium.com/airbnb-engineering/applying-deep-learning-to-airbnb-search-7ebd7230891f
+    - https://medium.com/airbnb-engineering/discovering-and-classifying-in-app-message-intent-at-airbnb-6a55f5400a0c
+* Airbnb Experiences https://medium.com/airbnb-engineering/machine-learning-powered-search-ranking-of-airbnb-experiences-110b4b1a0789
+* Google http://highscalability.com/blog/2016/3/16/jeff-dean-on-large-scale-deep-learning-at-google.html
+* Linkedin https://engineering.linkedin.com/blog/topic/feed-personalization
+* Netflix Recommendations https://youtu.be/kY-BCNHd_dM
+* Spotify Recommendations https://medium.com/s/story/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe
+
 
 Dev tools
 ----------
@@ -299,17 +305,10 @@ DevOps
 * Configure Elastic cluster https://thoughts.t37.net/designing-the-perfect-elasticsearch-cluster-the-almost-definitive-guide-e614eabc1a87
 
 
-Artificial Intelligeance
-------------------------
-
-* Introduction to Deep Learning https://github.com/aamini/introtodeeplearning
-
-
 Hardware
 --------
 
 * eBook-like open hardware project  https://github.com/joeycastillo/The-Open-Book
-
 
 
 Health & Work efficiency
@@ -338,9 +337,9 @@ Other
 * Respect [internaut](https://en.wikipedia.org/wiki/Internaut) privacy => Drop all tracking, Disallow anyone to collect any data at all  https://marmelab.com/blog/2020/01/28/about-privacy.html
 
 
-
 Public Domain Dedication
 ========================
+
 CC0 1.0 Universal
 -----------------
 
