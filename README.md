@@ -190,11 +190,11 @@ Dotfiles Managers
 Backup your customized configuration files (`~/.bashrc`, `~/.gitconfig`...)
 and share them across the computers you use (home, work...).
 
-### `yamd` - Easy too use
+### `yadm` - Easy too use
 
 * https://yadm.io in Python
 * YADM = Yet Another Dotfiles Manager
-* Easy install/updgrade on Ubuntu/Debian `apt install yamd` and macOS `brew install yadm`
+* Easy install/updgrade on Ubuntu/Debian `apt install yadm` and macOS `brew install yadm`
 * Add OpenSuse RPM repository for Fedora and other RPM-based distros: https://yadm.io/docs/install
 * But missing installation with `pip install --user yadm`
 * Enter subshell for Git commands: `yadm enter` (`exit` to return)
@@ -231,11 +231,11 @@ and share them across the computers you use (home, work...).
 * Do not recover simple `config.yaml` errors: missing `profiles:` or empty hostname profile https://github.com/deadc0de6/dotdrop/issues/221
 * Easy to hack beacause Git is not managed by `dotdrop` and because all other operations are clearly described in the `config.yaml`
 
-### Installation of `dotdrop` to be almost `yamd`-compatible 
+### Installation of `dotdrop` to be almost `yadm`-compatible 
 
 YADM repo looking is often a convention: respect of original path/filenames.
 
-Two almost `yamd`-compatible installations are described here:
+Two almost `yadm`-compatible installations are described here:
 1. Two Git repo (`dotdrop` repo + `dotfiles` sub repo)
 2. The `dotfiles` repo archives itself the `~/.config/dotdrop/config.yaml`
 
