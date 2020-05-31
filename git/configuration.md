@@ -133,8 +133,8 @@ prune = true           # Delete local branches that have been deleted on remote 
 pruneDuringFetch = true
 ```
 
-Push, Pull, Rebase
-==================
+Diff, Merge
+===========
 
 Install Vimdiff, Meld, KDiff3 or Kompare.
 Also install [git-interactive-rebase-tool](https://github.com/MitMaro/git-interactive-rebase-tool).
