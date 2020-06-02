@@ -298,6 +298,10 @@ In the second installation, no need of the main `dotdrop` repo because the `~/.c
 
 See also: https://dotfiles.github.io/utilities/
 
+### Dotfiles manager alternative
+
+`vcsh` Multiple Git repositories in $HOME https://github.com/RichiH/vcsh
+
 
 DevOps
 ------
