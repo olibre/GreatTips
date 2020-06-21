@@ -359,6 +359,22 @@ Linux
 * Oh My Zsh https://github.com/ohmyzsh/ohmyzsh
 
 
+Privacy
+-------
+
+* Do not track visitors/users => Drop all tracking, Disallow anyone to collect any data at all  https://marmelab.com/blog/2020/01/28/about-privacy.html
+
+Popular self-hostable tools to share passwords:
+
+* https://en.wikipedia.org/wiki/List_of_password_managers
+* `pass` https://www.passwordstore.org/ Pas de service commercial, adapté à la ligne de commande, par contre, pas possible de partager un mdp entre 2 personnes seulement
+* `gopass` https://www.gopass.pw/ Pas de service commercial, 100% compatible avec pass
+* KeePassXC https://keepassxc.org/ Fork communautaire de KeePassX, Pas de service commercial, Extension pour browser
+    En 2018, la Surveillance Self-Defense cite KeePassXC dans son manuel https://ssd.eff.org/module/creating-strong-passwords (traduit en français: https://ssd.eff.org/fr/module/créer-des-mots-de-passe-robustes)
+* Passbolt https://www.passbolt.com/ Commercial, Gratuit pour les projets communautaires, Facile à héberger, on peut changer une ligne en Go pour ne pas payer
+* Bitwarden https://bitwarden.com/ Commercial, L'explication sur l'hébergement semble compliqué (12 étapes)
+
+
 Other
 -----
 
@@ -367,7 +383,6 @@ Other
 * [The Book of Secret Knowledge](https://github.com/trimstray/the-book-of-secret-knowledge/blob/master/README.md#anger-table-of-contents), various materials and tools, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools…
 * Interactive kill https://github.com/sindresorhus/fkill-cli
 * Coopérative http://www.coopaname.coop/article/coopaname-cest-politique
-* Respect [internaut](https://en.wikipedia.org/wiki/Internaut) privacy => Drop all tracking, Disallow anyone to collect any data at all  https://marmelab.com/blog/2020/01/28/about-privacy.html
 
 
 Public Domain Dedication
