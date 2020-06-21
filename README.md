@@ -309,8 +309,8 @@ Sandboxing
 * [EBox](https://docs.0install.net/tools/ebox/) uses [Zero Install](https://en.wikipedia.org/wiki/Zero_Install) (0install) to securely install software (from web sites) and runs them in a restricted environment. 
 
 
-Z shell `zsh`
--------------
+Z shell - `zsh`
+---------------
 
 Most extra shell extensions are developed for `zsh`, this is the reason why to use `zsh` for you daily-used workstation. But, I do not recommend it for production servers where `dash` (or `bash`) seems to be more suitable.
 
@@ -318,7 +318,7 @@ To extend Zsh capabilities, you can use either use a `zsh` plugin manager or man
 
 Plugin managers | Activity | Motivation
 ----------------|----------|---------------
-[Oh-My-Zsh](https://ohmyz.sh/) | Active (2009) | Historical community-driven project collecting & maintaining hundreds plusgins & thems within one big Git repo for simplicity and having eyes rewieving/checking malware in source code.
+[Oh-My-Zsh](https://ohmyz.sh/) | Active (2009) | Historical community-driven project collecting & maintaining hundreds plusgins & thems within [one big Git repo](https://github.com/ohmyzsh/ohmyzsh) for simplicity and having eyes rewieving/checking malware in source code.
 [Prezto](https://github.com/sorin-ionescu/prezto) | Active (2013) | Created in contrast to Oh-My-Zsh, to keep only the plugin manager source code within its Git repo.
 [Antigen](https://github.com/zsh-users/antigen) | Active (2013) | Written in Go to speed up the `zsh` stratup.
 [`zgen`](https://github.com/tarjoilija/zgen) | Inactive | Fast plugin manager inspired by Antigen (generates a static init script) but written in Zsh to avoid installing Go dependencies when updating the plugin manager. See Nukesor's [fork](https://github.com/Nukesor/zgen) for most recent commits.
@@ -356,7 +356,6 @@ Linux
 * Linux screen sharing https://news.ycombinator.com/item?id=22178011
 * Awesome Linux software https://github.com/luong-komorebi/Awesome-Linux-Software
 * TL;DR Simplified and community-driven man pages https://github.com/tldr-pages/tldr
-* Oh My Zsh https://github.com/ohmyzsh/ohmyzsh
 
 
 Privacy
