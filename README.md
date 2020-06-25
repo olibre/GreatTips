@@ -374,13 +374,13 @@ Popular self-hostable tools to share passwords:
 * Bitwarden https://bitwarden.com/ Commercial, L'explication sur l'hébergement semble compliqué (12 étapes)
 
 
-Quikly converge to high valuable API
-------------------------------------
+Quikly converge to valuable API
+-------------------------------
 
-1. **Penser** - Rédiger une documentation pédagogique (Markdown) à destination de l’utilisateur final, cela permet de se mettre dans la peau du client, d’itérer sur ce qu’il lui ferait plaisir, de se baser dessus dans nos échanges, et ainsi de suite jusqu’à obtenir une documentation API mature à publier sur https://docs.example.com
-2. **Coder** - Une fois, que nous sommes synchronisés et matures dans nos idées, on code avec des annotations afin de générer la documentation à partir du code source (OpenAPI, reDoc…). Coder c’est rencontrer des problématiques techniques auxquelles nous n’avions pas pensées, et cela nous permet d’accumuler du retour d’expérience, de gagner encore plus en maturité, et on implémente une API différente. La génération de la documentation est mise à disposition sur https://openapi.exemple.com et https://redoc.exemple.com
-3. **Tester** - On commence à avoir une première ébauche de l’API, on commence à mettre à jour la documentation pédagogique (Markdown), on commence à tester l’API, des premiers utilisateurs nous font des remarques… encore de nouvelles idées pour simplifier, pour clarifier… on re-code… on re-documente… on itère…
-4. **Livrer** - Au final, on en a marre de toujours tout chambouler, on finalise dans l’état actuel, on stabilise, on livre ! On garde nos bonnes idées pour la version suivante :-D
+1. **Design** - Rédiger une documentation pédagogique (Markdown) à destination de l’utilisateur final, cela permet de se mettre dans la peau du client, d’itérer sur ce qu’il lui ferait plaisir, de se baser dessus dans nos échanges, et ainsi de suite jusqu’à obtenir une documentation API mature à publier sur https://docs.example.com
+2. **Code** - Une fois, que nous sommes synchronisés et matures dans nos idées, on code avec des annotations afin de générer la documentation à partir du code source (OpenAPI, reDoc…). Coder c’est rencontrer des problématiques techniques auxquelles nous n’avions pas pensées, et cela nous permet d’accumuler du retour d’expérience, de gagner encore plus en maturité, et on implémente une API différente. La génération de la documentation est mise à disposition sur https://openapi.exemple.com et https://redoc.exemple.com
+3. **Test** - On commence à avoir une première ébauche de l’API, on commence à mettre à jour la documentation pédagogique (Markdown), on commence à tester l’API, des premiers utilisateurs nous font des remarques… encore de nouvelles idées pour simplifier, pour clarifier… on re-code… on re-documente… on itère…
+4. **Deliver** - Au final, on en a marre de toujours tout chambouler, on finalise dans l’état actuel, on stabilise, on livre ! On garde nos bonnes idées pour la version suivante :-D
 
 Other
 -----
