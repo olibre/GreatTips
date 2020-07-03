@@ -14,3 +14,18 @@
 * plugin kustomize (k8s) pour convertir un fichier Docker-Compose vers K8s
 * Helm
 * Minikube
+
+
+```
+$ podman run --rm python:3.8 du -hsc
+951M	.
+951M	total
+
+$ podman run --rm python:3.8-slim du -hsc
+168M	.
+168M	total
+
+$ podman run --rm python:3.8-alpine du -hsc
+80.7M	.
+80.7M	total
+```
