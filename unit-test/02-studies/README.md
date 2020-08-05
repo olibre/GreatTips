@@ -146,7 +146,7 @@ Commission d'enquête
   ont volontairement exclu la spécificité d'Ariane 5.
 
 2. <!--.element: class="fragment"-->
-  La commision d'enquête (composée d'ingénieurs logiciel)  
+  La commission (composée d'ingénieurs logiciel)  
   conclut à un problème logiciel.
 
 <!--.element: class="fragment"--> Lire aussi : [Arnold][arnold] et [Bielefeld][bielefeld]
