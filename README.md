@@ -35,7 +35,7 @@ Design / CSS
 * Ant Design https://pro.ant.design/
 * Material Design https://material.io/
 * Illustrations libres/gratuites https://dev.to/ahmed_sulaiman/13-places-to-find-beautiful-free-illustrations-580e
-* 25 videos to learn CSS Grid https://cssgrid.io/ 
+* 25 videos to learn CSS Grid https://cssgrid.io/
 * Name all the colors in CC0 1.0 https://colornames.org/
 * Simpsons https://pattle.github.io/simpsons-in-css/
 * Font Awesome https://fontawesome.com/
@@ -51,7 +51,7 @@ Web site architecture
 ---------------------
 
 * 12 SEO practices https://ahrefs.com/blog/seo-best-practices/
-* Demystifying SSR, CSR, universal and static rendering with animations  
+* Demystifying SSR, CSR, universal and static rendering with animations
   https://dev.to/kefranabg/demystifying-ssr-csr-universal-and-static-rendering-with-animations-m7d
     * SSR = Server Side Rendering (WordPress)
     * CSR = Client Side Rendering CDN (Full JS: Vue, React, Angular)
@@ -64,7 +64,7 @@ Web site architecture
 Requires hosting| yes | no  | yes     | no       | yes (API)|
 CDN             | 👎   | 👍  | 👎      | 👍       | 👍
 SEO             | 👍   | 👎  | 👍      | 👍       | depends on content from API
-Initial load    | ⚡️⚡️  |  ⚡️  | ⚡️⚡️      | ⚡️⚡️⚡️      | ⚡️⚡️ 
+Initial load    | ⚡️⚡️  |  ⚡️  | ⚡️⚡️      | ⚡️⚡️⚡️      | ⚡️⚡️
 Reload          | yes | no  | no      | no       | depends on the tool
 Fluid UX        | 👎  | 👍   | 👍      | 👍       | 👍
 Frequent updates| 👍  | 👍   | 👍      | 👎       | 👎/👍`*`
@@ -123,7 +123,7 @@ Les résultats du sondage JavaScript https://2019.stateofjs.com/overview/
 * TypeScript a le vent en poupe
 * Angular est de moins en moins apprécié : énormément de réponses *I've USED it before, and would NOT use it again*
 * React (et Vue) sont de plus en plus utilisés
-* [Svelte](https://svelte.dev/) arrive en force aux côtés de React et Vue 
+* [Svelte](https://svelte.dev/) arrive en force aux côtés de React et Vue
 * GraphQL est de plus en plus utilisé et apprécié (notamment, avec Apollo comme client)
 * Par contre, plus Redux est utilisé, moins il est apprécié
 
@@ -198,7 +198,7 @@ and share them across the computers you use (home, work...).
 * Add OpenSuse RPM repository for Fedora and other RPM-based distros: https://yadm.io/docs/install
 * But missing installation with `pip install --user yadm`
 * Enter subshell for Git commands: `yadm enter` (`exit` to return)
-* Support three template engines depending on file extension: `awk`, `j2cli` and `envtpl` 
+* Support three template engines depending on file extension: `awk`, `j2cli` and `envtpl`
 * Simple to use:
     - Keep leading dot `.` (in filename)
     - What is changed in Git repo is applyied (even removal)
@@ -209,12 +209,12 @@ and share them across the computers you use (home, work...).
 * Ubuntu/Debian/Fedora installations can rely on Snappy:
     ```
     sudo dnf install snapd                # provide "snap" command line
-    sudo ln -s /var/lib/snapd/snap /snap  # prevent error: classic confinement requires snaps under /snap 
+    sudo ln -s /var/lib/snapd/snap /snap  # prevent error: classic confinement requires snaps under /snap
     sudo snap install chezmoi --classic   # storage: 20 MB
     snap run chezmoi
     ```
 * Enter subshell for Git commands: `chezmoi cd` (`exit` to return)
-* Encode operations to apply during deployment as filename prefixes 
+* Encode operations to apply during deployment as filename prefixes
 * Replace leading dot `.` by `dot_`
 * Require `-r` option to (recursively) add a configuration folder (silent failure even with `-v`) https://github.com/twpayne/chezmoi/issues/668
 * Support template based on Go [`text/template`](https://pkg.go.dev/text/template) (append `*.tmpl`)
@@ -225,13 +225,13 @@ and share them across the computers you use (home, work...).
 * Disclamer: I do not have installed Dotdrop in the recommanded way, I do not use `dotdrop.sh` because I do not want to `git submodule` (I do not want to upgrade all installed software using `git submodule update` individually, I prefer a script doing `pip install --upgrade` for all installed user Python packages)
 * Easy install/upgrade anywhere with `python3 -m pip install --user --upgrade dotdrop` (I think I do not need `dotdrop.sh`)
 * Use [default Dotdrop `config.yaml` location](https://github.com/deadc0de6/dotdrop/wiki/config#location) or provide it in another way: `( cd ~/dd; dotdrop import ~/.bashrc )` or `alias dotdrop='dotdrop --cfg=~/dd/config.yaml` or `export DOTDROP_CONFIG=~/dd/config.yaml`
-* Simple tool = Do not handle Git commands (manual repo management) 
+* Simple tool = Do not handle Git commands (manual repo management)
 * Dotdrop and Git use different command names: import/add, compare/diff...
 * Dotdrop drops dot: Archived filename without leading dot `.` if `keepdot:false` (default) in `~/.dd/config.yaml`
 * Do not recover simple `config.yaml` errors: missing `profiles:` or empty hostname profile https://github.com/deadc0de6/dotdrop/issues/221
 * Easy to hack beacause Git is not managed by `dotdrop` and because all other operations are clearly described in the `config.yaml`
 
-### Installation of `dotdrop` to be almost `yadm`-compatible 
+### Installation of `dotdrop` to be almost `yadm`-compatible
 
 YADM repo looking is often a convention: respect of original path/filenames.
 
@@ -265,8 +265,8 @@ Use `tree -a -I .git ~/.config/dotdrop/` to have a look on your dotfiles backup:
 $ tree -a -I .git ~/.config/dotdrop/
 ~/.config/dotdrop/
 ├── config.yaml     # above configuration file
-├── .gitmodules     # main repo: ~/.config/dotdrop/ 
-└── dotfiles        # Git submodule similar to YADM repo 
+├── .gitmodules     # main repo: ~/.config/dotdrop/
+└── dotfiles        # Git submodule similar to YADM repo
     ├── .gitconfig
     ├── .bashrc
     ├── .config
@@ -306,7 +306,7 @@ See also: https://dotfiles.github.io/utilities/
 Sandboxing
 ----------
 
-* [EBox](https://docs.0install.net/tools/ebox/) uses [Zero Install](https://en.wikipedia.org/wiki/Zero_Install) (0install) to securely install software (from web sites) and runs them in a restricted environment. 
+* [EBox](https://docs.0install.net/tools/ebox/) uses [Zero Install](https://en.wikipedia.org/wiki/Zero_Install) (0install) to securely install software (from web sites) and runs them in a restricted environment.
 
 
 Z shell - `zsh`
@@ -347,7 +347,7 @@ Hardware
 Health & Work efficiency
 ------------------------
 
-* Long cold shower https://news.ycombinator.com/item?id=22167687 (Netherlands study 2016) 
+* Long cold shower https://news.ycombinator.com/item?id=22167687 (Netherlands study 2016)
 
 
 Linux
@@ -382,6 +382,57 @@ Quikly converge to valuable API
 3. **Test** - On commence à avoir une première ébauche de l’API, on commence à mettre à jour la documentation pédagogique (Markdown), on commence à tester l’API, des premiers utilisateurs nous font des remarques… encore de nouvelles idées pour simplifier, pour clarifier… on re-code… on re-documente… on itère…
 4. **Deliver** - Au final, on en a marre de toujours tout chambouler, on finalise dans l’état actuel, on stabilise, on livre ! On garde nos bonnes idées pour la version suivante :-D
 
+
+
+One JSON per line
+-----------------
+
+The "JSON Lines" formats: https://jsonlines.org/on_the_web/
+
+The mos popular is `application/x-ndjson` http://ndjson.org/
+
+
+JSON/JWT versus CBOR/CWT
+------------------------
+
+Une alternative au JWT, est le CWT dont la [RFC 8392](https://www.rfc-editor.org/rfc/rfc8392.html) (may 2018) explique bien l'intérêt.
+
+Le CWT utilise CBOR à la place de JSON, CBOR étant une variante binaire du JSON.
+
+Il existe une dizaine de formats binaires pour JSON (comme BSON, MessagePack...), mais seul CBOR est traité dans les RFC, donc CBOR semble être mieux standardisé.
+
+See also: [RFC 8747](https://www.rfc-editor.org/rfc/rfc8747.html) (Proof-of-Possession Key Semantics for CBOR Web Tokens).
+
+JSON dealing with float and 64-bit numbers
+------------------------------------------
+
+Une API qui gère des nombres 64 bits et des prix exprimés par des flottants double précision :
+
+* Pour le CSV, pas de problème.
+
+* Mais pour le JSON qui va être manipulé par du JavaScript, c'est plus délicat, voir l'[Appendice D de la RFC 8785](https://www.rfc-editor.org/rfc/rfc8785.html#section-appendix.d)
+
+En attendant que tous les navigateurs web soient compatibles avec ECMAScript 2021 ([`BigInt`][]), l'API devrait prendre en charge le format I-JSON :
+
+> The API uses a JSON subset format called ["Internet JSON"](https://tools.ietf.org/html/rfc7493) (I-JSON) in order to guaranty a better interoperability with any client software:
+* UTF-8
+* non-duplicated JSON member names
+* time and date as string in [ISO 8601][] format (except when expressed in nanoseconds since epoch)
+* binary blobs in [base64url][] (not to be confused with other [base64 variants][])
+* [double-precision float][] ([IEEE 754][] binary64)
+>
+> However, the API uses the 64-bit signed integer type with the full range [-2⁶³, 2⁶³-1] because modern JavaScript (ECMAScript 2021) supports [`BigInt`][] type and are no more [limited][] to the [-2⁵³+1, 2⁵³-1] range.
+All other popular programming languages do not have this number range limitation.
+See also [RFC 8785 Appendix D](https://www.rfc-editor.org/rfc/rfc8785.html#section-appendix.d).
+
+[base64url]:       https://tools.ietf.org/html/rfc4648#section-5
+[base64 variants]: https://en.wikipedia.org/wiki/Base64#Variants_summary_table
+[IEEE 754]:        https://en.wikipedia.org/wiki/IEEE_754 "Standard for Floating-Point Arithmetic"
+[double-precision float]: https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64 "IEEE 754 binary64 floating-point format"
+[`BigInt`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+[limited]:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#Integer_range_for_Number
+
+
 Other
 -----
 
@@ -400,15 +451,15 @@ CC0 1.0 Universal
 
 [Creative Commons Zero] &emsp; *No Rights Reserved*  &emsp; ![(CC) ZERO] &nbsp; ![(0) PUBLIC DOMAIN]
 
-[Creative Commons Zero]: https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers" 
+[Creative Commons Zero]: https://creativecommons.org/publicdomain/zero/1.0/deed "CC0 summary for non-lawyers"
 [(CC) ZERO]:             https://licensebuttons.net/l/zero/1.0/80x15.png "Logo Creative Commons Zero (CC0) 1.0"
 [(0) PUBLIC DOMAIN]:     https://licensebuttons.net/p/zero/1.0/80x15.png "Logo CC0 1.0 Public Domain"
 
-To the extent possible under law, [olibre](mailto:olibre@Lmap.org) 
-has waived all copyright and related or neighboring rights to [GreatPractices]. 
+To the extent possible under law, [olibre](mailto:olibre@Lmap.org)
+has waived all copyright and related or neighboring rights to [GreatPractices].
 This work is published from France since 2015.
 Refer to [CC0 Legal Code] or a copy in file [`COPYING`].
 
 [CC0 Legal Code]: https://creativecommons.org/publicdomain/zero/1.0/legalcode "CC0 full legal text for lawyers"
-[GreatPractices]: https://github.com/olibre/GreatPractices "GreatPractices project hosted on GitHub" 
+[GreatPractices]: https://github.com/olibre/GreatPractices "GreatPractices project hosted on GitHub"
 [`COPYING`]:      ./COPYING
