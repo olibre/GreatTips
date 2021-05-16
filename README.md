@@ -99,6 +99,8 @@ Small compiler with no dependency   | V
 No global state                     | V
 Hot code reloading                  | [V](https://vlang.io)
 
+* Nim for Python coders https://github.com/nim-lang/Nim/wiki/Nim-for-Python-Programmers
+* Compare speed of Nim, Julia and C++ https://gist.github.com/sdwfrost/7c660322c6c33961297a826df4cbc30d
 * Python Cheatsheet https://github.com/gto76/python-cheatsheet
 * Python-based algorithms https://github.com/TheAlgorithms/Python
 * Python debugger/profiler (program flow visualizations) useful for algo learning https://github.com/CCExtractor/vardbg ([Y combinator](https://news.ycombinator.com/item?id=22170206))
