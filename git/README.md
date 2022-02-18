@@ -3,6 +3,41 @@ Configuration
 
 * [`~/.gitconfig`](./configuration.md)
 
+Collection of `.gitignore` files
+--------------------------------
+
+https://github.com/github/gitignore
+
+Large File Storage (LFS)
+------------------
+
+LFS allows to mix large files within the Git repo without impacting the repo size.
+These large files are not stored in the Git repo, but in a different location.
+LFS is widly supported (GitLab, Gitea, GitHub and more).
+
+If you do not upload new files to LFS, just do #1 and #2:
+
+1. Install the Git LFS client on your machine
+
+        sudo apt install git-lfs    # Ubuntu
+        brew install git-lfs        # macOS
+
+2. Clone the repo
+
+        git clone ssh://git@....../my-repo
+        cd my-repo
+        git lfs install
+
+3. Mark files to be stored in LFS
+
+        git lfs track '*.mp4'
+        git add .gitattributes
+
+4. Upload files to LFS
+
+        git add  assets/*.mp4
+        git commit -m 'Add videos' 
+        git push
 
 External links
 --------------
@@ -57,7 +92,7 @@ Useful emojis: https://github.com/carloscuesta/gitmoji
 Elegant commit message:
 
     :emoji: Verb summarizing the change (in some words) #123 #456 (optionnal issues)
-                                                                      (blank line)
+                                                                  (blank line)
     Optionnal verbose descripption
     can use multiple lines
     * can use bullet points
