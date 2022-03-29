@@ -243,7 +243,7 @@ Two almost `yadm`-compatible installations are described here:
 
 Use same filename as YADM setting `keepdot:true` in `~/.config/dotdrop/config.yaml`:
 
-``yaml
+```yaml
 config:
   keepdot: true      # same filename as YADM
   dotpath: dotfiles  # set your dotfiles repo path/name
