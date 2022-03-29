@@ -7,11 +7,7 @@ Maintained with faireness in mind and shared in [Public Domain](#public-domain-d
 
 Also available as a [slide show](http://olibre.github.io/GreatTips/pres.html#/) (using Reveal.js).
 
-
-Internal links
-==============
-
-* [GNU/Linux installation for coders](./install)
+* [Installation tips](./install)
 * [Git](./git)
 * [Java/Groovy/Gradle/Ant](./java)
 * [C++](./cpp)
@@ -25,9 +21,8 @@ Internal links
 * [Diagrams within Markdown](./markdown)
 
 
-External links
-==============
-
+See also
+========
 
 Design / CSS
 ------------
@@ -177,7 +172,7 @@ Artificial Intelligeance & Machine Learning
 
 
 Dev tools
-----------
+---------
 
 * `diffoscope` https://diffoscope.org/
 * `icdiff` https://www.jefftk.com/icdiff
@@ -285,7 +280,9 @@ In the second installation, no need of the main `dotdrop` repo because the `~/.c
     git add .config/dotdrop/
     git commit -m 'Update dotdrop config'
 
-## Encrypt sensitive data
+
+Encrypt sensitive data
+----------------------
 
 * YADM [presents](https://yadm.io/docs/encryption) [git-crypt](https://github.com/AGWA/git-crypt)
 * `dotdrop` [proposes](https://github.com/deadc0de6/dotdrop/wiki/sensitive-dotfiles) gpg encryption
@@ -384,18 +381,16 @@ Quikly converge to valuable API
 3. **Test** - On commence à avoir une première ébauche de l’API, on commence à mettre à jour la documentation pédagogique (Markdown), on commence à tester l’API, des premiers utilisateurs nous font des remarques… encore de nouvelles idées pour simplifier, pour clarifier… on re-code… on re-documente… on itère…
 4. **Deliver** - Au final, on en a marre de toujours tout chambouler, on finalise dans l’état actuel, on stabilise, on livre ! On garde nos bonnes idées pour la version suivante :-D
 
+JSON
+----
 
-
-One JSON per line
------------------
+### One JSON per line
 
 The "JSON Lines" formats: https://jsonlines.org/on_the_web/
 
 The mos popular is `application/x-ndjson` http://ndjson.org/
 
-
-JSON/JWT versus CBOR/CWT
-------------------------
+### JSON/JWT versus CBOR/CWT
 
 Une alternative au JWT, est le CWT dont la [RFC 8392](https://www.rfc-editor.org/rfc/rfc8392.html) (may 2018) explique bien l'intérêt.
 
@@ -405,8 +400,7 @@ Il existe une dizaine de formats binaires pour JSON (comme BSON, MessagePack...)
 
 See also: [RFC 8747](https://www.rfc-editor.org/rfc/rfc8747.html) (Proof-of-Possession Key Semantics for CBOR Web Tokens).
 
-JSON dealing with float and 64-bit numbers
-------------------------------------------
+### JSON dealing with float and 64-bit numbers
 
 Une API qui gère des nombres 64 bits et des prix exprimés par des flottants double précision :
 
